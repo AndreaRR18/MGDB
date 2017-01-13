@@ -12,6 +12,12 @@
 		654BF6E91E27F55900A82610 /* GameTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654BF6E71E27F55900A82610 /* GameTableViewController.xib */; };
 		654BF6F01E28E6E500A82610 /* GameCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BF6EE1E28E6E500A82610 /* GameCellTableViewCell.swift */; };
 		654BF6F11E28E6E500A82610 /* GameCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654BF6EF1E28E6E500A82610 /* GameCellTableViewCell.xib */; };
+		654BF7001E29343E00A82610 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF6FF1E29343E00A82610 /* Argo.framework */; };
+		654BF7011E29343E00A82610 /* Argo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF6FF1E29343E00A82610 /* Argo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		654BF7041E29344700A82610 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF7031E29344700A82610 /* Runes.framework */; };
+		654BF7051E29344700A82610 /* Runes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF7031E29344700A82610 /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		654BF7071E29344B00A82610 /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF7061E29344B00A82610 /* Curry.framework */; };
+		654BF7081E29344B00A82610 /* Curry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF7061E29344B00A82610 /* Curry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		656C38FF1E27D1FC0095EDBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C38FE1E27D1FC0095EDBC /* AppDelegate.swift */; };
 		656C39011E27D1FC0095EDBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C39001E27D1FC0095EDBC /* ViewController.swift */; };
 		656C39061E27D1FC0095EDBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 656C39051E27D1FC0095EDBC /* Assets.xcassets */; };
@@ -19,12 +25,34 @@
 		656C39111E27E2DF0095EDBC /* Homepage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 656C39101E27E2DF0095EDBC /* Homepage.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		654BF7021E29343E00A82610 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				654BF7051E29344700A82610 /* Runes.framework in Embed Frameworks */,
+				654BF7011E29343E00A82610 /* Argo.framework in Embed Frameworks */,
+				654BF7081E29344B00A82610 /* Curry.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		654BF6E41E27F12900A82610 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		654BF6E61E27F55900A82610 /* GameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewController.swift; sourceTree = "<group>"; };
 		654BF6E71E27F55900A82610 /* GameTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameTableViewController.xib; sourceTree = "<group>"; };
 		654BF6EE1E28E6E500A82610 /* GameCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCellTableViewCell.swift; sourceTree = "<group>"; };
 		654BF6EF1E28E6E500A82610 /* GameCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameCellTableViewCell.xib; sourceTree = "<group>"; };
+		654BF6F31E29252000A82610 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
+		654BF6F51E29252200A82610 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = Carthage/Build/iOS/Argo.framework; sourceTree = "<group>"; };
+		654BF6F71E29305D00A82610 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = Carthage/Build/iOS/Curry.framework; sourceTree = "<group>"; };
+		654BF6FF1E29343E00A82610 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = Carthage/Build/iOS/Argo.framework; sourceTree = "<group>"; };
+		654BF7031E29344700A82610 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
+		654BF7061E29344B00A82610 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = Carthage/Build/iOS/Curry.framework; sourceTree = "<group>"; };
 		656C38FB1E27D1FC0095EDBC /* Find The Fun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find The Fun.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		656C38FE1E27D1FC0095EDBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		656C39001E27D1FC0095EDBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,17 +67,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				654BF7041E29344700A82610 /* Runes.framework in Frameworks */,
+				654BF7001E29343E00A82610 /* Argo.framework in Frameworks */,
+				654BF7071E29344B00A82610 /* Curry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		654BF6F21E29252000A82610 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				654BF6F71E29305D00A82610 /* Curry.framework */,
+				654BF6F51E29252200A82610 /* Argo.framework */,
+				654BF6F31E29252000A82610 /* Runes.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		656C38F21E27D1FC0095EDBC = {
 			isa = PBXGroup;
 			children = (
+				654BF7061E29344B00A82610 /* Curry.framework */,
+				654BF7031E29344700A82610 /* Runes.framework */,
+				654BF6FF1E29343E00A82610 /* Argo.framework */,
 				656C38FD1E27D1FC0095EDBC /* Find The Fun */,
 				656C38FC1E27D1FC0095EDBC /* Products */,
+				654BF6F21E29252000A82610 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,10 +110,10 @@
 			isa = PBXGroup;
 			children = (
 				656C38FE1E27D1FC0095EDBC /* AppDelegate.swift */,
-				656C39001E27D1FC0095EDBC /* ViewController.swift */,
 				656C39051E27D1FC0095EDBC /* Assets.xcassets */,
 				656C39071E27D1FC0095EDBC /* LaunchScreen.storyboard */,
 				656C390A1E27D1FC0095EDBC /* Info.plist */,
+				656C39001E27D1FC0095EDBC /* ViewController.swift */,
 				656C39101E27E2DF0095EDBC /* Homepage.xib */,
 				654BF6E41E27F12900A82610 /* Game.swift */,
 				654BF6E61E27F55900A82610 /* GameTableViewController.swift */,
@@ -89,6 +134,8 @@
 				656C38F71E27D1FC0095EDBC /* Sources */,
 				656C38F81E27D1FC0095EDBC /* Frameworks */,
 				656C38F91E27D1FC0095EDBC /* Resources */,
+				654BF7021E29343E00A82610 /* Embed Frameworks */,
+				654BF7091E29349100A82610 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -148,6 +195,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		654BF7091E29349100A82610 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Curry.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Runes.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Argo.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		656C38F71E27D1FC0095EDBC /* Sources */ = {
@@ -274,6 +340,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EUQ43QLTML;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Find The Fun/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.developer.andrea.Find-The-Fun";
@@ -287,6 +357,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EUQ43QLTML;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Find The Fun/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.developer.andrea.Find-The-Fun";

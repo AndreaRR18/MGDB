@@ -1,2 +1,4 @@
 Find The Fun.xcodeproj/project.xcworkspace/xcuserdata
 Find The Fun.xcodeproj/xcuserdata
+*.bcsymbolmap
+Carthage/Checkouts

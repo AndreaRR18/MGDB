@@ -42,22 +42,22 @@ class ViewController: UIViewController {
     }
 
     func getLastestGame() {
-        guard let igdb = URL(string: igdbURL) else { return }
-        let request = URLRequest(url: igdb)
-        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-            if let error = error {
-                print(error)
-                return
-            }
-            if let data = data {
-                self.games = self.parseJsonData(data: data)
-                
-                OperationQueue.main.addOperation {
-                    self.navigationController?.pushViewController(GameTableViewController(), animated: true)
-                }
-            }
-        })
-        task.resume()
+//        guard let igdb = URL(string: igdbURL) else { return }
+//        let request = URLRequest(url: igdb)
+//        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
+//            if let error = error {
+//                print(error)
+//                return
+//            }
+//            if let data = data {
+//                self.games = self.parseJsonData(data: data)
+//                
+//                OperationQueue.main.addOperation {
+//                    self.navigationController?.pushViewController(GameTableViewController(), animated: true)
+//                }
+//            }
+//        })
+//        task.resume()
     }
     
     func parseJsonData(data: Data) -> [Game] {
