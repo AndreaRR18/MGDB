@@ -10,6 +10,8 @@
 		654BF6E51E27F12900A82610 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BF6E41E27F12900A82610 /* Game.swift */; };
 		654BF6E81E27F55900A82610 /* GameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BF6E61E27F55900A82610 /* GameTableViewController.swift */; };
 		654BF6E91E27F55900A82610 /* GameTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654BF6E71E27F55900A82610 /* GameTableViewController.xib */; };
+		654BF6F01E28E6E500A82610 /* GameCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BF6EE1E28E6E500A82610 /* GameCellTableViewCell.swift */; };
+		654BF6F11E28E6E500A82610 /* GameCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654BF6EF1E28E6E500A82610 /* GameCellTableViewCell.xib */; };
 		656C38FF1E27D1FC0095EDBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C38FE1E27D1FC0095EDBC /* AppDelegate.swift */; };
 		656C39011E27D1FC0095EDBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C39001E27D1FC0095EDBC /* ViewController.swift */; };
 		656C39061E27D1FC0095EDBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 656C39051E27D1FC0095EDBC /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 		654BF6E41E27F12900A82610 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		654BF6E61E27F55900A82610 /* GameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewController.swift; sourceTree = "<group>"; };
 		654BF6E71E27F55900A82610 /* GameTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameTableViewController.xib; sourceTree = "<group>"; };
+		654BF6EE1E28E6E500A82610 /* GameCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCellTableViewCell.swift; sourceTree = "<group>"; };
+		654BF6EF1E28E6E500A82610 /* GameCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameCellTableViewCell.xib; sourceTree = "<group>"; };
 		656C38FB1E27D1FC0095EDBC /* Find The Fun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find The Fun.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		656C38FE1E27D1FC0095EDBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		656C39001E27D1FC0095EDBC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 				654BF6E41E27F12900A82610 /* Game.swift */,
 				654BF6E61E27F55900A82610 /* GameTableViewController.swift */,
 				654BF6E71E27F55900A82610 /* GameTableViewController.xib */,
+				654BF6EE1E28E6E500A82610 /* GameCellTableViewCell.swift */,
+				654BF6EF1E28E6E500A82610 /* GameCellTableViewCell.xib */,
 			);
 			path = "Find The Fun";
 			sourceTree = "<group>";
@@ -136,6 +142,7 @@
 				656C39091E27D1FC0095EDBC /* LaunchScreen.storyboard in Resources */,
 				654BF6E91E27F55900A82610 /* GameTableViewController.xib in Resources */,
 				656C39111E27E2DF0095EDBC /* Homepage.xib in Resources */,
+				654BF6F11E28E6E500A82610 /* GameCellTableViewCell.xib in Resources */,
 				656C39061E27D1FC0095EDBC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +156,7 @@
 			files = (
 				656C39011E27D1FC0095EDBC /* ViewController.swift in Sources */,
 				654BF6E81E27F55900A82610 /* GameTableViewController.swift in Sources */,
+				654BF6F01E28E6E500A82610 /* GameCellTableViewCell.swift in Sources */,
 				654BF6E51E27F12900A82610 /* Game.swift in Sources */,
 				656C38FF1E27D1FC0095EDBC /* AppDelegate.swift in Sources */,
 			);

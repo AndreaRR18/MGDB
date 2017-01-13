@@ -61,12 +61,13 @@ class ViewController: UIViewController {
     }
     
     func parseJsonData(data: Data) -> [Game] {
-        var games = [Game]()
-        do {
-            let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
-            
-            let json
-        }
+//        var games = [Game]()
+//        do {
+//            let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
+//            
+//            let jsonGames = jsonResult[""]
+//        }
+        return []
     }
 
 }
