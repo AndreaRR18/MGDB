@@ -32,42 +32,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getLastestGame()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    func getLastestGame() {
-//        guard let igdb = URL(string: igdbURL) else { return }
-//        let request = URLRequest(url: igdb)
-//        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-//            if let error = error {
-//                print(error)
-//                return
-//            }
-//            if let data = data {
-//                self.games = self.parseJsonData(data: data)
-//                
-//                OperationQueue.main.addOperation {
-//                    self.navigationController?.pushViewController(GameTableViewController(), animated: true)
-//                }
-//            }
-//        })
-//        task.resume()
-    }
-    
-    func parseJsonData(data: Data) -> [Game] {
-//        var games = [Game]()
-//        do {
-//            let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
-//            
-//            let jsonGames = jsonResult[""]
-//        }
-        return []
     }
 
 }

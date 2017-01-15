@@ -26,11 +26,3 @@ struct Game {
     
 
 }
-
-//extension Game: Decodable {
-//    static func decode(_ json: JSON) -> Decoded<Game> {
-//        return curry(self.init(name: <#T##String#>, genres: <#T##String#>, firstReleaseDate: <#T##String#>, thumbnailCoverURL: <#T##URL#>, url: <#T##URL#>))
-//        <^> json <| "name"
-//        
-//    }
-//}
