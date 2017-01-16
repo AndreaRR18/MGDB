@@ -5,15 +5,15 @@ struct Game {
     let name: String?
     let genres: String?
     let firstReleaseDate: String?
-    let developers: String?
+    let company: String?
     let cover: UIImage
     let identifier = GameCellTableViewCell.cellGameCellIdentifier
     
-    init(name: String, genres: String, firstReleaseDate: String, developers: String, cover: UIImage) {
+    init(name: String, genres: String, firstReleaseDate: String, company: String, cover: UIImage) {
         self.name = name
         self.genres = genres
         self.firstReleaseDate = firstReleaseDate
-        self.developers = developers
+        self.company = company
         self.cover = cover
     }
     
@@ -22,17 +22,19 @@ struct Game {
         cell?.selectionStyle = .none
         cell?.name?.text = name
         cell?.categories?.text = genres
-        cell?.developers?.text = developers
+        cell?.company?.text = company
         cell?.years?.text = firstReleaseDate
         cell?.cover?.image = cover
         return cell
     }
+}
+
+struct GameDescription {
+    let name: String?
+    let cover: UIImage?
+    let summary: String?
+    let company: String?
     
-//    func getDescription(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-//        let cell =
-//        
-//        return cell
-//    }
 }
 
 enum Genres: String {

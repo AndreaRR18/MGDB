@@ -20,13 +20,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gnres:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4O-IC-Jd1">
-                        <rect key="frame" x="13" y="11" width="54.5" height="21"/>
+                        <rect key="frame" x="13" y="11" width="55" height="21"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="gnres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSi-Tt-Azt">
-                        <rect key="frame" x="76" y="11" width="43.5" height="21"/>
+                        <rect key="frame" x="77" y="11" width="44" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -39,6 +39,9 @@
                     <constraint firstItem="j4O-IC-Jd1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yYi-OZ-anM"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="gnres" destination="dSi-Tt-Azt" id="cZS-dh-S6P"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

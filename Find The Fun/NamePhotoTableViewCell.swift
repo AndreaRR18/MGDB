@@ -5,6 +5,8 @@ class NamePhotoTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbnail: UIImageView?
     @IBOutlet weak var name: UILabel?
     
+     static var namePhotoTableViewCellIdentifier: String { return "NamePhotoTableViewCell" }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

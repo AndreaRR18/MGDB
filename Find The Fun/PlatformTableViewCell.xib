@@ -19,13 +19,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Platform:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1k-6P-LDD">
-                        <rect key="frame" x="5" y="11" width="76.5" height="21"/>
+                        <rect key="frame" x="5" y="11" width="77" height="21"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="platform" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQ9-nl-7hh">
-                        <rect key="frame" x="90" y="11" width="65" height="21"/>
+                        <rect key="frame" x="91" y="11" width="65" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -38,6 +38,9 @@
                     <constraint firstItem="s1k-6P-LDD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ko2-yY-cxD"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="platform" destination="pQ9-nl-7hh" id="PAA-ya-cOm"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

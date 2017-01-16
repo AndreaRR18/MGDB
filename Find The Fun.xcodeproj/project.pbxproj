@@ -40,6 +40,8 @@
 		65B2DF111E2D02E300C3DE70 /* GnresTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B2DF0F1E2D02E300C3DE70 /* GnresTableViewCell.xib */; };
 		65B2DF141E2D036D00C3DE70 /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2DF121E2D036D00C3DE70 /* RatingTableViewCell.swift */; };
 		65B2DF151E2D036D00C3DE70 /* RatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B2DF131E2D036D00C3DE70 /* RatingTableViewCell.xib */; };
+		65B2DF171E2D07C600C3DE70 /* GameDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2DF161E2D07C600C3DE70 /* GameDescription.swift */; };
+		65B2DF191E2D160000C3DE70 /* DataGameDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2DF181E2D160000C3DE70 /* DataGameDescription.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -94,6 +96,8 @@
 		65B2DF0F1E2D02E300C3DE70 /* GnresTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GnresTableViewCell.xib; sourceTree = "<group>"; };
 		65B2DF121E2D036D00C3DE70 /* RatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		65B2DF131E2D036D00C3DE70 /* RatingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingTableViewCell.xib; sourceTree = "<group>"; };
+		65B2DF161E2D07C600C3DE70 /* GameDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDescription.swift; sourceTree = "<group>"; };
+		65B2DF181E2D160000C3DE70 /* DataGameDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataGameDescription.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +154,6 @@
 				656C39001E27D1FC0095EDBC /* HomePageViewController.swift */,
 				656C39101E27E2DF0095EDBC /* HomepageViewController.xib */,
 				654BF6E41E27F12900A82610 /* Game.swift */,
-				65B2DEF21E2CD11F00C3DE70 /* Data Cell.swift */,
 				65B2DEF81E2CFB7500C3DE70 /* Games TableView  */,
 				65B2DEF91E2CFB9900C3DE70 /* Description Table View */,
 			);
@@ -160,6 +163,7 @@
 		65B2DEF81E2CFB7500C3DE70 /* Games TableView  */ = {
 			isa = PBXGroup;
 			children = (
+				65B2DEF21E2CD11F00C3DE70 /* Data Cell.swift */,
 				654BF6E61E27F55900A82610 /* GameTableViewController.swift */,
 				654BF6E71E27F55900A82610 /* GameTableViewController.xib */,
 				654BF6EE1E28E6E500A82610 /* GameCellTableViewCell.swift */,
@@ -171,6 +175,8 @@
 		65B2DEF91E2CFB9900C3DE70 /* Description Table View */ = {
 			isa = PBXGroup;
 			children = (
+				65B2DF181E2D160000C3DE70 /* DataGameDescription.swift */,
+				65B2DF161E2D07C600C3DE70 /* GameDescription.swift */,
 				65B2DEF41E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift */,
 				65B2DEF51E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib */,
 				65B2DEFA1E2CFC2100C3DE70 /* NamePhotoTableViewCell.swift */,
@@ -307,8 +313,10 @@
 				65B2DEFC1E2CFC2100C3DE70 /* NamePhotoTableViewCell.swift in Sources */,
 				654BF6E51E27F12900A82610 /* Game.swift in Sources */,
 				656C38FF1E27D1FC0095EDBC /* AppDelegate.swift in Sources */,
+				65B2DF191E2D160000C3DE70 /* DataGameDescription.swift in Sources */,
 				65B2DF141E2D036D00C3DE70 /* RatingTableViewCell.swift in Sources */,
 				65B2DF101E2D02E300C3DE70 /* GnresTableViewCell.swift in Sources */,
+				65B2DF171E2D07C600C3DE70 /* GameDescription.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

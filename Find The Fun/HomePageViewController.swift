@@ -9,6 +9,8 @@ class HomePageViewController: UIViewController {
     navigationController?.pushViewController(GameTableViewController(), animated: true)
     }
     
+    
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
