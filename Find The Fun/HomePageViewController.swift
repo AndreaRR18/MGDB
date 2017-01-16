@@ -2,9 +2,6 @@ import UIKit
 
 class HomePageViewController: UIViewController {
     
-    let igdbURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/genres/12?fields=*"
-    var games = [Game]()
-    
     init() {
         super.init(nibName: "HomepageViewController", bundle: nil)
     }

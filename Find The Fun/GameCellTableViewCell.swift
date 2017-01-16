@@ -2,6 +2,7 @@ import UIKit
 
 class GameCellTableViewCell: UITableViewCell {
 
+    
     @IBOutlet weak var cover: UIImageView?
     @IBOutlet weak var name: UILabel?
     @IBOutlet weak var categories: UILabel?

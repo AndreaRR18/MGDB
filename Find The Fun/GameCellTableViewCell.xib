@@ -80,7 +80,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="categories" destination="B9e-cH-AwV" id="rjM-Yp-nLH"/>
-                <outlet property="cover" destination="tp9-nT-SdB" id="VqG-r2-eKJ"/>
+                <outlet property="cover" destination="tp9-nT-SdB" id="U3C-QH-VUR"/>
                 <outlet property="developers" destination="2su-mU-16t" id="mN2-KI-idy"/>
                 <outlet property="name" destination="rzP-qD-phI" id="jRq-37-7N8"/>
                 <outlet property="years" destination="vAt-9f-Lhq" id="Uhm-R5-EMw"/>

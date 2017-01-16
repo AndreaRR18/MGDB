@@ -6,10 +6,10 @@ struct Game {
     let genres: String?
     let firstReleaseDate: String?
     let developers: String?
-    let cover: UIImageView
+    let cover: UIImage
     let identifier = GameCellTableViewCell.cellGameCellIdentifier
     
-    init(name: String, genres: String, firstReleaseDate: String, developers: String, cover: UIImageView) {
+    init(name: String, genres: String, firstReleaseDate: String, developers: String, cover: UIImage) {
         self.name = name
         self.genres = genres
         self.firstReleaseDate = firstReleaseDate
@@ -24,7 +24,7 @@ struct Game {
         cell?.categories?.text = genres
         cell?.developers?.text = developers
         cell?.years?.text = firstReleaseDate
-        cell?.cover = cover
+        cell?.cover?.image = cover
         return cell
     }
 }
