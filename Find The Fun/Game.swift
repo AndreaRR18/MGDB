@@ -27,6 +27,12 @@ struct Game {
         cell?.cover?.image = cover
         return cell
     }
+    
+//    func getDescription(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+//        let cell =
+//        
+//        return cell
+//    }
 }
 
 enum Genres: String {
