@@ -1,15 +1,15 @@
-//
-//  GameCellTableViewCell.swift
-//  Find The Fun
-//
-//  Created by Andrea & Beatrice on 13/01/17.
-//  Copyright © 2017 Andrea. All rights reserved.
-//
-
 import UIKit
 
 class GameCellTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var cover: UIImageView?
+    @IBOutlet weak var name: UILabel?
+    @IBOutlet weak var categories: UILabel?
+    @IBOutlet weak var developers: UILabel?
+    @IBOutlet weak var years: UILabel?
+    
+    static var cellGameCellIdentifier: String { return "GameCellTableViewCell" }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
