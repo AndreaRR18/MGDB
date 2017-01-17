@@ -2,19 +2,29 @@ import UIKit
 
 class GameDescriptionTableViewController: UITableViewController {
     
-    let arrayGamesDescription : [CellFactory] = [darkSoulsName, darkSoulsSummary, darkSoulsCompany, darkSoulsPublished, darkSoulsPlatform, darkSoulsGnres, darkSoulsRating]
+    var gameDescription: Game
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UINib(nibName: "NamePhotoTableviewCell", bundle: nil), forCellReuseIdentifier: "NamePhotoTableviewCell")
+        self.tableView.register(UINib(nibName: "NamePhotoTableViewCell", bundle: nil), forCellReuseIdentifier: "NamePhotoTableViewCell")
         self.tableView.register(UINib(nibName: "SummaryTableViewCell", bundle: nil), forCellReuseIdentifier: "SummaryTableViewCell")
-        self.tableView.register(UINib(nibName: "CompanyTableviewCell", bundle: nil), forCellReuseIdentifier: "CompanyTableviewCell")
-        self.tableView.register(UINib(nibName: "PublishedTableviewCell", bundle: nil), forCellReuseIdentifier: "PublishedTableviewCell")
-        self.tableView.register(UINib(nibName: "PlatformTableviewCell", bundle: nil), forCellReuseIdentifier: "PlatformTableviewCell")
-        self.tableView.register(UINib(nibName: "GnresTableviewCell", bundle: nil), forCellReuseIdentifier: "GnresTableviewCell")
-        self.tableView.register(UINib(nibName: "RatingTableviewCell", bundle: nil), forCellReuseIdentifier: "RatingTableviewCell")
+        self.tableView.register(UINib(nibName: "CompanyTableViewCell", bundle: nil), forCellReuseIdentifier: "CompanyTableViewCell")
+        self.tableView.register(UINib(nibName: "PublishedTableViewCell", bundle: nil), forCellReuseIdentifier: "PublishedTableViewCell")
+        self.tableView.register(UINib(nibName: "PlatformTableViewCell", bundle: nil), forCellReuseIdentifier: "PlatformTableViewCell")
+        self.tableView.register(UINib(nibName: "RatingTableViewCell", bundle: nil), forCellReuseIdentifier: "RatingTableViewCell")
         self.tableView.tableFooterView = UIView()
     }
+    
+    required init(game: Game) {
+        self.gameDescription = game
+        super.init(style: .plain)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -27,14 +37,14 @@ class GameDescriptionTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayGamesDescription.count
+        return gameDescription.gameDescriptionFields.count
     }
     
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 150
-//    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return heightRowInGameDescription(indexPath: indexPath.row)
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return arrayGamesDescription[indexPath.row].getCell(tableView: tableView, indexPath: indexPath)
+        return gameDescription.gameDescriptionFields[indexPath.row](tableView, indexPath)
     }
 }

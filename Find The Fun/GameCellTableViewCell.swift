@@ -10,7 +10,7 @@ class GameCellTableViewCell: UITableViewCell {
     @IBOutlet weak var years: UILabel?
     
     static var cellGameCellIdentifier: String { return "GameCellTableViewCell" }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -18,5 +18,4 @@ class GameCellTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }

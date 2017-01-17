@@ -6,7 +6,6 @@ class PlatformTableViewCell: UITableViewCell {
     
     static var platformTableViewCellIdentifier: String { return "PlatformTableViewCell" }
 
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -14,5 +13,4 @@ class PlatformTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }

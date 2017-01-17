@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomePageViewController" customModule="Find_The_Fun" customModuleProvider="target">
+            <connections>
+                <outlet property="showList" destination="BAX-uK-roS" id="Mes-BO-cgg"/>
+                <outlet property="view" destination="iN0-l3-epB" id="BhQ-FT-Sab"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAX-uK-roS">
+                    <rect key="frame" x="60" y="333" width="200" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="4Nj-zX-rOh"/>
+                        <constraint firstAttribute="width" constant="200" id="dLi-D0-zuB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Show list">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="showList:" destination="-1" eventType="touchUpInside" id="zai-a0-p3L"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Find the Fun2" translatesAutoresizingMaskIntoConstraints="NO" id="mDc-bk-ank">
+                    <rect key="frame" x="35" y="50" width="250" height="250"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="mDc-bk-ank" secondAttribute="height" multiplier="1:1" id="AAo-s9-PXq"/>
+                        <constraint firstAttribute="height" constant="250" id="RUk-ug-JXm"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="mDc-bk-ank" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="2Yx-Qz-96P"/>
+                <constraint firstItem="BAX-uK-roS" firstAttribute="top" secondItem="mDc-bk-ank" secondAttribute="bottom" constant="33" id="HKg-of-hZ1"/>
+                <constraint firstItem="BAX-uK-roS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="RJW-9g-mdl"/>
+                <constraint firstItem="mDc-bk-ank" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="50" id="UDS-Ih-lxn"/>
+            </constraints>
+            <point key="canvasLocation" x="32" y="102"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Find the Fun2" width="700" height="700"/>
+    </resources>
+</document>

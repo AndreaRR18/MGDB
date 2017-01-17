@@ -2,8 +2,13 @@ import UIKit
 
 class GameTableViewController: UITableViewController {
     
-    let arrayGames: [Game] = [darkSouls, theWitcher, gtaV, noManSky, superMarioMaker]
-        
+    var arrayGames: [Game] = [
+     darkSouls,
+     theWitcher,
+     gtaV,
+     noManSky,
+     superMarioMaker
+    ]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
@@ -27,7 +32,12 @@ class GameTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return arrayGames[indexPath.row].getCell(tableView: tableView, indexPath: indexPath)!
+        return arrayGames[indexPath.row].getCellForTableViewController(tableView: tableView, indexPath: indexPath)!
     }
-        
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let navController = navigationController else { return }
+        arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayGames[indexPath.row])
+    }
+    
 }

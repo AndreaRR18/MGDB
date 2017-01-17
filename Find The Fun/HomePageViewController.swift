@@ -2,19 +2,12 @@ import UIKit
 
 class HomePageViewController: UIViewController {
     
-    init() {
-        super.init(nibName: "HomepageViewController", bundle: nil)
-    }
-    @IBAction func Search(_ sender: Any) {
-    navigationController?.pushViewController(GameTableViewController(), animated: true)
+    @IBAction func showList(_ sender: Any) {
+        navigationController?.pushViewController(GameTableViewController(), animated: true)
     }
     
+    @IBOutlet weak var showList: UIButton?
     
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -22,8 +15,5 @@ class HomePageViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
-
 }
 
