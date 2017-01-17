@@ -9,12 +9,15 @@ class GameTableViewController: UITableViewController {
      noManSky,
      superMarioMaker
     ]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
         self.tableView.tableFooterView = UIView()
+        self.navigationItem.title = "Find the Fun"
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

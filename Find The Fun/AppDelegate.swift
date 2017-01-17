@@ -8,8 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidFinishLaunching(_ application: UIApplication) {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: HomePageViewController())
-        window?.makeKeyAndVisible()
-        
+        window?.makeKeyAndVisible()        
     }
- }
+}
 

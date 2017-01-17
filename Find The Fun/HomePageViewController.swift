@@ -3,7 +3,13 @@ import UIKit
 class HomePageViewController: UIViewController {
     
     @IBAction func showList(_ sender: Any) {
-        navigationController?.pushViewController(GameTableViewController(), animated: true)
+        
+        let tabBarController = UITabBarController()
+        let tabViewGameTableViewController = GameTableViewController()
+        tabViewGameTableViewController.tabBarItem = UITabBarItem(title: "Novità", image: nil, tag: 0)
+        let elementTabBarController = [tabViewGameTableViewController]
+        tabBarController.viewControllers = elementTabBarController
+        navigationController?.pushViewController(tabBarController, animated: false)
     }
     
     @IBOutlet weak var showList: UIButton?

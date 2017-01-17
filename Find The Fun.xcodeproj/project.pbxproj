@@ -23,7 +23,7 @@
 		656C39061E27D1FC0095EDBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 656C39051E27D1FC0095EDBC /* Assets.xcassets */; };
 		656C39091E27D1FC0095EDBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656C39071E27D1FC0095EDBC /* LaunchScreen.storyboard */; };
 		656C39111E27E2DF0095EDBC /* HomePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 656C39101E27E2DF0095EDBC /* HomePageViewController.xib */; };
-		65B2DEF31E2CD11F00C3DE70 /* Data Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2DEF21E2CD11F00C3DE70 /* Data Cell.swift */; };
+		65B2DEF31E2CD11F00C3DE70 /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2DEF21E2CD11F00C3DE70 /* DataCell.swift */; };
 		65B2DEF61E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2DEF41E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift */; };
 		65B2DEF71E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B2DEF51E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib */; };
 		65B2DEFC1E2CFC2100C3DE70 /* NamePhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2DEFA1E2CFC2100C3DE70 /* NamePhotoTableViewCell.swift */; };
@@ -75,7 +75,7 @@
 		656C39081E27D1FC0095EDBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		656C390A1E27D1FC0095EDBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		656C39101E27E2DF0095EDBC /* HomePageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomePageViewController.xib; sourceTree = "<group>"; };
-		65B2DEF21E2CD11F00C3DE70 /* Data Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data Cell.swift"; sourceTree = "<group>"; };
+		65B2DEF21E2CD11F00C3DE70 /* DataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
 		65B2DEF41E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDescriptionTableViewController.swift; sourceTree = "<group>"; };
 		65B2DEF51E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameDescriptionTableViewController.xib; sourceTree = "<group>"; };
 		65B2DEFA1E2CFC2100C3DE70 /* NamePhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamePhotoTableViewCell.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 		65B2DEF81E2CFB7500C3DE70 /* Games TableView  */ = {
 			isa = PBXGroup;
 			children = (
-				65B2DEF21E2CD11F00C3DE70 /* Data Cell.swift */,
+				65B2DEF21E2CD11F00C3DE70 /* DataCell.swift */,
 				654BF6E61E27F55900A82610 /* GameTableViewController.swift */,
 				654BF6E71E27F55900A82610 /* GameTableViewController.xib */,
 				654BF6EE1E28E6E500A82610 /* GameCellTableViewCell.swift */,
@@ -288,7 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65B2DEF31E2CD11F00C3DE70 /* Data Cell.swift in Sources */,
+				65B2DEF31E2CD11F00C3DE70 /* DataCell.swift in Sources */,
 				656C39011E27D1FC0095EDBC /* HomePageViewController.swift in Sources */,
 				654BF6E81E27F55900A82610 /* GameTableViewController.swift in Sources */,
 				65B2DF081E2CFFA200C3DE70 /* PublishedTableViewCell.swift in Sources */,
