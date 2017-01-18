@@ -146,6 +146,7 @@
 				656C39001E27D1FC0095EDBC /* HomePageViewController.swift */,
 				656C39101E27E2DF0095EDBC /* HomePageViewController.xib */,
 				654BF6E41E27F12900A82610 /* Game.swift */,
+				65B2DEF21E2CD11F00C3DE70 /* DataCell.swift */,
 				65B2DEF81E2CFB7500C3DE70 /* Games TableView  */,
 				65B2DEF91E2CFB9900C3DE70 /* Description Table View */,
 			);
@@ -155,7 +156,6 @@
 		65B2DEF81E2CFB7500C3DE70 /* Games TableView  */ = {
 			isa = PBXGroup;
 			children = (
-				65B2DEF21E2CD11F00C3DE70 /* DataCell.swift */,
 				654BF6E61E27F55900A82610 /* GameTableViewController.swift */,
 				654BF6E71E27F55900A82610 /* GameTableViewController.xib */,
 				654BF6EE1E28E6E500A82610 /* GameCellTableViewCell.swift */,

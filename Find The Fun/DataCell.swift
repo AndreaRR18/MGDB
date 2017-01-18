@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 let darkSouls = Game(
-    id: 1234,
+    idGame: 1234,
     name: "Dark Soul",
     firstReleaseDate: "2011",
     company: Developers.fromSoftware,
@@ -12,7 +12,7 @@ let darkSouls = Game(
     rate: "85")
 
 let theWitcher = Game(
-    id: 0928,
+    idGame: 0928,
     name: "The Witcher III: Wild Hunt",
     firstReleaseDate: "2015",
     company: Developers.cdProjectRed,
@@ -22,7 +22,7 @@ let theWitcher = Game(
     rate: "98")
 
 let gtaV = Game(
-    id: 4837,
+    idGame: 4837,
     name: "GTA V",
     firstReleaseDate: "2013",
     company: Developers.rockStarNorth,
@@ -32,7 +32,7 @@ let gtaV = Game(
     rate: "92")
 
 let noManSky = Game(
-    id: 3938,
+    idGame: 3938,
     name: "No Man Sky",
     firstReleaseDate: "2016",
     company: Developers.helloGames,
@@ -42,7 +42,7 @@ let noManSky = Game(
     rate: "64")
 
 let superMarioMaker = Game(
-    id: 3456,
+    idGame: 3456,
     name: "Super Mario Maker",
     firstReleaseDate: "2016",
     company: Developers.nintendo,

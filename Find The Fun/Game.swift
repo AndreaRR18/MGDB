@@ -2,18 +2,20 @@ import Foundation
 import UIKit
 
 struct Game {
-    let id: Int
+    let idGame: Int
     let name: String?
     let firstReleaseDate: String?
     let company: String?
+    
+    //cover will became string
     let cover: UIImage
     let summary: String?
     let platform: String?
     let rate: String?
     let identifier = GameCellTableViewCell.cellGameCellIdentifier
     
-    init(id: Int, name: String, firstReleaseDate: String, company: String, cover: UIImage, summary: String, platform: String, rate: String) {
-        self.id = id
+    init(idGame: Int, name: String, firstReleaseDate: String, company: String, cover: UIImage, summary: String, platform: String, rate: String) {
+        self.idGame = idGame
         self.name = name
         self.firstReleaseDate = firstReleaseDate
         self.company = company
@@ -51,9 +53,6 @@ struct Game {
     }
 }
 
-protocol uiTableViewCellBuilder {
-    func getuiTableViewCellBuilder(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell
-}
 extension Game {
     func getCellForTableViewController(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell? {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? GameCellTableViewCell
@@ -63,11 +62,9 @@ extension Game {
         cell?.cover?.image = cover
         return cell
     }
-    
     func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, game: Game) {
         navigationController.pushViewController(GameDescriptionTableViewController(game: game), animated: true)
     }
-    
     func getCellNamePhoto(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell? {
         let cell = tableView.dequeueReusableCell(withIdentifier: NamePhotoTableViewCell.namePhotoTableViewCellIdentifier, for: indexPath) as? NamePhotoTableViewCell
         cell?.selectionStyle = .none
@@ -75,42 +72,36 @@ extension Game {
         cell?.thumbnail?.image = cover
         return cell
     }
-    
     func getCellSummary(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SummaryTableViewCell.summaryTableViewCellIdentifier, for: indexPath) as? SummaryTableViewCell
         cell?.selectionStyle = .none
         cell?.summary?.text = summary
         return cell!
     }
-    
     func getCellCompany(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CompanyTableViewCell.companyTableViewCellIdentifier, for: indexPath) as? CompanyTableViewCell
         cell?.selectionStyle = .none
         cell?.company?.text = company
         return cell!
     }
-    
     func getCellPublished(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PublishedTableViewCell.publishedTableViewCellIdentifier, for: indexPath) as? PublishedTableViewCell
         cell?.selectionStyle = .none
         cell?.firstReleaseDate?.text = firstReleaseDate
         return cell!
     }
-    
     func getCellPlatform(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PlatformTableViewCell.platformTableViewCellIdentifier, for: indexPath) as? PlatformTableViewCell
         cell?.selectionStyle = .none
         cell?.platform?.text = platform
         return cell!
     }
-    
     func getCellRate(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: RatingTableViewCell.ratingTableViewCellIdentifier, for: indexPath) as? RatingTableViewCell
         cell?.selectionStyle = .none
         cell?.rate?.text = rate
         return cell!
     }
-    
 }
 
 struct Developers {
