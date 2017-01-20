@@ -1,30 +1,63 @@
 import Foundation
 import UIKit
+import Runes
+import Argo
+import Curry
 
 struct Game {
-    let idGame: Int
-    let name: String?
-    let firstReleaseDate: String?
-    let company: String?
+    //required
+    let idGame: Int   //id
+    let name: String  //name
     
-    //cover will became string
-    let cover: UIImage
-    let summary: String?
-    let platform: String?
-    let rate: String?
+    //optional
+    let summary: String? //summary
+    let rating: Int? //rating
+    let developers: [Int]? //developers
+    let releaseDate: [ReleaseDate]?  //release_dates
+    
     let identifier = GameCellTableViewCell.cellGameCellIdentifier
+}
+
+extension Game: Decodable {
+    static func decode(_ json: JSON) -> Decoded<Game> {
+        return curry(Game.init)
+            <^> json <| "id"
+            <*> json <| "name"
+            <*> json <|? "summary"
+            <*> json <|? "rating"
+            <*> json <||? "developers"
+            <*> json <||? "release_dates"
+    }
+}
+
+struct ReleaseDate {
+    let platform: String?
+    let year: Int?
+    let month: Int?
+}
+
+extension ReleaseDate: Decodable {
+    static func decode(_ json: JSON) -> Decoded<ReleaseDate> {
+        return curry(ReleaseDate.init)
+        <^> json <|? "platform"
+        <*> json <|? "y"
+        <*> json <|? "m"
+    }
+}
+
+
+extension Game {
     
-    init(idGame: Int, name: String, firstReleaseDate: String, company: String, cover: UIImage, summary: String, platform: String, rate: String) {
-        self.idGame = idGame
-        self.name = name
-        self.firstReleaseDate = firstReleaseDate
-        self.company = company
-        self.cover = cover
-        self.summary = summary
-        self.platform = platform
-        self.rate = rate
+    //--------------------Cell of First UITableView -------------------//
+    func getCellForTableViewController(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? GameCellTableViewCell
+        cell?.name?.text = name
+        cell?.company?.text = developers?.first.map(String.init)
+        cell?.years?.text = releaseDate?.first?.year.map(String.init)
+        return cell
     }
     
+    //--------------------Cell of Description UITableView -------------------//
     var gameDescriptionFields: [(UITableView,IndexPath) -> UITableViewCell] {
         return [
             { (tableView,indexPath) -> UITableViewCell in
@@ -35,41 +68,23 @@ struct Game {
             },
             { (tableView,indexPath) -> UITableViewCell in
                 self.getCellCompany(tableView: tableView, indexPath: indexPath)
-                
             },
             { (tableView,indexPath) -> UITableViewCell in
                 self.getCellPublished(tableView: tableView, indexPath: indexPath)
-                
             },
             { (tableView,indexPath) -> UITableViewCell in
                 self.getCellPlatform(tableView: tableView, indexPath: indexPath)
-                
             },
             { (tableView,indexPath) -> UITableViewCell in
                 self.getCellRate(tableView: tableView, indexPath: indexPath)
-                
             }
         ]
     }
-}
-
-extension Game {
-    func getCellForTableViewController(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? GameCellTableViewCell
-        cell?.name?.text = name
-        cell?.company?.text = company
-        cell?.years?.text = firstReleaseDate
-        cell?.cover?.image = cover
-        return cell
-    }
-    func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, game: Game) {
-        navigationController.pushViewController(GameDescriptionTableViewController(game: game), animated: true)
-    }
+    
     func getCellNamePhoto(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell? {
         let cell = tableView.dequeueReusableCell(withIdentifier: NamePhotoTableViewCell.namePhotoTableViewCellIdentifier, for: indexPath) as? NamePhotoTableViewCell
         cell?.selectionStyle = .none
         cell?.name?.text = name
-        cell?.thumbnail?.image = cover
         return cell
     }
     func getCellSummary(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
@@ -81,44 +96,40 @@ extension Game {
     func getCellCompany(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CompanyTableViewCell.companyTableViewCellIdentifier, for: indexPath) as? CompanyTableViewCell
         cell?.selectionStyle = .none
-        cell?.company?.text = company
+        cell?.company?.text = developers?.first.map(String.init)
         return cell!
     }
     func getCellPublished(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PublishedTableViewCell.publishedTableViewCellIdentifier, for: indexPath) as? PublishedTableViewCell
         cell?.selectionStyle = .none
-        cell?.firstReleaseDate?.text = firstReleaseDate
+        cell?.firstReleaseDate?.text = releaseDate?.first?.year.map(String.init)
         return cell!
     }
     func getCellPlatform(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PlatformTableViewCell.platformTableViewCellIdentifier, for: indexPath) as? PlatformTableViewCell
         cell?.selectionStyle = .none
-        cell?.platform?.text = platform
+        cell?.platform?.text = releaseDate?.first?.platform
         return cell!
     }
     func getCellRate(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: RatingTableViewCell.ratingTableViewCellIdentifier, for: indexPath) as? RatingTableViewCell
         cell?.selectionStyle = .none
-        cell?.rate?.text = rate
+        cell?.rate?.text = rating.map(String.init)
         return cell!
+    }
+    
+    func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, game: Game) {
+        navigationController.pushViewController(GameDescriptionTableViewController(game: game), animated: true)
     }
 }
 
-struct Developers {
-    static var fromSoftware: String { return "From Software" }
-    static var cdProjectRed: String { return "CD Project Red" }
-    static var rockStarNorth: String { return "Rockstar North" }
-    static var helloGames: String { return "Hello Games" }
-    static var nintendo: String { return "Nintendo" }
-    
-}
 
 func heightRowInGameDescription(indexPath: Int) -> CGFloat {
     switch indexPath {
     case 0:
         return 110
     case 1:
-        return 250
+        return 210
     case 2:
         return 30
     case 3:

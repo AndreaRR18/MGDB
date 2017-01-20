@@ -18,6 +18,7 @@
 		654BF7051E29344700A82610 /* Runes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF7031E29344700A82610 /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		654BF7071E29344B00A82610 /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF7061E29344B00A82610 /* Curry.framework */; };
 		654BF7081E29344B00A82610 /* Curry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF7061E29344B00A82610 /* Curry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		656763451E2FEB650095AFAD /* DecodeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656763441E2FEB650095AFAD /* DecodeJSON.swift */; };
 		656C38FF1E27D1FC0095EDBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C38FE1E27D1FC0095EDBC /* AppDelegate.swift */; };
 		656C39011E27D1FC0095EDBC /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C39001E27D1FC0095EDBC /* HomePageViewController.swift */; };
 		656C39061E27D1FC0095EDBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 656C39051E27D1FC0095EDBC /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 		654BF6FF1E29343E00A82610 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = Carthage/Build/iOS/Argo.framework; sourceTree = "<group>"; };
 		654BF7031E29344700A82610 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
 		654BF7061E29344B00A82610 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = Carthage/Build/iOS/Curry.framework; sourceTree = "<group>"; };
+		656763441E2FEB650095AFAD /* DecodeJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeJSON.swift; sourceTree = "<group>"; };
 		656C38FB1E27D1FC0095EDBC /* Find The Fun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find The Fun.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		656C38FE1E27D1FC0095EDBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		656C39001E27D1FC0095EDBC /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				656C39001E27D1FC0095EDBC /* HomePageViewController.swift */,
 				656C39101E27E2DF0095EDBC /* HomePageViewController.xib */,
 				654BF6E41E27F12900A82610 /* Game.swift */,
+				656763441E2FEB650095AFAD /* DecodeJSON.swift */,
 				65B2DEF21E2CD11F00C3DE70 /* DataCell.swift */,
 				65B2DEF81E2CFB7500C3DE70 /* Games TableView  */,
 				65B2DEF91E2CFB9900C3DE70 /* Description Table View */,
@@ -291,6 +294,7 @@
 				65B2DEF31E2CD11F00C3DE70 /* DataCell.swift in Sources */,
 				656C39011E27D1FC0095EDBC /* HomePageViewController.swift in Sources */,
 				654BF6E81E27F55900A82610 /* GameTableViewController.swift in Sources */,
+				656763451E2FEB650095AFAD /* DecodeJSON.swift in Sources */,
 				65B2DF081E2CFFA200C3DE70 /* PublishedTableViewCell.swift in Sources */,
 				65B2DF041E2CFE9B00C3DE70 /* CompanyTableViewCell.swift in Sources */,
 				654BF6F01E28E6E500A82610 /* GameCellTableViewCell.swift in Sources */,

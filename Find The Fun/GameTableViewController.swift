@@ -1,72 +1,23 @@
 import UIKit
+import Argo
+import Curry
+import Runes
 
 class GameTableViewController: UITableViewController {
     
-    var arrayGames: [Game] = [
-        darkSouls,
-        theWitcher,
-        gtaV,
-        noManSky,
-        superMarioMaker
-    ]
-    
-    let gameURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*"
+    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50&search=zelda"
     
     
-//    init() {
-//        super.init(nibName: "GameTableViewController", bundle: nil)
-//
-//        guard let getGame = URL(string: gameURL) else { return }
-//        let request = URLRequest(url: getGame)
-//        let task = URLSession.shared.dataTask(with: request, completionHandler: {
-//            (data, response, error) -> Void in
-//            if let error = error {
-//                print(error)
-//                return
-//            }
-//            if let data = data {
-//                self.arrayGames = self.parseJson(data: data)
-//            }
-//        })
-//        
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//    
-//    func parseJson(data: Data) -> [Game] {
-//        var games: [Game] = []
-//        do {
-//            let jsonResult = try JSONSerialization.jsonObject(with: data, options:
-//                JSONSerialization.ReadingOptions.mutableContainers) as? [Game]
-//         
-//            for singleGame in jsonResult!
-//            {
-//                let game = Game(idGame: singleGame["id"] as Int,
-//                                name: singleGame["name"] as String,
-//                                firstReleaseDate: "",
-//                                company: "",
-//                                cover: #imageLiteral(resourceName: "darksouls"),
-//                                summary: "",
-//                                platform: "",
-//                                rate: "")
-//            
-//                games.append(game)
-//            }
-//        }
-//        catch {
-//                print("exception")
-//                }
-//        
-//        return games
-//    }
+    
+    var arrayGames: [Game] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
         self.tableView.tableFooterView = UIView()
         self.navigationItem.title = "Find the Fun"
+        // inserire qui un activity indicator
+        getGame()
     }
     
     override func didReceiveMemoryWarning() {
@@ -94,4 +45,77 @@ class GameTableViewController: UITableViewController {
         arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayGames[indexPath.row])
     }
     
+    func getGame() {
+        guard let url = URL(string: gamesURL) else { return }
+        let req = NSMutableURLRequest(url: url)
+        req.setValue("ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5", forHTTPHeaderField: "X-Mashape-Key")
+        let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
+            (data, response, error) -> Void in
+            if let data = data {
+                self.arrayGames = self.parseJsonData(data: data)
+                OperationQueue.main.addOperation {
+                    self.tableView.reloadData()
+                }
+            }
+        })
+        task.resume()
+    }
+    
+//    func parseJsonData(data: Data) -> [Game] {
+//        var games = [Game]()
+//        do {
+//            let json: Any? = try JSONSerialization.jsonObject(with: data, options: [])
+//            if let j: Any = json {
+//                games.append(decode(j)!)
+//            }
+//        } catch {
+//            print(error)
+//        }
+//        return games
+//    }
+    
+    func parseJsonData(data: Data) -> [Game] {
+        var games = [Game]()
+        do {
+            let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray
+            let jsonGames = jsonResult as! [AnyObject]
+            for jsonGame in jsonGames {
+                let game = Game(
+                    idGame: jsonGame["id"] as! Int,
+                    name: jsonGame["name"] as! String,
+                    summary: jsonGame["summary"] as? String,
+                    rating: jsonGame["rating"] as? Int,
+                    developers: jsonGame["developers"] as? [Int],
+                    releaseDate: nil)
+                games.append(game)
+            }
+        } catch {
+            print(error)
+        }
+        return games
+    }
+    
+//                if let data = data {
+//                    let json: Any? = try? JSONSerialization.jsonObject(with: data, options: [])
+//                    if let j: Any = json {
+//                        guard let decodedJSON: [Game] = decode(j) else { return }
+//                        self.arrayGames = decodedJSON
+//                        OperationQueue.main.addOperation {
+//                            self.tableView.reloadData()
+//                        }
+//                    }
+//                } else {
+//                    print("\(error)")
+//                }
+//            })
+//            task.resume()
+//    
+//        }
 }
+
+
+
+
+
+
+
