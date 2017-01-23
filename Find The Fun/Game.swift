@@ -12,29 +12,35 @@ struct Game {
     //optional
     let summary: String? //summary
     let rating: Int? //rating
-    let developers: [Int]? //developers
-    let releaseDate: [ReleaseDate]? = [] //release_dates
+    let developers: [Int]?  //developers
+    let releaseDate: [ReleaseDate]?  //release_dates
+    let cover: Cover? //cover
+    
     
     let identifier = GameCellTableViewCell.cellGameCellIdentifier
 }
 
+struct ReleaseDate {
+    let platform: Int?
+    let year: Int?
+    let month: Int?
+}
+
+struct Cover {
+    let url: String? //url
+}
+
 extension Game: Decodable {
-    
     static func decode(_ json: JSON) -> Decoded<Game> {
         return curry(Game.init)
             <^> json <| "id"
             <*> json <| "name"
             <*> json <|? "summary"
             <*> json <|? "rating"
-            <*> json <|| "developers"
-//            <*> json <|| "release_dates"
+            <*> json <||? "developers"
+            <*> json <||? "release_dates"
+            <*> json <|? "cover"
     }
-}
-
-struct ReleaseDate {
-    let platform: String?
-    let year: Int?
-    let month: Int?
 }
 
 extension ReleaseDate: Decodable {
@@ -43,6 +49,13 @@ extension ReleaseDate: Decodable {
             <^> json <|? "platform"
             <*> json <|? "y"
             <*> json <|? "m"
+    }
+}
+
+extension Cover: Decodable {
+    static func decode(_ json: JSON) -> Decoded<Cover> {
+        return curry(Cover.init)
+            <^> json <|? "url"
     }
 }
 
@@ -85,6 +98,7 @@ extension Game {
     func getCellNamePhoto(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NamePhotoTableViewCell.namePhotoTableViewCellIdentifier, for: indexPath) as! NamePhotoTableViewCell
         cell.selectionStyle = .none
+        
         cell.name?.text = name
         return cell
     }
@@ -109,14 +123,13 @@ extension Game {
     func getCellPlatform(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PlatformTableViewCell.platformTableViewCellIdentifier, for: indexPath) as! PlatformTableViewCell
         cell.selectionStyle = .none
-        cell.platform?.text = releaseDate?.first?.platform
+        cell.platform?.text = releaseDate?.first?.platform.map(String.init)
         return cell
     }
     func getCellRate(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: RatingTableViewCell.ratingTableViewCellIdentifier, for: indexPath) as! RatingTableViewCell
         cell.selectionStyle = .none
-        //cell.rate?.text = rating.map(String.init)
-        cell.rate?.text = "\(rating)"
+        cell.rate?.text = rating.map(String.init)
         return cell
     }
     
