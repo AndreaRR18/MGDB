@@ -2,11 +2,11 @@ import UIKit
 import Argo
 import Curry
 import Runes
-import AlamofireImage 
+import AlamofireImage
 
-class GameTableViewController: UITableViewController {
+class GameTableViewController: UITableViewController, UISearchBarDelegate {
     
-    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50&search=darksouls"
+    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50"
     let apiKey = "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5"
     let httpHeaderField = "X-Mashape-Key"
     var arrayGames: [Game] = []
@@ -15,13 +15,14 @@ class GameTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
         self.tableView.tableFooterView = UIView()
-        tabBarController?.tabBar.isTranslucent = false
         let decodedJSON = DecodeGameJSON(gamesURL: gamesURL, apiKey: apiKey, httpHeaderField: httpHeaderField)
         
         decodedJSON.getGames(callback: { arrayGames in
             self.arrayGames = arrayGames
             self.tableView.reloadData()
         })
+        
+        
         // inserire qui un activity indicator
     }
     

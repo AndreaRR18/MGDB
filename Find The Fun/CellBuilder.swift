@@ -17,7 +17,6 @@ extension Game {
             cell.cover?.af_setImage(
                 withURL: urlExist,
                 placeholderImage: placeholder,
-                imageTransition: .crossDissolve(0.5),
                 runImageTransitionIfCached: true)
         } else {
            cell.cover?.image = placeholder
@@ -58,7 +57,7 @@ extension Game {
             cell.thumbnail?.af_setImage(
                 withURL: urlExist,
                 placeholderImage: placeholder,
-                imageTransition: .crossDissolve(0.5),
+                imageTransition: .crossDissolve(0.2),
                 runImageTransitionIfCached: true)
 
         } else {
@@ -106,6 +105,7 @@ extension Game {
     func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, url: String) {
         switch indexPath.row {
         case 0:
+            navigationController.navigationBar.isTranslucent = false
             navigationController.pushViewController(CoverViewController(coverURL: cover?.url), animated: true)
         default:
             return

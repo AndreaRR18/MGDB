@@ -14,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         aboutViewGameTableViewController.tabBarItem = UITabBarItem(title: "About", image: nil, tag: 1)
         let elementTabBarController = [newsViewGameTableViewController, aboutViewGameTableViewController]
         tabBarController.viewControllers = elementTabBarController
+        tabBarController.navigationController?.navigationBar.isTranslucent = false
+
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: tabBarController)
