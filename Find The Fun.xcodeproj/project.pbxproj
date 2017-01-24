@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650123711E375B87007A12AD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650123701E375B87007A12AD /* Alamofire.framework */; };
+		650123721E375B87007A12AD /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 650123701E375B87007A12AD /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		650123741E375B8F007A12AD /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650123731E375B8F007A12AD /* AlamofireImage.framework */; };
+		650123751E375B8F007A12AD /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 650123731E375B8F007A12AD /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		654BF6E51E27F12900A82610 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BF6E41E27F12900A82610 /* Game.swift */; };
 		654BF6E81E27F55900A82610 /* GameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BF6E61E27F55900A82610 /* GameTableViewController.swift */; };
 		654BF6E91E27F55900A82610 /* GameTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654BF6E71E27F55900A82610 /* GameTableViewController.xib */; };
@@ -49,8 +53,10 @@
 			dstSubfolderSpec = 10;
 			files = (
 				654BF7051E29344700A82610 /* Runes.framework in Embed Frameworks */,
+				650123751E375B8F007A12AD /* AlamofireImage.framework in Embed Frameworks */,
 				654BF7011E29343E00A82610 /* Argo.framework in Embed Frameworks */,
 				654BF7081E29344B00A82610 /* Curry.framework in Embed Frameworks */,
+				650123721E375B87007A12AD /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		650123701E375B87007A12AD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		650123731E375B8F007A12AD /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		654BF6E41E27F12900A82610 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		654BF6E61E27F55900A82610 /* GameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewController.swift; sourceTree = "<group>"; };
 		654BF6E71E27F55900A82610 /* GameTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameTableViewController.xib; sourceTree = "<group>"; };
@@ -100,8 +108,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				654BF7041E29344700A82610 /* Runes.framework in Frameworks */,
+				650123741E375B8F007A12AD /* AlamofireImage.framework in Frameworks */,
 				654BF7001E29343E00A82610 /* Argo.framework in Frameworks */,
 				654BF7071E29344B00A82610 /* Curry.framework in Frameworks */,
+				650123711E375B87007A12AD /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +131,8 @@
 		656C38F21E27D1FC0095EDBC = {
 			isa = PBXGroup;
 			children = (
+				650123731E375B8F007A12AD /* AlamofireImage.framework */,
+				650123701E375B87007A12AD /* Alamofire.framework */,
 				654BF7061E29344B00A82610 /* Curry.framework */,
 				654BF7031E29344700A82610 /* Runes.framework */,
 				654BF6FF1E29343E00A82610 /* Argo.framework */,

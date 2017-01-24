@@ -1,2 +1,3 @@
 github "thoughtbot/Argo"
 github "thoughtbot/Curry"
+github "Alamofire/AlamofireImage" ~> 3.1
