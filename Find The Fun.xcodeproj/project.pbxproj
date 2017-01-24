@@ -13,6 +13,8 @@
 		650123751E375B8F007A12AD /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 650123731E375B8F007A12AD /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		650123771E375CBB007A12AD /* CellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650123761E375CBB007A12AD /* CellBuilder.swift */; };
 		650123791E3762DE007A12AD /* DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650123781E3762DE007A12AD /* DownloadImage.swift */; };
+		652934931E37969300D2F9ED /* CoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652934911E37969300D2F9ED /* CoverViewController.swift */; };
+		652934941E37969300D2F9ED /* CoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652934921E37969300D2F9ED /* CoverViewController.xib */; };
 		654BF6E51E27F12900A82610 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BF6E41E27F12900A82610 /* Game.swift */; };
 		654BF6E81E27F55900A82610 /* GameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BF6E61E27F55900A82610 /* GameTableViewController.swift */; };
 		654BF6E91E27F55900A82610 /* GameTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654BF6E71E27F55900A82610 /* GameTableViewController.xib */; };
@@ -69,6 +71,8 @@
 		650123731E375B8F007A12AD /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		650123761E375CBB007A12AD /* CellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellBuilder.swift; sourceTree = "<group>"; };
 		650123781E3762DE007A12AD /* DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadImage.swift; sourceTree = "<group>"; };
+		652934911E37969300D2F9ED /* CoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverViewController.swift; sourceTree = "<group>"; };
+		652934921E37969300D2F9ED /* CoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoverViewController.xib; sourceTree = "<group>"; };
 		654BF6E41E27F12900A82610 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		654BF6E61E27F55900A82610 /* GameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewController.swift; sourceTree = "<group>"; };
 		654BF6E71E27F55900A82610 /* GameTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameTableViewController.xib; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 				65B2DF0B1E2D009500C3DE70 /* PlatformTableViewCell.xib */,
 				65B2DF121E2D036D00C3DE70 /* RatingTableViewCell.swift */,
 				65B2DF131E2D036D00C3DE70 /* RatingTableViewCell.xib */,
+				652934911E37969300D2F9ED /* CoverViewController.swift */,
+				652934921E37969300D2F9ED /* CoverViewController.xib */,
 			);
 			name = "Description Table View";
 			sourceTree = "<group>";
@@ -272,6 +278,7 @@
 				656C39111E27E2DF0095EDBC /* HomePageViewController.xib in Resources */,
 				65B2DF151E2D036D00C3DE70 /* RatingTableViewCell.xib in Resources */,
 				654BF6F11E28E6E500A82610 /* GameCellTableViewCell.xib in Resources */,
+				652934941E37969300D2F9ED /* CoverViewController.xib in Resources */,
 				65B2DEFD1E2CFC2100C3DE70 /* NamePhotoTableViewCell.xib in Resources */,
 				65B2DF051E2CFE9B00C3DE70 /* CompanyTableViewCell.xib in Resources */,
 				65B2DEF71E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib in Resources */,
@@ -308,6 +315,7 @@
 			files = (
 				650123771E375CBB007A12AD /* CellBuilder.swift in Sources */,
 				656C39011E27D1FC0095EDBC /* HomePageViewController.swift in Sources */,
+				652934931E37969300D2F9ED /* CoverViewController.swift in Sources */,
 				654BF6E81E27F55900A82610 /* GameTableViewController.swift in Sources */,
 				656763451E2FEB650095AFAD /* DecodeJSON.swift in Sources */,
 				65B2DF081E2CFFA200C3DE70 /* PublishedTableViewCell.swift in Sources */,

@@ -4,32 +4,16 @@ import UIKit
 import Alamofire
 
 func getUrlHttps(url: String?) -> URL? {
-    if let url = url {
-        let urlHttps = URL(string: "https:"+url)
-        return urlHttps
-    } else {
-        return nil
-    }
-    
+    guard let url = url else { return nil }
+    let urlHttps = URL(string: "https:"+url)
+    return urlHttps
 }
 
-//func getImageFromUrl(url: URL, placeholderImage: UIImage, callback:@escaping (UIImage) -> ()) {
-//    let imageView: UIImageView? = nil
-//    
-//    imageView?.af_setImage(
-//        withURL: url,
-//        placeholderImage: placeholderImage,
-//        progressQueue: DispatchQueue.main.async {
-//            if let imageDownloaded = imageView {
-//                callback(imageDownloaded)
-//            }
-//        },
-//        imageTransition: .crossDissolve(0.5)
-//        runImageTransitionIfCached: true,
-//        completion: { (<#DataResponse<UIImage>#>) in
-//            <#code#>
-//    }
-//    )
-//}
+func getCover(url: String?) -> URL? {
+    guard let url = url else { return nil }
+    let urlHttps = URL(string: ("https:"+url).replacingOccurrences(of: "/t_thumb", with: "", options: .literal))
+    return urlHttps
+}
+
 
 

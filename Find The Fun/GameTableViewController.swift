@@ -15,7 +15,7 @@ class GameTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
         self.tableView.tableFooterView = UIView()
-        self.navigationItem.title = "Find the Fun"
+        tabBarController?.tabBar.isTranslucent = false
         let decodedJSON = DecodeGameJSON(gamesURL: gamesURL, apiKey: apiKey, httpHeaderField: httpHeaderField)
         
         decodedJSON.getGames(callback: { arrayGames in

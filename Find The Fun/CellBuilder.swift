@@ -102,6 +102,15 @@ extension Game {
     func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, game: Game) {
         navigationController.pushViewController(GameDescriptionTableViewController(game: game), animated: true)
     }
+    
+    func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, url: String) {
+        switch indexPath.row {
+        case 0:
+            navigationController.pushViewController(CoverViewController(coverURL: cover?.url), animated: true)
+        default:
+            return
+        }
+    }
 }
 
 
