@@ -53,26 +53,4 @@ class DecodeGameJSON {
             }
             return games.flatMap{ $0 }!
         }
-    
-    //    func parseJsonData(data: Data) -> [Game] {
-    //        var games = [Game]()
-    //        do {
-    //            let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSArray
-    //            let jsonGames = jsonResult as! [AnyObject]
-    //            for jsonGame in jsonGames {
-    //                let game = Game(
-    //                    idGame: jsonGame["id"] as! Int,
-    //                    name: jsonGame["name"] as! String,
-    //                    summary: jsonGame["summary"] as? String,
-    //                    rating: jsonGame["rating"] as? Int,
-    //                    developers: jsonGame["developers"] as? [Int]
-    //                    //releaseDate: jsonGame["release_date"] as? [ReleaseDate]
-    //                )
-    //                games.append(game)
-    //            }
-    //        } catch {
-    //            print(error)
-    //        }
-    //        return games
-    //    }
 }

@@ -2,10 +2,11 @@ import UIKit
 import Argo
 import Curry
 import Runes
+import AlamofireImage 
 
 class GameTableViewController: UITableViewController {
     
-    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50&search=darlsouls"
+    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50&search=darksouls"
     let apiKey = "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5"
     let httpHeaderField = "X-Mashape-Key"
     var arrayGames: [Game] = []
