@@ -15,5 +15,9 @@ func getCover(url: String?) -> URL? {
     return urlHttps
 }
 
+func getUrlSearchedGames(title: String) -> String {
+    let gamesURLSearch = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50"+"&search="+title.replacingOccurrences(of: " ", with: "")
+    return gamesURLSearch
+}
 
 

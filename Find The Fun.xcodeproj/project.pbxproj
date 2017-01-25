@@ -16,6 +16,8 @@
 		652934931E37969300D2F9ED /* CoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652934911E37969300D2F9ED /* CoverViewController.swift */; };
 		652934941E37969300D2F9ED /* CoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652934921E37969300D2F9ED /* CoverViewController.xib */; };
 		652934961E37B84B00D2F9ED /* SearchGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652934951E37B84B00D2F9ED /* SearchGame.swift */; };
+		6529349A1E38CB4200D2F9ED /* SearchGamesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652934981E38CB4200D2F9ED /* SearchGamesTableViewController.swift */; };
+		6529349B1E38CB4200D2F9ED /* SearchGamesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652934991E38CB4200D2F9ED /* SearchGamesTableViewController.xib */; };
 		654BF6E51E27F12900A82610 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BF6E41E27F12900A82610 /* Game.swift */; };
 		654BF6E81E27F55900A82610 /* GameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BF6E61E27F55900A82610 /* GameTableViewController.swift */; };
 		654BF6E91E27F55900A82610 /* GameTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654BF6E71E27F55900A82610 /* GameTableViewController.xib */; };
@@ -75,6 +77,8 @@
 		652934911E37969300D2F9ED /* CoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverViewController.swift; sourceTree = "<group>"; };
 		652934921E37969300D2F9ED /* CoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoverViewController.xib; sourceTree = "<group>"; };
 		652934951E37B84B00D2F9ED /* SearchGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchGame.swift; sourceTree = "<group>"; };
+		652934981E38CB4200D2F9ED /* SearchGamesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchGamesTableViewController.swift; sourceTree = "<group>"; };
+		652934991E38CB4200D2F9ED /* SearchGamesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchGamesTableViewController.xib; sourceTree = "<group>"; };
 		654BF6E41E27F12900A82610 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		654BF6E61E27F55900A82610 /* GameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewController.swift; sourceTree = "<group>"; };
 		654BF6E71E27F55900A82610 /* GameTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameTableViewController.xib; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 			children = (
 				654BF6E61E27F55900A82610 /* GameTableViewController.swift */,
 				654BF6E71E27F55900A82610 /* GameTableViewController.xib */,
+				652934981E38CB4200D2F9ED /* SearchGamesTableViewController.swift */,
+				652934991E38CB4200D2F9ED /* SearchGamesTableViewController.xib */,
 				654BF6EE1E28E6E500A82610 /* GameCellTableViewCell.swift */,
 				654BF6EF1E28E6E500A82610 /* GameCellTableViewCell.xib */,
 			);
@@ -279,6 +285,7 @@
 				654BF6E91E27F55900A82610 /* GameTableViewController.xib in Resources */,
 				65B2DF011E2CFD2900C3DE70 /* SummaryTableViewCell.xib in Resources */,
 				656C39111E27E2DF0095EDBC /* HomePageViewController.xib in Resources */,
+				6529349B1E38CB4200D2F9ED /* SearchGamesTableViewController.xib in Resources */,
 				65B2DF151E2D036D00C3DE70 /* RatingTableViewCell.xib in Resources */,
 				654BF6F11E28E6E500A82610 /* GameCellTableViewCell.xib in Resources */,
 				652934941E37969300D2F9ED /* CoverViewController.xib in Resources */,
@@ -331,6 +338,7 @@
 				65B2DEFC1E2CFC2100C3DE70 /* NamePhotoTableViewCell.swift in Sources */,
 				654BF6E51E27F12900A82610 /* Game.swift in Sources */,
 				656C38FF1E27D1FC0095EDBC /* AppDelegate.swift in Sources */,
+				6529349A1E38CB4200D2F9ED /* SearchGamesTableViewController.swift in Sources */,
 				650123791E3762DE007A12AD /* DownloadImage.swift in Sources */,
 				65B2DF141E2D036D00C3DE70 /* RatingTableViewCell.swift in Sources */,
 			);

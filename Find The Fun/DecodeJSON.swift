@@ -29,7 +29,8 @@ class DecodeGameJSON {
                         self.arrayGames = self.parsingJsonData(data: data)
                         DispatchQueue.main.async {
                             if let arrayGames = self.arrayGames {
-                                callback(arrayGames)
+                                callback(arrayGames
+                                    .filter { $0.cover != nil })
                             }
                         }
                     } else {
@@ -45,12 +46,12 @@ class DecodeGameJSON {
         
     }
     
-        func parsingJsonData(data: Data) -> [Game] {
-            var games: [Game]? = []
-            let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-            if let j: Any = jsonResult {
-                games = decode(j)
-            }
-            return games.flatMap{ $0 }!
+    func parsingJsonData(data: Data) -> [Game] {
+        var games: [Game]? = []
+        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+        if let j: Any = jsonResult {
+            games = decode(j)
         }
+        return games.flatMap{ $0 }!
+    }
 }

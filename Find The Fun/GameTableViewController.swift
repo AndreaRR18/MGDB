@@ -4,9 +4,9 @@ import Curry
 import Runes
 import AlamofireImage
 
-class GameTableViewController: UITableViewController, UISearchBarDelegate {
+class GameTableViewController: UITableViewController {
     
-    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50"
+    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50&order=first_release_date%3Adesc"
     let apiKey = "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5"
     let httpHeaderField = "X-Mashape-Key"
     var arrayGames: [Game] = []
@@ -15,13 +15,15 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
         self.tableView.tableFooterView = UIView()
+        tabBarController?.tabBar.isTranslucent = false
+        tabBarController?.navigationController?.navigationBar.isTranslucent = false
+        tabBarController?.navigationController?.navigationItem.title = "FTF"
         let decodedJSON = DecodeGameJSON(gamesURL: gamesURL, apiKey: apiKey, httpHeaderField: httpHeaderField)
         
         decodedJSON.getGames(callback: { arrayGames in
             self.arrayGames = arrayGames
             self.tableView.reloadData()
         })
-        
         
         // inserire qui un activity indicator
     }
@@ -50,7 +52,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate {
         guard let navController = navigationController else { return }
         arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayGames[indexPath.row])
     }
-    
+
 }
 
 
