@@ -30,7 +30,38 @@ class DecodeGameJSON {
                         DispatchQueue.main.async {
                             if let arrayGames = self.arrayGames {
                                 callback(arrayGames
-                                    .filter { $0.cover != nil })
+                                    .filter { $0.cover != nil && $0.summary != nil})
+                            }
+                        }
+                    } else {
+                        print("\(error)")
+                    }
+                })
+                task.resume()
+                
+            } else {
+                print("URL errato!")
+            }
+        }
+        
+    }
+    
+    func getNewGames(callback:@escaping ([Game]) -> ()) {
+        if let arrayGamesExist = arrayGames {
+            callback(arrayGamesExist)
+        } else {
+            if let url = URL(string: gamesURL) {
+                let req = NSMutableURLRequest(url: url)
+                req.setValue(apiKey, forHTTPHeaderField: httpHeaderField)
+                let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
+                    (data, response, error) -> Void in
+                    if let data = data {
+                        self.arrayGames = self.parsingJsonData(data: data)
+                        DispatchQueue.main.async {
+                            if let arrayGames = self.arrayGames {
+                                callback(
+                                    arrayGames
+                                        .filter { $0.cover != nil && $0.summary != nil && $0.updatedAt != nil})
                             }
                         }
                     } else {
@@ -55,3 +86,5 @@ class DecodeGameJSON {
         return games.flatMap{ $0 }!
     }
 }
+
+

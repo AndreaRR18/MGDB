@@ -13,8 +13,6 @@ class GameDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: "PlatformTableViewCell", bundle: nil), forCellReuseIdentifier: "PlatformTableViewCell")
         self.tableView.register(UINib(nibName: "RatingTableViewCell", bundle: nil), forCellReuseIdentifier: "RatingTableViewCell")
         self.tableView.tableFooterView = UIView()
-        
-        tabBarController?.navigationController?.navigationItem.title = gameDescription.name
     }
     
     required init(game: Game) {
@@ -24,6 +22,10 @@ class GameDescriptionTableViewController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        print(gameDescription.name)
+        tabBarController?.navigationItem.title = gameDescription.name
     }
     
     

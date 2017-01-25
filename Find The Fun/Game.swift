@@ -13,9 +13,9 @@ struct Game {
     let summary: String? //summary
     let rating: Int? //rating
     let developers: [Int]?  //developers
+    let updatedAt: Int? //updated_at
     let releaseDate: [ReleaseDate]?  //release_dates
     let cover: Cover? //cover
-    
     
     let identifier = GameCellTableViewCell.cellGameCellIdentifier
 }
@@ -41,6 +41,7 @@ extension Game: Decodable {
             <*> json <|? "summary"
             <*> json <|? "rating"
             <*> json <||? "developers"
+            <*> json <|? "updated_at"
             <*> json <||? "release_dates"
             <*> json <|? "cover"
     }
