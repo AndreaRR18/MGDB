@@ -7,10 +7,13 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     let apiKey = "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5"
     let httpHeaderField = "X-Mashape-Key"
     var arrayGames: [Game] = []
-    var activityIndicatorAppeared = false
-    var emptyArray: [Game] = []
+    
     
     var searchController: UISearchController!
+    var searchActive = true
+
+    var activityIndicatorAppeared = false
+    var emptyArray: [Game] = []
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
@@ -25,13 +28,15 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search game..."
-        // inserire qui un activity indicator
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.title = nil
         tabBarController?.navigationItem.titleView = searchController.searchBar
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        searchController.searchBar.becomeFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,11 +64,19 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayGames[indexPath.row])
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchController.searchBar.endEditing(true)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchController.searchBar.text else { return }
         
-        self.arrayGames = emptyArray
-        self.tableView.reloadData()
-        
+        var textSearchChange = ""
+        if searchController.searchBar.text != nil && textSearchChange != searchText{
+            self.arrayGames.removeAll()
+            self.tableView.reloadData()
+            textSearchChange = searchText
+        }
         activityIndicatorAppeared = false
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
@@ -72,16 +85,12 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         
         activityIndicator.startAnimating()
         
-        guard let searchText = searchController.searchBar.text else { return }
-        guard searchText.characters.count > 3 else { return }
+        
         let decodedJSON = DecodeGameJSON(gamesURL: getUrlSearchedGames(title: searchText), apiKey: apiKey, httpHeaderField: httpHeaderField)
-        decodedJSON.getGames(callback: { arrayGames in
+        decodedJSON.getSearchGames(callback: { arrayGames in
             self.arrayGames = arrayGames
-            
             self.activityIndicator.stopAnimating()
-            
             self.tableView.reloadData()
-            
         })
     }
     

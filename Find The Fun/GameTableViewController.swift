@@ -10,9 +10,11 @@ class GameTableViewController: UITableViewController {
     let apiKey = "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5"
     let httpHeaderField = "X-Mashape-Key"
     var arrayGames: [Game] = []
-    var activityIndicatorAppeared = true
     
+    var activityIndicatorAppeared = true
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,17 +23,15 @@ class GameTableViewController: UITableViewController {
         tabBarController?.tabBar.isTranslucent = false
         tabBarController?.navigationController?.navigationBar.isTranslucent = false
         
-        
         let decodedJSON = DecodeGameJSON(gamesURL: gamesURL, apiKey: apiKey, httpHeaderField: httpHeaderField)
         decodedJSON.getNewGames(callback: { arrayGames in
             self.arrayGames = arrayGames
-            
             self.activityIndicator.stopAnimating()
-            
             self.tableView.reloadData()
         })
         
-        // inserire qui un activity indicator
+        refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +44,6 @@ class GameTableViewController: UITableViewController {
             activityIndicator.hidesWhenStopped = true
             activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
             view.addSubview(activityIndicator)
-            
             activityIndicator.startAnimating()
         }
     }
@@ -72,6 +71,31 @@ class GameTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let navController = navigationController else { return }
         arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayGames[indexPath.row])
+    }
+
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == arrayGames.count - 3 {
+            let decodedJSON = DecodeGameJSON(gamesURL: gamesURL, apiKey: apiKey, httpHeaderField: httpHeaderField)
+            decodedJSON.getNewGames(callback: { arrayGames in
+                self.arrayGames += arrayGames
+                self.activityIndicator.stopAnimating()
+                self.tableView.reloadData()
+            })
+        }
+        
+    }
+    
+    func refresh() {
+            self.refreshControl?.beginRefreshing()
+        let decodedJSON = DecodeGameJSON(gamesURL: gamesURL, apiKey: apiKey, httpHeaderField: httpHeaderField)
+        decodedJSON.getNewGames(callback: { arrayGames in
+            self.arrayGames = arrayGames
+            self.activityIndicator.stopAnimating()
+            self.refreshControl?.endRefreshing()
+            self.tableView.reloadData()
+        })
     }
     
 }

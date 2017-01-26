@@ -9,14 +9,13 @@ class DecodeGameJSON {
     let apiKey: String
     let httpHeaderField: String
     
-    
     init(gamesURL: String, apiKey: String, httpHeaderField: String) {
         self.gamesURL = gamesURL
         self.apiKey = apiKey
         self.httpHeaderField = httpHeaderField
     }
     
-    func getGames(callback:@escaping ([Game]) -> ()) {
+    func getSearchGames(callback:@escaping ([Game]) -> ()) {
         if let arrayGamesExist = arrayGames {
             callback(arrayGamesExist)
         } else {
@@ -38,12 +37,10 @@ class DecodeGameJSON {
                     }
                 })
                 task.resume()
-                
             } else {
                 print("URL errato!")
             }
         }
-        
     }
     
     func getNewGames(callback:@escaping ([Game]) -> ()) {
