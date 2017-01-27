@@ -9,7 +9,7 @@ extension Game {
     func getCellForTableViewController(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! GameCellTableViewCell
         cell.name?.text = name
-        cell.company?.text = developers?.first.map(String.init)
+       cell.company?.text = developers?.first.map(String.init)
         cell.years?.text = releaseDate?.first?.year.map(String.init)
 
         let placeholder = #imageLiteral(resourceName: "img-not-found")

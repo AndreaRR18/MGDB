@@ -26,3 +26,7 @@ func getUrlOffsetdGames(offset: Int) -> String {
     return gamesURLOffset
 }
 
+func getUrlIDCompany(id: Int) -> String {
+    let companiesUrl = "https://igdbcom-internet-game-database-v1.p.mashape.com/companies/"+"\(id)"+"?fields=*"
+    return companiesUrl
+}

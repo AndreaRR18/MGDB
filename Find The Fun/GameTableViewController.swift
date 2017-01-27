@@ -3,8 +3,9 @@ import Argo
 import Curry
 import Runes
 import AlamofireImage
+import CoreData
 
-class GameTableViewController: UITableViewController {
+class GameTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     var offset = 0
     let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=30&order=updated_at%3Adesc"
     let apiKey = "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5"
@@ -23,7 +24,7 @@ class GameTableViewController: UITableViewController {
         tabBarController?.tabBar.isTranslucent = false
         tabBarController?.navigationController?.navigationBar.isTranslucent = false
         
-        let decodedJSON = DecodeGameJSON(gamesURL: gamesURL, apiKey: apiKey, httpHeaderField: httpHeaderField)
+        let decodedJSON = DecodeJSON(url: gamesURL, apiKey: apiKey, httpHeaderField: httpHeaderField)
         decodedJSON.getNewGames(callback: { arrayGames in
             self.arrayGames = arrayGames
             self.activityIndicator.stopAnimating()
@@ -32,6 +33,9 @@ class GameTableViewController: UITableViewController {
         
         refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
+        
+        
+        
         
     }
     
@@ -109,7 +113,7 @@ class GameTableViewController: UITableViewController {
         if indexPath.row == arrayGames.count - 5 {
             offset += 10
             guard offset < 50 else { return }
-            let decodedJSON = DecodeGameJSON(gamesURL: getUrlOffsetdGames(offset: offset), apiKey: apiKey, httpHeaderField: httpHeaderField)
+            let decodedJSON = DecodeJSON(url: getUrlOffsetdGames(offset: offset), apiKey: apiKey, httpHeaderField: httpHeaderField)
             decodedJSON.getNewGames(callback: { arrayGames in
                 self.arrayGames += arrayGames
                 self.activityIndicator.stopAnimating()
@@ -120,7 +124,7 @@ class GameTableViewController: UITableViewController {
     
     func refresh() {
         self.refreshControl?.beginRefreshing()
-        let decodedJSON = DecodeGameJSON(gamesURL: gamesURL, apiKey: apiKey, httpHeaderField: httpHeaderField)
+        let decodedJSON = DecodeJSON(url: gamesURL, apiKey: apiKey, httpHeaderField: httpHeaderField)
         decodedJSON.getNewGames(callback: { arrayGames in
             self.arrayGames = arrayGames
             self.activityIndicator.stopAnimating()

@@ -3,14 +3,16 @@ import UIKit
 import Argo
 
 
-class DecodeGameJSON {
-    let gamesURL: String
+class DecodeJSON {
+    let url: String
     var arrayGames: [Game]? = nil
     let apiKey: String
     let httpHeaderField: String
     
-    init(gamesURL: String, apiKey: String, httpHeaderField: String) {
-        self.gamesURL = gamesURL
+    var arrayCompanies: [Companies]? = nil
+    
+    init(url: String, apiKey: String, httpHeaderField: String) {
+        self.url = url
         self.apiKey = apiKey
         self.httpHeaderField = httpHeaderField
     }
@@ -19,7 +21,7 @@ class DecodeGameJSON {
         if let arrayGamesExist = arrayGames {
             callback(arrayGamesExist)
         } else {
-            if let url = URL(string: gamesURL) {
+            if let url = URL(string: url) {
                 let req = NSMutableURLRequest(url: url)
                 req.setValue(apiKey, forHTTPHeaderField: httpHeaderField)
                 let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
@@ -47,7 +49,7 @@ class DecodeGameJSON {
         if let arrayGamesExist = arrayGames {
             callback(arrayGamesExist)
         } else {
-            if let url = URL(string: gamesURL) {
+            if let url = URL(string: url) {
                 let req = NSMutableURLRequest(url: url)
                 req.setValue(apiKey, forHTTPHeaderField: httpHeaderField)
                 let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
@@ -81,6 +83,50 @@ class DecodeGameJSON {
         }
         return games.flatMap{ $0 }!
     }
+
+
+    func getCompanies(callback:@escaping ([Companies]) -> ()) {
+        if let arrayCompaniesExist = arrayCompanies {
+            callback(arrayCompaniesExist)
+        } else {
+            if let url = URL(string: url) {
+                let req = NSMutableURLRequest(url: url)
+                req.setValue(apiKey, forHTTPHeaderField: httpHeaderField)
+                let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
+                    (data, response, error) -> Void in
+                    if let data = data {
+                        self.arrayCompanies = self.parsingJsonDataCompanies(data: data)
+                        DispatchQueue.main.async {
+                            if let arrayCompanies = self.arrayCompanies {
+                                callback(arrayCompanies)
+                            }
+                        }
+                    } else {
+                        print("\(error)")
+                    }
+                })
+                task.resume()
+                
+            } else {
+                print("URL errato!")
+            }
+        }
+    }
+    
+    func parsingJsonDataCompanies(data: Data) -> [Companies] {
+        var companies: [Companies]? = []
+        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+        if let j: Any = jsonResult {
+            companies = decode(j)
+        }
+        return companies.flatMap{ $0 }!
+    }
+
+
+
 }
+
+
+
 
 
