@@ -2,7 +2,7 @@ import UIKit
 
 
 class CoverViewController: UIViewController {
-
+    
     @IBOutlet weak var coverHighResolution: UIImageView?
     
     var coverURL: String?
@@ -17,26 +17,22 @@ class CoverViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
-
+        
         if let urlExist = getCover(url: coverURL) {
             coverHighResolution?.af_setImage(
                 withURL: urlExist,
                 imageTransition: .crossDissolve(0.3),
-                runImageTransitionIfCached: true)
+                runImageTransitionIfCached: true,
+                completion: { _ in
+                    self.activityIndicator.stopAnimating() })
         }
-        
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        self.activityIndicator.stopAnimating()
-    }
 }

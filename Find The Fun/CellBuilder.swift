@@ -13,7 +13,7 @@ extension Game {
         cell.years?.text = releaseDate?.first?.year.map(String.init)
 
         let placeholder = #imageLiteral(resourceName: "img-not-found")
-        if let urlExist = getUrlHttps(url: (cover?.url)) {
+        if let urlExist = getUrlHttps(url: cover?.url) {
             cell.cover?.af_setImage(
                 withURL: urlExist,
                 placeholderImage: placeholder,
