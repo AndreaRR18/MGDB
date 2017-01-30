@@ -34,9 +34,6 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
         
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +73,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let navController = navigationController else { return }
         arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayGames[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -112,7 +110,6 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         }
         if indexPath.row == arrayGames.count - 5 {
             offset += 10
-            guard offset < 50 else { return }
             let decodedJSON = DecodeJSON(url: getUrlOffsetdGames(offset: offset), apiKey: apiKey, httpHeaderField: httpHeaderField)
             decodedJSON.getNewGames(callback: { arrayGames in
                 self.arrayGames += arrayGames
@@ -134,6 +131,8 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     }
     
 }
+
+
 
 
 

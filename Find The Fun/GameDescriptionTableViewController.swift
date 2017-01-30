@@ -44,13 +44,13 @@ class GameDescriptionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         return gameDescription.gameDescriptionFields[indexPath.row](tableView, indexPath)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let navController = navigationController, let coverExist = gameDescription.cover?.url else { return }
-        gameDescription.didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, url: coverExist)
+        guard let navController = navigationController, let cover = gameDescription.cover?.url else { return }
+        gameDescription.didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, url: cover)
+                tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

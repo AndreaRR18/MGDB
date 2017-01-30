@@ -87,7 +87,7 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         
         
         let decodedJSON = DecodeJSON(url: getUrlSearchedGames(title: searchText), apiKey: apiKey, httpHeaderField: httpHeaderField)
-        decodedJSON.getSearchGames(callback: { arrayGames in
+        decodedJSON.getSearchGames(weak: { arrayGames in
             self.arrayGames = arrayGames
             self.activityIndicator.stopAnimating()
             self.tableView.reloadData()
