@@ -20,9 +20,11 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
-        self.tableView.tableFooterView = UIView()
-        tabBarController?.tabBar.isTranslucent = false
-        tabBarController?.navigationController?.navigationBar.isTranslucent = false
+
+        let viewFooter = UIView()
+        viewFooter.backgroundColor = ColorUI.backgoundTableView
+        self.tableView.tableFooterView = viewFooter
+        self.view.backgroundColor = ColorUI.backgoundTableView
         
         let decodedJSON = DecodeJSON(url: gamesURL, apiKey: apiKey, httpHeaderField: httpHeaderField)
         decodedJSON.getNewGames(callback: { arrayGames in
@@ -32,13 +34,26 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         })
         
         refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
-        
+        refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
+        refreshControl?.tintColor = UIColor.white
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.titleView = nil
-        tabBarController?.navigationItem.title = "FTF"
+        
+        let navBarImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
+        navBarImageView.contentMode = .scaleAspectFit
+        let navBarImage = UIImage(named: "ufo.png")
+        navBarImageView.image = navBarImage
+        tabBarController?.navigationItem.titleView = navBarImageView
+        tabBarController?.tabBar.barTintColor = ColorUI.tabBar
+        tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
+        tabBarController?.tabBar.tintColor = UIColor.white
+        tabBarController?.tabBar.unselectedItemTintColor = ColorUI.unselectedItemTabBar
+        
+        
         
         if activityIndicatorAppeared {
             activityIndicatorAppeared = false

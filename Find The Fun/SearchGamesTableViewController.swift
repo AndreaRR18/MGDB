@@ -20,8 +20,14 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
         self.tableView.tableFooterView = UIView()
+        
+        let viewFooter = UIView()
+        viewFooter.backgroundColor = ColorUI.backgoundTableView
+        self.tableView.tableFooterView = viewFooter
+        self.view.backgroundColor = ColorUI.backgoundTableView
+
+        tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.isTranslucent = false
-        tabBarController?.navigationController?.navigationBar.isTranslucent = false
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self

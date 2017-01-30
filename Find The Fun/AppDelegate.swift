@@ -11,19 +11,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         
         let newsViewGameTableViewController = GameTableViewController()
-        newsViewGameTableViewController.tabBarItem = UITabBarItem(title: "Novità", image: nil, tag: 0)
+        newsViewGameTableViewController.tabBarItem = UITabBarItem(title: "Novità", image: #imageLiteral(resourceName: "news 40x40"), tag: 0)
         
         let searchGameTableViewController = SearchGamesTableViewController()
-        searchGameTableViewController.tabBarItem = UITabBarItem(title: "Search", image: nil, tag: 1)
+        searchGameTableViewController.tabBarItem = UITabBarItem(title: "Search", image: #imageLiteral(resourceName: "search 30x30"), tag: 1)
+        
+        let favouriteGameTableViewController = HomePageViewController()
+        favouriteGameTableViewController.tabBarItem = UITabBarItem(title: "Favourite", image: #imageLiteral(resourceName: "favourites 40x40"), tag: 2)
         
         let aboutViewGameTableViewController = HomePageViewController()
-        aboutViewGameTableViewController.tabBarItem = UITabBarItem(title: "About", image: nil, tag: 2)
+        aboutViewGameTableViewController.tabBarItem = UITabBarItem(title: "About", image: #imageLiteral(resourceName: "about 30x30"), tag: 3)
         
-        let elementTabBarController = [newsViewGameTableViewController, searchGameTableViewController, aboutViewGameTableViewController]
+        let elementTabBarController = [newsViewGameTableViewController, searchGameTableViewController, favouriteGameTableViewController, aboutViewGameTableViewController]
         tabBarController.viewControllers = elementTabBarController
         tabBarController.navigationController?.navigationBar.isTranslucent = false
-
-
+        tabBarController.navigationController?.navigationBar.isOpaque = false
+        
+        tabBarController.navigationController?.navigationBar.tintColor = ColorUI.text
+       
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: tabBarController)
         window?.makeKeyAndVisible()        

@@ -13,7 +13,16 @@ class GameDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: "PublishedTableViewCell", bundle: nil), forCellReuseIdentifier: "PublishedTableViewCell")
         self.tableView.register(UINib(nibName: "PlatformTableViewCell", bundle: nil), forCellReuseIdentifier: "PlatformTableViewCell")
         self.tableView.register(UINib(nibName: "RatingTableViewCell", bundle: nil), forCellReuseIdentifier: "RatingTableViewCell")
-        self.tableView.tableFooterView = UIView()
+        
+        tabBarController?.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        let viewFooter = UIView()
+        viewFooter.backgroundColor = ColorUI.backgoundTableView
+        self.tableView.tableFooterView = viewFooter
+        self.view.backgroundColor = ColorUI.backgoundTableView
+        
+        tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
+
     }
     
     required init(game: Game) {

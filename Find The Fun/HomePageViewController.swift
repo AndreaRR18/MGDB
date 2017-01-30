@@ -2,17 +2,6 @@ import UIKit
 
 class HomePageViewController: UIViewController {
     
-    @IBAction func showList(_ sender: Any) {
-        
-        let tabBarController = UITabBarController()
-        let tabViewGameTableViewController = GameTableViewController()
-        tabViewGameTableViewController.tabBarItem = UITabBarItem(title: "Novità", image: nil, tag: 0)
-        let elementTabBarController = [tabViewGameTableViewController]
-        tabBarController.viewControllers = elementTabBarController
-        navigationController?.pushViewController(tabBarController, animated: false)
-        
-    }
-    
     @IBOutlet weak var showList: UIButton?
     
     override func viewDidLoad() {
@@ -22,6 +11,8 @@ class HomePageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.titleView = nil
         tabBarController?.navigationItem.title = "About"
+        tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
+        self.view.backgroundColor = ColorUI.background
     }
     
     override func didReceiveMemoryWarning() {

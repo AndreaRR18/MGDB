@@ -19,7 +19,9 @@ class CoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator.center = self.view.center
+        
+        view.backgroundColor = ColorUI.backgoundTableView
+        activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         view.addSubview(activityIndicator)

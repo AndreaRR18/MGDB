@@ -8,13 +8,20 @@ extension Game {
     //--------------------Cell of First UITableView -------------------//
     func getCellForTableViewController(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! GameCellTableViewCell
+        
+        cell.backgroundColor = ColorUI.background
+        cell.name?.textColor = ColorUI.text
+        cell.company?.textColor = ColorUI.text
+        cell.years?.textColor = ColorUI.text
+        
+        cell.cover?.layer.cornerRadius = 30.0
+        cell.cover?.clipsToBounds = true
+        
         cell.name?.text = name
         nameCompanyDB(id: developers?.first, callback: { nameCompany in
             cell.company?.text = nameCompany
         })
-//        cell.company?.text = nameCompanyDB(id: developers?.first)
         cell.years?.text = releaseDate?.first?.year.map(String.init)
-        
         let placeholder = #imageLiteral(resourceName: "img-not-found")
         if let urlExist = getUrlHttps(url: cover?.url) {
             cell.cover?.af_setImage(
@@ -54,6 +61,11 @@ extension Game {
     func getCellNamePhoto(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NamePhotoTableViewCell.namePhotoTableViewCellIdentifier, for: indexPath) as! NamePhotoTableViewCell
         let placeholder = #imageLiteral(resourceName: "img-not-found")
+        
+        cell.backgroundColor = ColorUI.background
+        cell.name?.textColor = ColorUI.text
+        cell.thumbnail?.layer.cornerRadius = 30.0
+        cell.thumbnail?.clipsToBounds = true
         if let urlExist = getUrlHttps(url: cover?.url) {
             cell.thumbnail?.af_setImage(
                 withURL: urlExist,
@@ -70,11 +82,19 @@ extension Game {
     }
     func getCellSummary(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SummaryTableViewCell.summaryTableViewCellIdentifier, for: indexPath) as! SummaryTableViewCell
+        
+        cell.backgroundColor = ColorUI.background
+        cell.summary?.textColor = ColorUI.text
+       
         cell.summary?.text = summary
         return cell
     }
     func getCellCompany(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CompanyTableViewCell.companyTableViewCellIdentifier, for: indexPath) as! CompanyTableViewCell
+        
+        cell.backgroundColor = ColorUI.background
+        cell.company?.textColor = ColorUI.text
+
         if let id = developers?.first {
             if let nameCompany = fetchCompany(id: Int32(id)) {
                 cell.company?.text = nameCompany
@@ -89,21 +109,32 @@ extension Game {
     
         func getCellPublished(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: PublishedTableViewCell.publishedTableViewCellIdentifier, for: indexPath) as! PublishedTableViewCell
+           
+            cell.backgroundColor = ColorUI.background
+            cell.firstReleaseDate?.textColor = ColorUI.text
+            
             cell.firstReleaseDate?.text = releaseDate?.first?.year.map(String.init)
             return cell
         }
     
         func getCellPlatform(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: PlatformTableViewCell.platformTableViewCellIdentifier, for: indexPath) as! PlatformTableViewCell
+            
+            cell.backgroundColor = ColorUI.background
+            cell.platform?.textColor = ColorUI.text
+            
             namePlatformDB(id: releaseDate?.first?.platform, callback: { namePlatform in
                 cell.platform?.text = namePlatform
             })
-            //cell.platform?.text = namePlatformDB(id: releaseDate?.first?.platform)
             return cell
         }
     
         func getCellRate(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: RatingTableViewCell.ratingTableViewCellIdentifier, for: indexPath) as! RatingTableViewCell
+            
+            cell.backgroundColor = ColorUI.background
+            cell.rate?.textColor = ColorUI.text
+            
             cell.rate?.text = rating.map(String.init)
             return cell
         }
