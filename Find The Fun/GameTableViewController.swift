@@ -11,6 +11,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     let apiKey = "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5"
     let httpHeaderField = "X-Mashape-Key"
     var arrayGames: [Game] = []
+    let logo = UIImageView()
     
     var activityIndicatorAppeared = true
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -25,7 +26,6 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
-        
         let decodedJSON = DecodeJSON(url: gamesURL, apiKey: apiKey, httpHeaderField: httpHeaderField)
         decodedJSON.getNewGames(callback: { arrayGames in
             self.arrayGames = arrayGames
@@ -36,18 +36,16 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
         refreshControl?.tintColor = UIColor.white
+        logo.image = #imageLiteral(resourceName: "ufo")
+        tabBarController?.navigationItem.titleView?.addSubview(logo) 
     }
     
     
     
     override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.navigationItem.titleView = nil
-        
         let navBarImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
         navBarImageView.contentMode = .scaleAspectFit
-        let navBarImage = UIImage(named: "ufo.png")
-        navBarImageView.image = navBarImage
-        tabBarController?.navigationItem.titleView = navBarImageView
+        
         tabBarController?.tabBar.barTintColor = ColorUI.tabBar
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white

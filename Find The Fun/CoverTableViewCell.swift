@@ -1,11 +1,11 @@
 import UIKit
 
-class NamePhotoTableViewCell: UITableViewCell {
+class CoverTableViewCell: UITableViewCell {
     
     @IBOutlet weak var thumbnail: UIImageView?
     @IBOutlet weak var name: UILabel?
     
-    static var namePhotoTableViewCellIdentifier: String { return "NamePhotoTableViewCell" }
+    static var coverTableViewCellIdentifier: String { return "CoverTableViewCell" }
     
     override func awakeFromNib() {
         super.awakeFromNib()

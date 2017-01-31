@@ -27,6 +27,9 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         self.view.backgroundColor = ColorUI.backgoundTableView
 
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationItem.backBarButtonItem?.title = ""
+
         tabBarController?.tabBar.isTranslucent = false
         
         searchController = UISearchController(searchResultsController: nil)

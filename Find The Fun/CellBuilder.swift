@@ -13,7 +13,7 @@ extension Game {
         cell.name?.textColor = ColorUI.text
         cell.company?.textColor = ColorUI.text
         cell.years?.textColor = ColorUI.text
-        
+
         cell.cover?.layer.cornerRadius = 30.0
         cell.cover?.clipsToBounds = true
         
@@ -38,10 +38,10 @@ extension Game {
     var gameDescriptionFields: [(UITableView,IndexPath) -> UITableViewCell] {
         return [
             { (tableView,indexPath) -> UITableViewCell in
-                self.getCellNamePhoto(tableView: tableView, indexPath: indexPath)
+                self.getCellSummary(tableView: tableView, indexPath: indexPath)
             },
             { (tableView,indexPath) -> UITableViewCell in
-                self.getCellSummary(tableView: tableView, indexPath: indexPath)
+                self.getCellCover(tableView: tableView, indexPath: indexPath)
             },
             { (tableView,indexPath) -> UITableViewCell in
                 self.getCellCompany(tableView: tableView, indexPath: indexPath)
@@ -58,14 +58,12 @@ extension Game {
         ]
     }
     
-    func getCellNamePhoto(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NamePhotoTableViewCell.namePhotoTableViewCellIdentifier, for: indexPath) as! NamePhotoTableViewCell
+    func getCellCover(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CoverTableViewCell.coverTableViewCellIdentifier, for: indexPath) as! CoverTableViewCell
         let placeholder = #imageLiteral(resourceName: "img-not-found")
         
-        cell.backgroundColor = ColorUI.background
-        cell.name?.textColor = ColorUI.text
         cell.thumbnail?.layer.cornerRadius = 30.0
-        cell.thumbnail?.clipsToBounds = true
+
         if let urlExist = getUrlHttps(url: cover?.url) {
             cell.thumbnail?.af_setImage(
                 withURL: urlExist,
@@ -76,17 +74,17 @@ extension Game {
         } else {
             cell.thumbnail?.image = placeholder
         }
-        
-        cell.name?.text = name
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         return cell
     }
     func getCellSummary(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SummaryTableViewCell.summaryTableViewCellIdentifier, for: indexPath) as! SummaryTableViewCell
         
         cell.backgroundColor = ColorUI.background
-        cell.summary?.textColor = ColorUI.text
-       
-        cell.summary?.text = summary
+        cell.isSelected = false
+        cell.summaryText?.textColor = ColorUI.text
+        cell.layer.cornerRadius = 20
+        cell.summaryText?.text = summary
         return cell
     }
     func getCellCompany(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
@@ -94,6 +92,7 @@ extension Game {
         
         cell.backgroundColor = ColorUI.background
         cell.company?.textColor = ColorUI.text
+        cell.layer.cornerRadius = 20
 
         if let id = developers?.first {
             if let nameCompany = fetchCompany(id: Int32(id)) {
@@ -112,7 +111,8 @@ extension Game {
            
             cell.backgroundColor = ColorUI.background
             cell.firstReleaseDate?.textColor = ColorUI.text
-            
+            cell.layer.cornerRadius = 20
+
             cell.firstReleaseDate?.text = releaseDate?.first?.year.map(String.init)
             return cell
         }
@@ -122,7 +122,8 @@ extension Game {
             
             cell.backgroundColor = ColorUI.background
             cell.platform?.textColor = ColorUI.text
-            
+            cell.layer.cornerRadius = 20
+
             namePlatformDB(id: releaseDate?.first?.platform, callback: { namePlatform in
                 cell.platform?.text = namePlatform
             })
@@ -134,8 +135,9 @@ extension Game {
             
             cell.backgroundColor = ColorUI.background
             cell.rate?.textColor = ColorUI.text
-            
-            cell.rate?.text = rating.map(String.init)
+            cell.layer.cornerRadius = 20
+
+            cell.rate?.text = rating.map(String.init) ?? "N.D."
             return cell
         }
         
@@ -145,7 +147,7 @@ extension Game {
         
         func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, url: String) {
             switch indexPath.row {
-            case 0:
+            case 1:
                 navigationController.navigationBar.isTranslucent = false
                 navigationController.pushViewController(CoverViewController(coverURL: cover?.url), animated: true)
             default:
@@ -158,17 +160,17 @@ extension Game {
     func heightRowInGameDescription(indexPath: Int) -> CGFloat {
         switch indexPath {
         case 0:
-            return 110
+            return 170
         case 1:
-            return 210
+            return 90
         case 2:
-            return 30
+            return 60
         case 3:
-            return 30
+            return 60
         case 4:
-            return 30
+            return 60
         case 5:
-            return 30
+            return 60
         default:
             return 0
         }

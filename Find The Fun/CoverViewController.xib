@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CoverViewController" customModule="Find_The_Fun" customModuleProvider="target">
             <connections>
                 <outlet property="coverHighResolution" destination="uXm-6N-mbj" id="CBl-dT-8eS"/>
+                <outlet property="coverScrollView" destination="pWB-53-AWt" id="xCv-fm-rOH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,18 +22,31 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uXm-6N-mbj">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" maximumZoomScale="6" translatesAutoresizingMaskIntoConstraints="NO" id="pWB-53-AWt">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uXm-6N-mbj">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="uXm-6N-mbj" secondAttribute="height" multiplier="375:667" id="caG-TL-BMj"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="uXm-6N-mbj" secondAttribute="height" multiplier="375:667" id="MPz-oJ-BB2"/>
+                        <constraint firstItem="uXm-6N-mbj" firstAttribute="top" secondItem="pWB-53-AWt" secondAttribute="top" id="8O7-NP-MQr"/>
+                        <constraint firstAttribute="trailing" secondItem="uXm-6N-mbj" secondAttribute="trailing" id="9ez-xO-KzZ"/>
+                        <constraint firstAttribute="bottom" secondItem="uXm-6N-mbj" secondAttribute="bottom" id="m5G-PH-Cz8"/>
+                        <constraint firstItem="uXm-6N-mbj" firstAttribute="centerY" secondItem="pWB-53-AWt" secondAttribute="centerY" id="p4h-Qx-8Bg"/>
+                        <constraint firstAttribute="width" secondItem="pWB-53-AWt" secondAttribute="height" multiplier="375:667" id="wsZ-xi-wn8"/>
+                        <constraint firstItem="uXm-6N-mbj" firstAttribute="leading" secondItem="pWB-53-AWt" secondAttribute="leading" id="x4E-1c-ILH"/>
                     </constraints>
-                </imageView>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="uXm-6N-mbj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oou-4o-bc0"/>
-                <constraint firstItem="uXm-6N-mbj" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="tO2-6Q-04c"/>
-                <constraint firstItem="uXm-6N-mbj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wL8-Ml-OMd"/>
+                <constraint firstItem="pWB-53-AWt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3F5-UN-mPO"/>
+                <constraint firstItem="pWB-53-AWt" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="UWE-qg-Za3"/>
+                <constraint firstItem="pWB-53-AWt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gtN-zr-vcY"/>
             </constraints>
         </view>
     </objects>

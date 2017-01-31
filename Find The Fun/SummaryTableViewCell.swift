@@ -4,6 +4,7 @@ class SummaryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var summary: UILabel?
     
+    @IBOutlet weak var summaryText: UITextView?
     static var summaryTableViewCellIdentifier: String { return "SummaryTableViewCell" }
 
     override func awakeFromNib() {

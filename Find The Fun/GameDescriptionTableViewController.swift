@@ -6,16 +6,24 @@ class GameDescriptionTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = gameDescription.name
-        self.tableView.register(UINib(nibName: "NamePhotoTableViewCell", bundle: nil), forCellReuseIdentifier: "NamePhotoTableViewCell")
+
+        self.tableView.register(UINib(nibName: "CoverTableViewCell", bundle: nil), forCellReuseIdentifier: "CoverTableViewCell")
         self.tableView.register(UINib(nibName: "SummaryTableViewCell", bundle: nil), forCellReuseIdentifier: "SummaryTableViewCell")
         self.tableView.register(UINib(nibName: "CompanyTableViewCell", bundle: nil), forCellReuseIdentifier: "CompanyTableViewCell")
         self.tableView.register(UINib(nibName: "PublishedTableViewCell", bundle: nil), forCellReuseIdentifier: "PublishedTableViewCell")
         self.tableView.register(UINib(nibName: "PlatformTableViewCell", bundle: nil), forCellReuseIdentifier: "PlatformTableViewCell")
         self.tableView.register(UINib(nibName: "RatingTableViewCell", bundle: nil), forCellReuseIdentifier: "RatingTableViewCell")
-        
-        tabBarController?.navigationController?.navigationBar.tintColor = UIColor.white
-        
+
+        title = gameDescription.name
+
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
+
+        let backItem = UIBarButtonItem()
+        backItem.title = nil
+        tabBarController?.navigationItem.backBarButtonItem = backItem
+
+        view.backgroundColor = ColorUI.backgoundTableView
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter

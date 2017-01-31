@@ -1,10 +1,10 @@
 import UIKit
 
 
-class CoverViewController: UIViewController {
+class CoverViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var coverHighResolution: UIImageView?
-    
+    @IBOutlet weak var coverScrollView: UIScrollView?
     var coverURL: String?
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
@@ -19,7 +19,7 @@ class CoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = ColorUI.backgoundTableView
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
@@ -35,6 +35,14 @@ class CoverViewController: UIViewController {
                 completion: { _ in
                     self.activityIndicator.stopAnimating() })
         }
+        self.coverScrollView?.isScrollEnabled = true
+        self.coverHighResolution?.isUserInteractionEnabled = true
+        self.coverScrollView?.minimumZoomScale = 1.0
+        self.coverScrollView?.maximumZoomScale = 6.0
     }
-
+    
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.coverHighResolution
+    }
 }
