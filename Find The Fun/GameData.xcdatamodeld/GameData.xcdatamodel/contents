@@ -4,6 +4,16 @@
         <attribute name="idCompany" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nameCompany" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="FavouriteGameData" representedClassName=".FavouriteGameData" syncable="YES" codeGenerationType="class">
+        <attribute name="company" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="firstReleaseDate" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="platform" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbnail" optional="YES" attributeType="Binary" syncable="YES"/>
+    </entity>
     <entity name="PlatformsData" representedClassName="PlatformsData" syncable="YES" codeGenerationType="class">
         <attribute name="idPlatform" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="namePlatform" optional="YES" attributeType="String" syncable="YES"/>
@@ -11,5 +21,6 @@
     <elements>
         <element name="CompaniesData" positionX="-27" positionY="18" width="128" height="73"/>
         <element name="PlatformsData" positionX="-27" positionY="36" width="128" height="75"/>
+        <element name="FavouriteGameData" positionX="-27" positionY="45" width="128" height="165"/>
     </elements>
 </model>

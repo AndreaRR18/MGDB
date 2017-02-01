@@ -54,6 +54,9 @@ extension Game {
             },
             { (tableView,indexPath) -> UITableViewCell in
                 self.getCellRate(tableView: tableView, indexPath: indexPath)
+            },
+            { (tableView,indexPath) -> UITableViewCell in
+                self.getCellScreenshots(tableView: tableView, indexPath: indexPath)
             }
         ]
     }
@@ -140,7 +143,13 @@ extension Game {
             cell.rate?.text = rating.map(String.init) ?? "N.D."
             return cell
         }
-        
+    func getCellScreenshots(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ScreenshotsTableViewCell.screenshotsTableViewCellIdentifier, for: indexPath) as! ScreenshotsTableViewCell
+        cell.backgroundColor = ColorUI.background
+        return cell
+    }
+
+    
         func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, game: Game) {
             navigationController.pushViewController(GameDescriptionTableViewController(game: game), animated: true)
         }
@@ -150,6 +159,9 @@ extension Game {
             case 1:
                 navigationController.navigationBar.isTranslucent = false
                 navigationController.pushViewController(CoverViewController(coverURL: cover?.url), animated: true)
+            case 6:
+                navigationController.navigationBar.isTranslucent = false
+                navigationController.pushViewController(ScreenshotsViewController(screenshotsURLs: screenshots), animated: true)
             default:
                 return
             }
@@ -170,6 +182,8 @@ extension Game {
         case 4:
             return 60
         case 5:
+            return 60
+        case 6:
             return 60
         default:
             return 0

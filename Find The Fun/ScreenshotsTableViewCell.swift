@@ -10,6 +10,10 @@ import UIKit
 
 class ScreenshotsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var screenshots: UILabel?
+    
+    static var screenshotsTableViewCellIdentifier: String { return "ScreenshotsTableViewCell" }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

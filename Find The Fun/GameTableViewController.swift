@@ -11,7 +11,6 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     let apiKey = "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5"
     let httpHeaderField = "X-Mashape-Key"
     var arrayGames: [Game] = []
-    let logo = UIImageView()
     
     var activityIndicatorAppeared = true
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -21,7 +20,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
-
+        
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
@@ -35,14 +34,17 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
-        refreshControl?.tintColor = UIColor.white
-        logo.image = #imageLiteral(resourceName: "ufo")
-        tabBarController?.navigationItem.titleView?.addSubview(logo) 
+        refreshControl?.tintColor = UIColor.gray
+        
     }
     
     
     
     override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
+        tabBarController?.navigationItem.titleView = nil
+        tabBarController?.navigationItem.title = "News"
+        
         let navBarImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
         navBarImageView.contentMode = .scaleAspectFit
         
@@ -50,8 +52,6 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white
         tabBarController?.tabBar.unselectedItemTintColor = ColorUI.unselectedItemTabBar
-        
-        
         
         if activityIndicatorAppeared {
             activityIndicatorAppeared = false

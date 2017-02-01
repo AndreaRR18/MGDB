@@ -163,6 +163,44 @@ class DecodeJSON {
     }
 
 
+    
+//    func getScreenshots(callback:@escaping ([Screenshots]) -> ()) {
+//        if let arrayCompaniesExist = arrayPlatforms {
+//            callback(arrayCompaniesExist)
+//        } else {
+//            if let url = URL(string: url) {
+//                let req = NSMutableURLRequest(url: url)
+//                req.setValue(apiKey, forHTTPHeaderField: httpHeaderField)
+//                let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
+//                    (data, response, error) -> Void in
+//                    if let data = data {
+//                        self.arrayPlatforms = self.parsingJsonDataPlatforms(data: data)
+//                        DispatchQueue.main.async {
+//                            if let arrayPlatforms = self.arrayPlatforms {
+//                                callback(arrayPlatforms)
+//                            }
+//                        }
+//                    } else {
+//                        print("\(error)")
+//                    }
+//                })
+//                task.resume()
+//                
+//            } else {
+//                print("URL errato!")
+//            }
+//        }
+//    }
+//    
+//    func parsingJsonDataScreenshots(data: Data) -> [Platform]? {
+//        var platform: [Platform]? = []
+//        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+//        if let j: Any = jsonResult {
+//            platform = decode(j)
+//        }
+//        return platform.flatMap{ $0 }
+//    }
+
 
 }
 

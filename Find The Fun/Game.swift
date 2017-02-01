@@ -16,14 +16,21 @@ struct Game {
     let updatedAt: Int? //updated_at
     let releaseDate: [ReleaseDate]?  //release_dates
     let cover: Cover? //cover
+    let screenshots: [Screenshots]? //screenshots
     
     let identifier = GameCellTableViewCell.cellGameCellIdentifier
 }
 
 struct ReleaseDate {
-    let platform: Int?
-    let year: Int?
-    let month: Int?
+    let platform: Int? //platform
+    let year: Int? //y
+    let month: Int? //m
+}
+
+struct Screenshots {
+    let url: String? //url
+    let width: Int? //width
+    let height: Int? //height
 }
 
 struct Cover {
@@ -43,6 +50,7 @@ extension Game: Decodable {
             <*> json <|? "updated_at"
             <*> json <||? "release_dates"
             <*> json <|? "cover"
+            <*> json <||? "screenshots"
     }
 }
 
@@ -52,6 +60,15 @@ extension ReleaseDate: Decodable {
             <^> json <|? "platform"
             <*> json <|? "y"
             <*> json <|? "m"
+    }
+}
+
+extension Screenshots: Decodable {
+    static func decode(_ json: JSON) -> Decoded<Screenshots> {
+        return curry(Screenshots.init)
+        <^> json <|? "url"
+        <*> json <|? "width"
+        <*> json <|? "height"
     }
 }
 

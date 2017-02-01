@@ -57,6 +57,11 @@
 		65B2DF0D1E2D009500C3DE70 /* PlatformTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B2DF0B1E2D009500C3DE70 /* PlatformTableViewCell.xib */; };
 		65B2DF141E2D036D00C3DE70 /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2DF121E2D036D00C3DE70 /* RatingTableViewCell.swift */; };
 		65B2DF151E2D036D00C3DE70 /* RatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B2DF131E2D036D00C3DE70 /* RatingTableViewCell.xib */; };
+		65B395B31E40E6C500E373B3 /* FavouriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B395B11E40E6C500E373B3 /* FavouriteTableViewController.swift */; };
+		65B395B41E40E6C500E373B3 /* FavouriteTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B395B21E40E6C500E373B3 /* FavouriteTableViewController.xib */; };
+		65B395BA1E40E73500E373B3 /* FavouriteDescriptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B395B81E40E73500E373B3 /* FavouriteDescriptionTableViewController.swift */; };
+		65B395BB1E40E73500E373B3 /* FavouriteDescriptionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B395B91E40E73500E373B3 /* FavouriteDescriptionTableViewController.xib */; };
+		65B395BD1E40EC6300E373B3 /* SaveFavouriteGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B395BC1E40EC6300E373B3 /* SaveFavouriteGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -128,6 +133,11 @@
 		65B2DF0B1E2D009500C3DE70 /* PlatformTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlatformTableViewCell.xib; sourceTree = "<group>"; };
 		65B2DF121E2D036D00C3DE70 /* RatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		65B2DF131E2D036D00C3DE70 /* RatingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingTableViewCell.xib; sourceTree = "<group>"; };
+		65B395B11E40E6C500E373B3 /* FavouriteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteTableViewController.swift; sourceTree = "<group>"; };
+		65B395B21E40E6C500E373B3 /* FavouriteTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteTableViewController.xib; sourceTree = "<group>"; };
+		65B395B81E40E73500E373B3 /* FavouriteDescriptionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteDescriptionTableViewController.swift; sourceTree = "<group>"; };
+		65B395B91E40E73500E373B3 /* FavouriteDescriptionTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteDescriptionTableViewController.xib; sourceTree = "<group>"; };
+		65B395BC1E40EC6300E373B3 /* SaveFavouriteGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveFavouriteGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,13 +253,13 @@
 				656C39071E27D1FC0095EDBC /* LaunchScreen.storyboard */,
 				656C390A1E27D1FC0095EDBC /* Info.plist */,
 				650123761E375CBB007A12AD /* CellBuilder.swift */,
+				6541CBC21E3F4FEC0071C711 /* GameData.xcdatamodeld */,
 				6541CBF11E40A5560071C711 /* UI */,
 				6541CBF41E40A5B30071C711 /* Model */,
 				65B2DEF81E2CFB7500C3DE70 /* News TableView  */,
 				6541CBF61E40A6DD0071C711 /* Search TableView */,
+				65B395B01E40E69100E373B3 /* Favourite */,
 				65B2DEF91E2CFB9900C3DE70 /* Description Table View */,
-				6541CBC21E3F4FEC0071C711 /* GameData.xcdatamodeld */,
-				6541CBF31E40A5680071C711 /* View selected in description */,
 				6541CBF21E40A5620071C711 /* About */,
 				6541CBF51E40A5CF0071C711 /* Json */,
 			);
@@ -286,8 +296,37 @@
 				65B2DF131E2D036D00C3DE70 /* RatingTableViewCell.xib */,
 				6541CBED1E40A53D0071C711 /* ScreenshotsTableViewCell.swift */,
 				6541CBEE1E40A53D0071C711 /* ScreenshotsTableViewCell.xib */,
+				6541CBF31E40A5680071C711 /* View selected in description */,
 			);
 			name = "Description Table View";
+			sourceTree = "<group>";
+		};
+		65B395B01E40E69100E373B3 /* Favourite */ = {
+			isa = PBXGroup;
+			children = (
+				65B395B51E40E6F500E373B3 /* FavouriteTable */,
+				65B395B61E40E71200E373B3 /* FavouriteDescription */,
+				65B395BC1E40EC6300E373B3 /* SaveFavouriteGame.swift */,
+			);
+			name = Favourite;
+			sourceTree = "<group>";
+		};
+		65B395B51E40E6F500E373B3 /* FavouriteTable */ = {
+			isa = PBXGroup;
+			children = (
+				65B395B11E40E6C500E373B3 /* FavouriteTableViewController.swift */,
+				65B395B21E40E6C500E373B3 /* FavouriteTableViewController.xib */,
+			);
+			name = FavouriteTable;
+			sourceTree = "<group>";
+		};
+		65B395B61E40E71200E373B3 /* FavouriteDescription */ = {
+			isa = PBXGroup;
+			children = (
+				65B395B81E40E73500E373B3 /* FavouriteDescriptionTableViewController.swift */,
+				65B395B91E40E73500E373B3 /* FavouriteDescriptionTableViewController.xib */,
+			);
+			name = FavouriteDescription;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +393,7 @@
 			files = (
 				65B2DF0D1E2D009500C3DE70 /* PlatformTableViewCell.xib in Resources */,
 				6541CBF01E40A53D0071C711 /* ScreenshotsTableViewCell.xib in Resources */,
+				65B395BB1E40E73500E373B3 /* FavouriteDescriptionTableViewController.xib in Resources */,
 				656C39091E27D1FC0095EDBC /* LaunchScreen.storyboard in Resources */,
 				654BF6E91E27F55900A82610 /* GameTableViewController.xib in Resources */,
 				65B2DF011E2CFD2900C3DE70 /* SummaryTableViewCell.xib in Resources */,
@@ -363,6 +403,7 @@
 				654BF6F11E28E6E500A82610 /* GameCellTableViewCell.xib in Resources */,
 				652934941E37969300D2F9ED /* CoverViewController.xib in Resources */,
 				65B2DEFD1E2CFC2100C3DE70 /* CoverTableViewCell.xib in Resources */,
+				65B395B41E40E6C500E373B3 /* FavouriteTableViewController.xib in Resources */,
 				65B2DF051E2CFE9B00C3DE70 /* CompanyTableViewCell.xib in Resources */,
 				65B2DEF71E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib in Resources */,
 				65B2DF091E2CFFA200C3DE70 /* PublishedTableViewCell.xib in Resources */,
@@ -405,6 +446,7 @@
 				652934931E37969300D2F9ED /* CoverViewController.swift in Sources */,
 				654BF6E81E27F55900A82610 /* GameTableViewController.swift in Sources */,
 				656763451E2FEB650095AFAD /* DecodeJSON.swift in Sources */,
+				65B395BA1E40E73500E373B3 /* FavouriteDescriptionTableViewController.swift in Sources */,
 				6541CBEC1E3FA5770071C711 /* ColorInterface.swift in Sources */,
 				65B2DF081E2CFFA200C3DE70 /* PublishedTableViewCell.swift in Sources */,
 				6541CBEF1E40A53D0071C711 /* ScreenshotsTableViewCell.swift in Sources */,
@@ -412,10 +454,12 @@
 				654BF6F01E28E6E500A82610 /* GameCellTableViewCell.swift in Sources */,
 				65B2DF0C1E2D009500C3DE70 /* PlatformTableViewCell.swift in Sources */,
 				65B2DF001E2CFD2900C3DE70 /* SummaryTableViewCell.swift in Sources */,
+				65B395BD1E40EC6300E373B3 /* SaveFavouriteGame.swift in Sources */,
 				6541CBC41E3F4FEC0071C711 /* GameData.xcdatamodeld in Sources */,
 				65B2DEF61E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift in Sources */,
 				65B2DEFC1E2CFC2100C3DE70 /* CoverTableViewCell.swift in Sources */,
 				654BF6E51E27F12900A82610 /* Game.swift in Sources */,
+				65B395B31E40E6C500E373B3 /* FavouriteTableViewController.swift in Sources */,
 				656C38FF1E27D1FC0095EDBC /* AppDelegate.swift in Sources */,
 				6529349F1E39F4B200D2F9ED /* ActivityIndicator.swift in Sources */,
 				6529349A1E38CB4200D2F9ED /* SearchGamesTableViewController.swift in Sources */,
