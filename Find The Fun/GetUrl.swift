@@ -47,3 +47,13 @@ func getUrlIDGame(idGame: Int) -> String {
     return gameUrl
 }
 
+func getUrlIDGenres(idGenre: Int) -> String {
+    let genresUrl = "https://igdbcom-internet-game-database-v1.p.mashape.com/genres/"+"\(idGenre)"+"?fields=*"
+    return genresUrl
+}
+
+func getUrlIDGameModes(idGameModes: Int) -> String {
+    let gameModesUrl = "https://igdbcom-internet-game-database-v1.p.mashape.com/gameModes/"+"\(idGameModes)"+"?fields=*"
+    return gameModesUrl
+}
+

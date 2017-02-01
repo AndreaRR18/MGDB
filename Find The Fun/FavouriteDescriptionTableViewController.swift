@@ -91,6 +91,15 @@ class FavouriteDescriptionTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: SummaryTableViewCell.summaryTableViewCellIdentifier, for: indexPath) as! SummaryTableViewCell
+            cell.backgroundColor = ColorUI.background
+            cell.isSelected = false
+            cell.summaryText?.textColor = ColorUI.text
+            cell.layer.cornerRadius = 20
+            cell.summaryText?.text = favouriteGameDescription.summary
+            return cell
+
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: CoverTableViewCell.coverTableViewCellIdentifier, for: indexPath) as! CoverTableViewCell
             let placeholder = #imageLiteral(resourceName: "img-not-found")
@@ -99,14 +108,6 @@ class FavouriteDescriptionTableViewController: UITableViewController {
             cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
             return cell
             
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: SummaryTableViewCell.summaryTableViewCellIdentifier, for: indexPath) as! SummaryTableViewCell
-            cell.backgroundColor = ColorUI.background
-            cell.isSelected = false
-            cell.summaryText?.textColor = ColorUI.text
-            cell.layer.cornerRadius = 20
-            cell.summaryText?.text = favouriteGameDescription.summary
-            return cell
             
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: CompanyTableViewCell.companyTableViewCellIdentifier, for: indexPath) as! CompanyTableViewCell

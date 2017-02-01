@@ -14,26 +14,27 @@ class GameDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: "PlatformTableViewCell", bundle: nil), forCellReuseIdentifier: "PlatformTableViewCell")
         self.tableView.register(UINib(nibName: "RatingTableViewCell", bundle: nil), forCellReuseIdentifier: "RatingTableViewCell")
         self.tableView.register(UINib(nibName: "ScreenshotsTableViewCell", bundle: nil), forCellReuseIdentifier: "ScreenshotsTableViewCell")
+        self.tableView.register(UINib(nibName: "GenreTableViewCell", bundle: nil), forCellReuseIdentifier: "GenreTableViewCell")
+        self.tableView.register(UINib(nibName: "GameModesTableViewCell", bundle: nil), forCellReuseIdentifier: "GameModesTableViewCell")
+
         
-                let saveFavourite = UIButton(type: .custom)
-                saveFavourite.setTitle("Save", for: .normal)
-                saveFavourite.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
-                saveFavourite.addTarget(self, action: #selector(GameDescriptionTableViewController.saveFavourite), for: .touchUpInside)
-                let saveGame = UIBarButtonItem(customView: saveFavourite)
+        let saveFavourite = UIButton(type: .custom)
+        saveFavourite.setTitle("Save", for: .normal)
+        saveFavourite.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
+        saveFavourite.addTarget(self, action: #selector(GameDescriptionTableViewController.saveFavourite), for: .touchUpInside)
+        let saveGame = UIBarButtonItem(customView: saveFavourite)
         
-                let removeFavourite = UIButton(type: .custom)
-                removeFavourite.setTitle("Remove", for: .normal)
-                removeFavourite.frame = CGRect(x: 0, y: 0, width: 80, height: 30)
-                removeFavourite.addTarget(self, action: #selector(GameDescriptionTableViewController.removeFavourite), for: .touchUpInside)
-                let removeGame = UIBarButtonItem(customView: removeFavourite)
+        let removeFavourite = UIButton(type: .custom)
+        removeFavourite.setTitle("Remove", for: .normal)
+        removeFavourite.frame = CGRect(x: 0, y: 0, width: 80, height: 30)
+        removeFavourite.addTarget(self, action: #selector(GameDescriptionTableViewController.removeFavourite), for: .touchUpInside)
+        let removeGame = UIBarButtonItem(customView: removeFavourite)
         
-                if fetchGameFavourite(id: Int32(gameDescription.idGame)) {
-                    navigationItem.rightBarButtonItem = saveGame
-                    print("salvato")
-                } else {
-                    navigationItem.rightBarButtonItem = removeGame
-                    print("rimosso")
-                }
+        if fetchGameFavourite(id: Int32(gameDescription.idGame)) {
+            navigationItem.rightBarButtonItem = saveGame
+        } else {
+            navigationItem.rightBarButtonItem = removeGame
+        }
         title = gameDescription.name
         
         navigationController?.navigationBar.tintColor = UIColor.white
@@ -95,8 +96,12 @@ class GameDescriptionTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func saveFavourite() {
-        saveFavouriteGame(game: gameDescription, platform: (gameDescription.developers?.first)!, company: (gameDescription.developers?.first)!)
+    func saveFavourite() {        
+        saveFavouriteGame(
+            game: gameDescription,
+            platform: ( gameDescription.developers?.map(String.init).joined(separator: " - ")) ?? "",
+            company: gameDescription.developers?.map(String.init).joined(separator: " - ") ?? "")
+        
     }
     
     func removeFavourite() {

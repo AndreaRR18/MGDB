@@ -13,6 +13,10 @@ class DecodeJSON {
     
     var arrayPlatforms: [Platform]? = nil
 
+    var arrayGenres: [Genres]? = nil
+    
+    var arrayGameModes: [GameModes]? = nil
+    
     
     init(url: String, apiKey: String, httpHeaderField: String) {
         self.url = url
@@ -20,6 +24,8 @@ class DecodeJSON {
         self.httpHeaderField = httpHeaderField
     }
     
+    
+    //-------------------------------SearchGame-------------------------------
     func getSearchGames(weak callback:@escaping ([Game]) -> ()) {
         if let arrayGamesExist = arrayGames {
             callback(arrayGamesExist)
@@ -48,6 +54,7 @@ class DecodeJSON {
         }
     }
     
+    //-------------------------------New Game-------------------------------
     func getNewGames(callback:@escaping ([Game]) -> ()) {
         if let arrayGamesExist = arrayGames {
             callback(arrayGamesExist)
@@ -87,7 +94,7 @@ class DecodeJSON {
         return games.flatMap{ $0 }
     }
 
-
+//-------------------------------Companies-------------------------------
     func getCompanies(callback:@escaping ([Companies]) -> ()) {
         if let arrayCompaniesExist = arrayCompanies {
             callback(arrayCompaniesExist)
@@ -125,9 +132,10 @@ class DecodeJSON {
         return companies.flatMap{ $0 }
     }
 
+    //-------------------------------Platforms-------------------------------
     func getPlatform(callback:@escaping ([Platform]) -> ()) {
-        if let arrayCompaniesExist = arrayPlatforms {
-            callback(arrayCompaniesExist)
+        if let arrayPlatform = arrayPlatforms {
+            callback(arrayPlatform)
         } else {
             if let url = URL(string: url) {
                 let req = NSMutableURLRequest(url: url)
@@ -162,6 +170,82 @@ class DecodeJSON {
         return platform.flatMap{ $0 }
     }
 
+    
+    //-------------------------------Genres-------------------------------
+    func getGenres(callback:@escaping ([Genres]) -> ()) {
+        if let arrayGenre = arrayGenres {
+            callback(arrayGenre)
+        } else {
+            if let url = URL(string: url) {
+                let req = NSMutableURLRequest(url: url)
+                req.setValue(apiKey, forHTTPHeaderField: httpHeaderField)
+                let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
+                    (data, response, error) -> Void in
+                    if let data = data {
+                        self.arrayPlatforms = self.parsingJsonDataPlatforms(data: data)
+                        DispatchQueue.main.async {
+                            if let arrayGenres = self.arrayGenres {
+                                callback(arrayGenres)
+                            }
+                        }
+                    } else {
+                        print("\(error)")
+                    }
+                })
+                task.resume()
+                
+            } else {
+                print("URL errato!")
+            }
+        }
+    }
+    
+    func parsingJsonDataGenres(data: Data) -> [Genres]? {
+        var genre: [Genres]? = []
+        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+        if let j: Any = jsonResult {
+            genre = decode(j)
+        }
+        return genre.flatMap{ $0 }
+    }
+
+    //-------------------------------GameModes-------------------------------
+    func getGameModes(callback:@escaping ([GameModes]) -> ()) {
+        if let arrayGameModes = arrayGameModes {
+            callback(arrayGameModes)
+        } else {
+            if let url = URL(string: url) {
+                let req = NSMutableURLRequest(url: url)
+                req.setValue(apiKey, forHTTPHeaderField: httpHeaderField)
+                let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
+                    (data, response, error) -> Void in
+                    if let data = data {
+                        self.arrayGameModes = self.parsingJsonDataGameModes(data: data)
+                        DispatchQueue.main.async {
+                            if let arrayGameModes = self.arrayGameModes {
+                                callback(arrayGameModes)
+                            }
+                        }
+                    } else {
+                        print("\(error)")
+                    }
+                })
+                task.resume()
+                
+            } else {
+                print("URL errato!")
+            }
+        }
+    }
+    
+    func parsingJsonDataGameModes(data: Data) -> [GameModes]? {
+        var gameModes: [GameModes]? = []
+        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+        if let j: Any = jsonResult {
+            gameModes = decode(j)
+        }
+        return gameModes.flatMap{ $0 }
+    }
 
     
 //    func getScreenshots(callback:@escaping ([Screenshots]) -> ()) {

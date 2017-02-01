@@ -52,8 +52,13 @@ class FavouriteTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: GameCellTableViewCell.cellGameCellIdentifier, for: indexPath) as! GameCellTableViewCell
-        cell.cover?.image = #imageLiteral(resourceName: "img-not-found")
         let game = arrayFavouriteGames[indexPath.row]
+//        if let coverThumbnail = UIImage(data: game.thumbnail) {
+//        cell.cover?.image = coverThumbnail
+//        } else {
+            cell.cover?.image = #imageLiteral(resourceName: "img-not-found")
+//        }
+        
         cell.name?.text = game.name
         cell.company?.text = "\(game.company)"
         cell.years?.text = "\(game.firstReleaseDate)"

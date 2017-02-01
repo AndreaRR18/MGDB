@@ -5,14 +5,21 @@
         <attribute name="nameCompany" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="FavouriteGameData" representedClassName=".FavouriteGameData" syncable="YES" codeGenerationType="class">
-        <attribute name="company" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstReleaseDate" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="platform" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="platform" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="thumbnail" optional="YES" attributeType="Binary" syncable="YES"/>
+    </entity>
+    <entity name="GameModesData" representedClassName="GameModesData" syncable="YES" codeGenerationType="class">
+        <attribute name="idGameModes" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="nameGameModes" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="GenresData" representedClassName="GenresData" syncable="YES" codeGenerationType="class">
+        <attribute name="idGenre" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="nameGenre" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="PlatformsData" representedClassName="PlatformsData" syncable="YES" codeGenerationType="class">
         <attribute name="idPlatform" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -21,6 +28,8 @@
     <elements>
         <element name="CompaniesData" positionX="-27" positionY="18" width="128" height="73"/>
         <element name="PlatformsData" positionX="-27" positionY="36" width="128" height="75"/>
-        <element name="FavouriteGameData" positionX="-27" positionY="45" width="128" height="165"/>
+        <element name="FavouriteGameData" positionX="-27" positionY="45" width="128" height="150"/>
+        <element name="GenresData" positionX="-18" positionY="90" width="128" height="75"/>
+        <element name="GameModesData" positionX="0" positionY="99" width="128" height="75"/>
     </elements>
 </model>

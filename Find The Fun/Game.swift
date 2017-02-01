@@ -3,6 +3,7 @@ import UIKit
 import Runes
 import Argo
 import Curry
+import CoreData
 
 struct Game {
     //required
@@ -16,6 +17,8 @@ struct Game {
     let updatedAt: Int? //updated_at
     let releaseDate: [ReleaseDate]?  //release_dates
     let cover: Cover? //cover
+    let genres: [Int]? //genres
+    let gameModes: [Int]? //GameModes
     let screenshots: [Screenshots]? //screenshots
     
     let identifier = GameCellTableViewCell.cellGameCellIdentifier
@@ -50,7 +53,10 @@ extension Game: Decodable {
             <*> json <|? "updated_at"
             <*> json <||? "release_dates"
             <*> json <|? "cover"
+            <*> json <||? "genres"
+            <*> json <||? "game_modes"
             <*> json <||? "screenshots"
+        
     }
 }
 
@@ -66,9 +72,9 @@ extension ReleaseDate: Decodable {
 extension Screenshots: Decodable {
     static func decode(_ json: JSON) -> Decoded<Screenshots> {
         return curry(Screenshots.init)
-        <^> json <|? "url"
-        <*> json <|? "width"
-        <*> json <|? "height"
+            <^> json <|? "url"
+            <*> json <|? "width"
+            <*> json <|? "height"
     }
 }
 
@@ -78,6 +84,8 @@ extension Cover: Decodable {
             <^> json <|? "url"
     }
 }
+
+
 
 
 

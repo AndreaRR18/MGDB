@@ -82,22 +82,42 @@ func fetchCompany(id: Int32) -> String? {
 }
 
 
-func nameCompanyDB(id: Int?, callback:@escaping (String) -> ()) {
-    if let idCompany = id {
+func nameCompanyDB(id: [Int], callback:@escaping (String) -> ()) {
+    var companies: [String] = []
+    id.forEach{ idCompany in
         if let nameCompany = fetchCompany(id: Int32(idCompany)) {
-            callback(nameCompany)
+            companies.append(nameCompany)
         } else {
             let decodeJSON = DecodeJSON(url: getUrlIDCompany(idCompany: idCompany), apiKey: "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5", httpHeaderField: "X-Mashape-Key")
             decodeJSON.getCompanies(callback: { arrayCompanies in
-                guard let idCompany = arrayCompanies.first?.idCompany, let nameCompany = arrayCompanies.first?.name else { return }
-                saveCompany(idCompany: Int32(idCompany), nameCompany: nameCompany)
-                callback(nameCompany)
+                arrayCompanies.forEach({
+                    companies.append( $0.name )
+                    saveCompany(idCompany: Int32($0.idCompany), nameCompany: $0.name)
+                })
             })
+            
         }
-    } else {
-        callback("N.D.")
     }
+    callback(companies.joined(separator: "-"))
 }
+
+//func nameCompanyDB(id: Int?, callback:@escaping (String) -> ()) {
+//    if let idCompany = id {
+//        if let nameCompany = fetchCompany(id: Int32(idCompany)) {
+//            callback(nameCompany)
+//        } else {
+//            let decodeJSON = DecodeJSON(url: getUrlIDCompany(idCompany: idCompany), apiKey: "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5", httpHeaderField: "X-Mashape-Key")
+//            decodeJSON.getCompanies(callback: { arrayCompanies in
+//                guard let idCompany = arrayCompanies.first?.idCompany, let nameCompany = arrayCompanies.first?.name else { return }
+//                saveCompany(idCompany: Int32(idCompany), nameCompany: nameCompany)
+//                callback(nameCompany)
+//            })
+//        }
+//    } else {
+//        callback("N.D.")
+//    }
+//}
+
 
 
 
