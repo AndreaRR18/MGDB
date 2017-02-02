@@ -60,7 +60,7 @@ class FavouriteTableViewController: UITableViewController {
 //        }
         
         cell.name?.text = game.name
-        cell.company?.text = "\(game.company)"
+//        cell.company?.text = "\(game.company)"
         cell.years?.text = "\(game.firstReleaseDate)"
         return cell
     }

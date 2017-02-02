@@ -61,7 +61,6 @@ class ScreenshotsViewController: UIViewController {
     }
     
     func getScreenshotFromURL(url: String) {
-        print(url)
         if let urlScreenshot = getScreenshots(url: url) {
             screenshot.af_setImage(
                 withURL: urlScreenshot,
@@ -69,7 +68,6 @@ class ScreenshotsViewController: UIViewController {
                 runImageTransitionIfCached: true,
                 completion: { _ in
                     self.screenshotsArray.append(self.screenshot)
-                    print(self.screenshot)
             })
         }
     }

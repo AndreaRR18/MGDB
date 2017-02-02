@@ -103,6 +103,20 @@ func nameCompanyDB(id: [Int], callback:@escaping (String, Bool) -> ()) {
     callback(companies.joined(separator: "-"), new)
 }
 
+//        if let developers = developers {
+//            nameCompanyDB(id: developers, callback: { nameCompany, new in
+//
+//                cell.company?.text = nameCompany
+//                if new {
+//                 _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { _ in
+//                    tableView.reloadData()
+//                })
+//                }
+//            })
+//        } else {
+//            cell.company?.text = "N.D."
+//        }
+
 //func nameCompanyDB(id: Int?, callback:@escaping (String) -> ()) {
 //    if let idCompany = id {
 //        if let nameCompany = fetchCompany(id: Int32(idCompany)) {

@@ -11,26 +11,10 @@ extension Game {
         
         cell.backgroundColor = ColorUI.background
         cell.name?.textColor = ColorUI.text
-        cell.company?.textColor = ColorUI.text
         cell.years?.textColor = ColorUI.text
-        
         cell.cover?.layer.cornerRadius = 30.0
         cell.cover?.clipsToBounds = true
-        
         cell.name?.text = name
-        if let developers = developers {
-            nameCompanyDB(id: developers, callback: { nameCompany, new in
-                
-                cell.company?.text = nameCompany
-                if new {
-                 _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { _ in
-                    tableView.reloadData()
-                })
-                }
-            })
-        } else {
-            cell.company?.text = "N.D."
-        }
         cell.years?.text = releaseDate?.first?.year.map(String.init)
         let placeholder = #imageLiteral(resourceName: "img-not-found")
         if let urlExist = getUrlHttps(url: cover?.url) {
@@ -106,13 +90,15 @@ extension Game {
         
         cell.backgroundColor = ColorUI.background
         cell.company?.textColor = ColorUI.text
-        
-        if let id = developers?.first {
-            if let nameCompany = fetchCompany(id: Int32(id)) {
+        if let developers = developers {
+            nameCompanyDB(id: developers, callback: { nameCompany, new in
                 cell.company?.text = nameCompany
-            } else {
-                cell.company?.text = "N.D."
-            }
+                if new {
+                    _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { _ in
+                        tableView.reloadData()
+                    })
+                }
+            })
         } else {
             cell.company?.text = "N.D."
         }
@@ -143,9 +129,9 @@ extension Game {
         cell.genres?.textColor = ColorUI.text
         nameGenresDB(id: genres, callback: { nameGenre in
             cell.genres?.text = nameGenre
-//            _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { _ in
-//                tableView.reloadData()
-//            })
+            //            _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { _ in
+            //                tableView.reloadData()
+            //            })
         })
         return cell
     }
@@ -154,7 +140,6 @@ extension Game {
         
         cell.backgroundColor = ColorUI.background
         cell.gameModes?.textColor = ColorUI.text
-        print(gameModes)
         nameGameModesDB(id: gameModes, callback: { nameGameModes in
             cell.gameModes?.text = nameGameModes
         })

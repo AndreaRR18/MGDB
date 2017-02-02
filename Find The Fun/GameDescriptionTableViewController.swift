@@ -3,6 +3,9 @@ import UIKit
 class GameDescriptionTableViewController: UITableViewController {
     
     var gameDescription: Game
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    var activityIndicatorFooter = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    var viewActivityIndicatorFooter = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +19,7 @@ class GameDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: "ScreenshotsTableViewCell", bundle: nil), forCellReuseIdentifier: "ScreenshotsTableViewCell")
         self.tableView.register(UINib(nibName: "GenreTableViewCell", bundle: nil), forCellReuseIdentifier: "GenreTableViewCell")
         self.tableView.register(UINib(nibName: "GameModesTableViewCell", bundle: nil), forCellReuseIdentifier: "GameModesTableViewCell")
-
+        
         
         let saveFavourite = UIButton(type: .custom)
         saveFavourite.setTitle("Save", for: .normal)
@@ -51,11 +54,9 @@ class GameDescriptionTableViewController: UITableViewController {
         self.view.backgroundColor = ColorUI.backgoundTableView
         
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.navigationItem.titleView = nil
-    }
     required init(game: Game) {
         self.gameDescription = game
         super.init(style: .plain)
@@ -93,7 +94,7 @@ class GameDescriptionTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func saveFavourite() {        
+    func saveFavourite() {
         saveFavouriteGame(
             game: gameDescription,
             platform: ( gameDescription.developers?.map(String.init).joined(separator: " - ")) ?? "",
@@ -107,3 +108,4 @@ class GameDescriptionTableViewController: UITableViewController {
     
     
 }
+

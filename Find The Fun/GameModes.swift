@@ -65,7 +65,6 @@ func nameGameModesDB(id: [Int]?, callback:@escaping (String) -> ()) {
     var gameModes: [String] = []
     guard let id = id else { return }
     id.forEach{ idGameModes in
-        print(idGameModes)
         if let nameGameModes = fetchGameModes(id: Int32(idGameModes)) {
             gameModes.append(nameGameModes)
         } else {

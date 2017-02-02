@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genres:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPN-aB-KxJ">
@@ -25,18 +25,22 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N.D." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="RDf-Cq-R1m">
-                        <rect key="frame" x="82.5" y="11" width="33" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N.D." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="RDf-Cq-R1m">
+                        <rect key="frame" x="82.5" y="1.5" width="230" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="EKA-A4-Of4"/>
+                            <constraint firstAttribute="width" constant="230" id="GLa-fp-EWg"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="RDf-Cq-R1m" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="UIR-oH-9aM"/>
                     <constraint firstItem="wPN-aB-KxJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="eEE-62-Ctj"/>
-                    <constraint firstItem="RDf-Cq-R1m" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jum-Ma-OV5"/>
                     <constraint firstItem="wPN-aB-KxJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nrO-2D-uHi"/>
-                    <constraint firstItem="RDf-Cq-R1m" firstAttribute="leading" secondItem="wPN-aB-KxJ" secondAttribute="trailing" constant="5" id="sG8-QG-ulE"/>
+                    <constraint firstItem="RDf-Cq-R1m" firstAttribute="leading" secondItem="wPN-aB-KxJ" secondAttribute="trailing" constant="5" id="yBn-Eb-h3d"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
