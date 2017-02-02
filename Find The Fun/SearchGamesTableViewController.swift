@@ -4,8 +4,8 @@ import Argo
 class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate {
     
     let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50"
-    let apiKey = "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5"
-    let httpHeaderField = "X-Mashape-Key"
+//    let apiKey = "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5"
+//    let httpHeaderField = "X-Mashape-Key"
     var arrayGames: [Game] = []
     
     
@@ -95,7 +95,7 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         activityIndicator.startAnimating()
         
         
-        let decodedJSON = DecodeJSON(url: getUrlSearchedGames(title: searchText), apiKey: apiKey, httpHeaderField: httpHeaderField)
+        let decodedJSON = DecodeJSON(url: getUrlSearchedGames(title: searchText))
         decodedJSON.getSearchGames(weak: { arrayGames in
             self.arrayGames = arrayGames
             self.activityIndicator.stopAnimating()

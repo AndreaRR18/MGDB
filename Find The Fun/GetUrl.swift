@@ -53,7 +53,20 @@ func getUrlIDGenres(idGenre: Int) -> String {
 }
 
 func getUrlIDGameModes(idGameModes: Int) -> String {
-    let gameModesUrl = "https://igdbcom-internet-game-database-v1.p.mashape.com/gameModes/"+"\(idGameModes)"+"?fields=*"
+    let gameModesUrl = "https://igdbcom-internet-game-database-v1.p.mashape.com/game_modes/"+"\(idGameModes)"+"?fields=*"
     return gameModesUrl
 }
+
+func getLogoThumbnail(cloudinaryid: String?) -> URL? {
+    guard let cloudinaryid = cloudinaryid else { return nil }
+    let urlLogoThumbnail = URL(string: "https://images.igdb.com/igdb/image/upload/t_thumb/"+cloudinaryid)
+    return urlLogoThumbnail
+}
+
+func getLogoHDCompany(cloudinaryid: String?) -> URL? {
+    guard let cloudinaryid = cloudinaryid else { return nil }
+    let urlLogoHDCompany = URL(string: ("https://images.igdb.com/igdb/image/upload/"+cloudinaryid))
+    return urlLogoHDCompany
+}
+
 

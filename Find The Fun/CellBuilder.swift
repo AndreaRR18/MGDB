@@ -19,8 +19,14 @@ extension Game {
         
         cell.name?.text = name
         if let developers = developers {
-            nameCompanyDB(id: developers, callback: { nameCompany in
+            nameCompanyDB(id: developers, callback: { nameCompany, new in
+                
                 cell.company?.text = nameCompany
+                if new {
+                 _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { _ in
+                    tableView.reloadData()
+                })
+                }
             })
         } else {
             cell.company?.text = "N.D."
@@ -52,9 +58,6 @@ extension Game {
             },
             { (tableView,indexPath) -> UITableViewCell in
                 self.getCellPublished(tableView: tableView, indexPath: indexPath)
-            },
-            { (tableView,indexPath) -> UITableViewCell in
-                self.getCellPlatform(tableView: tableView, indexPath: indexPath)
             },
             { (tableView,indexPath) -> UITableViewCell in
                 self.getCellRate(tableView: tableView, indexPath: indexPath)
@@ -92,7 +95,6 @@ extension Game {
     }
     func getCellSummary(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SummaryTableViewCell.summaryTableViewCellIdentifier, for: indexPath) as! SummaryTableViewCell
-        
         cell.backgroundColor = ColorUI.background
         cell.isSelected = false
         cell.summaryText?.textColor = ColorUI.text
@@ -119,23 +121,9 @@ extension Game {
     
     func getCellPublished(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PublishedTableViewCell.publishedTableViewCellIdentifier, for: indexPath) as! PublishedTableViewCell
-        
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         cell.backgroundColor = ColorUI.background
         cell.firstReleaseDate?.textColor = ColorUI.text
-        
-        cell.firstReleaseDate?.text = releaseDate?.first?.year.map(String.init)
-        return cell
-    }
-    
-    func getCellPlatform(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PlatformTableViewCell.platformTableViewCellIdentifier, for: indexPath) as! PlatformTableViewCell
-        
-        cell.backgroundColor = ColorUI.background
-        cell.platform?.textColor = ColorUI.text
-        
-        namePlatformDB(id: releaseDate?.first?.platform, callback: { namePlatform in
-            cell.platform?.text = namePlatform
-        })
         return cell
     }
     
@@ -151,27 +139,25 @@ extension Game {
     
     func getCellGenres(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: GenreTableViewCell.genresTableViewCellIdentifier, for: indexPath) as! GenreTableViewCell
-        var allGenres: [String]?
         cell.backgroundColor = ColorUI.background
         cell.genres?.textColor = ColorUI.text
-        if let id = genres {
-            id.forEach{ id in
-                if let nameGenres = fetchGenres(id: Int32(id)) {
-                    allGenres?.append(nameGenres)
-                }
-            }
-        
-        cell.genres?.text =  allGenres?.joined(separator: ", ") ?? "N.D."
+        nameGenresDB(id: genres, callback: { nameGenre in
+            cell.genres?.text = nameGenre
+//            _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { _ in
+//                tableView.reloadData()
+//            })
+        })
         return cell
     }
-    
     func getCellGameModes(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: GameModesTableViewCell.gameModesTableViewCellIdentifier, for: indexPath) as! GameModesTableViewCell
         
         cell.backgroundColor = ColorUI.background
         cell.gameModes?.textColor = ColorUI.text
-        
-        cell.gameModes?.text = gameModes.map{ String(describing: $0) } ?? "N.D."
+        print(gameModes)
+        nameGameModesDB(id: gameModes, callback: { nameGameModes in
+            cell.gameModes?.text = nameGameModes
+        })
         return cell
     }
     
@@ -191,7 +177,10 @@ extension Game {
         case 1:
             navigationController.navigationBar.isTranslucent = false
             navigationController.pushViewController(CoverViewController(coverURL: cover?.url), animated: true)
-        case 8:
+        case 3:
+            navigationController.navigationBar.isTranslucent = false
+            navigationController.pushViewController(ReleaseDateTableViewController(arrayReleaseDate: releaseDate), animated: true)
+        case 7:
             navigationController.navigationBar.isTranslucent = false
             navigationController.pushViewController(ScreenshotsViewController(screenshotsURLs: screenshots), animated: true)
         default:
@@ -225,4 +214,3 @@ func heightRowInGameDescription(indexPath: Int) -> CGFloat {
         return 0
     }
 }
-

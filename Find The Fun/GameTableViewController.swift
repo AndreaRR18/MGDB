@@ -8,8 +8,6 @@ import CoreData
 class GameTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     var offset = 0
     let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=30&order=updated_at%3Adesc"
-    let apiKey = "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5"
-    let httpHeaderField = "X-Mashape-Key"
     var arrayGames: [Game] = []
     
     var activityIndicatorAppeared = true
@@ -25,7 +23,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
-        let decodedJSON = DecodeJSON(url: gamesURL, apiKey: apiKey, httpHeaderField: httpHeaderField)
+        let decodedJSON = DecodeJSON(url: gamesURL)
         decodedJSON.getNewGames(callback: { arrayGames in
             self.arrayGames = arrayGames
             self.activityIndicator.stopAnimating()
@@ -123,7 +121,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         }
         if indexPath.row == arrayGames.count - 5 {
             offset += 10
-            let decodedJSON = DecodeJSON(url: getUrlOffsetdGames(offset: offset), apiKey: apiKey, httpHeaderField: httpHeaderField)
+            let decodedJSON = DecodeJSON(url: getUrlOffsetdGames(offset: offset))
             decodedJSON.getNewGames(callback: { arrayGames in
                 self.arrayGames += arrayGames
                 self.activityIndicator.stopAnimating()
@@ -134,7 +132,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     
     func refresh() {
         self.refreshControl?.beginRefreshing()
-        let decodedJSON = DecodeJSON(url: gamesURL, apiKey: apiKey, httpHeaderField: httpHeaderField)
+        let decodedJSON = DecodeJSON(url: gamesURL)
         decodedJSON.getNewGames(callback: { arrayGames in
             self.arrayGames = arrayGames
             self.activityIndicator.stopAnimating()

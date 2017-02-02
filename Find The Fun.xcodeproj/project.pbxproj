@@ -37,6 +37,13 @@
 		654BF7051E29344700A82610 /* Runes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF7031E29344700A82610 /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		654BF7071E29344B00A82610 /* Curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF7061E29344B00A82610 /* Curry.framework */; };
 		654BF7081E29344B00A82610 /* Curry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF7061E29344B00A82610 /* Curry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		655564DC1E4345820022C87F /* ReleaseDateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655564DA1E4345820022C87F /* ReleaseDateTableViewController.swift */; };
+		655564DD1E4345820022C87F /* ReleaseDateTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 655564DB1E4345820022C87F /* ReleaseDateTableViewController.xib */; };
+		655564E01E4345A10022C87F /* GenresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655564DE1E4345A10022C87F /* GenresTableViewController.swift */; };
+		655564E11E4345A10022C87F /* GenresTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 655564DF1E4345A10022C87F /* GenresTableViewController.xib */; };
+		655564E61E4346EF0022C87F /* ReleaseDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655564E41E4346EF0022C87F /* ReleaseDateTableViewCell.swift */; };
+		655564E71E4346EF0022C87F /* ReleaseDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 655564E51E4346EF0022C87F /* ReleaseDateTableViewCell.xib */; };
+		655564EA1E43471F0022C87F /* IGDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655564E91E43471F0022C87F /* IGDB.swift */; };
 		656763451E2FEB650095AFAD /* DecodeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656763441E2FEB650095AFAD /* DecodeJSON.swift */; };
 		656C38FF1E27D1FC0095EDBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C38FE1E27D1FC0095EDBC /* AppDelegate.swift */; };
 		656C39011E27D1FC0095EDBC /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656C39001E27D1FC0095EDBC /* HomePageViewController.swift */; };
@@ -117,13 +124,20 @@
 		654BF6FF1E29343E00A82610 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = Carthage/Build/iOS/Argo.framework; sourceTree = "<group>"; };
 		654BF7031E29344700A82610 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = "<group>"; };
 		654BF7061E29344B00A82610 /* Curry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Curry.framework; path = Carthage/Build/iOS/Curry.framework; sourceTree = "<group>"; };
+		655564DA1E4345820022C87F /* ReleaseDateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseDateTableViewController.swift; sourceTree = "<group>"; };
+		655564DB1E4345820022C87F /* ReleaseDateTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReleaseDateTableViewController.xib; sourceTree = "<group>"; };
+		655564DE1E4345A10022C87F /* GenresTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresTableViewController.swift; sourceTree = "<group>"; };
+		655564DF1E4345A10022C87F /* GenresTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenresTableViewController.xib; sourceTree = "<group>"; };
+		655564E41E4346EF0022C87F /* ReleaseDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseDateTableViewCell.swift; sourceTree = "<group>"; };
+		655564E51E4346EF0022C87F /* ReleaseDateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReleaseDateTableViewCell.xib; sourceTree = "<group>"; };
+		655564E91E43471F0022C87F /* IGDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGDB.swift; sourceTree = "<group>"; };
 		656763441E2FEB650095AFAD /* DecodeJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeJSON.swift; sourceTree = "<group>"; };
 		656C38FB1E27D1FC0095EDBC /* Find The Fun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find The Fun.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		656C38FE1E27D1FC0095EDBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		656C39001E27D1FC0095EDBC /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
-		656C39051E27D1FC0095EDBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		656C39051E27D1FC0095EDBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Find The Fun/Assets.xcassets"; sourceTree = "<group>"; };
 		656C39081E27D1FC0095EDBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		656C390A1E27D1FC0095EDBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		656C390A1E27D1FC0095EDBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Find The Fun/Info.plist"; sourceTree = "<group>"; };
 		656C39101E27E2DF0095EDBC /* HomePageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomePageViewController.xib; sourceTree = "<group>"; };
 		65B2DEF41E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDescriptionTableViewController.swift; sourceTree = "<group>"; };
 		65B2DEF51E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameDescriptionTableViewController.xib; sourceTree = "<group>"; };
@@ -186,17 +200,6 @@
 			name = About;
 			sourceTree = "<group>";
 		};
-		6541CBF31E40A5680071C711 /* View selected in description */ = {
-			isa = PBXGroup;
-			children = (
-				652934911E37969300D2F9ED /* CoverViewController.swift */,
-				652934921E37969300D2F9ED /* CoverViewController.xib */,
-				6541CBF71E40AE100071C711 /* ScreenshotsViewController.swift */,
-				6541CBF81E40AE100071C711 /* ScreenshotsViewController.xib */,
-			);
-			name = "View selected in description";
-			sourceTree = "<group>";
-		};
 		6541CBF41E40A5B30071C711 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +208,7 @@
 				6541CBE61E3F75280071C711 /* Platform.swift */,
 				65B395C61E42575B00E373B3 /* Genre.swift */,
 				65B395C81E42576500E373B3 /* GameModes.swift */,
+				650123761E375CBB007A12AD /* CellBuilder.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -237,65 +241,47 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		656C38F21E27D1FC0095EDBC = {
+		655564D71E4345160022C87F /* Release Date */ = {
 			isa = PBXGroup;
 			children = (
-				650123731E375B8F007A12AD /* AlamofireImage.framework */,
-				650123701E375B87007A12AD /* Alamofire.framework */,
-				654BF7061E29344B00A82610 /* Curry.framework */,
-				654BF7031E29344700A82610 /* Runes.framework */,
-				654BF6FF1E29343E00A82610 /* Argo.framework */,
-				656C38FD1E27D1FC0095EDBC /* Find The Fun */,
-				656C38FC1E27D1FC0095EDBC /* Products */,
-				654BF6F21E29252000A82610 /* Frameworks */,
+				655564DA1E4345820022C87F /* ReleaseDateTableViewController.swift */,
+				655564DB1E4345820022C87F /* ReleaseDateTableViewController.xib */,
+				655564E41E4346EF0022C87F /* ReleaseDateTableViewCell.swift */,
+				655564E51E4346EF0022C87F /* ReleaseDateTableViewCell.xib */,
 			);
+			name = "Release Date";
 			sourceTree = "<group>";
 		};
-		656C38FC1E27D1FC0095EDBC /* Products */ = {
+		655564D81E43453C0022C87F /* Cover */ = {
 			isa = PBXGroup;
 			children = (
-				656C38FB1E27D1FC0095EDBC /* Find The Fun.app */,
+				652934911E37969300D2F9ED /* CoverViewController.swift */,
+				652934921E37969300D2F9ED /* CoverViewController.xib */,
 			);
-			name = Products;
+			name = Cover;
 			sourceTree = "<group>";
 		};
-		656C38FD1E27D1FC0095EDBC /* Find The Fun */ = {
+		655564D91E4345440022C87F /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
-				656C38FE1E27D1FC0095EDBC /* AppDelegate.swift */,
-				656C39051E27D1FC0095EDBC /* Assets.xcassets */,
-				656C39071E27D1FC0095EDBC /* LaunchScreen.storyboard */,
-				656C390A1E27D1FC0095EDBC /* Info.plist */,
-				650123761E375CBB007A12AD /* CellBuilder.swift */,
-				6541CBC21E3F4FEC0071C711 /* GameData.xcdatamodeld */,
-				6541CBF11E40A5560071C711 /* UI */,
-				6541CBF41E40A5B30071C711 /* Model */,
-				65B2DEF81E2CFB7500C3DE70 /* News TableView  */,
-				6541CBF61E40A6DD0071C711 /* Search TableView */,
-				65B395B01E40E69100E373B3 /* Favourite */,
-				65B2DEF91E2CFB9900C3DE70 /* Description Table View */,
-				6541CBF21E40A5620071C711 /* About */,
-				6541CBF51E40A5CF0071C711 /* Json */,
+				6541CBF71E40AE100071C711 /* ScreenshotsViewController.swift */,
+				6541CBF81E40AE100071C711 /* ScreenshotsViewController.xib */,
 			);
-			path = "Find The Fun";
+			name = Screenshots;
 			sourceTree = "<group>";
 		};
-		65B2DEF81E2CFB7500C3DE70 /* News TableView  */ = {
+		655564E21E4345BC0022C87F /* Genres */ = {
 			isa = PBXGroup;
 			children = (
-				654BF6E61E27F55900A82610 /* GameTableViewController.swift */,
-				654BF6E71E27F55900A82610 /* GameTableViewController.xib */,
-				654BF6EE1E28E6E500A82610 /* GameCellTableViewCell.swift */,
-				654BF6EF1E28E6E500A82610 /* GameCellTableViewCell.xib */,
+				655564DE1E4345A10022C87F /* GenresTableViewController.swift */,
+				655564DF1E4345A10022C87F /* GenresTableViewController.xib */,
 			);
-			name = "News TableView ";
+			name = Genres;
 			sourceTree = "<group>";
 		};
-		65B2DEF91E2CFB9900C3DE70 /* Description Table View */ = {
+		655564E31E43461F0022C87F /* Description Cell */ = {
 			isa = PBXGroup;
 			children = (
-				65B2DEF41E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift */,
-				65B2DEF51E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib */,
 				65B2DEFA1E2CFC2100C3DE70 /* CoverTableViewCell.swift */,
 				65B2DEFB1E2CFC2100C3DE70 /* CoverTableViewCell.xib */,
 				65B2DEFE1E2CFD2900C3DE70 /* SummaryTableViewCell.swift */,
@@ -314,9 +300,84 @@
 				65B395C31E42468800E373B3 /* GameModesTableViewCell.xib */,
 				6541CBED1E40A53D0071C711 /* ScreenshotsTableViewCell.swift */,
 				6541CBEE1E40A53D0071C711 /* ScreenshotsTableViewCell.xib */,
-				6541CBF31E40A5680071C711 /* View selected in description */,
 			);
-			name = "Description Table View";
+			name = "Description Cell";
+			sourceTree = "<group>";
+		};
+		655564E81E4347010022C87F /* IGDB */ = {
+			isa = PBXGroup;
+			children = (
+				655564E91E43471F0022C87F /* IGDB.swift */,
+			);
+			name = IGDB;
+			sourceTree = "<group>";
+		};
+		656C38F21E27D1FC0095EDBC = {
+			isa = PBXGroup;
+			children = (
+				650123731E375B8F007A12AD /* AlamofireImage.framework */,
+				650123701E375B87007A12AD /* Alamofire.framework */,
+				654BF7061E29344B00A82610 /* Curry.framework */,
+				654BF7031E29344700A82610 /* Runes.framework */,
+				654BF6FF1E29343E00A82610 /* Argo.framework */,
+				656C38FD1E27D1FC0095EDBC /* Find The Fun */,
+				656C390A1E27D1FC0095EDBC /* Info.plist */,
+				6541CBC21E3F4FEC0071C711 /* GameData.xcdatamodeld */,
+				656C39051E27D1FC0095EDBC /* Assets.xcassets */,
+				656C39071E27D1FC0095EDBC /* LaunchScreen.storyboard */,
+				656C38FC1E27D1FC0095EDBC /* Products */,
+				654BF6F21E29252000A82610 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		656C38FC1E27D1FC0095EDBC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				656C38FB1E27D1FC0095EDBC /* Find The Fun.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		656C38FD1E27D1FC0095EDBC /* Find The Fun */ = {
+			isa = PBXGroup;
+			children = (
+				656C38FE1E27D1FC0095EDBC /* AppDelegate.swift */,
+				6541CBF41E40A5B30071C711 /* Model */,
+				65B2DEF81E2CFB7500C3DE70 /* News TableView  */,
+				6541CBF61E40A6DD0071C711 /* Search TableView */,
+				65B2DEF91E2CFB9900C3DE70 /* Description TableView */,
+				65B395B01E40E69100E373B3 /* Favourite */,
+				6541CBF21E40A5620071C711 /* About */,
+				6541CBF51E40A5CF0071C711 /* Json */,
+				655564E81E4347010022C87F /* IGDB */,
+				6541CBF11E40A5560071C711 /* UI */,
+			);
+			path = "Find The Fun";
+			sourceTree = "<group>";
+		};
+		65B2DEF81E2CFB7500C3DE70 /* News TableView  */ = {
+			isa = PBXGroup;
+			children = (
+				654BF6E61E27F55900A82610 /* GameTableViewController.swift */,
+				654BF6E71E27F55900A82610 /* GameTableViewController.xib */,
+				654BF6EE1E28E6E500A82610 /* GameCellTableViewCell.swift */,
+				654BF6EF1E28E6E500A82610 /* GameCellTableViewCell.xib */,
+			);
+			name = "News TableView ";
+			sourceTree = "<group>";
+		};
+		65B2DEF91E2CFB9900C3DE70 /* Description TableView */ = {
+			isa = PBXGroup;
+			children = (
+				65B2DEF41E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift */,
+				65B2DEF51E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib */,
+				655564E31E43461F0022C87F /* Description Cell */,
+				655564D91E4345440022C87F /* Screenshots */,
+				655564D81E43453C0022C87F /* Cover */,
+				655564D71E4345160022C87F /* Release Date */,
+				655564E21E4345BC0022C87F /* Genres */,
+			);
+			name = "Description TableView";
 			sourceTree = "<group>";
 		};
 		65B395B01E40E69100E373B3 /* Favourite */ = {
@@ -413,11 +474,13 @@
 				6541CBF01E40A53D0071C711 /* ScreenshotsTableViewCell.xib in Resources */,
 				65B395BB1E40E73500E373B3 /* FavouriteDescriptionTableViewController.xib in Resources */,
 				656C39091E27D1FC0095EDBC /* LaunchScreen.storyboard in Resources */,
+				655564E71E4346EF0022C87F /* ReleaseDateTableViewCell.xib in Resources */,
 				654BF6E91E27F55900A82610 /* GameTableViewController.xib in Resources */,
 				65B2DF011E2CFD2900C3DE70 /* SummaryTableViewCell.xib in Resources */,
 				656C39111E27E2DF0095EDBC /* HomePageViewController.xib in Resources */,
 				6529349B1E38CB4200D2F9ED /* SearchGamesTableViewController.xib in Resources */,
 				65B2DF151E2D036D00C3DE70 /* RatingTableViewCell.xib in Resources */,
+				655564E11E4345A10022C87F /* GenresTableViewController.xib in Resources */,
 				654BF6F11E28E6E500A82610 /* GameCellTableViewCell.xib in Resources */,
 				652934941E37969300D2F9ED /* CoverViewController.xib in Resources */,
 				65B2DEFD1E2CFC2100C3DE70 /* CoverTableViewCell.xib in Resources */,
@@ -426,6 +489,7 @@
 				65B2DF051E2CFE9B00C3DE70 /* CompanyTableViewCell.xib in Resources */,
 				65B2DEF71E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib in Resources */,
 				65B395C11E42465300E373B3 /* GenreTableViewCell.xib in Resources */,
+				655564DD1E4345820022C87F /* ReleaseDateTableViewController.xib in Resources */,
 				65B2DF091E2CFFA200C3DE70 /* PublishedTableViewCell.xib in Resources */,
 				6541CBFA1E40AE100071C711 /* ScreenshotsViewController.xib in Resources */,
 				656C39061E27D1FC0095EDBC /* Assets.xcassets in Resources */,
@@ -479,14 +543,18 @@
 				65B395BD1E40EC6300E373B3 /* SaveFavouriteGame.swift in Sources */,
 				6541CBC41E3F4FEC0071C711 /* GameData.xcdatamodeld in Sources */,
 				65B2DEF61E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift in Sources */,
+				655564DC1E4345820022C87F /* ReleaseDateTableViewController.swift in Sources */,
 				65B395C01E42465300E373B3 /* GenreTableViewCell.swift in Sources */,
 				65B395C91E42576500E373B3 /* GameModes.swift in Sources */,
 				65B2DEFC1E2CFC2100C3DE70 /* CoverTableViewCell.swift in Sources */,
 				654BF6E51E27F12900A82610 /* Game.swift in Sources */,
+				655564E01E4345A10022C87F /* GenresTableViewController.swift in Sources */,
 				65B395B31E40E6C500E373B3 /* FavouriteTableViewController.swift in Sources */,
+				655564EA1E43471F0022C87F /* IGDB.swift in Sources */,
 				656C38FF1E27D1FC0095EDBC /* AppDelegate.swift in Sources */,
 				6529349F1E39F4B200D2F9ED /* ActivityIndicator.swift in Sources */,
 				6529349A1E38CB4200D2F9ED /* SearchGamesTableViewController.swift in Sources */,
+				655564E61E4346EF0022C87F /* ReleaseDateTableViewCell.swift in Sources */,
 				650123791E3762DE007A12AD /* GetUrl.swift in Sources */,
 				65B2DF141E2D036D00C3DE70 /* RatingTableViewCell.swift in Sources */,
 			);
@@ -501,6 +569,7 @@
 				656C39081E27D1FC0095EDBC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = "Find The Fun";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -665,7 +734,8 @@
 				6541CBC31E3F4FEC0071C711 /* GameData.xcdatamodel */,
 			);
 			currentVersion = 6541CBC31E3F4FEC0071C711 /* GameData.xcdatamodel */;
-			path = GameData.xcdatamodeld;
+			name = GameData.xcdatamodeld;
+			path = "Find The Fun/GameData.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

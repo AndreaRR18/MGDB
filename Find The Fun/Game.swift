@@ -28,6 +28,7 @@ struct ReleaseDate {
     let platform: Int? //platform
     let year: Int? //y
     let month: Int? //m
+    let human: String?
 }
 
 struct Screenshots {
@@ -66,6 +67,7 @@ extension ReleaseDate: Decodable {
             <^> json <|? "platform"
             <*> json <|? "y"
             <*> json <|? "m"
+            <*> json <|? "human"
     }
 }
 

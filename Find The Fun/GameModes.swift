@@ -61,13 +61,15 @@ func fetchGameModes(id: Int32) -> String? {
 }
 
 
-func nameGameModessDB(id: [Int], callback:@escaping (String) -> ()) {
+func nameGameModesDB(id: [Int]?, callback:@escaping (String) -> ()) {
     var gameModes: [String] = []
+    guard let id = id else { return }
     id.forEach{ idGameModes in
+        print(idGameModes)
         if let nameGameModes = fetchGameModes(id: Int32(idGameModes)) {
             gameModes.append(nameGameModes)
         } else {
-            let decodeJSON = DecodeJSON(url: getUrlIDGameModes(idGameModes: idGameModes), apiKey: "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5", httpHeaderField: "X-Mashape-Key")
+            let decodeJSON = DecodeJSON(url: getUrlIDGameModes(idGameModes: idGameModes))
             decodeJSON.getGameModes(callback: { arrayGameModes in
                 arrayGameModes.forEach({
                     gameModes.append( $0.nameGameModes )
@@ -77,5 +79,5 @@ func nameGameModessDB(id: [Int], callback:@escaping (String) -> ()) {
             
         }
     }
-    callback(gameModes.joined(separator: "-"))
+    callback(gameModes.joined(separator: ", "))
 }

@@ -6,22 +6,14 @@ import Argo
 class DecodeJSON {
     let url: String
     var arrayGames: [Game]? = nil
-    let apiKey: String
-    let httpHeaderField: String
-    
     var arrayCompanies: [Companies]? = nil
-    
     var arrayPlatforms: [Platform]? = nil
-
     var arrayGenres: [Genres]? = nil
-    
     var arrayGameModes: [GameModes]? = nil
     
     
-    init(url: String, apiKey: String, httpHeaderField: String) {
+    init(url: String) {
         self.url = url
-        self.apiKey = apiKey
-        self.httpHeaderField = httpHeaderField
     }
     
     
@@ -32,7 +24,7 @@ class DecodeJSON {
         } else {
             if let url = URL(string: url) {
                 let req = NSMutableURLRequest(url: url)
-                req.setValue(apiKey, forHTTPHeaderField: httpHeaderField)
+                req.setValue(IGDBKey.apiKey, forHTTPHeaderField: IGDBKey.header)
                 let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
                     (data, response, error) -> Void in
                     if let data = data {
@@ -61,7 +53,7 @@ class DecodeJSON {
         } else {
             if let url = URL(string: url) {
                 let req = NSMutableURLRequest(url: url)
-                req.setValue(apiKey, forHTTPHeaderField: httpHeaderField)
+                req.setValue(IGDBKey.apiKey, forHTTPHeaderField: IGDBKey.header)
                 let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
                     (data, response, error) -> Void in
                     if let data = data {
@@ -101,7 +93,7 @@ class DecodeJSON {
         } else {
             if let url = URL(string: url) {
                 let req = NSMutableURLRequest(url: url)
-                req.setValue(apiKey, forHTTPHeaderField: httpHeaderField)
+                req.setValue(IGDBKey.apiKey, forHTTPHeaderField: IGDBKey.header)
                 let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
                     (data, response, error) -> Void in
                     if let data = data {
@@ -139,7 +131,7 @@ class DecodeJSON {
         } else {
             if let url = URL(string: url) {
                 let req = NSMutableURLRequest(url: url)
-                req.setValue(apiKey, forHTTPHeaderField: httpHeaderField)
+                req.setValue(IGDBKey.apiKey, forHTTPHeaderField: IGDBKey.header)
                 let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
                     (data, response, error) -> Void in
                     if let data = data {
@@ -173,16 +165,17 @@ class DecodeJSON {
     
     //-------------------------------Genres-------------------------------
     func getGenres(callback:@escaping ([Genres]) -> ()) {
+        var arrayGenresCallback = [Genres]()
         if let arrayGenre = arrayGenres {
             callback(arrayGenre)
         } else {
             if let url = URL(string: url) {
                 let req = NSMutableURLRequest(url: url)
-                req.setValue(apiKey, forHTTPHeaderField: httpHeaderField)
+                req.setValue(IGDBKey.apiKey, forHTTPHeaderField: IGDBKey.header)
                 let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
                     (data, response, error) -> Void in
                     if let data = data {
-                        self.arrayPlatforms = self.parsingJsonDataPlatforms(data: data)
+                        self.arrayGenres = self.parsingJsonDataGenres(data: data)
                         DispatchQueue.main.async {
                             if let arrayGenres = self.arrayGenres {
                                 callback(arrayGenres)
@@ -216,7 +209,7 @@ class DecodeJSON {
         } else {
             if let url = URL(string: url) {
                 let req = NSMutableURLRequest(url: url)
-                req.setValue(apiKey, forHTTPHeaderField: httpHeaderField)
+                req.setValue(IGDBKey.apiKey, forHTTPHeaderField: IGDBKey.header)
                 let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
                     (data, response, error) -> Void in
                     if let data = data {

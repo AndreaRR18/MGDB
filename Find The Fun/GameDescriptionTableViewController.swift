@@ -51,13 +51,10 @@ class GameDescriptionTableViewController: UITableViewController {
         self.view.backgroundColor = ColorUI.backgoundTableView
         
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
-        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.titleView = nil
-        
     }
     required init(game: Game) {
         self.gameDescription = game
@@ -101,7 +98,6 @@ class GameDescriptionTableViewController: UITableViewController {
             game: gameDescription,
             platform: ( gameDescription.developers?.map(String.init).joined(separator: " - ")) ?? "",
             company: gameDescription.developers?.map(String.init).joined(separator: " - ") ?? "")
-        
     }
     
     func removeFavourite() {

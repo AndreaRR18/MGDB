@@ -17,6 +17,7 @@ struct Platform {
 struct LogoPlatform {
     //optional
     let url: String? //string
+    let cloudinary_id: String?
     let width: Int? //int
     let height: Int? //int
 }
@@ -35,6 +36,7 @@ extension LogoPlatform: Decodable {
     static func decode(_ json: JSON) -> Decoded<LogoPlatform> {
         return curry(LogoPlatform.init)
             <^> json <|? "url"
+            <*> json <|? "cloudinary_id"
             <*> json <|? "width"
             <*> json <|? "height"
     }
@@ -85,7 +87,7 @@ func namePlatformDB(id: Int?, callback:@escaping (String) -> ()) {
         if let namePlatform = fetchPlatform(id: Int32(idPlatform)) {
             callback(namePlatform)
         } else {
-            let decodeJSON = DecodeJSON(url: getUrlIDPlatform(idPlatform: idPlatform), apiKey: "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5", httpHeaderField: "X-Mashape-Key")
+            let decodeJSON = DecodeJSON(url: getUrlIDPlatform(idPlatform: idPlatform))
             decodeJSON.getPlatform(callback: { arrayPlatforms in
                 guard let idPlatform = arrayPlatforms.first?.idPlatform, let namePlatform = arrayPlatforms.first?.namePlatform else { return }
                 savePlatform(idPlatform: Int32(idPlatform), namePlatform: namePlatform)

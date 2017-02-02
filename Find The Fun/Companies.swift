@@ -82,23 +82,25 @@ func fetchCompany(id: Int32) -> String? {
 }
 
 
-func nameCompanyDB(id: [Int], callback:@escaping (String) -> ()) {
+func nameCompanyDB(id: [Int], callback:@escaping (String, Bool) -> ()) {
     var companies: [String] = []
+    var new = true
     id.forEach{ idCompany in
         if let nameCompany = fetchCompany(id: Int32(idCompany)) {
+            new = false
             companies.append(nameCompany)
         } else {
-            let decodeJSON = DecodeJSON(url: getUrlIDCompany(idCompany: idCompany), apiKey: "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5", httpHeaderField: "X-Mashape-Key")
+            let decodeJSON = DecodeJSON(url: getUrlIDCompany(idCompany: idCompany))
             decodeJSON.getCompanies(callback: { arrayCompanies in
                 arrayCompanies.forEach({
                     companies.append( $0.name )
                     saveCompany(idCompany: Int32($0.idCompany), nameCompany: $0.name)
                 })
+                
             })
-            
         }
     }
-    callback(companies.joined(separator: "-"))
+    callback(companies.joined(separator: "-"), new)
 }
 
 //func nameCompanyDB(id: Int?, callback:@escaping (String) -> ()) {

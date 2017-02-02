@@ -61,13 +61,15 @@ func fetchGenres(id: Int32) -> String? {
 }
 
 
-func nameGenresDB(id: [Int], callback:@escaping (String) -> ()) {
+func nameGenresDB(id: [Int]?, callback:@escaping (String) -> ()) {
     var genres: [String] = []
+    guard let id = id else { return }
     id.forEach{ idGenre in
+        
         if let nameGenre = fetchGenres(id: Int32(idGenre)) {
             genres.append(nameGenre)
         } else {
-            let decodeJSON = DecodeJSON(url: getUrlIDGenres(idGenre: idGenre), apiKey: "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5", httpHeaderField: "X-Mashape-Key")
+            let decodeJSON = DecodeJSON(url: getUrlIDGenres(idGenre: idGenre))
             decodeJSON.getGenres(callback: { arrayGenres in
                 arrayGenres.forEach({
                     genres.append( $0.nameGenre )
@@ -77,5 +79,5 @@ func nameGenresDB(id: [Int], callback:@escaping (String) -> ()) {
             
         }
     }
-    callback(genres.joined(separator: "-"))
+    callback(genres.joined(separator: ", "))
 }
