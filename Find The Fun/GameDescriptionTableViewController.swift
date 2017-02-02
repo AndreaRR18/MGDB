@@ -94,15 +94,19 @@ class GameDescriptionTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func saveFavourite() {
+    func saveFavourite(sender: UIButton) {
+        sender.setTitle("Remove", for: .normal)
         saveFavouriteGame(
             game: gameDescription,
             platform: ( gameDescription.developers?.map(String.init).joined(separator: " - ")) ?? "",
             company: gameDescription.developers?.map(String.init).joined(separator: " - ") ?? "")
+        navigationController?.popViewController(animated: true)
     }
     
-    func removeFavourite() {
+    func removeFavourite(sender: UIButton) {
+        sender.setTitle("Save", for: .normal)
         deleteFavouriteGame(id: Int32(gameDescription.idGame))
+        navigationController?.popViewController(animated: true)
     }
     
     

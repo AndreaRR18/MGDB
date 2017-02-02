@@ -51,7 +51,12 @@ class FavouriteDescriptionTableViewController: UITableViewController {
         
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         
-        
+        let removeFavourite = UIButton(type: .custom)
+        removeFavourite.setTitle("Remove", for: .normal)
+        removeFavourite.frame = CGRect(x: 0, y: 0, width: 80, height: 30)
+        removeFavourite.addTarget(self, action: #selector(GameDescriptionTableViewController.removeFavourite), for: .touchUpInside)
+        let removeGame = UIBarButtonItem(customView: removeFavourite)
+        navigationItem.rightBarButtonItem = removeGame
         
         
     }
@@ -71,7 +76,7 @@ class FavouriteDescriptionTableViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     
     // MARK: - Table view data source
     
@@ -82,11 +87,11 @@ class FavouriteDescriptionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
-
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return heightRowInGameDescription(indexPath: indexPath.row)
     }
-
+    
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,7 +104,7 @@ class FavouriteDescriptionTableViewController: UITableViewController {
             cell.layer.cornerRadius = 20
             cell.summaryText?.text = favouriteGameDescription.summary
             return cell
-
+            
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: CoverTableViewCell.coverTableViewCellIdentifier, for: indexPath) as! CoverTableViewCell
             let placeholder = #imageLiteral(resourceName: "img-not-found")
@@ -156,6 +161,13 @@ class FavouriteDescriptionTableViewController: UITableViewController {
         }
     }
     
+    func removeFavourite(sender: UIButton) {
+        deleteFavouriteGame(id: Int32(favouriteGameDescription.id))
+        navigationController?.popViewController(animated: true)
+        
     }
+    
+    
+}
 
 
