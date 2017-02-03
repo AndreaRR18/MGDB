@@ -53,7 +53,7 @@ extension Game {
                 self.getCellGameModes(tableView: tableView, indexPath: indexPath)
             },
             { (tableView,indexPath) -> UITableViewCell in
-                self.getCellScreenshots(tableView: tableView, indexPath: indexPath)
+                self.getCellRelatedInDescription(tableView: tableView, indexPath: indexPath)
             }
         ]
     }
@@ -129,9 +129,6 @@ extension Game {
         cell.genres?.textColor = ColorUI.text
         nameGenresDB(id: genres, callback: { nameGenre in
             cell.genres?.text = nameGenre
-            //            _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { _ in
-            //                tableView.reloadData()
-            //            })
         })
         return cell
     }
@@ -146,11 +143,18 @@ extension Game {
         return cell
     }
     
-    func getCellScreenshots(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ScreenshotsTableViewCell.screenshotsTableViewCellIdentifier, for: indexPath) as! ScreenshotsTableViewCell
+    func getCellRelatedInDescription(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: RelatedInDescriptionTableViewCell.relatedInDescriptionTableViewCellIdentifier, for: indexPath) as! RelatedInDescriptionTableViewCell
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         cell.backgroundColor = ColorUI.background
         return cell
     }
+    
+//    func getCellScreenshots(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: ScreenshotsTableViewCell.screenshotsTableViewCellIdentifier, for: indexPath) as! ScreenshotsTableViewCell
+//        cell.backgroundColor = ColorUI.background
+//        return cell
+//    }
     
     
     func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, game: Game) {
@@ -167,7 +171,7 @@ extension Game {
             navigationController.pushViewController(ReleaseDateTableViewController(arrayReleaseDate: releaseDate), animated: true)
         case 7:
             navigationController.navigationBar.isTranslucent = false
-            navigationController.pushViewController(ScreenshotsViewController(screenshotsURLs: screenshots), animated: true)
+            navigationController.pushViewController(RelatedTableViewController(idGenres: genres!), animated: true)
         default:
             return
         }

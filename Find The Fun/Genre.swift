@@ -9,6 +9,7 @@ struct Genres {
     //required
     let idGenre: Int //id
     let nameGenre: String //name
+    let games: [Int]? //games
 }
 
 extension Genres: Decodable {
@@ -16,6 +17,7 @@ extension Genres: Decodable {
         return curry(Genres.init)
             <^> json <| "id"
             <*> json <| "name"
+            <*> json <||? "games"
     }
 }
 

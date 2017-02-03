@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScreenshotsViewController" customModule="Find_The_Fun" customModuleProvider="target">
             <connections>
-                <outlet property="screenshotsScrollView" destination="Nzg-QS-1IG" id="oXX-i9-WyO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,18 +19,23 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nzg-QS-1IG">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gSv-mD-dNR">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                </scrollView>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="c62-6a-cTb">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Nzg-QS-1IG" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="2hB-F1-Prc"/>
-                <constraint firstAttribute="bottom" secondItem="Nzg-QS-1IG" secondAttribute="bottom" id="FMc-dr-JsK"/>
-                <constraint firstAttribute="trailing" secondItem="Nzg-QS-1IG" secondAttribute="trailing" id="YzJ-Hz-MIA"/>
-                <constraint firstItem="Nzg-QS-1IG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fZF-bj-SnP"/>
-                <constraint firstItem="Nzg-QS-1IG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="nAJ-ci-mPS"/>
-                <constraint firstItem="Nzg-QS-1IG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="plx-gV-DBm"/>
+                <constraint firstItem="gSv-mD-dNR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8ae-PW-jSp"/>
+                <constraint firstAttribute="bottom" secondItem="gSv-mD-dNR" secondAttribute="bottom" id="fAd-5C-H0H"/>
+                <constraint firstAttribute="trailing" secondItem="gSv-mD-dNR" secondAttribute="trailing" id="qhg-7n-dxH"/>
+                <constraint firstItem="gSv-mD-dNR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wxL-hm-HfN"/>
             </constraints>
         </view>
     </objects>

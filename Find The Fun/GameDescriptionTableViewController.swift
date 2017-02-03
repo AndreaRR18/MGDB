@@ -19,6 +19,7 @@ class GameDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: "ScreenshotsTableViewCell", bundle: nil), forCellReuseIdentifier: "ScreenshotsTableViewCell")
         self.tableView.register(UINib(nibName: "GenreTableViewCell", bundle: nil), forCellReuseIdentifier: "GenreTableViewCell")
         self.tableView.register(UINib(nibName: "GameModesTableViewCell", bundle: nil), forCellReuseIdentifier: "GameModesTableViewCell")
+        self.tableView.register(UINib(nibName: "RelatedInDescriptionTableViewCell", bundle: nil), forCellReuseIdentifier: "RelatedInDescriptionTableViewCell")
         
         
         let saveFavourite = UIButton(type: .custom)
@@ -95,18 +96,16 @@ class GameDescriptionTableViewController: UITableViewController {
     }
     
     func saveFavourite(sender: UIButton) {
-        sender.setTitle("Remove", for: .normal)
+        sender.setTitle("Added", for: .normal)
         saveFavouriteGame(
             game: gameDescription,
             platform: ( gameDescription.developers?.map(String.init).joined(separator: " - ")) ?? "",
             company: gameDescription.developers?.map(String.init).joined(separator: " - ") ?? "")
-        navigationController?.popViewController(animated: true)
     }
     
     func removeFavourite(sender: UIButton) {
-        sender.setTitle("Save", for: .normal)
+        sender.setTitle("Removed", for: .normal)
         deleteFavouriteGame(id: Int32(gameDescription.idGame))
-        navigationController?.popViewController(animated: true)
     }
     
     

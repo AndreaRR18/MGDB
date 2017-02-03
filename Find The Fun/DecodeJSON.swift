@@ -165,7 +165,6 @@ class DecodeJSON {
     
     //-------------------------------Genres-------------------------------
     func getGenres(callback:@escaping ([Genres]) -> ()) {
-        var arrayGenresCallback = [Genres]()
         if let arrayGenre = arrayGenres {
             callback(arrayGenre)
         } else {
@@ -239,6 +238,48 @@ class DecodeJSON {
         }
         return gameModes.flatMap{ $0 }
     }
+    
+    //-------------------------------Related Game-------------------------------
+    func getRelatedGamesFromID(callback:@escaping ([Game]) -> ()) {
+        if let arrayGamesExist = arrayGames {
+            callback(arrayGamesExist)
+        } else {
+            if let url = URL(string: url) {
+                
+                let req = NSMutableURLRequest(url: url)
+                req.setValue(IGDBKey.apiKey, forHTTPHeaderField: IGDBKey.header)
+                let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
+                    (data, response, error) -> Void in
+                    if let data = data {
+                        self.arrayGames = self.parsingJsonDataGame(data: data)
+                        DispatchQueue.main.async {
+                            if let arrayGames = self.arrayGames {
+                                callback(
+                                    arrayGames
+                                        .filter { $0.cover != nil && $0.summary != nil && $0.updatedAt != nil})
+                            }
+                        }
+                    } else {
+                        print("\(error)")
+                    }
+                })
+                task.resume()
+                
+            } else {
+                print("URL errato!")
+            }
+        }
+    }
+    
+    func parsingJsonDataRelatedGamesFromID(data: Data) -> [Game]? {
+        var games: [Game]? = []
+        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+        if let j: Any = jsonResult {
+            games = decode(j)
+        }
+        return games.flatMap{ $0 }
+    }
+
 
     
 //    func getScreenshots(callback:@escaping ([Screenshots]) -> ()) {
