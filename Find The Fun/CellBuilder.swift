@@ -169,9 +169,9 @@ extension Game {
         case 3:
             navigationController.navigationBar.isTranslucent = false
             navigationController.pushViewController(ReleaseDateTableViewController(arrayReleaseDate: releaseDate), animated: true)
-        case 7:
-            navigationController.navigationBar.isTranslucent = false
-            navigationController.pushViewController(RelatedTableViewController(idGenres: genres!), animated: true)
+//        case 7:
+//            navigationController.navigationBar.isTranslucent = false
+//            navigationController.pushViewController(RelatedTableViewController(idGenres: genres!), animated: true)
         default:
             return
         }

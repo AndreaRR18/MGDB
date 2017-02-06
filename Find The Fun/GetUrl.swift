@@ -59,7 +59,7 @@ func getUrlIDGameModes(idGameModes: Int) -> String {
 
 func getLogoThumbnail(cloudinaryid: String?) -> URL? {
     guard let cloudinaryid = cloudinaryid else { return nil }
-    let urlLogoThumbnail = URL(string: "https://images.igdb.com/igdb/image/upload/t_thumb/"+cloudinaryid)
+    let urlLogoThumbnail = URL(string: ("https://images.igdb.com/igdb/image/upload/t_thumb/"+cloudinaryid).replacingOccurrences(of: "/t_thumb", with: "", options: .literal))
     return urlLogoThumbnail
 }
 

@@ -72,6 +72,7 @@ class ReleaseDateTableViewController: UITableViewController {
             let decodedJSON = DecodeJSON(url: getUrlIDPlatform(idPlatform: arrayReleaseDate[indexPath.row].platform!))
             decodedJSON.getPlatform(callback: { platforms in
             if let url = getLogoThumbnail(cloudinaryid: platforms.first!.logoPlatform?.cloudinary_id) {
+                print(url)
                     cell.logo?.af_setImage(
                         withURL: url,
                         placeholderImage: #imageLiteral(resourceName: "img-not-found"),
