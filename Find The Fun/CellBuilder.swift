@@ -53,6 +53,9 @@ extension Game {
                 self.getCellGameModes(tableView: tableView, indexPath: indexPath)
             },
             { (tableView,indexPath) -> UITableViewCell in
+                self.getCellScreenshots(tableView: tableView, indexPath: indexPath)
+            },
+            { (tableView,indexPath) -> UITableViewCell in
                 self.getCellRelatedInDescription(tableView: tableView, indexPath: indexPath)
             }
         ]
@@ -82,7 +85,7 @@ extension Game {
         cell.backgroundColor = ColorUI.background
         cell.isSelected = false
         cell.summaryText?.textColor = ColorUI.text
-        cell.summaryText?.text = summary
+        cell.summaryText?.text = summary?
         return cell
     }
     func getCellCompany(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
@@ -150,11 +153,11 @@ extension Game {
         return cell
     }
     
-//    func getCellScreenshots(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: ScreenshotsTableViewCell.screenshotsTableViewCellIdentifier, for: indexPath) as! ScreenshotsTableViewCell
-//        cell.backgroundColor = ColorUI.background
-//        return cell
-//    }
+    func getCellScreenshots(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ScreenshotsTableViewCell.screenshotsTableViewCellIdentifier, for: indexPath) as! ScreenshotsTableViewCell
+        cell.backgroundColor = ColorUI.background
+        return cell
+    }
     
     
     func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, game: Game) {
@@ -169,9 +172,13 @@ extension Game {
         case 3:
             navigationController.navigationBar.isTranslucent = false
             navigationController.pushViewController(ReleaseDateTableViewController(arrayReleaseDate: releaseDate), animated: true)
-//        case 7:
-//            navigationController.navigationBar.isTranslucent = false
-//            navigationController.pushViewController(RelatedTableViewController(idGenres: genres!), animated: true)
+        case 7:
+            navigationController.navigationBar.isTranslucent = false
+            guard let screenshots = screenshots else { return }
+            navigationController.pushViewController(ScreenshotTableViewController(arrayScreenshots: screenshots), animated: true)
+        case 8:
+            navigationController.navigationBar.isTranslucent = false
+            navigationController.pushViewController(RelatedTableViewController(idGenres: genres!), animated: true)
         default:
             return
         }

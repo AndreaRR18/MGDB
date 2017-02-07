@@ -20,6 +20,7 @@ struct Game {
     let genres: [Int]? //genres
     let gameModes: [Int]? //GameModes
     let screenshots: [Screenshots]? //screenshots
+    let internetPage: String? //url
     
     let identifier = GameCellTableViewCell.cellGameCellIdentifier
 }
@@ -57,6 +58,7 @@ extension Game: Decodable {
             <*> json <||? "genres"
             <*> json <||? "game_modes"
             <*> json <||? "screenshots"
+            <*> json <|? "url"
         
     }
 }

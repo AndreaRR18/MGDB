@@ -103,38 +103,5 @@ func nameCompanyDB(id: [Int], callback:@escaping (String, Bool) -> ()) {
     callback(companies.joined(separator: "-"), new)
 }
 
-//        if let developers = developers {
-//            nameCompanyDB(id: developers, callback: { nameCompany, new in
-//
-//                cell.company?.text = nameCompany
-//                if new {
-//                 _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { _ in
-//                    tableView.reloadData()
-//                })
-//                }
-//            })
-//        } else {
-//            cell.company?.text = "N.D."
-//        }
-
-//func nameCompanyDB(id: Int?, callback:@escaping (String) -> ()) {
-//    if let idCompany = id {
-//        if let nameCompany = fetchCompany(id: Int32(idCompany)) {
-//            callback(nameCompany)
-//        } else {
-//            let decodeJSON = DecodeJSON(url: getUrlIDCompany(idCompany: idCompany), apiKey: "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5", httpHeaderField: "X-Mashape-Key")
-//            decodeJSON.getCompanies(callback: { arrayCompanies in
-//                guard let idCompany = arrayCompanies.first?.idCompany, let nameCompany = arrayCompanies.first?.name else { return }
-//                saveCompany(idCompany: Int32(idCompany), nameCompany: nameCompany)
-//                callback(nameCompany)
-//            })
-//        }
-//    } else {
-//        callback("N.D.")
-//    }
-//}
-
-
-
 
 

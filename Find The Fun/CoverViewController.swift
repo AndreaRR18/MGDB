@@ -34,7 +34,7 @@ class CoverViewController: UIViewController {
         if let urlExist = getCover(url: coverURL) {
             coverHighResolution?.af_setImage(
                 withURL: urlExist,
-                imageTransition: .crossDissolve(0.3),
+                imageTransition: .crossDissolve(0.1),
                 runImageTransitionIfCached: true,
                 completion: { _ in
                     self.activityIndicator.stopAnimating() })

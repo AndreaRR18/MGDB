@@ -1,11 +1,3 @@
-//
-//  FavouriteDescriptionTableViewController.swift
-//  Find The Fun
-//
-//  Created by Andrea & Beatrice on 31/01/17.
-//  Copyright © 2017 Andrea. All rights reserved.
-//
-
 import UIKit
 import CoreData
 
@@ -163,8 +155,6 @@ class FavouriteDescriptionTableViewController: UITableViewController {
     
     func removeFavourite(sender: UIButton) {
         deleteFavouriteGame(id: Int32(favouriteGameDescription.id))
-        navigationController?.popViewController(animated: true)
-        
     }
     
     

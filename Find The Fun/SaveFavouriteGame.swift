@@ -11,12 +11,6 @@ func saveFavouriteGame(game: Game, platform: String, company: String) {
     var arrayFavouriteGames: [NSManagedObject] = []
     let context = appDelegate.persistentContainer.viewContext
     let newFavuoriteGame = NSEntityDescription.insertNewObject(forEntityName: "FavouriteGameData", into: context)
-//    let thumbnailToSave = FavouriteGameData()
-    
-//    if let thumbnail = thumbnail.image {
-//    thumbnailToSave.thumbnail = NSData(data: UIImageJPEGRepresentation(thumbnail, 0.3)!)
-//    newFavuoriteGame.setValue(thumbnailToSave, forKey: "thumbnail")
-//    }
     
     newFavuoriteGame.setValue(game.idGame, forKey: "id")
     newFavuoriteGame.setValue(game.name, forKey: "name")
