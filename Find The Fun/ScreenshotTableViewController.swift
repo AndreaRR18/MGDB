@@ -1,7 +1,7 @@
 import UIKit
 
 class ScreenshotTableViewController: UITableViewController {
-    
+
     var arrayScreenshots: [Screenshots]
         
     

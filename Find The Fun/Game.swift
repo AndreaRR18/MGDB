@@ -21,6 +21,7 @@ struct Game {
     let gameModes: [Int]? //GameModes
     let screenshots: [Screenshots]? //screenshots
     let internetPage: String? //url
+    let videos: [Videos]? //videos
     
     let identifier = GameCellTableViewCell.cellGameCellIdentifier
 }
@@ -42,6 +43,11 @@ struct Cover {
     let url: String? //url
 }
 
+struct Videos {
+    let name: String? //name
+    let video_id: String? //video_id
+}
+
 
 //------------Decode JSON with Argo-------------
 extension Game: Decodable {
@@ -59,6 +65,7 @@ extension Game: Decodable {
             <*> json <||? "game_modes"
             <*> json <||? "screenshots"
             <*> json <|? "url"
+            <*> json <||? "videos"
         
     }
 }
@@ -86,6 +93,14 @@ extension Cover: Decodable {
     static func decode(_ json: JSON) -> Decoded<Cover> {
         return curry(Cover.init)
             <^> json <|? "url"
+    }
+}
+
+extension Videos: Decodable {
+    static func decode(_ json: JSON) -> Decoded<Videos> {
+        return curry(Videos.init)
+        <^> json <|? "name"
+        <*> json <|? "video_id"
     }
 }
 

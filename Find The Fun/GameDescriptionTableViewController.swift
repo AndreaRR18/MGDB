@@ -20,7 +20,8 @@ class GameDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: "GenreTableViewCell", bundle: nil), forCellReuseIdentifier: "GenreTableViewCell")
         self.tableView.register(UINib(nibName: "GameModesTableViewCell", bundle: nil), forCellReuseIdentifier: "GameModesTableViewCell")
         self.tableView.register(UINib(nibName: "RelatedInDescriptionTableViewCell", bundle: nil), forCellReuseIdentifier: "RelatedInDescriptionTableViewCell")
-        
+        self.tableView.register(UINib(nibName: "VideosTableViewCell", bundle: nil), forCellReuseIdentifier: "VideosTableViewCell")
+
         
         let saveFavourite = UIButton(type: .custom)
         saveFavourite.setTitle("Save", for: .normal)
@@ -97,13 +98,16 @@ class GameDescriptionTableViewController: UITableViewController {
     
     func saveFavourite(sender: UIButton) {
         sender.setTitle("Added", for: .normal)
+        sender.isEnabled = false
         saveFavouriteGame(
-            game: gameDescription,
+             game: gameDescription,
+             
             platform: ( gameDescription.developers?.map(String.init).joined(separator: " - ")) ?? "",
             company: gameDescription.developers?.map(String.init).joined(separator: " - ") ?? "")
     }
     
     func removeFavourite(sender: UIButton) {
+        sender.isEnabled = false
         sender.setTitle("Removed", for: .normal)
         deleteFavouriteGame(id: Int32(gameDescription.idGame))
     }

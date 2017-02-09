@@ -29,41 +29,6 @@ class RelatedTableViewController: UITableViewController {
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
-        
-        guard let idGenre = idGenres?.count else { return }
-        for i in 0..<idGenre {
-            guard let idGenres = idGenres else { return }
-            let decodedJSON = DecodeJSON(url: getUrlIDGenres(idGenre: idGenres[i]))
-            decodedJSON.getGenres(callback: { genres in
-//                    for i in 0..<20 {
-//                            genres[i].games?.forEach{ idGame in
-//                            let decodedJSON = DecodeJSON(url: getUrlIDGame(idGame: idGame))
-//                            decodedJSON.getRelatedGamesFromID(callback: { game in
-//                                guard self.arrayIDGames.count < 20 else { return }
-//                                self.arrayIDGames = game
-//                            })
-//                        }
-//
-//                    }
-                
-                genres.forEach{ genre in
-                    genre.games?.forEach{ idGame in
-                        let decodedJSON = DecodeJSON(url: getUrlIDGame(idGame: idGame))
-                        decodedJSON.getRelatedGamesFromID(callback: { game in
-                            guard self.arrayIDGames.count < 20 else { return }
-                            self.arrayIDGames = game
-                            self.activityIndicator.stopAnimating()
-                            self.tableView.reloadData()
-                        })
-                    }
-                }
-            })
-        }
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-//            self.activityIndicator.stopAnimating()
-//            self.tableView.reloadData()
-//        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,8 +49,6 @@ class RelatedTableViewController: UITableViewController {
             view.addSubview(activityIndicator)
             activityIndicator.startAnimating()
         }
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -117,8 +80,6 @@ class RelatedTableViewController: UITableViewController {
         arrayIDGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayIDGames[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    
-    
-    
 }
+
+

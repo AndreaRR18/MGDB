@@ -57,6 +57,10 @@ extension Game {
             },
             { (tableView,indexPath) -> UITableViewCell in
                 self.getCellRelatedInDescription(tableView: tableView, indexPath: indexPath)
+            },
+            {
+                (tableView, indexPath) -> UITableViewCell in
+                self.getCellVideos(tableView: tableView, indexPath: indexPath)
             }
         ]
     }
@@ -85,7 +89,7 @@ extension Game {
         cell.backgroundColor = ColorUI.background
         cell.isSelected = false
         cell.summaryText?.textColor = ColorUI.text
-        cell.summaryText?.text = summary?
+        cell.summaryText?.text = summary
         return cell
     }
     func getCellCompany(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
@@ -156,6 +160,14 @@ extension Game {
     func getCellScreenshots(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ScreenshotsTableViewCell.screenshotsTableViewCellIdentifier, for: indexPath) as! ScreenshotsTableViewCell
         cell.backgroundColor = ColorUI.background
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        return cell
+    }
+    
+    func getCellVideos(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: VideosTableViewCell.videosTableViewCellIdentifier, for: indexPath) as! VideosTableViewCell
+        cell.backgroundColor = ColorUI.background
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         return cell
     }
     
@@ -178,7 +190,12 @@ extension Game {
             navigationController.pushViewController(ScreenshotTableViewController(arrayScreenshots: screenshots), animated: true)
         case 8:
             navigationController.navigationBar.isTranslucent = false
-            navigationController.pushViewController(RelatedTableViewController(idGenres: genres!), animated: true)
+            guard let genres = genres else { return }
+            navigationController.pushViewController(RelatedTableViewController(idGenres: genres), animated: true)
+        case 9:
+            navigationController.navigationBar.isTranslucent = false
+            guard let videos = videos else { return }
+            navigationController.pushViewController(HomePageViewController(), animated: true)
         default:
             return
         }
@@ -205,6 +222,8 @@ func heightRowInGameDescription(indexPath: Int) -> CGFloat {
     case 7:
         return 60
     case 8:
+        return 60
+    case 9:
         return 60
     default:
         return 0

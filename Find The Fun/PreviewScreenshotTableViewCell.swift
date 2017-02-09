@@ -3,10 +3,6 @@ import AlamofireImage
 
 class PreviewScreenshotTableViewCell: UITableViewCell {
 
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    var activityIndicatorFooter = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    var viewActivityIndicatorFooter = UIView()
-
     @IBOutlet weak var previewScreenshot: UIImageView?
     
     static var cellReleaseDateCellIdentifier: String { return "PreviewScreenshotTableViewCell" }
@@ -22,7 +18,6 @@ class PreviewScreenshotTableViewCell: UITableViewCell {
                 imageTransition: UIImageView.ImageTransition.crossDissolve(0.1),
                 runImageTransitionIfCached: true,
                 completion: { _ in
-                
             })
         }
     }
