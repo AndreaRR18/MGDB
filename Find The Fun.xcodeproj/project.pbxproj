@@ -58,6 +58,10 @@
 		656C39111E27E2DF0095EDBC /* HomePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 656C39101E27E2DF0095EDBC /* HomePageViewController.xib */; };
 		658257A01E4C6760004AD4C6 /* VideosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6582579E1E4C6760004AD4C6 /* VideosTableViewCell.swift */; };
 		658257A11E4C6760004AD4C6 /* VideosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6582579F1E4C6760004AD4C6 /* VideosTableViewCell.xib */; };
+		658257A51E4C69FE004AD4C6 /* VideosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658257A31E4C69FE004AD4C6 /* VideosTableViewController.swift */; };
+		658257A61E4C69FE004AD4C6 /* VideosTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658257A41E4C69FE004AD4C6 /* VideosTableViewController.xib */; };
+		658257AD1E4C8BC6004AD4C6 /* PlayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658257AB1E4C8BC6004AD4C6 /* PlayTableViewCell.swift */; };
+		658257AE1E4C8BC6004AD4C6 /* PlayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658257AC1E4C8BC6004AD4C6 /* PlayTableViewCell.xib */; };
 		65B2DEF61E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2DEF41E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift */; };
 		65B2DEF71E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B2DEF51E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib */; };
 		65B2DEFC1E2CFC2100C3DE70 /* CoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2DEFA1E2CFC2100C3DE70 /* CoverTableViewCell.swift */; };
@@ -155,6 +159,10 @@
 		656C39101E27E2DF0095EDBC /* HomePageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomePageViewController.xib; sourceTree = "<group>"; };
 		6582579E1E4C6760004AD4C6 /* VideosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosTableViewCell.swift; sourceTree = "<group>"; };
 		6582579F1E4C6760004AD4C6 /* VideosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideosTableViewCell.xib; sourceTree = "<group>"; };
+		658257A31E4C69FE004AD4C6 /* VideosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosTableViewController.swift; sourceTree = "<group>"; };
+		658257A41E4C69FE004AD4C6 /* VideosTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideosTableViewController.xib; sourceTree = "<group>"; };
+		658257AB1E4C8BC6004AD4C6 /* PlayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayTableViewCell.swift; sourceTree = "<group>"; };
+		658257AC1E4C8BC6004AD4C6 /* PlayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayTableViewCell.xib; sourceTree = "<group>"; };
 		65B2DEF41E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDescriptionTableViewController.swift; sourceTree = "<group>"; };
 		65B2DEF51E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameDescriptionTableViewController.xib; sourceTree = "<group>"; };
 		65B2DEFA1E2CFC2100C3DE70 /* CoverTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverTableViewCell.swift; sourceTree = "<group>"; };
@@ -386,6 +394,17 @@
 			path = "Find The Fun";
 			sourceTree = "<group>";
 		};
+		658257A21E4C69CD004AD4C6 /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				658257A31E4C69FE004AD4C6 /* VideosTableViewController.swift */,
+				658257A41E4C69FE004AD4C6 /* VideosTableViewController.xib */,
+				658257AB1E4C8BC6004AD4C6 /* PlayTableViewCell.swift */,
+				658257AC1E4C8BC6004AD4C6 /* PlayTableViewCell.xib */,
+			);
+			name = Videos;
+			sourceTree = "<group>";
+		};
 		65B2DEF81E2CFB7500C3DE70 /* News TableView  */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +427,7 @@
 				655564E21E4345BC0022C87F /* Genres */,
 				6555650D1E44A6370022C87F /* Related */,
 				655564D91E4345440022C87F /* Screenshots */,
+				658257A21E4C69CD004AD4C6 /* Videos */,
 			);
 			name = "Description TableView";
 			sourceTree = "<group>";
@@ -528,7 +548,9 @@
 				65B395C11E42465300E373B3 /* GenreTableViewCell.xib in Resources */,
 				655564DD1E4345820022C87F /* ReleaseDateTableViewController.xib in Resources */,
 				65B2DF091E2CFFA200C3DE70 /* PublishedTableViewCell.xib in Resources */,
+				658257AE1E4C8BC6004AD4C6 /* PlayTableViewCell.xib in Resources */,
 				656C39061E27D1FC0095EDBC /* Assets.xcassets in Resources */,
+				658257A61E4C69FE004AD4C6 /* VideosTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,6 +601,7 @@
 				65B395BD1E40EC6300E373B3 /* SaveFavouriteGame.swift in Sources */,
 				6541CBC41E3F4FEC0071C711 /* GameData.xcdatamodeld in Sources */,
 				653566471E4933BD004F834B /* PreviewScreenshotTableViewCell.swift in Sources */,
+				658257AD1E4C8BC6004AD4C6 /* PlayTableViewCell.swift in Sources */,
 				65B2DEF61E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift in Sources */,
 				653566431E4931D3004F834B /* ScreenshotTableViewController.swift in Sources */,
 				655564DC1E4345820022C87F /* ReleaseDateTableViewController.swift in Sources */,
@@ -593,6 +616,7 @@
 				655564EA1E43471F0022C87F /* IGDB.swift in Sources */,
 				656C38FF1E27D1FC0095EDBC /* AppDelegate.swift in Sources */,
 				6529349F1E39F4B200D2F9ED /* ActivityIndicator.swift in Sources */,
+				658257A51E4C69FE004AD4C6 /* VideosTableViewController.swift in Sources */,
 				6529349A1E38CB4200D2F9ED /* SearchGamesTableViewController.swift in Sources */,
 				655564E61E4346EF0022C87F /* ReleaseDateTableViewCell.swift in Sources */,
 				650123791E3762DE007A12AD /* GetUrl.swift in Sources */,

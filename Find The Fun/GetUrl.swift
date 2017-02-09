@@ -69,4 +69,14 @@ func getLogoHDCompany(cloudinaryid: String?) -> URL? {
     return urlLogoHDCompany
 }
 
+func getImagePreviewVideo(videoid: String?) -> URL? {
+    guard let videoid = videoid else { return nil }
+    let urlPreviewVideo = URL(string: "https://i.ytimg.com/vi/\(videoid)/hqdefault.jpg?custom=true&w=336&h=188&stc=true&jpg444=true&jpgq=90&sp=68&sigh=S3AfL9nWFAuBkXUjdexR4IUiavY")
+    return urlPreviewVideo
+}
 
+func getVideo(videoid: String?) -> URL? {
+    guard let videoid = videoid else { return nil }
+    let urlVideo = URL(string: "https://www.youtube.com/embed/\(videoid)")
+    return urlVideo
+}

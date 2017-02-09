@@ -4,10 +4,7 @@ import Argo
 class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate {
     
     let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50"
-//    let apiKey = "ESZw4bgv1bmshrOge5OFyDGSG1BQp1vRtU9jsnrhB6thY2fEN5"
-//    let httpHeaderField = "X-Mashape-Key"
     var arrayGames: [Game] = []
-    
     
     var searchController: UISearchController!
     var searchActive = true
@@ -19,13 +16,11 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
-        self.tableView.tableFooterView = UIView()
-        
         let viewFooter = UIView()
-        viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
-        self.view.backgroundColor = ColorUI.backgoundTableView
 
+        viewFooter.backgroundColor = ColorUI.backgoundTableView
+        self.view.backgroundColor = ColorUI.backgoundTableView
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationItem.backBarButtonItem?.title = ""

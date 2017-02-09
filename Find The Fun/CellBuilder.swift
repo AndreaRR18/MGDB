@@ -195,7 +195,7 @@ extension Game {
         case 9:
             navigationController.navigationBar.isTranslucent = false
             guard let videos = videos else { return }
-            navigationController.pushViewController(HomePageViewController(), animated: true)
+            navigationController.pushViewController(VideosTableViewController(videos: videos), animated: true)
         default:
             return
         }

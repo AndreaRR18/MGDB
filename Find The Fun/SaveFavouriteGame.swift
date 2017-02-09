@@ -7,7 +7,6 @@ import UIKit
 func saveFavouriteGame(game: Game, platform: String, company: String) {
     
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    
     var arrayFavouriteGames: [NSManagedObject] = []
     let context = appDelegate.persistentContainer.viewContext
     let newFavuoriteGame = NSEntityDescription.insertNewObject(forEntityName: "FavouriteGameData", into: context)
@@ -17,7 +16,6 @@ func saveFavouriteGame(game: Game, platform: String, company: String) {
     newFavuoriteGame.setValue(game.rating, forKey: "rating")
     newFavuoriteGame.setValue(game.summary, forKey: "summary")
     newFavuoriteGame.setValue(game.releaseDate?.first?.year, forKey: "firstReleaseDate")
-    newFavuoriteGame.setValue(platform, forKey: "platform")
     newFavuoriteGame.setValue(company, forKey: "company")
     
     do {

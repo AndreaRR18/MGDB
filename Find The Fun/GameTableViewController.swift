@@ -29,27 +29,22 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
             self.activityIndicator.stopAnimating()
             self.tableView.reloadData()
         })
-        
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
         refreshControl?.tintColor = UIColor.gray
-        
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
         tabBarController?.navigationItem.titleView = nil
         tabBarController?.navigationItem.title = "News"
-        
-        let navBarImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
-        navBarImageView.contentMode = .scaleAspectFit
-        
         tabBarController?.tabBar.barTintColor = ColorUI.tabBar
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white
         tabBarController?.tabBar.unselectedItemTintColor = ColorUI.unselectedItemTabBar
+        
+        let navBarImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
+        navBarImageView.contentMode = .scaleAspectFit
         
         if activityIndicatorAppeared {
             activityIndicatorAppeared = false

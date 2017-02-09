@@ -79,7 +79,6 @@ class FavouriteTableViewController: UITableViewController {
             let game = arrayFavouriteGames[indexPath.row]
             context.delete(game)
             appDelegate.saveContext()
-            
             do {
                 arrayFavouriteGames = try context.fetch(FavouriteGameData.fetchRequest())
             } catch {
