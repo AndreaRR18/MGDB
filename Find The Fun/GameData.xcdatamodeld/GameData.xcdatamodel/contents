@@ -6,11 +6,9 @@
     </entity>
     <entity name="FavouriteGameData" representedClassName=".FavouriteGameData" syncable="YES" codeGenerationType="class">
         <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="firstReleaseDate" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="platform" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -28,7 +26,7 @@
     </entity>
     <elements>
         <element name="CompaniesData" positionX="-27" positionY="18" width="128" height="73"/>
-        <element name="FavouriteGameData" positionX="-27" positionY="45" width="128" height="165"/>
+        <element name="FavouriteGameData" positionX="-27" positionY="45" width="128" height="135"/>
         <element name="GameModesData" positionX="0" positionY="99" width="128" height="75"/>
         <element name="GenresData" positionX="-18" positionY="90" width="128" height="75"/>
         <element name="PlatformsData" positionX="-27" positionY="36" width="128" height="75"/>

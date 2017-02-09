@@ -70,7 +70,7 @@ class FavouriteDescriptionTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -87,21 +87,12 @@ class FavouriteDescriptionTableViewController: UITableViewController {
             cell.layer.cornerRadius = 20
             cell.summaryText?.text = favouriteGameDescription.summary
             return cell
-            
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: CompanyTableViewCell.companyTableViewCellIdentifier, for: indexPath) as! CompanyTableViewCell
             cell.backgroundColor = ColorUI.background
             cell.company?.textColor = ColorUI.text
             cell.layer.cornerRadius = 20
-            cell.company?.text = "\(favouriteGameDescription.company)"
-            return cell
-            
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: PublishedTableViewCell.publishedTableViewCellIdentifier, for: indexPath) as! PublishedTableViewCell
-            cell.backgroundColor = ColorUI.background
-            cell.firstReleaseDate?.textColor = ColorUI.text
-            cell.layer.cornerRadius = 20
-            cell.firstReleaseDate?.text = "\(favouriteGameDescription.firstReleaseDate)"
+            cell.company?.text = "\(favouriteGameDescription.company ?? "N.D.")"
             return cell
             
         default:

@@ -1,24 +1,21 @@
 import UIKit
 import CoreData
+import Foundation
 
 class FavouriteTableViewController: UITableViewController {
     
     var arrayFavouriteGames = [FavouriteGameData]()
     let logo = UIImageView()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.delegate = self
         tableView.dataSource = self
-        
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
-        
         tabBarController?.tabBar.barTintColor = ColorUI.tabBar
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white
@@ -50,9 +47,9 @@ class FavouriteTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: GameCellTableViewCell.cellGameCellIdentifier, for: indexPath) as! GameCellTableViewCell
         let game = arrayFavouriteGames[indexPath.row]
-        cell.cover?.image = #imageLiteral(resourceName: "img-not-found")
+        cell.cover?.image = UIImage(data: game.image as! Data)
         cell.name?.text = game.name
-        cell.years?.text = "\(game.firstReleaseDate)"
+        cell.years?.text = ""
         return cell
     }
     

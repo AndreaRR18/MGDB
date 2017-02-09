@@ -1,10 +1,9 @@
 import Foundation
 import CoreData
 import UIKit
+import AlamofireImage
 
-
-
-func saveFavouriteGame(game: Game, platform: String, company: String) {
+func saveFavouriteGame(game: Game, company: Int, image: UIImage) {
     
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     var arrayFavouriteGames: [NSManagedObject] = []
@@ -15,9 +14,10 @@ func saveFavouriteGame(game: Game, platform: String, company: String) {
     newFavuoriteGame.setValue(game.name, forKey: "name")
     newFavuoriteGame.setValue(game.rating, forKey: "rating")
     newFavuoriteGame.setValue(game.summary, forKey: "summary")
-    newFavuoriteGame.setValue(game.releaseDate?.first?.year, forKey: "firstReleaseDate")
-    newFavuoriteGame.setValue(company, forKey: "company")
     
+    newFavuoriteGame.setValue(fetchCompany(id: Int32(company)), forKey: "company")
+    let newCoverData: Data? = UIImageJPEGRepresentation(image, 1)
+    newFavuoriteGame.setValue(newCoverData, forKey: "image")
     do {
         try context.save()
         arrayFavouriteGames.append(newFavuoriteGame)

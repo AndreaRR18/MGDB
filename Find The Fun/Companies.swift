@@ -41,16 +41,12 @@ extension LogoCompanies: Decodable {
 }
 
 func saveCompany(idCompany: Int32, nameCompany: String) {
-    
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    
     var arrayCompanies: [NSManagedObject] = []
     let context = appDelegate.persistentContainer.viewContext
     let newCompany = NSEntityDescription.insertNewObject(forEntityName: "CompaniesData", into: context)
-    
     newCompany.setValue(idCompany, forKey: "idCompany")
     newCompany.setValue(nameCompany, forKey: "nameCompany")
-    
     do {
         try context.save()
         arrayCompanies.append(newCompany)
@@ -64,9 +60,7 @@ func fetchCompany(id: Int32) -> String? {
     var stringOfCompanies: String?
     let context = appDelegate.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CompaniesData")
-    
     request.returnsObjectsAsFaults = false
-    
     do {
         let results = try context.fetch(request)
         for result in results as! [NSManagedObject] {
@@ -80,7 +74,6 @@ func fetchCompany(id: Int32) -> String? {
     }
     return nil
 }
-
 
 func nameCompanyDB(id: [Int], callback:@escaping (String, Bool) -> ()) {
     var companies: [String] = []

@@ -21,7 +21,7 @@ class GameDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: "GameModesTableViewCell", bundle: nil), forCellReuseIdentifier: "GameModesTableViewCell")
         self.tableView.register(UINib(nibName: "RelatedInDescriptionTableViewCell", bundle: nil), forCellReuseIdentifier: "RelatedInDescriptionTableViewCell")
         self.tableView.register(UINib(nibName: "VideosTableViewCell", bundle: nil), forCellReuseIdentifier: "VideosTableViewCell")
-
+        
         
         let saveFavourite = UIButton(type: .custom)
         saveFavourite.setTitle("Save", for: .normal)
@@ -99,11 +99,21 @@ class GameDescriptionTableViewController: UITableViewController {
     func saveFavourite(sender: UIButton) {
         sender.setTitle("Added", for: .normal)
         sender.isEnabled = false
-        saveFavouriteGame(
-             game: gameDescription,
-             
-            platform: ( gameDescription.developers?.map(String.init).joined(separator: " - ")) ?? "",
-            company: gameDescription.developers?.map(String.init).joined(separator: " - ") ?? "")
+        let cover = UIImageView()
+        cover.af_setImage(
+            withURL: getCover(url: gameDescription.cover?.url)!,
+            placeholderImage: #imageLiteral(resourceName: "img-not-found"),
+            filter: nil,
+            progress: nil,
+            progressQueue: DispatchQueue.main,
+            imageTransition: UIImageView.ImageTransition.crossDissolve(0.1),
+            runImageTransitionIfCached: true,
+            completion: { _ in
+                saveFavouriteGame(
+                    game: self.gameDescription,
+                    company: (self.gameDescription.developers?.first)!,
+                    image: cover.image!)
+        })
     }
     
     func removeFavourite(sender: UIButton) {
