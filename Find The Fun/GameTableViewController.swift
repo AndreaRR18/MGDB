@@ -10,15 +10,11 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=30&order=updated_at%3Adesc"
     var arrayGames: [Game] = []
     
-    var activityIndicatorAppeared = true
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    var activityIndicatorFooter = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    var viewActivityIndicatorFooter = UIView()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
-        
+        let activityIndicator = ActivityIndicator(view: view)
+        activityIndicator.startAnimating()
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
@@ -26,7 +22,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         let decodedJSON = DecodeJSON(url: gamesURL)
         decodedJSON.getNewGames(callback: { arrayGames in
             self.arrayGames = arrayGames
-            self.activityIndicator.stopAnimating()
+            activityIndicator.stopAnimating()
             self.tableView.reloadData()
         })
         refreshControl = UIRefreshControl()
@@ -45,15 +41,6 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         
         let navBarImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
         navBarImageView.contentMode = .scaleAspectFit
-        
-        if activityIndicatorAppeared {
-            activityIndicatorAppeared = false
-            activityIndicator.center = self.view.center
-            activityIndicator.hidesWhenStopped = true
-            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-            view.addSubview(activityIndicator)
-            activityIndicator.startAnimating()
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -130,7 +117,6 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
             let decodedJSON = DecodeJSON(url: getUrlOffsetdGames(offset: offset))
             decodedJSON.getNewGames(callback: { arrayGames in
                 self.arrayGames += arrayGames
-                self.activityIndicator.stopAnimating()
                 self.tableView.reloadData()
             })
         }
@@ -141,7 +127,6 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         let decodedJSON = DecodeJSON(url: gamesURL)
         decodedJSON.getNewGames(callback: { arrayGames in
             self.arrayGames = arrayGames
-            self.activityIndicator.stopAnimating()
             self.refreshControl?.endRefreshing()
             self.tableView.reloadData()
         })

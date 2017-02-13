@@ -5,28 +5,22 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     
     let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50"
     var arrayGames: [Game] = []
-    
     var searchController: UISearchController!
     var searchActive = true
-
-    var activityIndicatorAppeared = false
     var emptyArray: [Game] = []
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
+        
         let viewFooter = UIView()
         self.tableView.tableFooterView = viewFooter
-
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.view.backgroundColor = ColorUI.backgoundTableView
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationItem.backBarButtonItem?.title = ""
-
         tabBarController?.tabBar.isTranslucent = false
-        
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
         searchController.hidesNavigationBarDuringPresentation = false
@@ -74,26 +68,18 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchController.searchBar.text else { return }
-        
         var textSearchChange = ""
         if searchController.searchBar.text != nil && textSearchChange != searchText{
             self.arrayGames.removeAll()
             self.tableView.reloadData()
             textSearchChange = searchText
         }
-        activityIndicatorAppeared = false
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        view.addSubview(activityIndicator)
-        
+        let activityIndicator = ActivityIndicator(view: self.view)
         activityIndicator.startAnimating()
-        
-        
         let decodedJSON = DecodeJSON(url: getUrlSearchedGames(title: searchText))
         decodedJSON.getSearchGames(weak: { arrayGames in
             self.arrayGames = arrayGames
-            self.activityIndicator.stopAnimating()
+            activityIndicator.stopAnimating()
             self.tableView.reloadData()
         })
     }

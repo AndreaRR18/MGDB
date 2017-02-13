@@ -20,6 +20,12 @@ class VideosTableViewController: UITableViewController {
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
+        let activityIndicator = ActivityIndicator(view: view)
+        activityIndicator.startAnimating()
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+            activityIndicator.stopAnimating()
+        })
     }
     
     override func didReceiveMemoryWarning() {

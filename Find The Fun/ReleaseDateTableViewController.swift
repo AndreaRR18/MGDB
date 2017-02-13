@@ -4,11 +4,6 @@ class ReleaseDateTableViewController: UITableViewController {
     
     var arrayReleaseDate: [ReleaseDate]?
     
-    var activityIndicatorAppeared = true
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    var activityIndicatorFooter = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    var viewActivityIndicatorFooter = UIView()
-    
     required init(arrayReleaseDate: [ReleaseDate]?) {
         self.arrayReleaseDate = arrayReleaseDate
         super.init(style: .plain)
@@ -17,18 +12,16 @@ class ReleaseDateTableViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.titleView = nil
         tabBarController?.navigationItem.title = "Release Date"
+        let activityIndicator = ActivityIndicator(view: view)
+        activityIndicator.startAnimating()
         
-        if activityIndicatorAppeared {
-            activityIndicatorAppeared = false
-            activityIndicator.center = self.view.center
-            activityIndicator.hidesWhenStopped = true
-            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-            view.addSubview(activityIndicator)
-            activityIndicator.startAnimating()
-        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+            activityIndicator.stopAnimating()
+        })
     }
     
     override func viewDidLoad() {
@@ -74,12 +67,8 @@ class ReleaseDateTableViewController: UITableViewController {
                     cell.url = url
                 }
             })
-            
-            
-            
             namePlatformDB(id: arrayReleaseDate[indexPath.row].platform, callback: { namePlatform in
                 cell.platform?.text = namePlatform
-                self.activityIndicator.stopAnimating()
             })
         }
         return cell

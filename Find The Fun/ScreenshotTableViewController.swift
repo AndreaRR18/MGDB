@@ -3,7 +3,6 @@ import UIKit
 class ScreenshotTableViewController: UITableViewController {
 
     var arrayScreenshots: [Screenshots]
-        
     
     init(arrayScreenshots: [Screenshots]) {
         self.arrayScreenshots = arrayScreenshots
@@ -22,6 +21,12 @@ class ScreenshotTableViewController: UITableViewController {
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
+        let activityIndicator = ActivityIndicator(view: view)
+        activityIndicator.startAnimating()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3, execute: {
+            activityIndicator.stopAnimating()
+        })
+
     }
     
     override func didReceiveMemoryWarning() {

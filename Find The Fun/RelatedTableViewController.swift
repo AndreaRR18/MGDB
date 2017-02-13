@@ -1,15 +1,11 @@
 import UIKit
+import Foundation
 
 class RelatedTableViewController: UITableViewController {
     
-    var arrayIDGames: [Game] = []
-    var arrayIDGenres: [Int] = []
-    var idGenres: [Int]?
-    var activityIndicatorAppeared = true
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    var activityIndicatorFooter = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    var viewActivityIndicatorFooter = UIView()
-    
+    var idGenres: [Int]
+    var arrayGames: [Game] = []
+    var arrayIDGames: [Int] = []
     
     required init(idGenres: [Int]) {
         self.idGenres = idGenres
@@ -20,11 +16,9 @@ class RelatedTableViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
-        
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
@@ -35,20 +29,32 @@ class RelatedTableViewController: UITableViewController {
         tabBarController?.navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
         tabBarController?.navigationItem.titleView = nil
         tabBarController?.navigationItem.title = "Related Games"
-        
         tabBarController?.tabBar.barTintColor = ColorUI.tabBar
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white
-        tabBarController?.tabBar.unselectedItemTintColor = ColorUI.unselectedItemTabBar
+        let activityIndicator = ActivityIndicator(view: view)
+        activityIndicator.startAnimating()
         
-        if activityIndicatorAppeared {
-            activityIndicatorAppeared = false
-            activityIndicator.center = self.view.center
-            activityIndicator.hidesWhenStopped = true
-            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-            view.addSubview(activityIndicator)
-            activityIndicator.startAnimating()
-        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+            self.tableView.reloadData()
+            activityIndicator.stopAnimating()
+        })
+
+            idGenres.forEach{ genre in
+                let decodedJSON = DecodeJSON(url: getUrlIDGenres(idGenre: genre))
+                decodedJSON.getGenres(callback: { arrayGenre in
+                    print(arrayGenre)
+//                    self.arrayIDGames += arrayGenre.first!.games
+//                    let array = Set(self.arrayIDGames)
+//                    let set2 = array8.reduce(set1) { $0.intersection($1) }
+//                    let array10 = Array(set2)
+//                    self.refreshControl?.endRefreshing()
+//                    self.tableView.reloadData()
+                })
+            }
+            
+
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,17 +75,18 @@ class RelatedTableViewController: UITableViewController {
         return 150
     }
     
-    
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return arrayIDGames[indexPath.row].getCellForTableViewController(tableView: tableView, indexPath: indexPath)
+        return arrayGames[indexPath.row].getCellForTableViewController(tableView: tableView, indexPath: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let navController = navigationController else { return }
-        arrayIDGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayIDGames[indexPath.row])
-        tableView.deselectRow(at: indexPath, animated: true)
+//        guard let navController = navigationController else { return }
+//        arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayIDGames[indexPath.row])
+//        tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    
 }
+
 
 

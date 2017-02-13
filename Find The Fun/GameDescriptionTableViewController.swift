@@ -3,9 +3,6 @@ import UIKit
 class GameDescriptionTableViewController: UITableViewController {
     
     var gameDescription: Game
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    var activityIndicatorFooter = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-    var viewActivityIndicatorFooter = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,8 +88,8 @@ class GameDescriptionTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let navController = navigationController, let cover = gameDescription.cover?.url else { return }
-        gameDescription.didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, url: cover)
+        guard let navController = navigationController else { return }
+        gameDescription.didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

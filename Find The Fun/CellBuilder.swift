@@ -176,7 +176,7 @@ extension Game {
         navigationController.pushViewController(GameDescriptionTableViewController(game: game), animated: true)
     }
     
-    func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, url: String) {
+    func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController) {
         switch indexPath.row {
         case 1:
             navigationController.navigationBar.isTranslucent = false
