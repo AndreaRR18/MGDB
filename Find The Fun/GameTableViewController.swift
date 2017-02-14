@@ -9,28 +9,41 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     var offset = 0
     let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=30&order=updated_at%3Adesc"
     var arrayGames: [Game] = []
+    var reachability: Reachability? = Reachability.networkReachabilityForInternetConnection()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
+        
         let activityIndicator = ActivityIndicator(view: view)
         activityIndicator.startAnimating()
+        
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
+        
         let decodedJSON = DecodeJSON(url: gamesURL)
         decodedJSON.getNewGames(callback: { arrayGames in
             self.arrayGames = arrayGames
             activityIndicator.stopAnimating()
             self.tableView.reloadData()
         })
+        
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
         refreshControl?.tintColor = UIColor.gray
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)), name: NSNotification.Name(rawValue: ReachabilityDidChangeNotificationName), object: nil)
+        _ = reachability?.startNotifier()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        reachability?.stopNotifier()
+    }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tabBarController?.navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
         tabBarController?.navigationItem.titleView = nil
         tabBarController?.navigationItem.title = "News"
@@ -41,6 +54,8 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         
         let navBarImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
         navBarImageView.contentMode = .scaleAspectFit
+        
+        checkReachability()
     }
     
     override func didReceiveMemoryWarning() {
@@ -120,6 +135,19 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
                 self.tableView.reloadData()
             })
         }
+    }
+    
+    func checkReachability() {
+        guard let r = reachability  else { return }
+        if r.isReachable {
+            print("Sono Connesso!")
+        } else {
+            print("Oops, mi dispiace ma non ce la faccio!")
+        }
+    }
+    
+    func reachabilityDidChange(_ notification: Notification) {
+        checkReachability()
     }
     
     func refresh() {

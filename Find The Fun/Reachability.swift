@@ -11,10 +11,12 @@ enum ReachabilityStatus {
 
 
 class Reachability: NSObject {
+    
     private var networkingReachability: SCNetworkReachability?
     
     init?(hostName: String) {
-        networkingReachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, (hostName as NSString).utf8String!)
+        guard let hostName = (hostName as NSString).utf8String else { return nil }
+        networkingReachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, hostName)
         super.init()
         if networkingReachability == nil {
             return nil
@@ -24,9 +26,8 @@ class Reachability: NSObject {
     init?(hostAddress: sockaddr_in) {
         var address = hostAddress
         
-        guard let defalutRouteReachability = withUnsafePointer(to: &address, { $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, $0) } }) else { return nil }
-        networkingReachability = defalutRouteReachability
-        
+        guard let defaultRouteReachability = withUnsafePointer(to: &address, { $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, $0) } }) else { return nil }
+        networkingReachability = defaultRouteReachability
         super.init()
         if networkingReachability == nil {
             return nil
@@ -47,7 +48,6 @@ class Reachability: NSObject {
         localWifiAddress.sin_addr.s_addr = 0xA9FE000
         return Reachability(hostAddress: localWifiAddress)
     }
-    
     
     private var notifying: Bool = false
     
@@ -93,11 +93,13 @@ class Reachability: NSObject {
             return []
         }
     }
-
+    
     var currentReachabilityStatus: ReachabilityStatus {
         if flags.contains(.reachable) == false {
             return .notReachable
         } else if flags.contains(.isWWAN) == true {
+            return .reachableViaWAN
+        } else if flags.contains(.connectionRequired) == false {
             return .reachableViaWiFi
         } else if (flags.contains(.connectionOnDemand) == true || flags.contains(.connectionOnTraffic) == true) && flags.contains(.interventionRequired) == false {
             return .reachableViaWiFi
@@ -105,7 +107,7 @@ class Reachability: NSObject {
             return .notReachable
         }
     }
-
+    
     var isReachable: Bool {
         switch currentReachabilityStatus {
         case .notReachable:
