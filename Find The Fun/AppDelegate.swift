@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBarController.navigationController?.navigationBar.isOpaque = false
         
         tabBarController.navigationController?.navigationBar.tintColor = ColorUI.text
-       
+
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: tabBarController)
         window?.makeKeyAndVisible()        

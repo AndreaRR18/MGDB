@@ -3,7 +3,6 @@ import UIKit
 class GameDescriptionTableViewController: UITableViewController {
     
     var gameDescription: Game
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,7 +17,6 @@ class GameDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: "GameModesTableViewCell", bundle: nil), forCellReuseIdentifier: "GameModesTableViewCell")
         self.tableView.register(UINib(nibName: "RelatedInDescriptionTableViewCell", bundle: nil), forCellReuseIdentifier: "RelatedInDescriptionTableViewCell")
         self.tableView.register(UINib(nibName: "VideosTableViewCell", bundle: nil), forCellReuseIdentifier: "VideosTableViewCell")
-        
         
         let saveFavourite = UIButton(type: .custom)
         saveFavourite.setTitle("Save", for: .normal)
@@ -38,23 +36,18 @@ class GameDescriptionTableViewController: UITableViewController {
             navigationItem.rightBarButtonItem = removeGame
         }
         title = gameDescription.name
+        tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
-        
-        let backItem = UIBarButtonItem()
-        backItem.title = nil
-        tabBarController?.navigationItem.backBarButtonItem = backItem
         
         view.backgroundColor = ColorUI.backgoundTableView
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
-        
-        tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
-        
     }
+
     
     required init(game: Game) {
         self.gameDescription = game

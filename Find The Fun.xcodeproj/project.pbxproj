@@ -13,6 +13,10 @@
 		650123751E375B8F007A12AD /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 650123731E375B8F007A12AD /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		650123771E375CBB007A12AD /* CellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650123761E375CBB007A12AD /* CellBuilder.swift */; };
 		650123791E3762DE007A12AD /* GetUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650123781E3762DE007A12AD /* GetUrl.swift */; };
+		652692011E51FC4500A32CF6 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652692001E51FC4400A32CF6 /* TabBar.swift */; };
+		652692031E5228AE00A32CF6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652692021E5228AE00A32CF6 /* Alert.swift */; };
+		652692051E530A0000A32CF6 /* SaveDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652692041E530A0000A32CF6 /* SaveDeleteButton.swift */; };
+		652692071E5319FD00A32CF6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652692061E5319FD00A32CF6 /* Reachability.swift */; };
 		652934931E37969300D2F9ED /* CoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652934911E37969300D2F9ED /* CoverViewController.swift */; };
 		652934941E37969300D2F9ED /* CoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 652934921E37969300D2F9ED /* CoverViewController.xib */; };
 		6529349A1E38CB4200D2F9ED /* SearchGamesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652934981E38CB4200D2F9ED /* SearchGamesTableViewController.swift */; };
@@ -112,6 +116,10 @@
 		650123731E375B8F007A12AD /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		650123761E375CBB007A12AD /* CellBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellBuilder.swift; sourceTree = "<group>"; };
 		650123781E3762DE007A12AD /* GetUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUrl.swift; sourceTree = "<group>"; };
+		652692001E51FC4400A32CF6 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		652692021E5228AE00A32CF6 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		652692041E530A0000A32CF6 /* SaveDeleteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveDeleteButton.swift; sourceTree = "<group>"; };
+		652692061E5319FD00A32CF6 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		652934911E37969300D2F9ED /* CoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverViewController.swift; sourceTree = "<group>"; };
 		652934921E37969300D2F9ED /* CoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoverViewController.xib; sourceTree = "<group>"; };
 		652934981E38CB4200D2F9ED /* SearchGamesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchGamesTableViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +219,9 @@
 			children = (
 				6529349E1E39F4B200D2F9ED /* ActivityIndicator.swift */,
 				6541CBEB1E3FA5770071C711 /* ColorInterface.swift */,
+				652692001E51FC4400A32CF6 /* TabBar.swift */,
+				652692021E5228AE00A32CF6 /* Alert.swift */,
+				652692041E530A0000A32CF6 /* SaveDeleteButton.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -390,6 +401,7 @@
 				6541CBF51E40A5CF0071C711 /* Json */,
 				655564E81E4347010022C87F /* IGDB */,
 				6541CBF11E40A5560071C711 /* UI */,
+				652692061E5319FD00A32CF6 /* Reachability.swift */,
 			);
 			path = "Find The Fun";
 			sourceTree = "<group>";
@@ -603,10 +615,12 @@
 				653566471E4933BD004F834B /* PreviewScreenshotTableViewCell.swift in Sources */,
 				658257AD1E4C8BC6004AD4C6 /* PlayTableViewCell.swift in Sources */,
 				65B2DEF61E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift in Sources */,
+				652692071E5319FD00A32CF6 /* Reachability.swift in Sources */,
 				653566431E4931D3004F834B /* ScreenshotTableViewController.swift in Sources */,
 				655564DC1E4345820022C87F /* ReleaseDateTableViewController.swift in Sources */,
 				655565181E44A78D0022C87F /* RelatedInDescriptionTableViewCell.swift in Sources */,
 				65B395C01E42465300E373B3 /* GenreTableViewCell.swift in Sources */,
+				652692011E51FC4500A32CF6 /* TabBar.swift in Sources */,
 				65B395C91E42576500E373B3 /* GameModes.swift in Sources */,
 				65B2DEFC1E2CFC2100C3DE70 /* CoverTableViewCell.swift in Sources */,
 				654BF6E51E27F12900A82610 /* Game.swift in Sources */,
@@ -617,10 +631,12 @@
 				656C38FF1E27D1FC0095EDBC /* AppDelegate.swift in Sources */,
 				6529349F1E39F4B200D2F9ED /* ActivityIndicator.swift in Sources */,
 				658257A51E4C69FE004AD4C6 /* VideosTableViewController.swift in Sources */,
+				652692031E5228AE00A32CF6 /* Alert.swift in Sources */,
 				6529349A1E38CB4200D2F9ED /* SearchGamesTableViewController.swift in Sources */,
 				655564E61E4346EF0022C87F /* ReleaseDateTableViewCell.swift in Sources */,
 				650123791E3762DE007A12AD /* GetUrl.swift in Sources */,
 				65B2DF141E2D036D00C3DE70 /* RatingTableViewCell.swift in Sources */,
+				652692051E530A0000A32CF6 /* SaveDeleteButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

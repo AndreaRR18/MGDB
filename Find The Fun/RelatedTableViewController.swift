@@ -5,7 +5,7 @@ class RelatedTableViewController: UITableViewController {
     
     var idGenres: [Int]
     var arrayGames: [Game] = []
-    var arrayIDGames: [Int] = []
+    var activityIndicatorAppear = true
     
     required init(idGenres: [Int]) {
         self.idGenres = idGenres
@@ -23,6 +23,27 @@ class RelatedTableViewController: UITableViewController {
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
+        takeCommonIDGames { commonElement in
+            if commonElement.count < 20 {
+                commonElement.forEach({ idGame in
+                    let decodedJSON = DecodeJSON(url: getUrlIDGame(idGame: idGame))
+                    print(getUrlIDGame(idGame: idGame))
+                    decodedJSON.getGamesFromID(callback: { game in
+                        guard game.summary != nil, game.cover != nil else { return }
+                        self.arrayGames.append(game)
+                    })
+                })
+            } else {
+                commonElement[0...19].forEach({ idGame in
+                    let decodedJSON = DecodeJSON(url: getUrlIDGame(idGame: idGame))
+                    decodedJSON.getGamesFromID(callback: { game in
+                        guard game.summary != nil, game.cover != nil else { return }
+                        self.arrayGames.append(game)
+                    })
+                })
+                
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,28 +54,16 @@ class RelatedTableViewController: UITableViewController {
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white
         let activityIndicator = ActivityIndicator(view: view)
-        activityIndicator.startAnimating()
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+        if activityIndicatorAppear {
+            activityIndicatorAppear = false
+            activityIndicator.startAnimating()
+            
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3, execute: {
             self.tableView.reloadData()
             activityIndicator.stopAnimating()
         })
-
-            idGenres.forEach{ genre in
-                let decodedJSON = DecodeJSON(url: getUrlIDGenres(idGenre: genre))
-                decodedJSON.getGenres(callback: { arrayGenre in
-                    print(arrayGenre)
-//                    self.arrayIDGames += arrayGenre.first!.games
-//                    let array = Set(self.arrayIDGames)
-//                    let set2 = array8.reduce(set1) { $0.intersection($1) }
-//                    let array10 = Array(set2)
-//                    self.refreshControl?.endRefreshing()
-//                    self.tableView.reloadData()
-                })
-            }
-            
-
-//        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -68,7 +77,7 @@ class RelatedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayIDGames.count
+        return arrayGames.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -76,16 +85,38 @@ class RelatedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return arrayGames[indexPath.row].getCellForTableViewController(tableView: tableView, indexPath: indexPath)
-    }
+            return arrayGames[indexPath.row].getCellForTableViewController(tableView: tableView, indexPath: indexPath)
+        }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let navController = navigationController else { return }
-//        arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayIDGames[indexPath.row])
-//        tableView.deselectRow(at: indexPath, animated: true)
+        guard let navController = navigationController else { return }
+        arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayGames[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func takeIdGames(idGenres: [Int], callback: @escaping(_ arrayIDGames: [Int], _ arrayOfArrayIDGames: [[Int]]) -> ()) {
+        idGenres.forEach{ genre in
+            var arrayOfArrayIDGames: [[Int]] = []
+            var arrayIDGames: [Int] = []
+            let decodedJSON = DecodeJSON(url: getUrlIDGenres(idGenre: genre))
+            decodedJSON.getGenres(callback: { arrayGenre in
+                guard let games = arrayGenre.first?.games else { return }
+                arrayIDGames += games
+                arrayOfArrayIDGames.append(games)
+                callback(arrayIDGames, arrayOfArrayIDGames)
+            })
+        }
+    }
     
+    func takeCommonIDGames(callback: @escaping(_ commonElement: [Int]) -> ()) {
+        takeIdGames(idGenres: self.idGenres, callback: { arrayIDGames, arrayOfArrayIDGames in
+            let arraySetIdGames = Set(arrayIDGames)
+            let arrayOfArraySetIdGames = arrayOfArrayIDGames.map(Set.init)
+            let commonElementSet = arrayOfArraySetIdGames.reduce(arraySetIdGames) { $0.intersection($1) }
+            callback(Array(commonElementSet))
+        })
+        
+    }
 }
 
 

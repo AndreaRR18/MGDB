@@ -85,8 +85,8 @@ class DecodeJSON {
         }
         return games.flatMap{ $0 }
     }
-
-//-------------------------------Companies-------------------------------
+    
+    //-------------------------------Companies-------------------------------
     func getCompanies(callback:@escaping ([Companies]) -> ()) {
         if let arrayCompaniesExist = arrayCompanies {
             callback(arrayCompaniesExist)
@@ -123,7 +123,7 @@ class DecodeJSON {
         }
         return companies.flatMap{ $0 }
     }
-
+    
     //-------------------------------Platforms-------------------------------
     func getPlatform(callback:@escaping ([Platform]) -> ()) {
         if let arrayPlatform = arrayPlatforms {
@@ -161,7 +161,7 @@ class DecodeJSON {
         }
         return platform.flatMap{ $0 }
     }
-
+    
     
     //-------------------------------Genres-------------------------------
     func getGenres(callback:@escaping ([Genres]) -> ()) {
@@ -200,7 +200,7 @@ class DecodeJSON {
         }
         return genre.flatMap{ $0 }
     }
-
+    
     //-------------------------------GameModes-------------------------------
     func getGameModes(callback:@escaping ([GameModes]) -> ()) {
         if let arrayGameModes = arrayGameModes {
@@ -240,34 +240,26 @@ class DecodeJSON {
     }
     
     //-------------------------------Related Game-------------------------------
-    func getRelatedGamesFromID(callback:@escaping ([Game]) -> ()) {
-        if let arrayGamesExist = arrayGames {
-            callback(arrayGamesExist)
-        } else {
-            if let url = URL(string: url) {
-                
-                let req = NSMutableURLRequest(url: url)
-                req.setValue(IGDBKey.apiKey, forHTTPHeaderField: IGDBKey.header)
-                let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
-                    (data, response, error) -> Void in
-                    if let data = data {
-                        self.arrayGames = self.parsingJsonDataGame(data: data)
-                        DispatchQueue.main.async {
-                            if let arrayGames = self.arrayGames {
-                                callback(
-                                    arrayGames
-                                        .filter { $0.cover != nil && $0.summary != nil && $0.updatedAt != nil})
-                            }
+    func getGamesFromID(callback:@escaping (Game) -> ()) {
+        if let url = URL(string: url) {
+            let req = NSMutableURLRequest(url: url)
+            req.setValue(IGDBKey.apiKey, forHTTPHeaderField: IGDBKey.header)
+            let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
+                (data, response, error) -> Void in
+                if let data = data {
+                    self.arrayGames = self.parsingJsonDataRelatedGamesFromID(data: data)
+                    DispatchQueue.main.async {
+                        if let games = self.arrayGames?.first {
+                            callback(games)
                         }
-                    } else {
-                        print("\(error)")
                     }
-                })
-                task.resume()
-                
-            } else {
-                print("URL errato!")
-            }
+                } else {
+                    print("\(error)")
+                }
+            })
+            task.resume()
+        } else {
+            print("URL errato!")
         }
     }
     
@@ -279,50 +271,5 @@ class DecodeJSON {
         }
         return games.flatMap{ $0 }
     }
-
-
     
-//    func getScreenshots(callback:@escaping ([Screenshots]) -> ()) {
-//        if let arrayCompaniesExist = arrayPlatforms {
-//            callback(arrayCompaniesExist)
-//        } else {
-//            if let url = URL(string: url) {
-//                let req = NSMutableURLRequest(url: url)
-//                req.setValue(apiKey, forHTTPHeaderField: httpHeaderField)
-//                let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
-//                    (data, response, error) -> Void in
-//                    if let data = data {
-//                        self.arrayPlatforms = self.parsingJsonDataPlatforms(data: data)
-//                        DispatchQueue.main.async {
-//                            if let arrayPlatforms = self.arrayPlatforms {
-//                                callback(arrayPlatforms)
-//                            }
-//                        }
-//                    } else {
-//                        print("\(error)")
-//                    }
-//                })
-//                task.resume()
-//                
-//            } else {
-//                print("URL errato!")
-//            }
-//        }
-//    }
-//    
-//    func parsingJsonDataScreenshots(data: Data) -> [Platform]? {
-//        var platform: [Platform]? = []
-//        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-//        if let j: Any = jsonResult {
-//            platform = decode(j)
-//        }
-//        return platform.flatMap{ $0 }
-//    }
-
-
 }
-
-
-
-
-

@@ -171,7 +171,6 @@ extension Game {
         return cell
     }
     
-    
     func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, game: Game) {
         navigationController.pushViewController(GameDescriptionTableViewController(game: game), animated: true)
     }
@@ -186,16 +185,29 @@ extension Game {
             navigationController.pushViewController(ReleaseDateTableViewController(arrayReleaseDate: releaseDate), animated: true)
         case 7:
             navigationController.navigationBar.isTranslucent = false
-            guard let screenshots = screenshots else { return }
-            navigationController.pushViewController(ScreenshotTableViewController(arrayScreenshots: screenshots), animated: true)
+            if let screenshots = screenshots {
+                navigationController.pushViewController(ScreenshotTableViewController(arrayScreenshots: screenshots), animated: true)
+            } else {
+                let alert = Alert(title: "Sorry", message: "Screenshots not found!")
+                navigationController.present(alert.alertControllerLaunch(), animated: true, completion: nil)
+            }
         case 8:
             navigationController.navigationBar.isTranslucent = false
-            guard let genres = genres else { return }
-            navigationController.pushViewController(RelatedTableViewController(idGenres: genres), animated: true)
+            if let genres = genres {
+                navigationController.pushViewController(RelatedTableViewController(idGenres: genres), animated: true)
+            } else {
+                let alert = Alert(title: "Sorry", message: "Related games not found!")
+                navigationController.present(alert.alertControllerLaunch(), animated: true, completion: nil)
+            }
+            
         case 9:
             navigationController.navigationBar.isTranslucent = false
-            guard let videos = videos else { return }
-            navigationController.pushViewController(VideosTableViewController(videos: videos), animated: true)
+            if let videos = videos {
+                navigationController.pushViewController(VideosTableViewController(videos: videos), animated: true)
+            } else {
+                let alert = Alert(title: "Sorry", message: "Video not found!")
+                navigationController.present(alert.alertControllerLaunch(), animated: true, completion: nil)
+            }
         default:
             return
         }

@@ -54,8 +54,8 @@ class VideosTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let idVideo = videos[indexPath.row].video_id else { return }
-        let safariVC = SFSafariViewController(url: getVideo(videoid: idVideo)!)
+        guard let idVideo = videos[indexPath.row].video_id, let url = getVideo(videoid: idVideo) else { return }
+        let safariVC = SFSafariViewController(url: url)
         self.present(safariVC, animated: true, completion: nil)
     }
 }
