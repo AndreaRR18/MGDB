@@ -48,6 +48,7 @@ class DecodeJSON {
     
     //-------------------------------New Game-------------------------------
     func getNewGames(callback:@escaping ([Game]) -> ()) {
+        let cacheJson = CacheGame(fileName: "data", fileExtension: .JSON, subDirectory: "NewGame", directory: .applicationSupportDirectory)
         if let arrayGamesExist = arrayGames {
             callback(arrayGamesExist)
         } else {
@@ -57,6 +58,11 @@ class DecodeJSON {
                 let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
                     (data, response, error) -> Void in
                     if let data = data {
+                        do {
+                            try cacheJson.saveFile(dataForJson: data)
+                        } catch {
+                            print(error)
+                        }
                         self.arrayGames = self.parsingJsonDataGame(data: data)
                         DispatchQueue.main.async {
                             if let arrayGames = self.arrayGames {

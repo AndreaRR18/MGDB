@@ -7,35 +7,46 @@ import CoreData
 
 class GameTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     var offset = 0
-    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=30&order=updated_at%3Adesc"
+    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50&order=updated_at%3Adesc"
     var arrayGames: [Game] = []
     var reachability: Reachability? = Reachability.networkReachabilityForInternetConnection()
+    let cachedGame = CacheGame(fileName: "data", fileExtension: .JSON, subDirectory: "NewGame", directory: .applicationSupportDirectory)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
         
         let activityIndicator = ActivityIndicator(view: view)
-        activityIndicator.startAnimating()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)), name: NSNotification.Name(rawValue: ReachabilityDidChangeNotificationName), object: nil)
+        _ = reachability?.startNotifier()
         
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
         
-        let decodedJSON = DecodeJSON(url: gamesURL)
-        decodedJSON.getNewGames(callback: { arrayGames in
-            self.arrayGames = arrayGames
-            activityIndicator.stopAnimating()
-            self.tableView.reloadData()
-        })
+        if let reachabilityIsValid = reachability?.isReachable, reachabilityIsValid {
+            activityIndicator.startAnimating()
+            let decodedJSON = DecodeJSON(url: gamesURL)
+            decodedJSON.getNewGames(callback: { arrayGames in
+                self.arrayGames = arrayGames
+                activityIndicator.stopAnimating()
+                self.tableView.reloadData()
+            })
+        }else {
+            do {
+                try self.arrayGames = cachedGame.getJSONData()!
+                self.tableView.reloadData()
+            } catch {
+                print(error)
+            }
+        }
         
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
         refreshControl?.tintColor = UIColor.gray
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)), name: NSNotification.Name(rawValue: ReachabilityDidChangeNotificationName), object: nil)
-        _ = reachability?.startNotifier()
     }
     
     deinit {
@@ -128,7 +139,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
             self.tableView.tableFooterView = footerView
         }
         if indexPath.row == arrayGames.count - 5 {
-            offset += 10
+            offset += 30
             let decodedJSON = DecodeJSON(url: getUrlOffsetdGames(offset: offset))
             decodedJSON.getNewGames(callback: { arrayGames in
                 self.arrayGames += arrayGames
