@@ -5,7 +5,6 @@ class GameDescriptionTableViewController: UITableViewController {
     var gameDescription: Game
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tableView.register(UINib(nibName: "CoverTableViewCell", bundle: nil), forCellReuseIdentifier: "CoverTableViewCell")
         self.tableView.register(UINib(nibName: "SummaryTableViewCell", bundle: nil), forCellReuseIdentifier: "SummaryTableViewCell")
         self.tableView.register(UINib(nibName: "CompanyTableViewCell", bundle: nil), forCellReuseIdentifier: "CompanyTableViewCell")
