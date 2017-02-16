@@ -23,14 +23,12 @@ class CacheGame {
     private let fileManager = FileManager.default
     private let fileName: String
     private let filePath: String
-    private let fullyQualifiedPath: String
-//    private let fullyQualifiedPath: URL
+    private let fullyQualifiedPath: URL
     private let subDirectory: String
-    
     
     var fileExists: Bool {
         get {
-            return fileManager.fileExists(atPath: fullyQualifiedPath)
+            return fileManager.fileExists(atPath: fullyQualifiedPath.path)
         }
     }
     
@@ -48,12 +46,9 @@ class CacheGame {
         
         self.directoryPath = NSSearchPathForDirectoriesInDomains(directory, .userDomainMask, true)[0]
         self.filePath = directoryPath + self.subDirectory
-//        let path: String = "\(filePath)/\(self.fileName)"
-//        self.fullyQualifiedPath = URL(string: path.replacingOccurrences(of: " ", with: ""))!
-        self.fullyQualifiedPath = "\(filePath)/\(self.fileName)"
-        
+        let path: String = "\(filePath)/\(self.fileName)"
+        self.fullyQualifiedPath = URL(string: path.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlPathAllowed)!)!
         createDirectory()
-        
         print(self.directoryPath)
     }
     
@@ -69,8 +64,7 @@ class CacheGame {
     
     func savefile(string fileContents: String) throws {
         do {
-            try fileContents.write(toFile: fullyQualifiedPath, atomically: true, encoding: String.Encoding.utf8)
-//            try fileContents.write(to: fullyQualifiedPath, atomically: true, encoding: String.Encoding.utf8)
+            try fileContents.write(to: fullyQualifiedPath, atomically: true, encoding: String.Encoding.utf8)
         } catch {
             throw error
         }
@@ -78,7 +72,7 @@ class CacheGame {
     
     func saveFile(dataForJson: Data) throws {
         do {
-            if !fileManager.createFile(atPath: fullyQualifiedPath, contents: dataForJson, attributes: nil) {
+            if !fileManager.createFile(atPath: fullyQualifiedPath.path, contents: dataForJson, attributes: nil) {
                 throw FileErrors.FileNotSaved
             }
         } catch {
@@ -86,28 +80,6 @@ class CacheGame {
             throw FileErrors.FileNotSaved
         }
     }
-    
-    //    func saveFile(dataForJson: AnyObject) throws {
-    //        do {
-    //            let jsonData = try convertObjectToData(data: dataForJson)
-    //            if !fileManager.createFile(atPath: fullyQualifiedPath, contents: jsonData as Data, attributes: nil) {
-    //                throw FileErrors.FileNotSaved
-    //            }
-    //        } catch {
-    //            print(error)
-    //            throw FileErrors.FileNotSaved
-    //        }
-    //    }
-    //
-    //    private func convertObjectToData(data: AnyObject) throws -> NSData {
-    //        do {
-    //            let newData = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
-    //            return newData as NSData
-    //        } catch {
-    //            print("Error writing data: \(error)")
-    //        }
-    //        throw FileErrors.JsonNotSerialized
-    //    }
     
     convenience init(fileName: String, fileExtension: FileExtension, subDirectory: String) {
         self.init(fileName: fileName, fileExtension: fileExtension, subDirectory: subDirectory, directory: .applicationSupportDirectory)
@@ -119,7 +91,7 @@ class CacheGame {
     
     func saveFile(image: UIImage) throws {
         guard let data = UIImageJPEGRepresentation(image, 1.0) else { throw FileErrors.ImageNotConvertedToData }
-        if !fileManager.createFile(atPath: fullyQualifiedPath, contents: data, attributes: nil) {
+        if !fileManager.createFile(atPath: fullyQualifiedPath.path, contents: data, attributes: nil) {
             throw FileErrors.FileNotSaved
         }
     }
@@ -128,7 +100,7 @@ class CacheGame {
         guard fileExists else { throw FileErrors.FileNotFound }
         var returnString: String
         do {
-            returnString = try String(contentsOfFile: fullyQualifiedPath, encoding: String.Encoding.utf8)
+            returnString = try String(contentsOfFile: fullyQualifiedPath.path, encoding: String.Encoding.utf8)
         } catch {
             throw FileErrors.FileNotRead
         }
@@ -137,16 +109,14 @@ class CacheGame {
     
     func getImage() throws -> UIImage {
         guard fileExists else { throw FileErrors.FileNotFound }
-        guard let image = UIImage(contentsOfFile: fullyQualifiedPath) else { throw FileErrors.FileNotRead }
+        guard let image = UIImage(contentsOfFile: fullyQualifiedPath.path) else { throw FileErrors.FileNotRead }
         return image
     }
     
     func getJSONData() throws -> [Game]? {
         guard fileExists else { throw FileErrors.FileNotFound }
         do {
-//            let data = try Data(contentsOfFile: fullyQualifiedPath.path, options: NSData.ReadingOptions.mappedIfSafe)
-//            let data = try Data(contentsOf: URL(string: fullyQualifiedPath)!, options: Data.ReadingOptions.mappedIfSafe)
-            let data = try NSData(contentsOfFile: fullyQualifiedPath, options: Data.ReadingOptions.mappedIfSafe)
+            let data = try NSData(contentsOfFile: fullyQualifiedPath.path, options: NSData.ReadingOptions.mappedIfSafe)
             let jsonDictionary = parsingJsonDataGame(data: data as Data)
             return jsonDictionary
         } catch {
@@ -161,16 +131,6 @@ class CacheGame {
         }
         return games.flatMap{ $0 }
     }
-//    func getJSONData() throws -> NSDictionary {
-//        guard fileExists else { throw FileErrors.FileNotFound }
-//        do {
-//            let data = try NSData(contentsOfFile: fullyQualifiedPath, options: NSData.ReadingOptions.mappedIfSafe)
-//            let jsonDictionary = try JSONSerialization.jsonObject(with: data as Data, options: .allowFragments) as! NSDictionary
-//            return jsonDictionary
-//        } catch {
-//            throw FileErrors.FileNotRead
-//        }
-//    }
 
 }
 

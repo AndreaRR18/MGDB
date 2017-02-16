@@ -94,7 +94,6 @@ extension Game {
     }
     func getCellCompany(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CompanyTableViewCell.companyTableViewCellIdentifier, for: indexPath) as! CompanyTableViewCell
-        
         cell.backgroundColor = ColorUI.background
         cell.company?.textColor = ColorUI.text
         if let developers = developers {
@@ -122,10 +121,8 @@ extension Game {
     
     func getCellRate(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: RatingTableViewCell.ratingTableViewCellIdentifier, for: indexPath) as! RatingTableViewCell
-        
         cell.backgroundColor = ColorUI.background
         cell.rate?.textColor = ColorUI.text
-        
         cell.rate?.text = rating.map(String.init) ?? "N.D."
         return cell
     }
@@ -158,9 +155,12 @@ extension Game {
     }
     
     func getCellScreenshots(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: ScreenshotCollectionTableViewCell.screenshotCollectionTableViewCellIdentifier, for: indexPath) as! ScreenshotCollectionTableViewCell
         let cell = tableView.dequeueReusableCell(withIdentifier: ScreenshotsTableViewCell.screenshotsTableViewCellIdentifier, for: indexPath) as! ScreenshotsTableViewCell
         cell.backgroundColor = ColorUI.background
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+//        guard let screenshots = screenshots else { return cell }
+//        cell.arrayScreenshot = screenshots
         return cell
     }
     

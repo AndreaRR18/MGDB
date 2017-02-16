@@ -13,6 +13,7 @@ class GameDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: "PlatformTableViewCell", bundle: nil), forCellReuseIdentifier: "PlatformTableViewCell")
         self.tableView.register(UINib(nibName: "RatingTableViewCell", bundle: nil), forCellReuseIdentifier: "RatingTableViewCell")
         self.tableView.register(UINib(nibName: "ScreenshotsTableViewCell", bundle: nil), forCellReuseIdentifier: "ScreenshotsTableViewCell")
+//        self.tableView.register(UINib(nibName: "ScreenshotCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "ScreenshotCollectionTableViewCell")
         self.tableView.register(UINib(nibName: "GenreTableViewCell", bundle: nil), forCellReuseIdentifier: "GenreTableViewCell")
         self.tableView.register(UINib(nibName: "GameModesTableViewCell", bundle: nil), forCellReuseIdentifier: "GameModesTableViewCell")
         self.tableView.register(UINib(nibName: "RelatedInDescriptionTableViewCell", bundle: nil), forCellReuseIdentifier: "RelatedInDescriptionTableViewCell")
@@ -115,4 +116,3 @@ class GameDescriptionTableViewController: UITableViewController {
     
     
 }
-

@@ -94,6 +94,8 @@ class RelatedTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    
+    
     func takeIdGames(idGenres: [Int], callback: @escaping(_ arrayIDGames: [Int], _ arrayOfArrayIDGames: [[Int]]) -> ()) {
         idGenres.forEach{ genre in
             var arrayOfArrayIDGames: [[Int]] = []

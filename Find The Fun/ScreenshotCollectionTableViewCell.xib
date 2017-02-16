@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="211" id="KGk-i7-Jjw" customClass="ScreenshotCollectionTableViewCell" customModule="Find_The_Fun" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="472" height="211"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="472" height="211"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="aJ6-V6-aOf">
+                        <rect key="frame" x="8" y="8" width="456" height="195"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GHK-QP-k5k">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                        </collectionViewFlowLayout>
+                        <connections>
+                            <outlet property="dataSource" destination="KGk-i7-Jjw" id="58K-8d-ZlW"/>
+                            <outlet property="delegate" destination="KGk-i7-Jjw" id="d7M-Ir-Tg3"/>
+                        </connections>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="aJ6-V6-aOf" secondAttribute="bottom" id="3oo-sm-hhC"/>
+                    <constraint firstItem="aJ6-V6-aOf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="jB3-tn-eaG"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="aJ6-V6-aOf" secondAttribute="trailing" id="uWF-L5-HMk"/>
+                    <constraint firstItem="aJ6-V6-aOf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="yvb-9t-fQG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="screenshotCollectionView" destination="aJ6-V6-aOf" id="qku-Lc-Bj1"/>
+            </connections>
+            <point key="canvasLocation" x="101" y="135.5"/>
+        </tableViewCell>
+    </objects>
+</document>

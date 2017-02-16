@@ -67,6 +67,10 @@
 		658257A61E4C69FE004AD4C6 /* VideosTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658257A41E4C69FE004AD4C6 /* VideosTableViewController.xib */; };
 		658257AD1E4C8BC6004AD4C6 /* PlayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658257AB1E4C8BC6004AD4C6 /* PlayTableViewCell.swift */; };
 		658257AE1E4C8BC6004AD4C6 /* PlayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 658257AC1E4C8BC6004AD4C6 /* PlayTableViewCell.xib */; };
+		659D26D01E55F2D8004DF1B5 /* ScreenshotCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D26CE1E55F2D8004DF1B5 /* ScreenshotCollectionTableViewCell.swift */; };
+		659D26D11E55F2D8004DF1B5 /* ScreenshotCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659D26CF1E55F2D8004DF1B5 /* ScreenshotCollectionTableViewCell.xib */; };
+		659D26D41E55F2F9004DF1B5 /* ScreenshotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D26D21E55F2F9004DF1B5 /* ScreenshotCollectionViewCell.swift */; };
+		659D26D51E55F2F9004DF1B5 /* ScreenshotCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659D26D31E55F2F9004DF1B5 /* ScreenshotCollectionViewCell.xib */; };
 		65B2DEF61E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2DEF41E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift */; };
 		65B2DEF71E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B2DEF51E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib */; };
 		65B2DEFC1E2CFC2100C3DE70 /* CoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2DEFA1E2CFC2100C3DE70 /* CoverTableViewCell.swift */; };
@@ -173,6 +177,10 @@
 		658257A41E4C69FE004AD4C6 /* VideosTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideosTableViewController.xib; sourceTree = "<group>"; };
 		658257AB1E4C8BC6004AD4C6 /* PlayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayTableViewCell.swift; sourceTree = "<group>"; };
 		658257AC1E4C8BC6004AD4C6 /* PlayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayTableViewCell.xib; sourceTree = "<group>"; };
+		659D26CE1E55F2D8004DF1B5 /* ScreenshotCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotCollectionTableViewCell.swift; sourceTree = "<group>"; };
+		659D26CF1E55F2D8004DF1B5 /* ScreenshotCollectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		659D26D21E55F2F9004DF1B5 /* ScreenshotCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotCollectionViewCell.swift; sourceTree = "<group>"; };
+		659D26D31E55F2F9004DF1B5 /* ScreenshotCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotCollectionViewCell.xib; sourceTree = "<group>"; };
 		65B2DEF41E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDescriptionTableViewController.swift; sourceTree = "<group>"; };
 		65B2DEF51E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameDescriptionTableViewController.xib; sourceTree = "<group>"; };
 		65B2DEFA1E2CFC2100C3DE70 /* CoverTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverTableViewCell.swift; sourceTree = "<group>"; };
@@ -321,6 +329,7 @@
 		655564E31E43461F0022C87F /* Description Cell */ = {
 			isa = PBXGroup;
 			children = (
+				659D26CD1E55F2C2004DF1B5 /* TestScreenshot */,
 				65B2DEFA1E2CFC2100C3DE70 /* CoverTableViewCell.swift */,
 				65B2DEFB1E2CFC2100C3DE70 /* CoverTableViewCell.xib */,
 				65B2DEFE1E2CFD2900C3DE70 /* SummaryTableViewCell.swift */,
@@ -418,6 +427,17 @@
 				658257AC1E4C8BC6004AD4C6 /* PlayTableViewCell.xib */,
 			);
 			name = Videos;
+			sourceTree = "<group>";
+		};
+		659D26CD1E55F2C2004DF1B5 /* TestScreenshot */ = {
+			isa = PBXGroup;
+			children = (
+				659D26CE1E55F2D8004DF1B5 /* ScreenshotCollectionTableViewCell.swift */,
+				659D26CF1E55F2D8004DF1B5 /* ScreenshotCollectionTableViewCell.xib */,
+				659D26D21E55F2F9004DF1B5 /* ScreenshotCollectionViewCell.swift */,
+				659D26D31E55F2F9004DF1B5 /* ScreenshotCollectionViewCell.xib */,
+			);
+			name = TestScreenshot;
 			sourceTree = "<group>";
 		};
 		65B2DEF81E2CFB7500C3DE70 /* News TableView  */ = {
@@ -541,6 +561,7 @@
 				6541CBF01E40A53D0071C711 /* ScreenshotsTableViewCell.xib in Resources */,
 				65B395BB1E40E73500E373B3 /* FavouriteDescriptionTableViewController.xib in Resources */,
 				656C39091E27D1FC0095EDBC /* LaunchScreen.storyboard in Resources */,
+				659D26D51E55F2F9004DF1B5 /* ScreenshotCollectionViewCell.xib in Resources */,
 				655564E71E4346EF0022C87F /* ReleaseDateTableViewCell.xib in Resources */,
 				654BF6E91E27F55900A82610 /* GameTableViewController.xib in Resources */,
 				655565111E44A6C70022C87F /* RelatedTableViewController.xib in Resources */,
@@ -566,6 +587,7 @@
 				658257AE1E4C8BC6004AD4C6 /* PlayTableViewCell.xib in Resources */,
 				656C39061E27D1FC0095EDBC /* Assets.xcassets in Resources */,
 				658257A61E4C69FE004AD4C6 /* VideosTableViewController.xib in Resources */,
+				659D26D11E55F2D8004DF1B5 /* ScreenshotCollectionTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,6 +627,7 @@
 				65B395C41E42468800E373B3 /* GameModesTableViewCell.swift in Sources */,
 				65B395C71E42575B00E373B3 /* Genre.swift in Sources */,
 				65B395BA1E40E73500E373B3 /* FavouriteDescriptionTableViewController.swift in Sources */,
+				659D26D41E55F2F9004DF1B5 /* ScreenshotCollectionViewCell.swift in Sources */,
 				6541CBEC1E3FA5770071C711 /* ColorInterface.swift in Sources */,
 				65B2DF081E2CFFA200C3DE70 /* PublishedTableViewCell.swift in Sources */,
 				6541CBEF1E40A53D0071C711 /* ScreenshotsTableViewCell.swift in Sources */,
@@ -630,6 +653,7 @@
 				654BF6E51E27F12900A82610 /* Game.swift in Sources */,
 				655564E01E4345A10022C87F /* GenresTableViewController.swift in Sources */,
 				65B395B31E40E6C500E373B3 /* FavouriteTableViewController.swift in Sources */,
+				659D26D01E55F2D8004DF1B5 /* ScreenshotCollectionTableViewCell.swift in Sources */,
 				658257A01E4C6760004AD4C6 /* VideosTableViewCell.swift in Sources */,
 				655564EA1E43471F0022C87F /* IGDB.swift in Sources */,
 				656C38FF1E27D1FC0095EDBC /* AppDelegate.swift in Sources */,
