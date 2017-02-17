@@ -8,7 +8,6 @@ extension Game {
     //--------------------Cell of First UITableView -------------------//
     func getCellForTableViewController(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! GameCellTableViewCell
-        
         cell.backgroundColor = ColorUI.background
         cell.name?.textColor = ColorUI.text
         cell.years?.textColor = ColorUI.text
@@ -16,26 +15,21 @@ extension Game {
         cell.cover?.clipsToBounds = true
         cell.name?.text = name
         cell.years?.text = releaseDate?.first?.year.map(String.init)
-        let placeholder = #imageLiteral(resourceName: "img-not-found")
-        if let urlExist = getUrlHttps(url: cover?.url) {
-            cell.cover?.af_setImage(
-                withURL: urlExist,
-                placeholderImage: placeholder,
-                runImageTransitionIfCached: true)
-        } else {
-            cell.cover?.image = placeholder
-        }
+        cell.url = getUrlHttps(url: cover?.url)
         return cell
     }
     
     //--------------------Cell of Description UITableView -------------------//
     var gameDescriptionFields: [(UITableView,IndexPath) -> UITableViewCell] {
         return [
-            { (tableView,indexPath) -> UITableViewCell in
-                self.getCellSummary(tableView: tableView, indexPath: indexPath)
+            { (tableView, indexPath) -> UITableViewCell in
+                self.getCellCoverHD(tableView: tableView, indexPath: indexPath)
             },
             { (tableView,indexPath) -> UITableViewCell in
                 self.getCellCover(tableView: tableView, indexPath: indexPath)
+            },
+            { (tableView,indexPath) -> UITableViewCell in
+                self.getCellSummary(tableView: tableView, indexPath: indexPath)
             },
             { (tableView,indexPath) -> UITableViewCell in
                 self.getCellCompany(tableView: tableView, indexPath: indexPath)
@@ -65,25 +59,20 @@ extension Game {
         ]
     }
     
-    func getCellCover(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CoverTableViewCell.coverTableViewCellIdentifier, for: indexPath) as! CoverTableViewCell
-        let placeholder = #imageLiteral(resourceName: "img-not-found")
-        
-        cell.thumbnail?.layer.cornerRadius = 30.0
-        
-        if let urlExist = getUrlHttps(url: cover?.url) {
-            cell.thumbnail?.af_setImage(
-                withURL: urlExist,
-                placeholderImage: placeholder,
-                imageTransition: .crossDissolve(0.2),
-                runImageTransitionIfCached: true)
-            
-        } else {
-            cell.thumbnail?.image = placeholder
-        }
-        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+    func getCellCoverHD(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CoverHDTableViewCell.coverHDTableViewCellIdentifier, for: indexPath) as! CoverHDTableViewCell
+        cell.url = getHDImage(url: cover?.url)
         return cell
     }
+    
+    func getCellCover(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CoverTableViewCell.coverTableViewCellIdentifier, for: indexPath) as! CoverTableViewCell
+        cell.url = getHDImage(url: cover?.url)
+        cell.name?.text = name
+        cell.layer.zPosition = 3
+        return cell
+    }
+    
     func getCellSummary(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SummaryTableViewCell.summaryTableViewCellIdentifier, for: indexPath) as! SummaryTableViewCell
         cell.backgroundColor = ColorUI.background
@@ -155,12 +144,12 @@ extension Game {
     }
     
     func getCellScreenshots(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: ScreenshotCollectionTableViewCell.screenshotCollectionTableViewCellIdentifier, for: indexPath) as! ScreenshotCollectionTableViewCell
+        //        let cell = tableView.dequeueReusableCell(withIdentifier: ScreenshotCollectionTableViewCell.screenshotCollectionTableViewCellIdentifier, for: indexPath) as! ScreenshotCollectionTableViewCell
         let cell = tableView.dequeueReusableCell(withIdentifier: ScreenshotsTableViewCell.screenshotsTableViewCellIdentifier, for: indexPath) as! ScreenshotsTableViewCell
         cell.backgroundColor = ColorUI.background
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-//        guard let screenshots = screenshots else { return cell }
-//        cell.arrayScreenshot = screenshots
+        //        guard let screenshots = screenshots else { return cell }
+        //        cell.arrayScreenshot = screenshots
         return cell
     }
     
@@ -215,29 +204,3 @@ extension Game {
 }
 
 
-func heightRowInGameDescription(indexPath: Int) -> CGFloat {
-    switch indexPath {
-    case 0:
-        return 170
-    case 1:
-        return 90
-    case 2:
-        return 60
-    case 3:
-        return 60
-    case 4:
-        return 60
-    case 5:
-        return 60
-    case 6:
-        return 60
-    case 7:
-        return 60
-    case 8:
-        return 60
-    case 9:
-        return 60
-    default:
-        return 0
-    }
-}

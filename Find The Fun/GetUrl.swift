@@ -36,7 +36,7 @@ func getUrlIDPlatform(idPlatform: Int) -> String {
     return platformUrl
 }
 
-func getScreenshots(url: String?) -> URL? {
+func getHDImage(url: String?) -> URL? {
     guard let url = url else { return nil }
     let urlHttps = URL(string: ("https:"+url).replacingOccurrences(of: "/t_thumb", with: "", options: .literal))
     return urlHttps

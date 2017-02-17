@@ -50,7 +50,7 @@ class ScreenshotTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PreviewScreenshotTableViewCell.cellReleaseDateCellIdentifier, for: indexPath) as! PreviewScreenshotTableViewCell
-        cell.url = getScreenshots(url: arrayScreenshots[indexPath.row].url)
+        cell.url = getHDImage(url: arrayScreenshots[indexPath.row].url)
         return cell
     }
     
