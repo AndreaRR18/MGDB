@@ -24,18 +24,17 @@ class RelatedTableViewController: UITableViewController {
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
         takeCommonIDGames { commonElement in
-            if commonElement.count < 20 {
+            if commonElement.count < 30 {
                 commonElement.forEach({ idGame in
                     let decodedJSON = DecodeJSON(url: getUrlIDGame(idGame: idGame))
-                    print(getUrlIDGame(idGame: idGame))
                     decodedJSON.getGamesFromID(callback: { game in
                         guard game.summary != nil, game.cover != nil else { return }
                         self.arrayGames.append(game)
                     })
                 })
             } else {
-                commonElement[0...19].forEach({ idGame in
-                    let decodedJSON = DecodeJSON(url: getUrlIDGame(idGame: idGame))
+                commonElement[0...19].forEach({ _ in
+                    let decodedJSON = DecodeJSON(url: getUrlIDGame(idGame: commonElement.randomItem()))
                     decodedJSON.getGamesFromID(callback: { game in
                         guard game.summary != nil, game.cover != nil else { return }
                         self.arrayGames.append(game)

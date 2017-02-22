@@ -16,11 +16,6 @@ class ReleaseDateTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.titleView = nil
         tabBarController?.navigationItem.title = "Release Date"
-        let activityIndicator = ActivityIndicator(view: view)
-        activityIndicator.startAnimating()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
-            activityIndicator.stopAnimating()
-        })
     }
     
     override func viewDidLoad() {

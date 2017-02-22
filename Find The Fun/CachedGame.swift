@@ -48,7 +48,6 @@ class CacheGame {
         let path: String = "\(filePath)/\(self.fileName)"
         self.fullyQualifiedPath = URL(string: path.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlPathAllowed)!)!
         createDirectory()
-        print(self.directoryPath)
     }
     
     private func createDirectory() {

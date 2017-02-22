@@ -144,12 +144,9 @@ extension Game {
     }
     
     func getCellScreenshots(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        //        let cell = tableView.dequeueReusableCell(withIdentifier: ScreenshotCollectionTableViewCell.screenshotCollectionTableViewCellIdentifier, for: indexPath) as! ScreenshotCollectionTableViewCell
         let cell = tableView.dequeueReusableCell(withIdentifier: ScreenshotsTableViewCell.screenshotsTableViewCellIdentifier, for: indexPath) as! ScreenshotsTableViewCell
         cell.backgroundColor = ColorUI.background
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-        //        guard let screenshots = screenshots else { return cell }
-        //        cell.arrayScreenshot = screenshots
         return cell
     }
     
@@ -175,7 +172,8 @@ extension Game {
         case 8:
             navigationController.navigationBar.isTranslucent = false
             if let screenshots = screenshots {
-                navigationController.pushViewController(ScreenshotTableViewController(arrayScreenshots: screenshots), animated: true)
+                navigationController.pushViewController(ScreenshotsCollectionViewController(arrayScreenshots: screenshots), animated: true)
+//                navigationController.pushViewController(ScreenshotTableViewController(arrayScreenshots: screenshots), animated: true)
             } else {
                 let alert = Alert(title: "Sorry", message: "Screenshots not found!")
                 navigationController.present(alert.alertControllerLaunch(), animated: true, completion: nil)
