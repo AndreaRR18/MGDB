@@ -11,13 +11,11 @@ class GameCellTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cover?.layer.cornerRadius = 30
+        cover?.layer.cornerRadius = 20
         cover?.layer.shadowColor = UIColor.black.cgColor
         cover?.layer.shadowOpacity = 1
         cover?.layer.shadowOffset = CGSize.zero
         cover?.layer.shadowRadius = 10
-
-        
     }
     
     var url: URL? {

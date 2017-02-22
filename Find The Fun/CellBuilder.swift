@@ -169,10 +169,10 @@ extension Game {
         case 1:
             navigationController.navigationBar.isTranslucent = false
             navigationController.pushViewController(CoverViewController(coverURL: cover?.url), animated: true)
-        case 3:
+        case 4:
             navigationController.navigationBar.isTranslucent = false
             navigationController.pushViewController(ReleaseDateTableViewController(arrayReleaseDate: releaseDate), animated: true)
-        case 7:
+        case 8:
             navigationController.navigationBar.isTranslucent = false
             if let screenshots = screenshots {
                 navigationController.pushViewController(ScreenshotTableViewController(arrayScreenshots: screenshots), animated: true)
@@ -180,7 +180,7 @@ extension Game {
                 let alert = Alert(title: "Sorry", message: "Screenshots not found!")
                 navigationController.present(alert.alertControllerLaunch(), animated: true, completion: nil)
             }
-        case 8:
+        case 9:
             navigationController.navigationBar.isTranslucent = false
             if let genres = genres {
                 navigationController.pushViewController(RelatedTableViewController(idGenres: genres), animated: true)
@@ -189,7 +189,7 @@ extension Game {
                 navigationController.present(alert.alertControllerLaunch(), animated: true, completion: nil)
             }
             
-        case 9:
+        case 10:
             navigationController.navigationBar.isTranslucent = false
             if let videos = videos {
                 navigationController.pushViewController(VideosTableViewController(videos: videos), animated: true)

@@ -1,8 +1,6 @@
 import UIKit
 
-class HomePageViewController: UIViewController {
-    
-    @IBOutlet weak var showList: UIButton?
+class About: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,7 +10,7 @@ class HomePageViewController: UIViewController {
         tabBarController?.navigationItem.titleView = nil
         tabBarController?.navigationItem.title = "About"
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
-        self.view.backgroundColor = ColorUI.background
+        tabBarController?.tabBar.isTranslucent = false
     }
     
     override func didReceiveMemoryWarning() {

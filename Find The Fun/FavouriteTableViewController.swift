@@ -20,6 +20,7 @@ class FavouriteTableViewController: UITableViewController {
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white
         tabBarController?.tabBar.unselectedItemTintColor = ColorUI.unselectedItemTabBar
+        tabBarController?.tabBar.isTranslucent = false
     }
     
     override func viewWillAppear(_ animated: Bool) {

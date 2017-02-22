@@ -121,7 +121,6 @@ class GameDescriptionTableViewController: UITableViewController {
             completion: { _ in
                 saveFavouriteGame(
                     game: self.gameDescription,
-                    company: (self.gameDescription.developers?.first)!,
                     image: cover.image!)
         })
     }

@@ -3,19 +3,19 @@ import CoreData
 import UIKit
 import AlamofireImage
 
-func saveFavouriteGame(game: Game, company: Int, image: UIImage) {
+func saveFavouriteGame(game: Game, image: UIImage) {
     
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     var arrayFavouriteGames: [NSManagedObject] = []
     let context = appDelegate.persistentContainer.viewContext
     let newFavuoriteGame = NSEntityDescription.insertNewObject(forEntityName: "FavouriteGameData", into: context)
-    
     newFavuoriteGame.setValue(game.idGame, forKey: "id")
     newFavuoriteGame.setValue(game.name, forKey: "name")
     newFavuoriteGame.setValue(game.rating, forKey: "rating")
     newFavuoriteGame.setValue(game.summary, forKey: "summary")
-    
-    newFavuoriteGame.setValue(fetchCompany(id: Int32(company)), forKey: "company")
+    newFavuoriteGame.setValue(stringCompany(companyIDs: game.developers), forKey: "company")
+    newFavuoriteGame.setValue(stringGenres(genresIDs: game.genres), forKey: "genre")
+    newFavuoriteGame.setValue(stringGameModes(gameModesIDs: game.gameModes), forKey: "gamemode")
     let newCoverData: Data? = UIImageJPEGRepresentation(image, 1)
     newFavuoriteGame.setValue(newCoverData, forKey: "image")
     do {
@@ -24,6 +24,33 @@ func saveFavouriteGame(game: Game, company: Int, image: UIImage) {
     } catch let error as NSError {
         print("Could not save. \(error), \(error.userInfo)")
     }
+}
+
+func stringCompany(companyIDs: [Int]?) -> String {
+    var company = [String]()
+    companyIDs?.forEach { id in
+        guard let companyName = fetchCompany(id: Int32(id)) else { return }
+        company.append(companyName)
+    }
+    return company.joined(separator: ", ")
+}
+
+func stringGenres(genresIDs: [Int]?) -> String {
+    var genres = [String]()
+    genresIDs?.forEach { id in
+        guard let genresName = fetchGenres(id: Int32(id)) else { return }
+        genres.append(genresName)
+    }
+    return genres.joined(separator: ", ")
+}
+
+func stringGameModes(gameModesIDs: [Int]?) -> String {
+    var gameModes = [String]()
+    gameModesIDs?.forEach { id in
+        guard let gameModesName = fetchGameModes(id: Int32(id)) else { return }
+        gameModes.append(gameModesName)
+    }
+    return gameModes.joined(separator: ", ")
 }
 
 func deleteFavouriteGame(id: Int32) {

@@ -2,9 +2,8 @@ import UIKit
 
 class CoverViewController: UIViewController {
     
-    
-    @IBOutlet weak var coverHighResolution: UIImageView!
-    @IBOutlet weak var coverScrollView: UIScrollView!
+    @IBOutlet weak var coverHighResolution: UIImageView?
+    @IBOutlet weak var coverScrollView: UIScrollView?
     
     var coverURL: String?
     
@@ -17,13 +16,12 @@ class CoverViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let activityIndicator = ActivityIndicator(view: view)
         activityIndicator.startAnimating()
-        coverScrollView.maximumZoomScale = 5.0
-        coverScrollView.minimumZoomScale = 1.0
+        coverScrollView?.maximumZoomScale = 5.0
+        coverScrollView?.minimumZoomScale = 1.0
         view.backgroundColor = ColorUI.backgoundTableView
         if let urlExist = getCover(url: coverURL) {
             coverHighResolution?.af_setImage(
