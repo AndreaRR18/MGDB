@@ -20,16 +20,12 @@ extension GameModes: Decodable {
 }
 
 func saveGameModes(idGameModes: Int32, nameGameModes: String) {
-    
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    
     var arrayGameModes: [NSManagedObject] = []
     let context = appDelegate.persistentContainer.viewContext
     let newGameModes = NSEntityDescription.insertNewObject(forEntityName: "GameModesData", into: context)
-    
     newGameModes.setValue(idGameModes, forKey: "idGameModes")
     newGameModes.setValue(nameGameModes, forKey: "nameGameModes")
-    
     do {
         try context.save()
         arrayGameModes.append(newGameModes)
@@ -43,9 +39,7 @@ func fetchGameModes(id: Int32) -> String? {
     var stringOfGameModes: String?
     let context = appDelegate.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GameModesData")
-    
     request.returnsObjectsAsFaults = false
-    
     do {
         let results = try context.fetch(request)
         for result in results as! [NSManagedObject] {

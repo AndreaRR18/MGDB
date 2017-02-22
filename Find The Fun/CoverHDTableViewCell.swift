@@ -7,7 +7,6 @@ class CoverHDTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-//        coverHQ?.layer.cornerRadius = 30
     }
     
     var url: URL? {

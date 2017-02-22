@@ -8,10 +8,6 @@ let distance_W_LabelHeader: CGFloat = 35.0
 class GameDescriptionTableViewController: UITableViewController {
     
     var gameDescription: Game
-//    let referenceCoverImage = UIImageView()
-//    var coverReference = UIImageView()
-//    var headerReference = UIImageView()
-//    var index: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +19,6 @@ class GameDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: "PlatformTableViewCell", bundle: nil), forCellReuseIdentifier: "PlatformTableViewCell")
         self.tableView.register(UINib(nibName: "RatingTableViewCell", bundle: nil), forCellReuseIdentifier: "RatingTableViewCell")
         self.tableView.register(UINib(nibName: "ScreenshotsTableViewCell", bundle: nil), forCellReuseIdentifier: "ScreenshotsTableViewCell")
-//        self.tableView.register(UINib(nibName: "ScreenshotCollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "ScreenshotCollectionTableViewCell")
         self.tableView.register(UINib(nibName: "GenreTableViewCell", bundle: nil), forCellReuseIdentifier: "GenreTableViewCell")
         self.tableView.register(UINib(nibName: "GameModesTableViewCell", bundle: nil), forCellReuseIdentifier: "GameModesTableViewCell")
         self.tableView.register(UINib(nibName: "RelatedInDescriptionTableViewCell", bundle: nil), forCellReuseIdentifier: "RelatedInDescriptionTableViewCell")
@@ -90,13 +85,6 @@ class GameDescriptionTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if CoverTableViewCell() >!< gameDescription.gameDescriptionFields[indexPath.row](tableView, indexPath) {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: CoverTableViewCell.coverTableViewCellIdentifier, for: indexPath) as! CoverTableViewCell
-//            coverReference = cell.thumbnail!
-//        } else if CoverHDTableViewCell() >!< gameDescription.gameDescriptionFields[indexPath.row](tableView, indexPath) {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: CoverHDTableViewCell.coverHDTableViewCellIdentifier, for: indexPath) as! CoverHDTableViewCell
-//            headerReference = cell.coverHQ!
-//        }
         return gameDescription.gameDescriptionFields[indexPath.row](tableView, indexPath)
     }
     
@@ -131,34 +119,4 @@ class GameDescriptionTableViewController: UITableViewController {
         deleteFavouriteGame(id: Int32(gameDescription.idGame))
     }
     
-//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let offset = tableView.contentOffset.y
-//        var headerTrasform = CATransform3DIdentity
-//        var coverTrasform = CATransform3DIdentity
-//        if offset < 0 {
-//            let headerScaleFactor: CGFloat = -(offset) / coverReference.bounds.height
-//            let headerSizeVariation = ((coverReference.bounds.height * (1.0 + headerScaleFactor)) - coverReference.bounds.height) / 2.0
-//            headerTrasform = CATransform3DTranslate(headerTrasform, 0, headerSizeVariation, 0)
-//            headerTrasform = CATransform3DScale(headerTrasform, 1.0 + headerScaleFactor, 1.0 + headerScaleFactor, 0)
-//            coverReference.layer.transform = headerTrasform
-//        } else {
-//            headerTrasform = CATransform3DTranslate(headerTrasform, 0, max(-offset_HeaderStop, -offset), 0)
-//            
-//            let coverScaleFactor = (min(offset_HeaderStop, offset)) / coverReference.bounds.height / 1.4
-//            let coverSizeVariation = ((coverReference.bounds.height * (1.0 + coverScaleFactor)) - coverReference.bounds.height) / 2.0
-//            coverTrasform = CATransform3DTranslate(coverTrasform, 0, coverSizeVariation, 0)
-//            coverTrasform = CATransform3DScale(coverTrasform, 1.0 - coverScaleFactor, 1.0 - coverScaleFactor, 0)
-//        }
-//        coverReference.layer.transform = coverTrasform
-//        headerReference.layer.transform = headerTrasform
-//    }
-    
-  
-    
 }
-//
-//infix operator >!<
-//func >!<(object1: AnyObject!, object2: AnyObject!) -> Bool {
-//    return (object_getClass(object1) == object_getClass(object2))
-//}
-

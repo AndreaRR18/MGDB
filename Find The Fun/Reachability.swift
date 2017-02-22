@@ -9,7 +9,6 @@ enum ReachabilityStatus {
     case reachableViaWAN
 }
 
-
 class Reachability: NSObject {
     
     private var networkingReachability: SCNetworkReachability?
@@ -25,7 +24,6 @@ class Reachability: NSObject {
     
     init?(hostAddress: sockaddr_in) {
         var address = hostAddress
-        
         guard let defaultRouteReachability = withUnsafePointer(to: &address, { $0.withMemoryRebound(to: sockaddr.self, capacity: 1) { SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, $0) } }) else { return nil }
         networkingReachability = defaultRouteReachability
         super.init()
@@ -82,7 +80,6 @@ class Reachability: NSObject {
     deinit {
         stopNotifier()
     }
-    
     
     private var flags: SCNetworkReachabilityFlags {
         var flags = SCNetworkReachabilityFlags(rawValue: 0)

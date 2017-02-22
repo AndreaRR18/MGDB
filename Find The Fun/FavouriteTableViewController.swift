@@ -58,7 +58,6 @@ class FavouriteTableViewController: UITableViewController {
     func getGame() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
-        
         do {
             arrayFavouriteGames = try context.fetch(FavouriteGameData.fetchRequest())
         } catch {

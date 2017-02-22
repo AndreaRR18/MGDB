@@ -22,7 +22,6 @@ class VideosTableViewController: UITableViewController {
         self.view.backgroundColor = ColorUI.backgoundTableView
         let activityIndicator = ActivityIndicator(view: view)
         activityIndicator.startAnimating()
-        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
             activityIndicator.stopAnimating()
         })

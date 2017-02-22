@@ -4,7 +4,6 @@ struct ActivityIndicator {
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     let activityIndicatorFooter = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     let view: UIView
-    
     init(view: UIView) {
         self.view = view
     }
@@ -22,5 +21,4 @@ struct ActivityIndicator {
     func stopAnimating() {
         activityIndicator.stopAnimating()
     }
-    
 }

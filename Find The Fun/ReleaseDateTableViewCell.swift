@@ -19,7 +19,6 @@ class ReleaseDateTableViewCell: UITableViewCell {
                 imageTransition: UIImageView.ImageTransition.crossDissolve(0.1),
                 runImageTransitionIfCached: true,
                 completion: { _ in
-                    
             })
         }
     }

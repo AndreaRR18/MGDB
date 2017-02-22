@@ -18,10 +18,10 @@ struct SaveDeleteButton {
         self.view = view
         self.tableViewController = tableViewController
     }
+    
     func save() -> UIBarButtonItem {
         saveFavourite.setTitle("Save", for: .normal)
         saveFavourite.frame = CGRect(x: 0, y: 0, width: 60, height: 30)
-//        saveFavourite.addTarget(tableViewController, action: #selector(SaveDeleteButton.saveFavourite), for: .touchUpInside)
         return UIBarButtonItem(customView: saveFavourite)
         
     }
@@ -29,7 +29,6 @@ struct SaveDeleteButton {
     func delete() -> UIBarButtonItem {
         removeFavourite.setTitle("Remove", for: .normal)
         removeFavourite.frame = CGRect(x: 0, y: 0, width: 80, height: 30)
- //       removeFavourite.addTarget(tableViewController, action: #selector(SaveDeleteButton.removeFavourite), for: .touchUpInside)
         return UIBarButtonItem(customView: removeFavourite)
     }
     
@@ -60,6 +59,4 @@ struct SaveDeleteButton {
         sender.setTitle("Removed", for: .normal)
         deleteFavouriteGame(id: Int32(gameDescription.idGame))
     }
-    
-    
 }

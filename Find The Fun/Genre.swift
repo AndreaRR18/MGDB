@@ -22,16 +22,12 @@ extension Genres: Decodable {
 }
 
 func saveGenre(idGenre: Int32, nameGenre: String) {
-    
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    
     var arrayGenres: [NSManagedObject] = []
     let context = appDelegate.persistentContainer.viewContext
     let newGenre = NSEntityDescription.insertNewObject(forEntityName: "GenresData", into: context)
-    
     newGenre.setValue(idGenre, forKey: "idGenre")
     newGenre.setValue(nameGenre, forKey: "nameGenre")
-    
     do {
         try context.save()
         arrayGenres.append(newGenre)
@@ -45,9 +41,7 @@ func fetchGenres(id: Int32) -> String? {
     var stringOfGenre: String?
     let context = appDelegate.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GenresData")
-    
     request.returnsObjectsAsFaults = false
-    
     do {
         let results = try context.fetch(request)
         for result in results as! [NSManagedObject] {
@@ -67,7 +61,6 @@ func nameGenresDB(id: [Int]?, callback:@escaping (String) -> ()) {
     var genres: [String] = []
     guard let id = id else { return }
     id.forEach{ idGenre in
-        
         if let nameGenre = fetchGenres(id: Int32(idGenre)) {
             genres.append(nameGenre)
         } else {

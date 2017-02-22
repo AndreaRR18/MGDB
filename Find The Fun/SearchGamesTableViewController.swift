@@ -12,7 +12,6 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
-        
         let viewFooter = UIView()
         self.tableView.tableFooterView = viewFooter
         viewFooter.backgroundColor = ColorUI.backgoundTableView

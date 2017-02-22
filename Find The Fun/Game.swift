@@ -48,7 +48,6 @@ struct Videos {
     let video_id: String? //video_id
 }
 
-
 //------------Decode JSON with Argo-------------
 extension Game: Decodable {
     static func decode(_ json: JSON) -> Decoded<Game> {

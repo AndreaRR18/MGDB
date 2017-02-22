@@ -18,7 +18,6 @@ class ReleaseDateTableViewController: UITableViewController {
         tabBarController?.navigationItem.title = "Release Date"
         let activityIndicator = ActivityIndicator(view: view)
         activityIndicator.startAnimating()
-        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
             activityIndicator.stopAnimating()
         })
@@ -26,7 +25,6 @@ class ReleaseDateTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tableView.register(UINib(nibName: "ReleaseDateTableViewCell", bundle: nil), forCellReuseIdentifier: "ReleaseDateTableViewCell")
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorUI.backgoundTableView

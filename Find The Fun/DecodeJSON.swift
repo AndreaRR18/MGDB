@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 import Argo
 
-
 class DecodeJSON {
     let url: String
     var arrayGames: [Game]? = nil
@@ -11,11 +10,9 @@ class DecodeJSON {
     var arrayGenres: [Genres]? = nil
     var arrayGameModes: [GameModes]? = nil
     
-    
     init(url: String) {
         self.url = url
     }
-    
     
     //-------------------------------SearchGame-------------------------------
     func getSearchGames(weak callback:@escaping ([Game]) -> ()) {

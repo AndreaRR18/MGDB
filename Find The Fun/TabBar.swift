@@ -8,7 +8,6 @@ class TabBar: UITabBarController {
     let favouriteGameTableViewController = FavouriteTableViewController()
     let aboutViewGameTableViewController = About()
     
-    
     func setTabBarController() -> [UIViewController] {
         tabBarController?.navigationController?.navigationBar.isTranslucent = false
         tabBarController?.navigationController?.navigationBar.isOpaque = false
@@ -22,8 +21,6 @@ class TabBar: UITabBarController {
         aboutViewGameTableViewController.tabBarItem = UITabBarItem(title: "About", image: #imageLiteral(resourceName: "about 30x30"), tag: 3)
         let elementTabBarController = [newsViewGameTableViewController, searchGameTableViewController, favouriteGameTableViewController, aboutViewGameTableViewController]
         return elementTabBarController
-//        tabBarController?.viewControllers = elementTabBarController
-//        return tabBarController!
     }
  
 }

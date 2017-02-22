@@ -14,19 +14,14 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
-        
         let activityIndicator = ActivityIndicator(view: view)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)), name: NSNotification.Name(rawValue: ReachabilityDidChangeNotificationName), object: nil)
         _ = reachability?.startNotifier()
-        
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
-        
         if let reachabilityIsValid = reachability?.isReachable, reachabilityIsValid {
             activityIndicator.startAnimating()
             let decodedJSON = DecodeJSON(url: gamesURL)
@@ -43,7 +38,6 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
                 print(error)
             }
         }
-        
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
         refreshControl?.tintColor = UIColor.gray
@@ -53,6 +47,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         NotificationCenter.default.removeObserver(self)
         reachability?.stopNotifier()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
@@ -62,10 +57,8 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white
         tabBarController?.tabBar.unselectedItemTintColor = ColorUI.unselectedItemTabBar
-        
         let navBarImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
         navBarImageView.contentMode = .scaleAspectFit
-        
         checkReachability()
     }
     

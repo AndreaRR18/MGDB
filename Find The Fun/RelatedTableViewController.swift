@@ -57,13 +57,11 @@ class RelatedTableViewController: UITableViewController {
         if activityIndicatorAppear {
             activityIndicatorAppear = false
             activityIndicator.startAnimating()
-            
         }
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3, execute: {
             self.tableView.reloadData()
             activityIndicator.stopAnimating()
         })
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -85,16 +83,14 @@ class RelatedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            return arrayGames[indexPath.row].getCellForTableViewController(tableView: tableView, indexPath: indexPath)
-        }
+        return arrayGames[indexPath.row].getCellForTableViewController(tableView: tableView, indexPath: indexPath)
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let navController = navigationController else { return }
         arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayGames[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    
     
     func takeIdGames(idGenres: [Int], callback: @escaping(_ arrayIDGames: [Int], _ arrayOfArrayIDGames: [[Int]]) -> ()) {
         idGenres.forEach{ genre in

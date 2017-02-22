@@ -43,16 +43,12 @@ extension LogoPlatform: Decodable {
 }
 
 func savePlatform(idPlatform: Int32, namePlatform: String) {
-    
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    
     var arrayPlatform: [NSManagedObject] = []
     let context = appDelegate.persistentContainer.viewContext
     let newCompany = NSEntityDescription.insertNewObject(forEntityName: "PlatformsData", into: context)
-    
     newCompany.setValue(idPlatform, forKey: "idPlatform")
     newCompany.setValue(namePlatform, forKey: "namePlatform")
-    
     do {
         try context.save()
         arrayPlatform.append(newCompany)
@@ -80,7 +76,6 @@ func fetchPlatform(id: Int32) -> String? {
     }
     return nil
 }
-
 
 func namePlatformDB(id: Int?, callback:@escaping (String) -> ()) {
     if let idPlatform = id {

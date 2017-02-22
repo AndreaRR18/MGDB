@@ -43,7 +43,6 @@ class CacheGame {
         self.fileName = (fileName + fileExtension.rawValue)
         self.subDirectory = "/\(subDirectory)"
         self.directory = directory
-        
         self.directoryPath = NSSearchPathForDirectoriesInDomains(directory, .userDomainMask, true)[0]
         self.filePath = directoryPath + self.subDirectory
         let path: String = "\(filePath)/\(self.fileName)"
@@ -131,6 +130,6 @@ class CacheGame {
         }
         return games.flatMap{ $0 }
     }
-
+    
 }
 
