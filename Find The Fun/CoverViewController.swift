@@ -2,9 +2,13 @@ import UIKit
 
 class CoverViewController: UIViewController {
     
+    @IBOutlet weak var doneButton: UIButton?
     @IBOutlet weak var coverHighResolution: UIImageView?
     @IBOutlet weak var coverScrollView: UIScrollView?
     
+    @IBAction func doneButtonAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     var coverURL: String?
     
     required init(coverURL: String?) {
@@ -18,11 +22,13 @@ class CoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.clear
+        coverHighResolution?.backgroundColor = UIColor.black
         let activityIndicator = ActivityIndicator(view: view)
         activityIndicator.startAnimating()
         coverScrollView?.maximumZoomScale = 5.0
         coverScrollView?.minimumZoomScale = 1.0
-        view.backgroundColor = ColorUI.backgoundTableView
+        coverScrollView?.alwaysBounceVertical = true
         if let urlExist = getCover(url: coverURL) {
             coverHighResolution?.af_setImage(
                 withURL: urlExist,
@@ -32,9 +38,20 @@ class CoverViewController: UIViewController {
                     activityIndicator.stopAnimating() })
         }
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
 extension CoverViewController: UIScrollViewDelegate {
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if scrollView.contentOffset.y < view.frame.height / 2, scrollView.zoomScale == 1 {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.coverHighResolution
     }

@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="coverHighResolution" destination="uXm-6N-mbj" id="CBl-dT-8eS"/>
                 <outlet property="coverScrollView" destination="pWB-53-AWt" id="xCv-fm-rOH"/>
+                <outlet property="doneButton" destination="NRU-1N-GiD" id="ptt-ZA-o1A"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -40,14 +41,30 @@
                         <outlet property="delegate" destination="-1" id="90K-j3-L0u"/>
                     </connections>
                 </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRU-1N-GiD">
+                    <rect key="frame" x="10" y="30" width="70" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="mix-ii-Bj0"/>
+                        <constraint firstAttribute="height" constant="20" id="phE-hX-Nhz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="20"/>
+                    <state key="normal" title="Done">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="doneButtonAction:" destination="-1" eventType="touchUpInside" id="h7i-cX-zWS"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="NRU-1N-GiD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="8Pc-jq-HLK"/>
                 <constraint firstAttribute="bottom" secondItem="pWB-53-AWt" secondAttribute="bottom" id="B3F-1T-gha"/>
                 <constraint firstItem="pWB-53-AWt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="U2Z-f9-Vxp"/>
                 <constraint firstItem="pWB-53-AWt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ifC-Ry-w9S"/>
+                <constraint firstItem="NRU-1N-GiD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="jdU-Sn-4VL"/>
                 <constraint firstAttribute="trailing" secondItem="pWB-53-AWt" secondAttribute="trailing" id="pIK-FR-4MM"/>
             </constraints>
+            <point key="canvasLocation" x="32.5" y="90.5"/>
         </view>
     </objects>
 </document>

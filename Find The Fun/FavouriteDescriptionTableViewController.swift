@@ -114,9 +114,8 @@ class FavouriteDescriptionTableViewController: UITableViewController {
     
     func removeFavourite(sender: UIButton) {
         deleteFavouriteGame(id: Int32(favouriteGameDescription.id))
+        _ = navigationController?.popViewController(animated: true)
     }
-    
-    
 }
 
 

@@ -14,7 +14,6 @@ class ScreenshotsCollectionViewController: UICollectionViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,22 +28,22 @@ class ScreenshotsCollectionViewController: UICollectionViewController {
         collectionView?.dataSource = self
         collectionView?.backgroundColor = UIColor.white
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
-
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayScreenshots.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenshotCollectionViewCell.screenshotCollectionViewCellIdentifier, for: indexPath) as! ScreenshotCollectionViewCell
         cell.url = getHDImage(url: arrayScreenshots[indexPath.row].url)
@@ -52,10 +51,9 @@ class ScreenshotsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(CoverViewController(coverURL: arrayScreenshots[indexPath.row].url), animated: true)
+        
         navigationController?.present(CoverViewController(coverURL: arrayScreenshots[indexPath.row].url), animated: true, completion: {
-            
         })
     }
-
+    
 }

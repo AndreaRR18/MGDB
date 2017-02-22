@@ -164,8 +164,7 @@ extension Game {
     func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController) {
         switch indexPath.row {
         case 1:
-            navigationController.navigationBar.isTranslucent = false
-            navigationController.pushViewController(CoverViewController(coverURL: cover?.url), animated: true)
+            navigationController.present(CoverViewController(coverURL: cover?.url), animated: true, completion: nil)
         case 4:
             navigationController.navigationBar.isTranslucent = false
             navigationController.pushViewController(ReleaseDateTableViewController(arrayReleaseDate: releaseDate), animated: true)
@@ -173,7 +172,6 @@ extension Game {
             navigationController.navigationBar.isTranslucent = false
             if let screenshots = screenshots {
                 navigationController.pushViewController(ScreenshotsCollectionViewController(arrayScreenshots: screenshots), animated: true)
-//                navigationController.pushViewController(ScreenshotTableViewController(arrayScreenshots: screenshots), animated: true)
             } else {
                 let alert = Alert(title: "Sorry", message: "Screenshots not found!")
                 navigationController.present(alert.alertControllerLaunch(), animated: true, completion: nil)
