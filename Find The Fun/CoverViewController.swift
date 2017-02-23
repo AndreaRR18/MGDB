@@ -1,6 +1,6 @@
 import UIKit
 
-class CoverViewController: UIViewController {
+class CoverViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var doneButton: UIButton?
     @IBOutlet weak var coverHighResolution: UIImageView?
@@ -10,6 +10,7 @@ class CoverViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     var coverURL: String?
+    var imageZoom = false
     
     required init(coverURL: String?) {
         super.init(nibName: "CoverViewController", bundle: nil)
@@ -22,6 +23,10 @@ class CoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondSwipeGesture(gesture:)))
+        swipeDown.direction = UISwipeGestureRecognizerDirection.down
+        swipeDown.delegate = self
+        self.view.addGestureRecognizer(swipeDown)
         view.backgroundColor = UIColor.clear
         coverHighResolution?.backgroundColor = UIColor.black
         let activityIndicator = ActivityIndicator(view: view)
@@ -42,15 +47,36 @@ class CoverViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+  
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive press: UIPress) -> Bool {
+        return true
+    }
+    
+    func respondSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer, imageZoom {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.down:
+                self.dismiss(animated: true, completion: nil)
+            default:
+                break
+            }
+        }
+    }
 }
 
 extension CoverViewController: UIScrollViewDelegate {
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        if scrollView.contentOffset.y < view.frame.height / 2, scrollView.zoomScale == 1 {
-            self.dismiss(animated: true, completion: nil)
+        func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+            if scrollView.zoomScale == 1 {
+                imageZoom = true
+            } else {
+                imageZoom = false
+            }
         }
-    }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.coverHighResolution
