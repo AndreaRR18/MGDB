@@ -1,15 +1,20 @@
 import UIKit
 
-class PlayTableViewCell: UITableViewCell {
+class VideoCollectionViewCell: UICollectionViewCell {
+
+    @IBOutlet weak var videoThumbnail: UIImageView?
+    @IBOutlet weak var videoTitle: UILabel?
     
-    @IBOutlet weak var previewVideo: UIImageView?
-    @IBOutlet weak var titleVideo: UILabel?
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
     
-    static var cellPlayCellIdentifier: String { return "PlayTableViewCell" }
-    
+    static var cellVideoIdentifier: String { return "VideoCollectionViewCell" }
+
+
     var url: URL? {
         didSet{
-            previewVideo?.af_setImage(
+            videoThumbnail?.af_setImage(
                 withURL: url!,
                 placeholderImage: #imageLiteral(resourceName: "img-not-found"),
                 filter: nil,
@@ -22,12 +27,5 @@ class PlayTableViewCell: UITableViewCell {
         }
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     
 }

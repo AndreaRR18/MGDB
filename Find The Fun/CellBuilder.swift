@@ -188,7 +188,8 @@ extension Game {
         case 10:
             navigationController.navigationBar.isTranslucent = false
             if let videos = videos {
-                navigationController.pushViewController(VideosTableViewController(videos: videos), animated: true)
+//                navigationController.pushViewController(VideosTableViewController(videos: videos), animated: true)
+                navigationController.pushViewController(VideoCollectionViewController(videos: videos), animated: true)
             } else {
                 let alert = Alert(title: "Sorry", message: "Video not found!")
                 navigationController.present(alert.alertControllerLaunch(), animated: true, completion: nil)
