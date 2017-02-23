@@ -40,6 +40,12 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         super.didReceiveMemoryWarning()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        if searchController.isActive {
+            searchController.isActive = false
+        }
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
