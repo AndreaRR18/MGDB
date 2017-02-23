@@ -5,7 +5,7 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     
     let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50"
     var arrayGames: [Game] = []
-    var searchController: UISearchController!
+    var searchController: UISearchController?
     var searchActive = true
     var emptyArray: [Game] = []
     
@@ -21,19 +21,20 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         navigationController?.navigationItem.backBarButtonItem?.title = ""
         tabBarController?.tabBar.isTranslucent = false
         searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.delegate = self
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search game..."
+        searchController?.searchBar.tintColor = UIColor.black
+        searchController?.searchBar.delegate = self
+        searchController?.hidesNavigationBarDuringPresentation = false
+        searchController?.dimsBackgroundDuringPresentation = false
+        searchController?.searchBar.placeholder = "Search game..."
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.navigationItem.title = nil
-        tabBarController?.navigationItem.titleView = searchController.searchBar
+        tabBarController?.navigationItem.titleView = searchController?.searchBar
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        searchController.searchBar.becomeFirstResponder()
+        searchController?.searchBar.becomeFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,7 +42,7 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        if searchController.isActive {
+        if let searchController = searchController, searchController.isActive {
             searchController.isActive = false
         }
     }
@@ -65,16 +66,17 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let navController = navigationController else { return }
         arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayGames[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        searchController.searchBar.endEditing(true)
+        searchController?.searchBar.endEditing(true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchController.searchBar.text else { return }
+        guard let searchText = searchController?.searchBar.text else { return }
         var textSearchChange = ""
-        if searchController.searchBar.text != nil && textSearchChange != searchText{
+        if searchController?.searchBar.text != nil && textSearchChange != searchText {
             self.arrayGames.removeAll()
             self.tableView.reloadData()
             textSearchChange = searchText
@@ -83,9 +85,15 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         activityIndicator.startAnimating()
         let decodedJSON = DecodeJSON(url: getUrlSearchedGames(title: searchText))
         decodedJSON.getSearchGames(weak: { arrayGames in
-            self.arrayGames = arrayGames
-            activityIndicator.stopAnimating()
-            self.tableView.reloadData()
+            if arrayGames.count > 1 {
+                self.arrayGames = arrayGames
+                activityIndicator.stopAnimating()
+                self.tableView.reloadData()
+            } else {
+                let alert = Alert(title: "Search result for: \(searchText)", message: "Your search returns no result.")
+                self.searchController?.present(alert.alertControllerLaunch(), animated: true, completion: nil)
+                activityIndicator.stopAnimating()
+            }
         })
     }
     

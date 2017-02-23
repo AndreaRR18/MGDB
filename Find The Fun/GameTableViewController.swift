@@ -32,7 +32,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
             })
         }else {
             do {
-                try self.arrayGames = cachedGame.getJSONData()!
+                try self.arrayGames = cachedGame.getJSONData() ?? []
                 self.tableView.reloadData()
             } catch {
                 print(error)

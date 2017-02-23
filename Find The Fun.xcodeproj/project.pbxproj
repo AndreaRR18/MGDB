@@ -442,7 +442,7 @@
 				655564D71E4345160022C87F /* Release Date */,
 				655564E21E4345BC0022C87F /* Genres */,
 				6555650D1E44A6370022C87F /* Related */,
-				65CD7AD41E5DC7D4004DCBAD /* ScreenshotsCollection */,
+				65CD7AD41E5DC7D4004DCBAD /* Screenshots */,
 				658257A21E4C69CD004AD4C6 /* Videos */,
 			);
 			name = "Description TableView";
@@ -492,7 +492,7 @@
 			name = RandomElementArray;
 			sourceTree = "<group>";
 		};
-		65CD7AD41E5DC7D4004DCBAD /* ScreenshotsCollection */ = {
+		65CD7AD41E5DC7D4004DCBAD /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
 				65CD7AD51E5DC7F1004DCBAD /* ScreenshotsCollectionViewController.swift */,
@@ -500,7 +500,7 @@
 				65CD7AD91E5DC80A004DCBAD /* ScreenshotCollectionViewCell.swift */,
 				65CD7ADA1E5DC80A004DCBAD /* ScreenshotCollectionViewCell.xib */,
 			);
-			name = ScreenshotsCollection;
+			name = Screenshots;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

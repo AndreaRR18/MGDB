@@ -14,6 +14,7 @@ struct ActivityIndicator {
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         activityIndicator.backgroundColor = UIColor.white
         activityIndicator.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
     }

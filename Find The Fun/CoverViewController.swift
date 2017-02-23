@@ -74,6 +74,7 @@ extension CoverViewController: UIScrollViewDelegate {
             if scrollView.zoomScale == 1 {
                 imageZoom = true
             } else {
+                
                 imageZoom = false
             }
         }
