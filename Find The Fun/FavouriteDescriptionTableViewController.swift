@@ -11,15 +11,15 @@ class FavouriteDescriptionTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        self.tableView.register(UINib(nibName: "CoverHDTableViewCell", bundle: nil), forCellReuseIdentifier: "CoverHDTableViewCell")
-        self.tableView.register(UINib(nibName: "CoverTableViewCell", bundle: nil), forCellReuseIdentifier: "CoverTableViewCell")
-        self.tableView.register(UINib(nibName: "SummaryTableViewCell", bundle: nil), forCellReuseIdentifier: "SummaryTableViewCell")
-        self.tableView.register(UINib(nibName: "CompanyTableViewCell", bundle: nil), forCellReuseIdentifier: "CompanyTableViewCell")
-        self.tableView.register(UINib(nibName: "PublishedTableViewCell", bundle: nil), forCellReuseIdentifier: "PublishedTableViewCell")
-        self.tableView.register(UINib(nibName: "PlatformTableViewCell", bundle: nil), forCellReuseIdentifier: "PlatformTableViewCell")
-        self.tableView.register(UINib(nibName: "RatingTableViewCell", bundle: nil), forCellReuseIdentifier: "RatingTableViewCell")
-        self.tableView.register(UINib(nibName: "GenreTableViewCell", bundle: nil), forCellReuseIdentifier: "GenreTableViewCell")
-        self.tableView.register(UINib(nibName: "GameModesTableViewCell", bundle: nil), forCellReuseIdentifier: "GameModesTableViewCell")
+        self.tableView.register(UINib(nibName: NibName.coverHDTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverHDTableViewCell)
+        self.tableView.register(UINib(nibName: NibName.coverTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverTableViewCell)
+        self.tableView.register(UINib(nibName: NibName.summaryTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.summaryTableViewCell)
+        self.tableView.register(UINib(nibName: NibName.companyTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.companyTableViewCell)
+        self.tableView.register(UINib(nibName: NibName.publishedTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.publishedTableViewCell)
+        self.tableView.register(UINib(nibName: NibName.platformTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.platformTableViewCell)
+        self.tableView.register(UINib(nibName: NibName.ratingTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.ratingTableViewCell)
+        self.tableView.register(UINib(nibName: NibName.genreTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.genreTableViewCell)
+        self.tableView.register(UINib(nibName: NibName.gameModesTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameModesTableViewCell)
         tabBarController?.tabBar.barTintColor = ColorUI.tabBar
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white
@@ -36,12 +36,8 @@ class FavouriteDescriptionTableViewController: UITableViewController {
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
-        let removeFavourite = UIButton(type: .custom)
-        removeFavourite.setTitle("Remove", for: .normal)
-        removeFavourite.frame = CGRect(x: 0, y: 0, width: 80, height: 30)
-        removeFavourite.addTarget(self, action: #selector(GameDescriptionTableViewController.removeFavourite), for: .touchUpInside)
-        let removeGame = UIBarButtonItem(customView: removeFavourite)
-        navigationItem.rightBarButtonItem = removeGame
+        let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(removeFavourite(sender:)))
+        navigationItem.rightBarButtonItem = trashButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,33 +72,33 @@ class FavouriteDescriptionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CoverHDTableViewCell.coverHDTableViewCellIdentifier, for: indexPath) as! CoverHDTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverHDTableViewCell, for: indexPath) as! CoverHDTableViewCell
             cell.coverHQ?.image = UIImage(data: favouriteGameDescription.image as! Data)
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CoverTableViewCell.coverTableViewCellIdentifier, for: indexPath) as! CoverTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
             cell.thumbnail?.image = UIImage(data: favouriteGameDescription.image as! Data)
             cell.name?.text = favouriteGameDescription.name
             cell.layer.zPosition = 2
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: SummaryTableViewCell.summaryTableViewCellIdentifier, for: indexPath) as! SummaryTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.summaryTableViewCell, for: indexPath) as! SummaryTableViewCell
             cell.summary?.text = favouriteGameDescription.summary
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CompanyTableViewCell.companyTableViewCellIdentifier, for: indexPath) as! CompanyTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.companyTableViewCell, for: indexPath) as! CompanyTableViewCell
             cell.company?.text = favouriteGameDescription.company
             return cell
         case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: RatingTableViewCell.ratingTableViewCellIdentifier, for: indexPath) as! RatingTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.ratingTableViewCell, for: indexPath) as! RatingTableViewCell
             cell.rate?.text = "\(favouriteGameDescription.rating)"
             return cell
         case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: GenreTableViewCell.genresTableViewCellIdentifier, for: indexPath) as! GenreTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.genreTableViewCell, for: indexPath) as! GenreTableViewCell
             cell.genres?.text = favouriteGameDescription.genre
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: GameModesTableViewCell.gameModesTableViewCellIdentifier, for: indexPath) as! GameModesTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameModesTableViewCell, for: indexPath) as! GameModesTableViewCell
             cell.gameModes?.text = favouriteGameDescription.gamemode
             return cell
         }
@@ -113,8 +109,15 @@ class FavouriteDescriptionTableViewController: UITableViewController {
     }
     
     func removeFavourite(sender: UIButton) {
-        deleteFavouriteGame(id: Int32(favouriteGameDescription.id))
-        _ = navigationController?.popViewController(animated: true)
+        let alertController = UIAlertController(title: nil, message: "Are you sure you want to delete \(favouriteGameDescription.name!)", preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            deleteFavouriteGame(id: Int32(self.favouriteGameDescription.id))
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+        alertController.addAction(deleteAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+        navigationController?.present(alertController, animated: true, completion: nil)
     }
 }
 

@@ -18,7 +18,7 @@ class RelatedTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
+        self.tableView.register(UINib(nibName: NibName.gameCellTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameCellTableViewCell)
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter

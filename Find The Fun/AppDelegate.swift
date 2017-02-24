@@ -11,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         
         let newsViewGameTableViewController = GameTableViewController()
-        newsViewGameTableViewController.tabBarItem = UITabBarItem(title: "News", image: #imageLiteral(resourceName: "news 40x40"), tag: 0)
+        newsViewGameTableViewController.tabBarItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "homeIcon 30x30"), tag: 0)
         
         let searchGameTableViewController = SearchGamesTableViewController()
         searchGameTableViewController.tabBarItem = UITabBarItem(title: "Search", image: #imageLiteral(resourceName: "search 30x30"), tag: 1)

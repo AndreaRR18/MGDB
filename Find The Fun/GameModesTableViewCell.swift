@@ -4,8 +4,6 @@ class GameModesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var gameModes: UILabel?
     
-    static var gameModesTableViewCellIdentifier: String { return "GameModesTableViewCell" }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

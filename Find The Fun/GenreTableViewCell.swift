@@ -4,8 +4,6 @@ class GenreTableViewCell: UITableViewCell {
 
     @IBOutlet weak var genres: UILabel?
     
-    static var genresTableViewCellIdentifier: String { return "GenreTableViewCell" }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

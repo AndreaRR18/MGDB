@@ -3,7 +3,6 @@ import UIKit
 class CoverHDTableViewCell: UITableViewCell {
 
     @IBOutlet weak var coverHQ: UIImageView?
-    static var coverHDTableViewCellIdentifier: String { return "CoverHDTableViewCell" }
 
     override func awakeFromNib() {
         super.awakeFromNib()

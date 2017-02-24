@@ -7,8 +7,6 @@ class GameCellTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel?
     @IBOutlet weak var years: UILabel?
     
-    static var cellGameCellIdentifier: String { return "GameCellTableViewCell" }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         cover?.layer.cornerRadius = 20

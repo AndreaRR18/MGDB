@@ -20,7 +20,7 @@ class ReleaseDateTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UINib(nibName: "ReleaseDateTableViewCell", bundle: nil), forCellReuseIdentifier: "ReleaseDateTableViewCell")
+        self.tableView.register(UINib(nibName: NibName.releaseDateTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.releaseDateTableViewCell)
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
@@ -49,7 +49,7 @@ class ReleaseDateTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ReleaseDateTableViewCell.cellReleaseDateCellIdentifier, for: indexPath) as! ReleaseDateTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.releaseDateTableViewCell, for: indexPath) as! ReleaseDateTableViewCell
         if let arrayReleaseDate = arrayReleaseDate {
             cell.date?.text = arrayReleaseDate[indexPath.row].human
             cell.backgroundColor = ColorUI.background

@@ -4,9 +4,9 @@ private let reuseIdentifier = "ScreenshotCollectionViewCell"
 
 class ScreenshotsCollectionViewController: UICollectionViewController {
     
-    var arrayScreenshots: [Screenshots]
+    var arrayScreenshots: [Screenshot]
     
-    init(arrayScreenshots: [Screenshots]) {
+    init(arrayScreenshots: [Screenshot]) {
         self.arrayScreenshots = arrayScreenshots
         super.init(nibName: "ScreenshotsCollectionViewController", bundle: nil)
     }
@@ -17,7 +17,7 @@ class ScreenshotsCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView?.register(UINib(nibName: "ScreenshotCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ScreenshotCollectionViewCell")
+        self.collectionView?.register(UINib(nibName: NibName.screenshotCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: Identifier.screenshotCollectionViewCell)
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         
         layout.itemSize = CGSize(width: 170, height: 170)
@@ -45,7 +45,7 @@ class ScreenshotsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScreenshotCollectionViewCell.screenshotCollectionViewCellIdentifier, for: indexPath) as! ScreenshotCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.screenshotCollectionViewCell, for: indexPath) as! ScreenshotCollectionViewCell
         cell.url = getHDImage(url: arrayScreenshots[indexPath.row].url)
         return cell
     }

@@ -5,9 +5,9 @@ private let reuseIdentifier = "VideoCollectionViewCell"
 
 class VideoCollectionViewController: UICollectionViewController {
     
-    let videos: [Videos]
+    let videos: [Video]
     
-    init(videos: [Videos]) {
+    init(videos: [Video]) {
         self.videos = videos
         super.init(nibName: "VideoCollectionViewController", bundle: nil)
     }
@@ -20,7 +20,7 @@ class VideoCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        self.collectionView?.register(UINib(nibName: "VideoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "VideoCollectionViewCell")
+        self.collectionView?.register(UINib(nibName: NibName.videoCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: Identifier.videoCollectionViewCell)
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         
@@ -51,7 +51,7 @@ class VideoCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.cellVideoIdentifier, for: indexPath) as! VideoCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.videoCollectionViewCell, for: indexPath) as! VideoCollectionViewCell
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 0.5
         cell.url = getImagePreviewVideo(videoid: videos[indexPath.row].video_id)

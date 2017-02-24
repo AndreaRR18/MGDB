@@ -4,8 +4,6 @@ class PublishedTableViewCell: UITableViewCell {
 
     @IBOutlet weak var firstReleaseDate: UILabel?
     
-    static var publishedTableViewCellIdentifier: String { return "PublishedTableViewCell" }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

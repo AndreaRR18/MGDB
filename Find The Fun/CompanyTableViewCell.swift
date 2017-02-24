@@ -3,8 +3,6 @@ import UIKit
 class CompanyTableViewCell: UITableViewCell {
 
     @IBOutlet weak var company: UILabel?
-    
-    static var companyTableViewCellIdentifier: String { return "CompanyTableViewCell" }
 
     override func awakeFromNib() {
         super.awakeFromNib()

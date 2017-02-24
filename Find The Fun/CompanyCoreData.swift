@@ -1,44 +1,6 @@
 import Foundation
 import UIKit
-import Runes
-import Argo
-import Curry
 import CoreData
-
-struct Companies {
-    //required
-    let idCompany: Int //id
-    let name: String //name
-    
-    //optional
-    let logo: LogoCompanies? //logo
-}
-
-struct LogoCompanies {
-    //optional
-    let url: String? //string
-    let width: Int? //int
-    let height: Int? //int
-}
-
-extension Companies: Decodable {
-    static func decode(_ json: JSON) -> Decoded<Companies> {
-        return curry(Companies.init)
-            <^> json <| "id"
-            <*> json <| "name"
-            <*> json <|? "logo"
-    }
-}
-
-
-extension LogoCompanies: Decodable {
-    static func decode(_ json: JSON) -> Decoded<LogoCompanies> {
-        return curry(LogoCompanies.init)
-            <^> json <|? "url"
-            <*> json <|? "width"
-            <*> json <|? "height"
-    }
-}
 
 func saveCompany(idCompany: Int32, nameCompany: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }

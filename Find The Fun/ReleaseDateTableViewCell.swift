@@ -6,8 +6,6 @@ class ReleaseDateTableViewCell: UITableViewCell {
     @IBOutlet weak var date: UILabel?
     @IBOutlet weak var logo: UIImageView?
     
-    static var cellReleaseDateCellIdentifier: String { return "ReleaseDateTableViewCell" }
-    
     var url: URL? {
         didSet{
             logo?.af_setImage(

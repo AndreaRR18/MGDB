@@ -5,6 +5,14 @@ class CoverViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var doneButton: UIButton?
     @IBOutlet weak var coverHighResolution: UIImageView?
     @IBOutlet weak var coverScrollView: UIScrollView?
+    @IBAction func saveButton(_ sender: UIButton) {
+        guard let coverHighResolution = coverHighResolution?.image else { return }
+        UIImageWriteToSavedPhotosAlbum(
+            coverHighResolution,
+            self,
+            #selector(CoverViewController.image(_:didFinishSavingWithError:contextInfo:)),
+            nil)
+    }
     
     @IBAction func doneButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -27,11 +35,10 @@ class CoverViewController: UIViewController, UIGestureRecognizerDelegate {
         swipeDown.direction = UISwipeGestureRecognizerDirection.down
         swipeDown.delegate = self
         self.view.addGestureRecognizer(swipeDown)
-        view.backgroundColor = UIColor.clear
-        coverHighResolution?.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.black
         let activityIndicator = ActivityIndicator(view: view)
         activityIndicator.startAnimating()
-        coverScrollView?.maximumZoomScale = 5.0
+        coverScrollView?.maximumZoomScale = 4.0
         coverScrollView?.minimumZoomScale = 1.0
         coverScrollView?.alwaysBounceVertical = true
         if let urlExist = getCover(url: coverURL) {
@@ -47,7 +54,7 @@ class CoverViewController: UIViewController, UIGestureRecognizerDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-  
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
@@ -60,24 +67,48 @@ class CoverViewController: UIViewController, UIGestureRecognizerDelegate {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer, imageZoom {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizerDirection.down:
+                view.backgroundColor = UIColor.clear
                 self.dismiss(animated: true, completion: nil)
             default:
                 break
             }
         }
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        let activityIndicator = ActivityIndicator(view: coverHighResolution!)
+        if let error = error {
+            activityIndicator.startAnimating()
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true, completion: {
+                activityIndicator.stopAnimating()
+            })
+        } else {
+            activityIndicator.startAnimating()
+            let ac = UIAlertController(title: "Saved!", message: nil, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true, completion: {
+                activityIndicator.stopAnimating()
+            })
+        }
+    }
 }
 
 extension CoverViewController: UIScrollViewDelegate {
     
-        func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-            if scrollView.zoomScale == 1 {
-                imageZoom = true
-            } else {
-                
-                imageZoom = false
-            }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if scrollView.zoomScale == 1 {
+            imageZoom = true
+        } else {
+            
+            imageZoom = false
         }
+    }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.coverHighResolution

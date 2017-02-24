@@ -2,8 +2,6 @@ import UIKit
 
 class RelatedInDescriptionTableViewCell: UITableViewCell {
 
-    static var relatedInDescriptionTableViewCellIdentifier: String { return "RelatedInDescriptionTableViewCell" }
-
     override func awakeFromNib() {
         super.awakeFromNib()
     }

@@ -7,7 +7,7 @@ extension Game {
     
     //--------------------Cell of First UITableView -------------------//
     func getCellForTableViewController(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! GameCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
         cell.backgroundColor = ColorUI.background
         cell.name?.textColor = ColorUI.text
         cell.years?.textColor = ColorUI.text
@@ -60,13 +60,13 @@ extension Game {
     }
     
     func getCellCoverHD(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CoverHDTableViewCell.coverHDTableViewCellIdentifier, for: indexPath) as! CoverHDTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverHDTableViewCell, for: indexPath) as! CoverHDTableViewCell
         cell.url = getHDImage(url: cover?.url)
         return cell
     }
     
     func getCellCover(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CoverTableViewCell.coverTableViewCellIdentifier, for: indexPath) as! CoverTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
         cell.url = getHDImage(url: cover?.url)
         cell.name?.text = name
         cell.layer.zPosition = 3
@@ -74,7 +74,7 @@ extension Game {
     }
     
     func getCellSummary(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SummaryTableViewCell.summaryTableViewCellIdentifier, for: indexPath) as! SummaryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.summaryTableViewCell, for: indexPath) as! SummaryTableViewCell
         cell.backgroundColor = ColorUI.background
         cell.isSelected = false
         cell.summaryText?.textColor = ColorUI.text
@@ -82,7 +82,7 @@ extension Game {
         return cell
     }
     func getCellCompany(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CompanyTableViewCell.companyTableViewCellIdentifier, for: indexPath) as! CompanyTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.companyTableViewCell, for: indexPath) as! CompanyTableViewCell
         cell.backgroundColor = ColorUI.background
         cell.company?.textColor = ColorUI.text
         if let developers = developers {
@@ -101,7 +101,7 @@ extension Game {
     }
     
     func getCellPublished(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PublishedTableViewCell.publishedTableViewCellIdentifier, for: indexPath) as! PublishedTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.publishedTableViewCell, for: indexPath) as! PublishedTableViewCell
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         cell.backgroundColor = ColorUI.background
         cell.firstReleaseDate?.textColor = ColorUI.text
@@ -109,7 +109,7 @@ extension Game {
     }
     
     func getCellRate(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: RatingTableViewCell.ratingTableViewCellIdentifier, for: indexPath) as! RatingTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.ratingTableViewCell, for: indexPath) as! RatingTableViewCell
         cell.backgroundColor = ColorUI.background
         cell.rate?.textColor = ColorUI.text
         cell.rate?.text = rating.map(String.init) ?? "N.D."
@@ -117,7 +117,7 @@ extension Game {
     }
     
     func getCellGenres(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: GenreTableViewCell.genresTableViewCellIdentifier, for: indexPath) as! GenreTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.genreTableViewCell, for: indexPath) as! GenreTableViewCell
         cell.backgroundColor = ColorUI.background
         cell.genres?.textColor = ColorUI.text
         nameGenresDB(id: genres, callback: { nameGenre in
@@ -126,7 +126,7 @@ extension Game {
         return cell
     }
     func getCellGameModes(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: GameModesTableViewCell.gameModesTableViewCellIdentifier, for: indexPath) as! GameModesTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameModesTableViewCell, for: indexPath) as! GameModesTableViewCell
         
         cell.backgroundColor = ColorUI.background
         cell.gameModes?.textColor = ColorUI.text
@@ -137,21 +137,21 @@ extension Game {
     }
     
     func getCellRelatedInDescription(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: RelatedInDescriptionTableViewCell.relatedInDescriptionTableViewCellIdentifier, for: indexPath) as! RelatedInDescriptionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.relatedInDescriptionTableViewCell, for: indexPath) as! RelatedInDescriptionTableViewCell
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         cell.backgroundColor = ColorUI.background
         return cell
     }
     
     func getCellScreenshots(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ScreenshotsTableViewCell.screenshotsTableViewCellIdentifier, for: indexPath) as! ScreenshotsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.screenshotsTableViewCell, for: indexPath) as! ScreenshotsTableViewCell
         cell.backgroundColor = ColorUI.background
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         return cell
     }
     
     func getCellVideos(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: VideosTableViewCell.videosTableViewCellIdentifier, for: indexPath) as! VideosTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.videosTableViewCell, for: indexPath) as! VideosTableViewCell
         cell.backgroundColor = ColorUI.background
         cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         return cell
@@ -188,7 +188,6 @@ extension Game {
         case 10:
             navigationController.navigationBar.isTranslucent = false
             if let videos = videos {
-//                navigationController.pushViewController(VideosTableViewController(videos: videos), animated: true)
                 navigationController.pushViewController(VideoCollectionViewController(videos: videos), animated: true)
             } else {
                 let alert = Alert(title: "Sorry", message: "Video not found!")

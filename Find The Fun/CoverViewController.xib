@@ -42,16 +42,28 @@
                     </connections>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRU-1N-GiD">
-                    <rect key="frame" x="335" y="627" width="20" height="20"/>
+                    <rect key="frame" x="330" y="622" width="25" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="20" id="5Qc-Ul-xIx"/>
-                        <constraint firstAttribute="width" constant="20" id="zAr-Te-wrU"/>
+                        <constraint firstAttribute="height" constant="25" id="5Qc-Ul-xIx"/>
+                        <constraint firstAttribute="width" constant="25" id="zAr-Te-wrU"/>
                     </constraints>
-                    <state key="normal" image="Arrow-Down">
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <state key="normal" image="CloseCross">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="doneButtonAction:" destination="-1" eventType="touchUpInside" id="h7i-cX-zWS"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ya7-xQ-0xm">
+                    <rect key="frame" x="20" y="622" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="8xi-uX-kP9"/>
+                        <constraint firstAttribute="width" constant="25" id="skt-rx-ily"/>
+                    </constraints>
+                    <state key="normal" image="DownloadIcon"/>
+                    <connections>
+                        <action selector="saveButton:" destination="-1" eventType="touchUpInside" id="met-kh-cTe"/>
                     </connections>
                 </button>
             </subviews>
@@ -59,7 +71,9 @@
                 <constraint firstAttribute="trailing" secondItem="NRU-1N-GiD" secondAttribute="trailing" constant="20" id="AdJ-6A-UHm"/>
                 <constraint firstAttribute="bottom" secondItem="pWB-53-AWt" secondAttribute="bottom" id="B3F-1T-gha"/>
                 <constraint firstAttribute="bottom" secondItem="NRU-1N-GiD" secondAttribute="bottom" constant="20" id="GLp-no-I7H"/>
+                <constraint firstItem="Ya7-xQ-0xm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="TxQ-Ol-39U"/>
                 <constraint firstItem="pWB-53-AWt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="U2Z-f9-Vxp"/>
+                <constraint firstAttribute="bottom" secondItem="Ya7-xQ-0xm" secondAttribute="bottom" constant="20" id="dSk-oV-wrr"/>
                 <constraint firstItem="pWB-53-AWt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ifC-Ry-w9S"/>
                 <constraint firstAttribute="trailing" secondItem="pWB-53-AWt" secondAttribute="trailing" id="pIK-FR-4MM"/>
             </constraints>
@@ -67,6 +81,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Arrow-Down" width="512" height="512"/>
+        <image name="CloseCross" width="294" height="294"/>
+        <image name="DownloadIcon" width="256" height="256"/>
     </resources>
 </document>

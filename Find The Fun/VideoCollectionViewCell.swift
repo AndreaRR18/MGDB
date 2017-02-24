@@ -8,9 +8,6 @@ class VideoCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
-    static var cellVideoIdentifier: String { return "VideoCollectionViewCell" }
-
 
     var url: URL? {
         didSet{

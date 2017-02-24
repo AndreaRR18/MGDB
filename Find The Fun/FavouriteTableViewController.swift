@@ -11,7 +11,7 @@ class FavouriteTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
+        self.tableView.register(UINib(nibName: NibName.gameCellTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameCellTableViewCell)
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
@@ -41,12 +41,12 @@ class FavouriteTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 100
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: GameCellTableViewCell.cellGameCellIdentifier, for: indexPath) as! GameCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
         let game = arrayFavouriteGames[indexPath.row]
         cell.cover?.image = UIImage(data: game.image as! Data)
         cell.name?.text = game.name

@@ -2,8 +2,6 @@ import UIKit
 
 class VideosTableViewCell: UITableViewCell {
 
-    static var videosTableViewCellIdentifier: String { return "VideosTableViewCell" }
-
     override func awakeFromNib() {
         super.awakeFromNib()
     }

@@ -14,7 +14,8 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UINib(nibName: "GameCellTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCellTableViewCell")
+        self.tableView.register(UINib(nibName: NibName.gameCellTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameCellTableViewCell)
+        
         let activityIndicator = ActivityIndicator(view: view)
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)), name: NSNotification.Name(rawValue: ReachabilityDidChangeNotificationName), object: nil)
         _ = reachability?.startNotifier()
@@ -22,22 +23,22 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
-        if let reachabilityIsValid = reachability?.isReachable, reachabilityIsValid {
-            activityIndicator.startAnimating()
-            let decodedJSON = DecodeJSON(url: gamesURL)
-            decodedJSON.getNewGames(callback: { arrayGames in
-                self.arrayGames = arrayGames
-                activityIndicator.stopAnimating()
-                self.tableView.reloadData()
-            })
-        }else {
-            do {
-                try self.arrayGames = cachedGame.getJSONData() ?? []
-                self.tableView.reloadData()
-            } catch {
-                print(error)
-            }
-        }
+        //        if let reachabilityIsValid = reachability?.isReachable, reachabilityIsValid {
+        activityIndicator.startAnimating()
+        let decodedJSON = DecodeJSON(url: gamesURL)
+        decodedJSON.getNewGames(callback: { arrayGames in
+            self.arrayGames = arrayGames
+            activityIndicator.stopAnimating()
+            self.tableView.reloadData()
+        })
+        //        }else {
+        //            do {
+        //                try self.arrayGames = cachedGame.getJSONData() ?? []
+        //                self.tableView.reloadData()
+        //            } catch {
+        //                print(error)
+        //            }
+        //        }
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
         refreshControl?.tintColor = UIColor.gray
@@ -52,7 +53,8 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         super.viewWillAppear(animated)
         tabBarController?.navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
         tabBarController?.navigationItem.titleView = nil
-        tabBarController?.navigationItem.title = "News"
+       
+//        tabBarController?.navigationItem.title = "Home"
         tabBarController?.tabBar.barTintColor = ColorUI.tabBar
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white
@@ -60,6 +62,10 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         let navBarImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
         navBarImageView.contentMode = .scaleAspectFit
         checkReachability()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tabBarController?.navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "homeIcon 35x35"))
     }
     
     override func didReceiveMemoryWarning() {
@@ -164,7 +170,10 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         })
     }
     
+    
+
 }
+
 
 
 
