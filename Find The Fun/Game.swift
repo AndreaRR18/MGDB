@@ -22,13 +22,6 @@ struct Game {
     let videos: [Video]? //videos
 }
 
-
-
-
-
-
-
-//------------Decode JSON with Argo-------------
 extension Game: Decodable {
     static func decode(_ json: JSON) -> Decoded<Game> {
         return curry(Game.init)
@@ -45,7 +38,6 @@ extension Game: Decodable {
             <*> json <||? "screenshots"
             <*> json <|? "url"
             <*> json <||? "videos"
-        
     }
 }
 

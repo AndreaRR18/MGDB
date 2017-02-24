@@ -1,25 +1,8 @@
 import Foundation
 import UIKit
-import Runes
-import Argo
-import Curry
 import CoreData
 
-struct GameModes {
-    //required
-    let idGameModes: Int //id
-    let nameGameModes: String //name
-}
-
-extension GameModes: Decodable {
-    static func decode(_ json: JSON) -> Decoded<GameModes> {
-        return curry(GameModes.init)
-            <^> json <| "id"
-            <*> json <| "name"
-    }
-}
-
-func saveGameModes(idGameModes: Int32, nameGameModes: String) {
+func saveGameMode(idGameModes: Int32, nameGameModes: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     var arrayGameModes: [NSManagedObject] = []
     let context = appDelegate.persistentContainer.viewContext
@@ -34,7 +17,7 @@ func saveGameModes(idGameModes: Int32, nameGameModes: String) {
     }
 }
 
-func fetchGameModes(id: Int32) -> String? {
+func fetchGameMode(id: Int32) -> String? {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
     var stringOfGameModes: String?
     let context = appDelegate.persistentContainer.viewContext
@@ -55,22 +38,22 @@ func fetchGameModes(id: Int32) -> String? {
 }
 
 
-func nameGameModesDB(id: [Int]?, callback:@escaping (String) -> ()) {
-    var gameModes: [String] = []
+func nameGameModeDB(id: [Int]?, callback:@escaping (String) -> ()) {
+    var gamesMode: [String] = []
     guard let id = id else { return }
-    id.forEach{ idGameModes in
-        if let nameGameModes = fetchGameModes(id: Int32(idGameModes)) {
-            gameModes.append(nameGameModes)
+    id.forEach{ idGameMode in
+        if let nameGameMode = fetchGameMode(id: Int32(idGameMode)) {
+            gamesMode.append(nameGameMode)
         } else {
-            let decodeJSON = DecodeJSON(url: getUrlIDGameModes(idGameModes: idGameModes))
-            decodeJSON.getGameModes(callback: { arrayGameModes in
-                arrayGameModes.forEach({
-                    gameModes.append( $0.nameGameModes )
-                    saveGameModes(idGameModes: Int32($0.idGameModes), nameGameModes: $0.nameGameModes)
+            let decodeJSON = DecodeJSON(url: getUrlIDGameModes(idGameModes: idGameMode))
+            decodeJSON.getGameModes(callback: { arrayGameMode in
+                arrayGameMode.forEach({
+                    gamesMode.append( $0.nameGameModes )
+                    saveGameMode(idGameModes: Int32($0.idGameModes), nameGameModes: $0.nameGameModes)
                 })
             })
             
         }
     }
-    callback(gameModes.joined(separator: ", "))
+    callback(gamesMode.joined(separator: ", "))
 }

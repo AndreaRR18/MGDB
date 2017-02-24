@@ -6,6 +6,7 @@ import AlamofireImage
 import CoreData
 
 class GameTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+    
     var offset = 0
     let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50&order=updated_at%3Adesc"
     var arrayGames: [Game] = []
@@ -53,8 +54,6 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         super.viewWillAppear(animated)
         tabBarController?.navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
         tabBarController?.navigationItem.titleView = nil
-       
-//        tabBarController?.navigationItem.title = "Home"
         tabBarController?.tabBar.barTintColor = ColorUI.tabBar
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white

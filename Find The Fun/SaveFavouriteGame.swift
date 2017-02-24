@@ -38,7 +38,7 @@ func stringCompany(companyIDs: [Int]?) -> String {
 func stringGenres(genresIDs: [Int]?) -> String {
     var genres = [String]()
     genresIDs?.forEach { id in
-        guard let genresName = fetchGenres(id: Int32(id)) else { return }
+        guard let genresName = fetchGenre(id: Int32(id)) else { return }
         genres.append(genresName)
     }
     return genres.joined(separator: ", ")
@@ -47,7 +47,7 @@ func stringGenres(genresIDs: [Int]?) -> String {
 func stringGameModes(gameModesIDs: [Int]?) -> String {
     var gameModes = [String]()
     gameModesIDs?.forEach { id in
-        guard let gameModesName = fetchGameModes(id: Int32(id)) else { return }
+        guard let gameModesName = fetchGameMode(id: Int32(id)) else { return }
         gameModes.append(gameModesName)
     }
     return gameModes.joined(separator: ", ")

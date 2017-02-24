@@ -1,9 +1,6 @@
-import Foundation
-import UIKit
 import Runes
 import Argo
 import Curry
-import CoreData
 
 struct Platform {
     let idPlatform: Int //id

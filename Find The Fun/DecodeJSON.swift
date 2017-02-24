@@ -5,10 +5,10 @@ import Argo
 class DecodeJSON {
     let url: String
     var arrayGames: [Game]? = nil
-    var arrayCompanies: [Companies]? = nil
+    var arrayCompanies: [Company]? = nil
     var arrayPlatforms: [Platform]? = nil
-    var arrayGenres: [Genres]? = nil
-    var arrayGameModes: [GameModes]? = nil
+    var arrayGenres: [Genre]? = nil
+    var arrayGameModes: [GameMode]? = nil
     
     init(url: String) {
         self.url = url
@@ -90,7 +90,7 @@ class DecodeJSON {
     }
     
     //-------------------------------Companies-------------------------------
-    func getCompanies(callback:@escaping ([Companies]) -> ()) {
+    func getCompanies(callback:@escaping ([Company]) -> ()) {
         if let arrayCompaniesExist = arrayCompanies {
             callback(arrayCompaniesExist)
         } else {
@@ -118,8 +118,8 @@ class DecodeJSON {
         }
     }
     
-    func parsingJsonDataCompanies(data: Data) -> [Companies]? {
-        var companies: [Companies]? = []
+    func parsingJsonDataCompanies(data: Data) -> [Company]? {
+        var companies: [Company]? = []
         let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
         if let j: Any = jsonResult {
             companies = decode(j)
@@ -167,7 +167,7 @@ class DecodeJSON {
     
     
     //-------------------------------Genres-------------------------------
-    func getGenres(callback:@escaping ([Genres]) -> ()) {
+    func getGenres(callback:@escaping ([Genre]) -> ()) {
         if let arrayGenre = arrayGenres {
             callback(arrayGenre)
         } else {
@@ -195,8 +195,8 @@ class DecodeJSON {
         }
     }
     
-    func parsingJsonDataGenres(data: Data) -> [Genres]? {
-        var genre: [Genres]? = []
+    func parsingJsonDataGenres(data: Data) -> [Genre]? {
+        var genre: [Genre]? = []
         let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
         if let j: Any = jsonResult {
             genre = decode(j)
@@ -205,7 +205,7 @@ class DecodeJSON {
     }
     
     //-------------------------------GameModes-------------------------------
-    func getGameModes(callback:@escaping ([GameModes]) -> ()) {
+    func getGameModes(callback:@escaping ([GameMode]) -> ()) {
         if let arrayGameModes = arrayGameModes {
             callback(arrayGameModes)
         } else {
@@ -233,8 +233,8 @@ class DecodeJSON {
         }
     }
     
-    func parsingJsonDataGameModes(data: Data) -> [GameModes]? {
-        var gameModes: [GameModes]? = []
+    func parsingJsonDataGameModes(data: Data) -> [GameMode]? {
+        var gameModes: [GameMode]? = []
         let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
         if let j: Any = jsonResult {
             gameModes = decode(j)

@@ -120,7 +120,7 @@ extension Game {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.genreTableViewCell, for: indexPath) as! GenreTableViewCell
         cell.backgroundColor = ColorUI.background
         cell.genres?.textColor = ColorUI.text
-        nameGenresDB(id: genres, callback: { nameGenre in
+        nameGenreDB(id: genres, callback: { nameGenre in
             cell.genres?.text = nameGenre
         })
         return cell
@@ -130,7 +130,7 @@ extension Game {
         
         cell.backgroundColor = ColorUI.background
         cell.gameModes?.textColor = ColorUI.text
-        nameGameModesDB(id: gameModes, callback: { nameGameModes in
+        nameGameModeDB(id: gameModes, callback: { nameGameModes in
             cell.gameModes?.text = nameGameModes
         })
         return cell
@@ -184,7 +184,6 @@ extension Game {
                 let alert = Alert(title: "Sorry", message: "Related games not found!")
                 navigationController.present(alert.alertControllerLaunch(), animated: true, completion: nil)
             }
-            
         case 10:
             navigationController.navigationBar.isTranslucent = false
             if let videos = videos {
