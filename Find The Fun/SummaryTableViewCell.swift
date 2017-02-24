@@ -8,8 +8,11 @@ class SummaryTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    
+    var textSummary: String? {
+        didSet {
+            summaryText?.text = textSummary
+            summaryText?.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
+        }
     }
 }

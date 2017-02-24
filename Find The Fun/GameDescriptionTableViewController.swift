@@ -4,6 +4,19 @@ class GameDescriptionTableViewController: UITableViewController {
     
     var gameDescription: Game
     
+    required init(game: Game) {
+        self.gameDescription = game
+        super.init(style: .plain)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: NibName.coverHDTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverHDTableViewCell)
@@ -30,29 +43,9 @@ class GameDescriptionTableViewController: UITableViewController {
             navigationItem.rightBarButtonItem = trashButton
         }
         title = gameDescription.name
-        tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
-
-        view.backgroundColor = ColorUI.backgoundTableView
-        let viewFooter = UIView()
-        viewFooter.backgroundColor = ColorUI.backgoundTableView
-        self.tableView.tableFooterView = viewFooter
-        self.view.backgroundColor = ColorUI.backgoundTableView
-    }
-    
-    required init(game: Game) {
-        self.gameDescription = game
-        super.init(style: .plain)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     // MARK: - Table view data source

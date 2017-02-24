@@ -8,7 +8,6 @@ class CoverTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         thumbnail?.layer.cornerRadius = 30
-
     }
     
     var url: URL? {
@@ -28,9 +27,5 @@ class CoverTableViewCell: UITableViewCell {
                     self.thumbnail?.layer.shadowRadius = 4
             })
         }
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
     }
 }

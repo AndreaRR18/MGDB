@@ -22,4 +22,39 @@ struct ActivityIndicator {
     func stopAnimating() {
         activityIndicator.stopAnimating()
     }
+    
+    static func activityIndicatorFooterView(_ view: UIView) -> UIView {
+        let footerView = UIView(frame: CGRect.init(x: 0, y: 0, width: Int(view.frame.width), height: 30))
+        footerView.backgroundColor = UIColor.white
+        
+        let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        footerView.addSubview(activityView)
+        activityView.startAnimating()
+        
+        activityView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint(
+            item: activityView,
+            attribute: .centerX,
+            relatedBy: .equal,
+            toItem: footerView,
+            attribute: .centerX,
+            multiplier: 1.0,
+            constant: 0.0
+            ).isActive = true
+        
+        NSLayoutConstraint(
+            item: activityView,
+            attribute: .centerY,
+            relatedBy: .equal,
+            toItem: footerView,
+            attribute: .centerY,
+            multiplier: 1.0,
+            constant: 0.0
+            ).isActive = true
+        
+        return footerView
+    }
 }
+
+

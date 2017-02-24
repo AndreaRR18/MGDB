@@ -1,25 +1,14 @@
 import UIKit
-import Argo
 
 class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate {
     
-    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50"
     var arrayGames: [Game] = []
     var searchController: UISearchController?
     var searchActive = true
-    var emptyArray: [Game] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: NibName.gameCellTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameCellTableViewCell)
-        let viewFooter = UIView()
-        self.tableView.tableFooterView = viewFooter
-        viewFooter.backgroundColor = ColorUI.backgoundTableView
-        self.view.backgroundColor = ColorUI.backgoundTableView
-        tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationItem.backBarButtonItem?.title = ""
-        tabBarController?.tabBar.isTranslucent = false
         searchController = UISearchController(searchResultsController: nil)
         searchController?.searchBar.tintColor = UIColor.black
         searchController?.searchBar.delegate = self

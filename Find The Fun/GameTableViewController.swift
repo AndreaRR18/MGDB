@@ -16,14 +16,9 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: NibName.gameCellTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameCellTableViewCell)
-        
         let activityIndicator = ActivityIndicator(view: view)
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)), name: NSNotification.Name(rawValue: ReachabilityDidChangeNotificationName), object: nil)
         _ = reachability?.startNotifier()
-        let viewFooter = UIView()
-        viewFooter.backgroundColor = ColorUI.backgoundTableView
-        self.tableView.tableFooterView = viewFooter
-        self.view.backgroundColor = ColorUI.backgoundTableView
         //        if let reachabilityIsValid = reachability?.isReachable, reachabilityIsValid {
         activityIndicator.startAnimating()
         let decodedJSON = DecodeJSON(url: gamesURL)
@@ -52,14 +47,8 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabBarController?.navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
+        _ = TableViewSetting(tableView, tabBarController)
         tabBarController?.navigationItem.titleView = nil
-        tabBarController?.tabBar.barTintColor = ColorUI.tabBar
-        tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
-        tabBarController?.tabBar.tintColor = UIColor.white
-        tabBarController?.tabBar.unselectedItemTintColor = ColorUI.unselectedItemTabBar
-        let navBarImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
-        navBarImageView.contentMode = .scaleAspectFit
         checkReachability()
     }
     
@@ -106,35 +95,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row > arrayGames.count - 5 {
-            let footerView = UIView(frame: CGRect.init(x: 0, y: 0, width: Int(view.frame.width), height: 30))
-            footerView.backgroundColor = UIColor.white
-            
-            let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-            footerView.addSubview(activityView)
-            activityView.startAnimating()
-            
-            activityView.translatesAutoresizingMaskIntoConstraints = false
-            
-            NSLayoutConstraint(
-                item: activityView,
-                attribute: .centerX,
-                relatedBy: .equal,
-                toItem: footerView,
-                attribute: .centerX,
-                multiplier: 1.0,
-                constant: 0.0
-                ).isActive = true
-            
-            NSLayoutConstraint(
-                item: activityView,
-                attribute: .centerY,
-                relatedBy: .equal,
-                toItem: footerView,
-                attribute: .centerY,
-                multiplier: 1.0,
-                constant: 0.0
-                ).isActive = true
-            self.tableView.tableFooterView = footerView
+            self.tableView.tableFooterView = ActivityIndicator.activityIndicatorFooterView(view)
         }
         if indexPath.row == arrayGames.count - 5 {
             offset += 30
@@ -168,9 +129,6 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
             self.tableView.reloadData()
         })
     }
-    
-    
-
 }
 
 
