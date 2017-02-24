@@ -79,7 +79,6 @@ extension Game {
         cell.isSelected = false
         cell.textSummary = summary
         cell.summaryText?.textColor = ColorUI.text
-//        cell.summaryText?.text = summary
         return cell
     }
     func getCellCompany(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {

@@ -16,6 +16,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: NibName.gameCellTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameCellTableViewCell)
+        
         let activityIndicator = ActivityIndicator(view: view)
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)), name: NSNotification.Name(rawValue: ReachabilityDidChangeNotificationName), object: nil)
         _ = reachability?.startNotifier()
@@ -47,7 +48,10 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        _ = TableViewSetting(tableView, tabBarController)
+        tabBarController?.tabBar.barTintColor = ColorUI.tabBar
+        tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
+        tabBarController?.tabBar.tintColor = UIColor.white
+        tabBarController?.tabBar.unselectedItemTintColor = ColorUI.unselectedItemTabBar
         tabBarController?.navigationItem.titleView = nil
         checkReachability()
     }

@@ -68,7 +68,6 @@
 		658B30D11E6090D30006AD85 /* PlatformCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658B30D01E6090D30006AD85 /* PlatformCoreData.swift */; };
 		658B30D31E6092220006AD85 /* GenreCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658B30D21E6092220006AD85 /* GenreCoreData.swift */; };
 		658B30D51E6092640006AD85 /* GameModeCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658B30D41E6092640006AD85 /* GameModeCoreData.swift */; };
-		658B30E01E6096AF0006AD85 /* TableViewSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658B30DF1E6096AF0006AD85 /* TableViewSetting.swift */; };
 		659D26DE1E571C4C004DF1B5 /* CoverHDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D26DC1E571C4C004DF1B5 /* CoverHDTableViewCell.swift */; };
 		659D26DF1E571C4C004DF1B5 /* CoverHDTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659D26DD1E571C4C004DF1B5 /* CoverHDTableViewCell.xib */; };
 		659D26E31E575D72004DF1B5 /* HeightofRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D26E21E575D72004DF1B5 /* HeightofRaw.swift */; };
@@ -188,7 +187,6 @@
 		658B30D01E6090D30006AD85 /* PlatformCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformCoreData.swift; sourceTree = "<group>"; };
 		658B30D21E6092220006AD85 /* GenreCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreCoreData.swift; sourceTree = "<group>"; };
 		658B30D41E6092640006AD85 /* GameModeCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModeCoreData.swift; sourceTree = "<group>"; };
-		658B30DF1E6096AF0006AD85 /* TableViewSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSetting.swift; sourceTree = "<group>"; };
 		659D26DC1E571C4C004DF1B5 /* CoverHDTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverHDTableViewCell.swift; sourceTree = "<group>"; };
 		659D26DD1E571C4C004DF1B5 /* CoverHDTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoverHDTableViewCell.xib; sourceTree = "<group>"; };
 		659D26E21E575D72004DF1B5 /* HeightofRaw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightofRaw.swift; sourceTree = "<group>"; };
@@ -253,7 +251,6 @@
 				652692021E5228AE00A32CF6 /* Alert.swift */,
 				652692041E530A0000A32CF6 /* SaveDeleteButton.swift */,
 				659D26E21E575D72004DF1B5 /* HeightofRaw.swift */,
-				658B30DF1E6096AF0006AD85 /* TableViewSetting.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -719,7 +716,6 @@
 			files = (
 				6541CBE71E3F75280071C711 /* Platform.swift in Sources */,
 				659D26DE1E571C4C004DF1B5 /* CoverHDTableViewCell.swift in Sources */,
-				658B30E01E6096AF0006AD85 /* TableViewSetting.swift in Sources */,
 				650123771E375CBB007A12AD /* CellBuilder.swift in Sources */,
 				658B30D11E6090D30006AD85 /* PlatformCoreData.swift in Sources */,
 				6541CBAD1E3B90E60071C711 /* Company.swift in Sources */,
