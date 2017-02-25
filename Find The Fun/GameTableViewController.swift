@@ -8,7 +8,7 @@ import CoreData
 class GameTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var offset = 0
-    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50&order=updated_at%3Adesc"
+    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50&order=updated_at%3Adesc&filter[rating][gt]=90"
     var arrayGames: [Game] = []
     var reachability: Reachability? = Reachability.networkReachabilityForInternetConnection()
     let cachedGame = CacheGame(fileName: "data", fileExtension: .JSON, subDirectory: "NewGame", directory: .applicationSupportDirectory)
@@ -48,11 +48,14 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarController?.navigationItem.titleView = nil
         tabBarController?.tabBar.barTintColor = ColorUI.tabBar
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white
         tabBarController?.tabBar.unselectedItemTintColor = ColorUI.unselectedItemTabBar
-        tabBarController?.navigationItem.titleView = nil
+        let footerView = UIView(frame: CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        footerView.backgroundColor = UIColor.white
+        tableView.tableFooterView = footerView
         checkReachability()
     }
     

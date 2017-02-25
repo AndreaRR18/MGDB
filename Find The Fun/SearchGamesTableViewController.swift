@@ -9,6 +9,7 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: NibName.gameCellTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameCellTableViewCell)
+        tabBarController?.tabBar.isTranslucent = false
         searchController = UISearchController(searchResultsController: nil)
         searchController?.searchBar.tintColor = UIColor.black
         searchController?.searchBar.delegate = self
@@ -45,7 +46,7 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 100
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

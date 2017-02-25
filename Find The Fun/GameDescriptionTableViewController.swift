@@ -32,6 +32,14 @@ class GameDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: NibName.relatedInDescriptionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.relatedInDescriptionTableViewCell)
         self.tableView.register(UINib(nibName: NibName.videosTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.videosTableViewCell)
         
+        let home = GameTableViewController()
+        home.tabBarItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "homeIcon 30x30"), tag: 0)
+        let tabBarDescriptionGame = [home]
+        tabBarController?.viewControllers = tabBarDescriptionGame
+        
+        
+
+
         tableView.delegate = self
         
         let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(GameDescriptionTableViewController.saveFavourite(sender:)))
