@@ -4,12 +4,20 @@ class CoverTableViewCell: UITableViewCell {
     
     @IBOutlet weak var thumbnail: UIImageView?
     @IBOutlet weak var name: UILabel?
+    @IBOutlet weak var ratingProgressView: UIProgressView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         thumbnail?.layer.cornerRadius = 30
     }
     
+    var rating: Float? {
+        didSet {
+            guard let rating = rating else { return }
+            let ratio = Float(rating) / Float(100)
+            ratingProgressView?.progress = ratio
+        }
+    }
     var url: URL? {
         didSet {
             thumbnail?.af_setImage(

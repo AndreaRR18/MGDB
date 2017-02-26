@@ -1,6 +1,6 @@
 import UIKit
 
-class GameDescriptionTableViewController: UITableViewController {
+class GameDescriptionTableViewController: UITableViewController, UITabBarControllerDelegate{
     
     var gameDescription: Game
     
@@ -19,6 +19,7 @@ class GameDescriptionTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
         self.tableView.register(UINib(nibName: NibName.coverHDTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverHDTableViewCell)
         self.tableView.register(UINib(nibName: NibName.coverTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverTableViewCell)
         self.tableView.register(UINib(nibName: NibName.summaryTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.summaryTableViewCell)
@@ -32,14 +33,21 @@ class GameDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: NibName.relatedInDescriptionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.relatedInDescriptionTableViewCell)
         self.tableView.register(UINib(nibName: NibName.videosTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.videosTableViewCell)
         
-        let home = GameTableViewController()
-        home.tabBarItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "homeIcon 30x30"), tag: 0)
-        let tabBarDescriptionGame = [home]
-        tabBarController?.viewControllers = tabBarDescriptionGame
+        let newsViewGameTableViewController = GameTableViewController()
+        newsViewGameTableViewController.tabBarItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "homeIcon 30x30"), tag: 0)
         
+        let searchGameTableViewController = SearchGamesTableViewController()
+        searchGameTableViewController.tabBarItem = UITabBarItem(title: "Search", image: #imageLiteral(resourceName: "search 30x30"), tag: 1)
         
+        let favouriteGameTableViewController = FavouriteTableViewController()
+        favouriteGameTableViewController.tabBarItem = UITabBarItem(title: "Favourite", image: #imageLiteral(resourceName: "favourites 40x40"), tag: 2)
+        
+        let aboutViewGameTableViewController = About()
+        aboutViewGameTableViewController.tabBarItem = UITabBarItem(title: "About", image: #imageLiteral(resourceName: "about 30x30"), tag: 3)
+        
+        let elementTabBarController = [newsViewGameTableViewController, searchGameTableViewController, favouriteGameTableViewController, aboutViewGameTableViewController]
 
-
+        
         tableView.delegate = self
         
         let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(GameDescriptionTableViewController.saveFavourite(sender:)))
@@ -78,6 +86,10 @@ class GameDescriptionTableViewController: UITableViewController {
         guard let navController = navigationController else { return }
         gameDescription.didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+       
     }
     
      func saveFavourite(sender: UIButton) {

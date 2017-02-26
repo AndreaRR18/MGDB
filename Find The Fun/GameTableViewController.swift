@@ -8,7 +8,7 @@ import CoreData
 class GameTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var offset = 0
-    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50&order=updated_at%3Adesc&filter[rating][gt]=90"
+    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50&order=updated_at%3Adesc&filter[rating][gt]=1"
     var arrayGames: [Game] = []
     var reachability: Reachability? = Reachability.networkReachabilityForInternetConnection()
     let cachedGame = CacheGame(fileName: "data", fileExtension: .JSON, subDirectory: "NewGame", directory: .applicationSupportDirectory)

@@ -11,10 +11,11 @@ extension Game {
         cell.backgroundColor = ColorUI.background
         cell.name?.textColor = ColorUI.text
         cell.years?.textColor = ColorUI.text
-        cell.cover?.layer.cornerRadius = 30.0
+//        cell.cover?.layer.cornerRadius = 30.0
         cell.cover?.clipsToBounds = true
         cell.name?.text = name
         cell.years?.text = releaseDate?.first?.year.map(String.init)
+        cell.rating = Float(rating!)
         cell.url = getUrlHttps(url: cover?.url)
         return cell
     }
@@ -37,9 +38,9 @@ extension Game {
             { (tableView,indexPath) -> UITableViewCell in
                 self.getCellPublished(tableView: tableView, indexPath: indexPath)
             },
-            { (tableView,indexPath) -> UITableViewCell in
-                self.getCellRate(tableView: tableView, indexPath: indexPath)
-            },
+//            { (tableView,indexPath) -> UITableViewCell in
+//                self.getCellRate(tableView: tableView, indexPath: indexPath)
+//            },
             { (tableView,indexPath) -> UITableViewCell in
                 self.getCellGenres(tableView: tableView, indexPath: indexPath)
             },
@@ -69,6 +70,7 @@ extension Game {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
         cell.url = getHDImage(url: cover?.url)
         cell.name?.text = name
+        cell.rating = Float(rating!)
         cell.layer.zPosition = 3
         return cell
     }
@@ -168,7 +170,7 @@ extension Game {
         case 4:
             navigationController.navigationBar.isTranslucent = false
             navigationController.pushViewController(ReleaseDateTableViewController(arrayReleaseDate: releaseDate), animated: true)
-        case 8:
+        case 7:
             navigationController.navigationBar.isTranslucent = false
             if let screenshots = screenshots {
                 navigationController.pushViewController(ScreenshotsCollectionViewController(arrayScreenshots: screenshots), animated: true)
@@ -176,7 +178,7 @@ extension Game {
                 let alert = Alert(title: "Sorry", message: "Screenshots not found!")
                 navigationController.present(alert.alertControllerLaunch(), animated: true, completion: nil)
             }
-        case 9:
+        case 8:
             navigationController.navigationBar.isTranslucent = false
             if let genres = genres {
                 navigationController.pushViewController(RelatedTableViewController(idGenres: genres), animated: true)
@@ -184,7 +186,7 @@ extension Game {
                 let alert = Alert(title: "Sorry", message: "Related games not found!")
                 navigationController.present(alert.alertControllerLaunch(), animated: true, completion: nil)
             }
-        case 10:
+        case 9:
             navigationController.navigationBar.isTranslucent = false
             if let videos = videos {
                 navigationController.pushViewController(VideoCollectionViewController(videos: videos), animated: true)

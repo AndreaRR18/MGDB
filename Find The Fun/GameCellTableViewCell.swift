@@ -6,14 +6,15 @@ class GameCellTableViewCell: UITableViewCell {
     @IBOutlet weak var cover: UIImageView?
     @IBOutlet weak var name: UILabel?
     @IBOutlet weak var years: UILabel?
+    @IBOutlet weak var ratingStar: UIProgressView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cover?.layer.cornerRadius = 20
-        cover?.layer.shadowColor = UIColor.black.cgColor
-        cover?.layer.shadowOpacity = 1
-        cover?.layer.shadowOffset = CGSize.zero
-        cover?.layer.shadowRadius = 10
+//        cover?.layer.cornerRadius = 20
+//        cover?.layer.shadowColor = UIColor.black.cgColor
+//        cover?.layer.shadowOpacity = 1
+//        cover?.layer.shadowOffset = CGSize.zero
+//        cover?.layer.shadowRadius = 10
     }
     
     var url: URL? {
@@ -28,6 +29,14 @@ class GameCellTableViewCell: UITableViewCell {
                 runImageTransitionIfCached: true,
                 completion: { _ in
             })
+        }
+    }
+    
+    var rating: Float? {
+        didSet {
+            guard let rating = rating else { return }
+            let ratio = Float(rating) / Float(100)
+            ratingStar?.progress = ratio
         }
     }
 
