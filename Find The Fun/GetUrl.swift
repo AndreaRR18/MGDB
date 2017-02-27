@@ -3,9 +3,21 @@ import AlamofireImage
 import UIKit
 import Alamofire
 
-func getUrlHttps(url: String?) -> URL? {
+func getCoverSmall(url: String?) -> URL? {
     guard let url = url else { return nil }
-    let urlHttps = URL(string: "https:"+url)
+    let urlHttps = URL(string: "https:"+url.replacingOccurrences(of: "/t_thumb", with: "/t_cover_small"))
+    return urlHttps
+}
+
+func getCoverMed(url: String?) -> URL? {
+    guard let url = url else { return nil }
+    let urlHttps = URL(string: "https:"+url.replacingOccurrences(of: "/t_thumb", with: "/t_cover_med"))
+    return urlHttps
+}
+
+func getCoverBig(url: String?) -> URL? {
+    guard let url = url else { return nil }
+    let urlHttps = URL(string: "https:"+url.replacingOccurrences(of: "/t_thumb", with: "/t_cover_big"))
     return urlHttps
 }
 
@@ -43,7 +55,7 @@ func getHDImage(url: String?) -> URL? {
 }
 
 func getUrlIDGame(idGame: Int) -> String {
-    let gameUrl = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/"+"\(idGame)"+"?fields=*"
+    let gameUrl = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/"+"\(idGame)"+"?fields=*&filter[rating][gt]=1"
     return gameUrl
 }
 

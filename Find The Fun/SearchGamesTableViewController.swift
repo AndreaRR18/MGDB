@@ -1,4 +1,6 @@
 import UIKit
+import CoreData
+import Foundation
 
 class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate {
     
@@ -16,6 +18,7 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         searchController?.hidesNavigationBarDuringPresentation = false
         searchController?.dimsBackgroundDuringPresentation = false
         searchController?.searchBar.placeholder = "Search game..."
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +59,7 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let navController = navigationController else { return }
         arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayGames[indexPath.row])
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -86,5 +90,4 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
             }
         })
     }
-    
 }

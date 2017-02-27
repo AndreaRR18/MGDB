@@ -60,7 +60,7 @@ class CacheGame {
         }
     }
     
-    func savefile(string fileContents: String) throws {
+    func saveFile(string fileContents: String) throws {
         do {
             try fileContents.write(to: fullyQualifiedPath, atomically: true, encoding: String.Encoding.utf8)
         } catch {

@@ -1,6 +1,6 @@
 import UIKit
 
-class GameDescriptionTableViewController: UITableViewController, UITabBarControllerDelegate{
+class GameDescriptionTableViewController: UITableViewController {
     
     var gameDescription: Game
     
@@ -16,7 +16,7 @@ class GameDescriptionTableViewController: UITableViewController, UITabBarControl
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -32,23 +32,8 @@ class GameDescriptionTableViewController: UITableViewController, UITabBarControl
         self.tableView.register(UINib(nibName: NibName.gameModesTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameModesTableViewCell)
         self.tableView.register(UINib(nibName: NibName.relatedInDescriptionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.relatedInDescriptionTableViewCell)
         self.tableView.register(UINib(nibName: NibName.videosTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.videosTableViewCell)
+    
         
-        let newsViewGameTableViewController = GameTableViewController()
-        newsViewGameTableViewController.tabBarItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "homeIcon 30x30"), tag: 0)
-        
-        let searchGameTableViewController = SearchGamesTableViewController()
-        searchGameTableViewController.tabBarItem = UITabBarItem(title: "Search", image: #imageLiteral(resourceName: "search 30x30"), tag: 1)
-        
-        let favouriteGameTableViewController = FavouriteTableViewController()
-        favouriteGameTableViewController.tabBarItem = UITabBarItem(title: "Favourite", image: #imageLiteral(resourceName: "favourites 40x40"), tag: 2)
-        
-        let aboutViewGameTableViewController = About()
-        aboutViewGameTableViewController.tabBarItem = UITabBarItem(title: "About", image: #imageLiteral(resourceName: "about 30x30"), tag: 3)
-        
-        let elementTabBarController = [newsViewGameTableViewController, searchGameTableViewController, favouriteGameTableViewController, aboutViewGameTableViewController]
-
-        
-        tableView.delegate = self
         
         let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(GameDescriptionTableViewController.saveFavourite(sender:)))
         let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(GameDescriptionTableViewController.removeFavourite(sender:)))
@@ -65,10 +50,6 @@ class GameDescriptionTableViewController: UITableViewController, UITabBarControl
     }
     
     // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return gameDescription.gameDescriptionFields.count
@@ -88,13 +69,9 @@ class GameDescriptionTableViewController: UITableViewController, UITabBarControl
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-       
-    }
-    
-     func saveFavourite(sender: UIButton) {
+    func saveFavourite(sender: UIButton) {
         let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(GameDescriptionTableViewController.removeFavourite(sender:)))
-
+        
         navigationItem.rightBarButtonItem = trashButton
         let cover = UIImageView()
         cover.af_setImage(
@@ -113,7 +90,7 @@ class GameDescriptionTableViewController: UITableViewController, UITabBarControl
     }
     
     func removeFavourite(sender: UIButton) {
-    let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(GameDescriptionTableViewController.saveFavourite(sender:)))
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(GameDescriptionTableViewController.saveFavourite(sender:)))
         let alertController = UIAlertController(title: nil, message: "Are you sure you want to delete \(gameDescription.name)", preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
             deleteFavouriteGame(id: Int32(self.gameDescription.idGame))

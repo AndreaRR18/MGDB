@@ -15,8 +15,8 @@ extension Game {
         cell.cover?.clipsToBounds = true
         cell.name?.text = name
         cell.years?.text = releaseDate?.first?.year.map(String.init)
-        cell.rating = Float(rating!)
-        cell.url = getUrlHttps(url: cover?.url)
+        cell.rating = Float(rating ?? 1)
+        cell.url = getCoverSmall(url: cover?.url)
         return cell
     }
     
@@ -68,7 +68,7 @@ extension Game {
     
     func getCellCover(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
-        cell.url = getHDImage(url: cover?.url)
+        cell.url = getCoverMed(url: cover?.url)
         cell.name?.text = name
         cell.rating = Float(rating!)
         cell.layer.zPosition = 3
@@ -161,6 +161,10 @@ extension Game {
     
     func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, game: Game) {
         navigationController.pushViewController(GameDescriptionTableViewController(game: game), animated: true)
+    }
+    
+    func didSelectGameWithTabBar(tableView: UITableView, indexPath: IndexPath, tabBarController: UITabBarController, game: Game) {
+        tabBarController.navigationController?.pushViewController(GameDescriptionTableViewController(game: game), animated: true)
     }
     
     func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController) {
