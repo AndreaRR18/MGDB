@@ -32,7 +32,6 @@ class GameDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: NibName.gameModesTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameModesTableViewCell)
         self.tableView.register(UINib(nibName: NibName.relatedInDescriptionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.relatedInDescriptionTableViewCell)
         self.tableView.register(UINib(nibName: NibName.videosTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.videosTableViewCell)
-    
         
         
         let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(GameDescriptionTableViewController.saveFavourite(sender:)))

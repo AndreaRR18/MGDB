@@ -7,3 +7,12 @@ extension Array {
         return self[index]
     }
 }
+
+postfix operator <->
+postfix func <-> <T> (array: [T]) -> [T] {
+    var arrayShuffle: [T] = []
+    array.forEach { value in
+            arrayShuffle.append(array.randomItem())
+    }
+    return arrayShuffle
+}

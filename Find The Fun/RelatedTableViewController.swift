@@ -66,7 +66,7 @@ class RelatedTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 120
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,9 +98,8 @@ class RelatedTableViewController: UITableViewController {
             let arraySetIdGames = Set(arrayIDGames)
             let arrayOfArraySetIdGames = arrayOfArrayIDGames.map(Set.init)
             let commonElementSet = arrayOfArraySetIdGames.reduce(arraySetIdGames) { $0.intersection($1) }
-            if commonElementSet.count > 100 {
-                
-                let arrayInt = Array(commonElementSet)
+            if commonElementSet.count > 100 {                
+                let arrayInt = Array(commonElementSet)<->
                 let slice: [Int] = Array(arrayInt[0..<100])
                 callback(slice)
             } else {
