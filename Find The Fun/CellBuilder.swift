@@ -11,7 +11,6 @@ extension Game {
         cell.backgroundColor = ColorUI.background
         cell.name?.textColor = ColorUI.text
         cell.years?.textColor = ColorUI.text
-//        cell.cover?.layer.cornerRadius = 30.0
         cell.cover?.clipsToBounds = true
         cell.name?.text = name
         cell.years?.text = releaseDate?.first?.year.map(String.init)
@@ -70,7 +69,7 @@ extension Game {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
         cell.url = getCoverMed(url: cover?.url)
         cell.name?.text = name
-        cell.rating = Float(rating!)
+        cell.rating = Float(rating ?? 1)
         cell.layer.zPosition = 3
         return cell
     }

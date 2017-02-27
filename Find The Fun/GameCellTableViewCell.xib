@@ -20,29 +20,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="498" height="223"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tp9-nT-SdB">
-                        <rect key="frame" x="13" y="13" width="197.5" height="197.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="tp9-nT-SdB" secondAttribute="height" multiplier="1:1" id="HMy-Fx-Ldc"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="rzP-qD-phI">
-                        <rect key="frame" x="218" y="13" width="262" height="90"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="90" id="KWp-dD-K41"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Years" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAt-9f-Lhq">
-                        <rect key="frame" x="468.5" y="208.5" width="26.5" height="12"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kOC-Vo-g7Z">
-                        <rect key="frame" x="215.5" y="108" width="80" height="92.5"/>
+                        <rect key="frame" x="215" y="108" width="80" height="92.5"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rGG-CR-0Te">
                                 <rect key="frame" x="-0.5" y="36.5" width="80" height="20"/>
@@ -69,6 +48,27 @@
                             <constraint firstAttribute="width" constant="80" id="zRr-mM-Gdm"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tp9-nT-SdB">
+                        <rect key="frame" x="13" y="13" width="197.5" height="197.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="tp9-nT-SdB" secondAttribute="height" multiplier="1:1" id="HMy-Fx-Ldc"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="rzP-qD-phI">
+                        <rect key="frame" x="218" y="13" width="262" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="90" id="KWp-dD-K41"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Years" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAt-9f-Lhq">
+                        <rect key="frame" x="468.5" y="208.5" width="26.5" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="tp9-nT-SdB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="1HL-xf-Vk8"/>

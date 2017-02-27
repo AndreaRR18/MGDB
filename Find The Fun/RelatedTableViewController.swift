@@ -23,25 +23,22 @@ class RelatedTableViewController: UITableViewController {
         viewFooter.backgroundColor = ColorUI.backgoundTableView
         self.tableView.tableFooterView = viewFooter
         self.view.backgroundColor = ColorUI.backgoundTableView
+        
+        let activityIndicator = ActivityIndicator(view: view)
+        if activityIndicatorAppear {
+            activityIndicatorAppear = false
+            activityIndicator.startAnimating()
+        }
         takeCommonIDGames { commonElement in
-            if commonElement.count < 30 {
-                commonElement.forEach({ idGame in
-                    let decodedJSON = DecodeJSON(url: getUrlIDGame(idGame: idGame))
-                    decodedJSON.getGamesFromID(callback: { game in
-                        guard game.summary != nil, game.cover != nil else { return }
-                        self.arrayGames.append(game)
-                    })
-                })
-            } else {
-                commonElement[0...19].forEach({ _ in
-                    let decodedJSON = DecodeJSON(url: getUrlIDGame(idGame: commonElement.randomItem()))
-                    decodedJSON.getGamesFromID(callback: { game in
-                        guard game.summary != nil, game.cover != nil else { return }
-                        self.arrayGames.append(game)
-                    })
-                })
-                
-            }
+            let idGames = commonElement
+                .map(String.init)
+                .joined(separator: ",")
+            let decodedJSON = DecodeJSON(url: getUrlIDGame(idGame: idGames))
+            decodedJSON.getNewGames(callback: {games in
+                self.arrayGames = games.filter { $0.rating ?? 0 > 0 }
+                self.tableView.reloadData()
+                activityIndicator.stopAnimating()
+            })
         }
     }
     
@@ -52,15 +49,6 @@ class RelatedTableViewController: UITableViewController {
         tabBarController?.tabBar.barTintColor = ColorUI.tabBar
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white
-        let activityIndicator = ActivityIndicator(view: view)
-        if activityIndicatorAppear {
-            activityIndicatorAppear = false
-            activityIndicator.startAnimating()
-        }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3, execute: {
-            self.tableView.reloadData()
-            activityIndicator.stopAnimating()
-        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -110,11 +98,22 @@ class RelatedTableViewController: UITableViewController {
             let arraySetIdGames = Set(arrayIDGames)
             let arrayOfArraySetIdGames = arrayOfArrayIDGames.map(Set.init)
             let commonElementSet = arrayOfArraySetIdGames.reduce(arraySetIdGames) { $0.intersection($1) }
-            callback(Array(commonElementSet))
+            if commonElementSet.count > 100 {
+                
+                let arrayInt = Array(commonElementSet)
+                let slice: [Int] = Array(arrayInt[0..<100])
+                callback(slice)
+            } else {
+                callback(Array(commonElementSet))
+            }
         })
-        
     }
 }
+
+
+
+
+
 
 
 

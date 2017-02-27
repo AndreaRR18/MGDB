@@ -54,7 +54,7 @@ func getHDImage(url: String?) -> URL? {
     return urlHttps
 }
 
-func getUrlIDGame(idGame: Int) -> String {
+func getUrlIDGame(idGame: String) -> String {
     let gameUrl = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/"+"\(idGame)"+"?fields=*&filter[rating][gt]=1"
     return gameUrl
 }

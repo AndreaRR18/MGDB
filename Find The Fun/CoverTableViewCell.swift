@@ -26,7 +26,7 @@ class CoverTableViewCell: UITableViewCell {
                 filter: nil,
                 progress: nil,
                 progressQueue: DispatchQueue.main,
-                imageTransition: .crossDissolve(0.2),
+                imageTransition: .crossDissolve(0.1),
                 runImageTransitionIfCached: true,
                 completion: { _ in
                     self.thumbnail?.layer.shadowColor = UIColor.black.cgColor
