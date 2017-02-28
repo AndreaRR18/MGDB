@@ -72,6 +72,14 @@
 		659D26DE1E571C4C004DF1B5 /* CoverHDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D26DC1E571C4C004DF1B5 /* CoverHDTableViewCell.swift */; };
 		659D26DF1E571C4C004DF1B5 /* CoverHDTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659D26DD1E571C4C004DF1B5 /* CoverHDTableViewCell.xib */; };
 		659D26E31E575D72004DF1B5 /* HeightofRaw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659D26E21E575D72004DF1B5 /* HeightofRaw.swift */; };
+		659F87431E6491400089067E /* VideoCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659F87411E6491400089067E /* VideoCollectionTableViewCell.swift */; };
+		659F87441E6491400089067E /* VideoCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659F87421E6491400089067E /* VideoCollectionTableViewCell.xib */; };
+		659F87471E64918A0089067E /* VideoDescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659F87451E64918A0089067E /* VideoDescriptionCollectionViewCell.swift */; };
+		659F87481E64918A0089067E /* VideoDescriptionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659F87461E64918A0089067E /* VideoDescriptionCollectionViewCell.xib */; };
+		659F874C1E6584050089067E /* ScreenshotCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659F874A1E6584050089067E /* ScreenshotCollectionTableViewCell.swift */; };
+		659F874D1E6584050089067E /* ScreenshotCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659F874B1E6584050089067E /* ScreenshotCollectionTableViewCell.xib */; };
+		659F87501E65842E0089067E /* ScreenshotTableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659F874E1E65842E0089067E /* ScreenshotTableCollectionViewCell.swift */; };
+		659F87511E65842E0089067E /* ScreenshotTableCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659F874F1E65842E0089067E /* ScreenshotTableCollectionViewCell.xib */; };
 		65B2DEF61E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2DEF41E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift */; };
 		65B2DEF71E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B2DEF51E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib */; };
 		65B2DEFC1E2CFC2100C3DE70 /* CoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B2DEFA1E2CFC2100C3DE70 /* CoverTableViewCell.swift */; };
@@ -192,6 +200,14 @@
 		659D26DC1E571C4C004DF1B5 /* CoverHDTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverHDTableViewCell.swift; sourceTree = "<group>"; };
 		659D26DD1E571C4C004DF1B5 /* CoverHDTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoverHDTableViewCell.xib; sourceTree = "<group>"; };
 		659D26E21E575D72004DF1B5 /* HeightofRaw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightofRaw.swift; sourceTree = "<group>"; };
+		659F87411E6491400089067E /* VideoCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCollectionTableViewCell.swift; sourceTree = "<group>"; };
+		659F87421E6491400089067E /* VideoCollectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		659F87451E64918A0089067E /* VideoDescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		659F87461E64918A0089067E /* VideoDescriptionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoDescriptionCollectionViewCell.xib; sourceTree = "<group>"; };
+		659F874A1E6584050089067E /* ScreenshotCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotCollectionTableViewCell.swift; sourceTree = "<group>"; };
+		659F874B1E6584050089067E /* ScreenshotCollectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		659F874E1E65842E0089067E /* ScreenshotTableCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotTableCollectionViewCell.swift; sourceTree = "<group>"; };
+		659F874F1E65842E0089067E /* ScreenshotTableCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScreenshotTableCollectionViewCell.xib; sourceTree = "<group>"; };
 		65B2DEF41E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDescriptionTableViewController.swift; sourceTree = "<group>"; };
 		65B2DEF51E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameDescriptionTableViewController.xib; sourceTree = "<group>"; };
 		65B2DEFA1E2CFC2100C3DE70 /* CoverTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverTableViewCell.swift; sourceTree = "<group>"; };
@@ -355,10 +371,8 @@
 				65B395C31E42468800E373B3 /* GameModesTableViewCell.xib */,
 				655565161E44A78D0022C87F /* RelatedInDescriptionTableViewCell.swift */,
 				655565171E44A78D0022C87F /* RelatedInDescriptionTableViewCell.xib */,
-				6541CBED1E40A53D0071C711 /* ScreenshotsTableViewCell.swift */,
-				6541CBEE1E40A53D0071C711 /* ScreenshotsTableViewCell.xib */,
-				6582579E1E4C6760004AD4C6 /* VideosTableViewCell.swift */,
-				6582579F1E4C6760004AD4C6 /* VideosTableViewCell.xib */,
+				659F87491E6583150089067E /* Screenshotcollectiontableviewcell */,
+				659F87401E64910A0089067E /* VideoCollectionView */,
 			);
 			name = "Description Cell";
 			sourceTree = "<group>";
@@ -423,6 +437,7 @@
 				65CD7AD01E5DA8AF004DCBAD /* Reachability */,
 				652692081E5340AB00A32CF6 /* CachedGame.swift */,
 				658B30C01E607D080006AD85 /* NibName.swift */,
+				659F87521E6597200089067E /* Old file */,
 			);
 			path = "Find The Fun";
 			sourceTree = "<group>";
@@ -516,6 +531,41 @@
 			name = Screenshot;
 			sourceTree = "<group>";
 		};
+		659F87401E64910A0089067E /* VideoCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				659F87411E6491400089067E /* VideoCollectionTableViewCell.swift */,
+				659F87421E6491400089067E /* VideoCollectionTableViewCell.xib */,
+				659F87451E64918A0089067E /* VideoDescriptionCollectionViewCell.swift */,
+				659F87461E64918A0089067E /* VideoDescriptionCollectionViewCell.xib */,
+			);
+			name = VideoCollectionView;
+			sourceTree = "<group>";
+		};
+		659F87491E6583150089067E /* Screenshotcollectiontableviewcell */ = {
+			isa = PBXGroup;
+			children = (
+				659F874A1E6584050089067E /* ScreenshotCollectionTableViewCell.swift */,
+				659F874B1E6584050089067E /* ScreenshotCollectionTableViewCell.xib */,
+				659F874E1E65842E0089067E /* ScreenshotTableCollectionViewCell.swift */,
+				659F874F1E65842E0089067E /* ScreenshotTableCollectionViewCell.xib */,
+			);
+			name = Screenshotcollectiontableviewcell;
+			sourceTree = "<group>";
+		};
+		659F87521E6597200089067E /* Old file */ = {
+			isa = PBXGroup;
+			children = (
+				65CD7AD41E5DC7D4004DCBAD /* Screenshots */,
+				658257A21E4C69CD004AD4C6 /* Videos */,
+				6541CBED1E40A53D0071C711 /* ScreenshotsTableViewCell.swift */,
+				6541CBEE1E40A53D0071C711 /* ScreenshotsTableViewCell.xib */,
+				6582579E1E4C6760004AD4C6 /* VideosTableViewCell.swift */,
+				6582579F1E4C6760004AD4C6 /* VideosTableViewCell.xib */,
+			);
+			name = "Old file";
+			sourceTree = "<group>";
+		};
 		65B2DEF81E2CFB7500C3DE70 /* News TableView  */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,8 +586,6 @@
 				655564D81E43453C0022C87F /* Cover */,
 				655564D71E4345160022C87F /* Release Date */,
 				6555650D1E44A6370022C87F /* Related */,
-				65CD7AD41E5DC7D4004DCBAD /* Screenshots */,
-				658257A21E4C69CD004AD4C6 /* Videos */,
 			);
 			name = "Description TableView";
 			sourceTree = "<group>";
@@ -661,6 +709,8 @@
 			files = (
 				65CC9D951E5ECBC000B5377C /* VideoCollectionViewCell.xib in Resources */,
 				65B2DF0D1E2D009500C3DE70 /* PlatformTableViewCell.xib in Resources */,
+				659F87481E64918A0089067E /* VideoDescriptionCollectionViewCell.xib in Resources */,
+				659F874D1E6584050089067E /* ScreenshotCollectionTableViewCell.xib in Resources */,
 				6541CBF01E40A53D0071C711 /* ScreenshotsTableViewCell.xib in Resources */,
 				65B395BB1E40E73500E373B3 /* FavouriteDescriptionTableViewController.xib in Resources */,
 				656C39091E27D1FC0095EDBC /* LaunchScreen.storyboard in Resources */,
@@ -683,10 +733,12 @@
 				65B395B41E40E6C500E373B3 /* FavouriteTableViewController.xib in Resources */,
 				65B2DF051E2CFE9B00C3DE70 /* CompanyTableViewCell.xib in Resources */,
 				65B2DEF71E2CEA0900C3DE70 /* GameDescriptionTableViewController.xib in Resources */,
+				659F87511E65842E0089067E /* ScreenshotTableCollectionViewCell.xib in Resources */,
 				65B395C11E42465300E373B3 /* GenreTableViewCell.xib in Resources */,
 				655564DD1E4345820022C87F /* ReleaseDateTableViewController.xib in Resources */,
 				65B2DF091E2CFFA200C3DE70 /* PublishedTableViewCell.xib in Resources */,
 				65CC9D991E5ECBD400B5377C /* VideoCollectionViewController.xib in Resources */,
+				659F87441E6491400089067E /* VideoCollectionTableViewCell.xib in Resources */,
 				656C39061E27D1FC0095EDBC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -739,11 +791,13 @@
 				65B2DF041E2CFE9B00C3DE70 /* CompanyTableViewCell.swift in Sources */,
 				65CD7ADB1E5DC80A004DCBAD /* ScreenshotCollectionViewCell.swift in Sources */,
 				654BF6F01E28E6E500A82610 /* GameCellTableViewCell.swift in Sources */,
+				659F87431E6491400089067E /* VideoCollectionTableViewCell.swift in Sources */,
 				655565101E44A6C70022C87F /* RelatedTableViewController.swift in Sources */,
 				65B2DF0C1E2D009500C3DE70 /* PlatformTableViewCell.swift in Sources */,
 				658B30C71E608D710006AD85 /* Cover.swift in Sources */,
 				652692091E5340AB00A32CF6 /* CachedGame.swift in Sources */,
 				65B2DF001E2CFD2900C3DE70 /* SummaryTableViewCell.swift in Sources */,
+				659F874C1E6584050089067E /* ScreenshotCollectionTableViewCell.swift in Sources */,
 				65B395BD1E40EC6300E373B3 /* SaveFavouriteGame.swift in Sources */,
 				6541CBC41E3F4FEC0071C711 /* GameData.xcdatamodeld in Sources */,
 				65B2DEF61E2CEA0900C3DE70 /* GameDescriptionTableViewController.swift in Sources */,
@@ -751,6 +805,7 @@
 				655564DC1E4345820022C87F /* ReleaseDateTableViewController.swift in Sources */,
 				655565181E44A78D0022C87F /* RelatedInDescriptionTableViewCell.swift in Sources */,
 				65B395C01E42465300E373B3 /* GenreTableViewCell.swift in Sources */,
+				659F87471E64918A0089067E /* VideoDescriptionCollectionViewCell.swift in Sources */,
 				652692011E51FC4500A32CF6 /* TabBar.swift in Sources */,
 				658B30C31E608C820006AD85 /* ReleaseDate.swift in Sources */,
 				65CD7AD31E5DB1F7004DCBAD /* RandomElementFromArray.swift in Sources */,
@@ -761,6 +816,7 @@
 				65B395B31E40E6C500E373B3 /* FavouriteTableViewController.swift in Sources */,
 				65CD7AD71E5DC7F1004DCBAD /* ScreenshotsCollectionViewController.swift in Sources */,
 				658B30D51E6092640006AD85 /* GameModeCoreData.swift in Sources */,
+				659F87501E65842E0089067E /* ScreenshotTableCollectionViewCell.swift in Sources */,
 				658B30C91E608D8B0006AD85 /* Video.swift in Sources */,
 				658257A01E4C6760004AD4C6 /* VideosTableViewCell.swift in Sources */,
 				655564EA1E43471F0022C87F /* IGDB.swift in Sources */,

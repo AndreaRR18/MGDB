@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ScreenshotTableCollectionViewCell" customModule="Find_The_Fun" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="311" height="227"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="311" height="227"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="srv-NQ-2j5">
+                        <rect key="frame" x="0.0" y="0.0" width="311" height="227"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="srv-NQ-2j5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Sls-fM-odl"/>
+                <constraint firstItem="srv-NQ-2j5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="T7R-8P-5X1"/>
+                <constraint firstAttribute="bottom" secondItem="srv-NQ-2j5" secondAttribute="bottom" id="k2V-Uk-KgL"/>
+                <constraint firstAttribute="trailing" secondItem="srv-NQ-2j5" secondAttribute="trailing" id="yxb-1n-5n7"/>
+            </constraints>
+            <size key="customSize" width="311" height="227"/>
+            <connections>
+                <outlet property="screenshotImage" destination="srv-NQ-2j5" id="esE-Z7-7xd"/>
+            </connections>
+            <point key="canvasLocation" x="-104.5" y="140.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -36,7 +36,7 @@ class CoverViewController: UIViewController, UIGestureRecognizerDelegate {
         swipeDown.delegate = self
         self.view.addGestureRecognizer(swipeDown)
         view.backgroundColor = UIColor.black
-        let activityIndicator = ActivityIndicator(view: view)
+        let activityIndicator = ActivityIndicator(view: view, background: UIColor.black, activityIndicatorColor: UIColor.white)
         activityIndicator.startAnimating()
         coverScrollView?.maximumZoomScale = 4.0
         coverScrollView?.minimumZoomScale = 1.0
@@ -80,7 +80,8 @@ class CoverViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        let activityIndicator = ActivityIndicator(view: coverHighResolution!)
+        guard  let coverHighResolution = coverHighResolution else { return }
+        let activityIndicator = ActivityIndicator(view: coverHighResolution)
         if let error = error {
             activityIndicator.startAnimating()
             let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)

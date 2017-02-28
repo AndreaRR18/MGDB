@@ -1,6 +1,7 @@
 import UIKit
+import SafariServices
 
-class GameDescriptionTableViewController: UITableViewController {
+class GameDescriptionTableViewController: UITableViewController, UITabBarDelegate {
     
     var gameDescription: Game
     
@@ -20,6 +21,7 @@ class GameDescriptionTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
+        
         self.tableView.register(UINib(nibName: NibName.coverHDTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverHDTableViewCell)
         self.tableView.register(UINib(nibName: NibName.coverTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverTableViewCell)
         self.tableView.register(UINib(nibName: NibName.summaryTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.summaryTableViewCell)
@@ -27,12 +29,11 @@ class GameDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: NibName.publishedTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.publishedTableViewCell)
         self.tableView.register(UINib(nibName: NibName.platformTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.platformTableViewCell)
         self.tableView.register(UINib(nibName: NibName.ratingTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.ratingTableViewCell)
-        self.tableView.register(UINib(nibName: NibName.screenshotsTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.screenshotsTableViewCell)
+        self.tableView.register(UINib(nibName: NibName.screenshotsCollectionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.screenshotsCollectionTableViewCell)
         self.tableView.register(UINib(nibName: NibName.genreTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.genreTableViewCell)
         self.tableView.register(UINib(nibName: NibName.gameModesTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameModesTableViewCell)
         self.tableView.register(UINib(nibName: NibName.relatedInDescriptionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.relatedInDescriptionTableViewCell)
-        self.tableView.register(UINib(nibName: NibName.videosTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.videosTableViewCell)
-        
+        self.tableView.register(UINib(nibName: NibName.videoCollectionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.videoCollectionTableViewCell)
         
         let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(GameDescriptionTableViewController.saveFavourite(sender:)))
         let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(GameDescriptionTableViewController.removeFavourite(sender:)))
@@ -48,6 +49,7 @@ class GameDescriptionTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
     }
     
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,7 +61,7 @@ class GameDescriptionTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return gameDescription.gameDescriptionFields[indexPath.row](tableView, indexPath)
+        return gameDescription.gameDescriptionFields[indexPath.row](tableView, indexPath, self)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -70,7 +72,6 @@ class GameDescriptionTableViewController: UITableViewController {
     
     func saveFavourite(sender: UIButton) {
         let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(GameDescriptionTableViewController.removeFavourite(sender:)))
-        
         navigationItem.rightBarButtonItem = trashButton
         let cover = UIImageView()
         cover.af_setImage(
@@ -102,3 +103,16 @@ class GameDescriptionTableViewController: UITableViewController {
     }
     
 }
+
+extension GameDescriptionTableViewController: VideoDelegate, ScreenshotDelegate {
+    func openSafariView(_ url: URL) {
+        let safariVC = SFSafariViewController(url: url)
+        self.present(safariVC, animated: true, completion: nil)
+    }
+    
+    func openImage(url: String) {
+        navigationController?.present(CoverViewController(coverURL: url), animated: true, completion: nil)
+    }
+}
+
+

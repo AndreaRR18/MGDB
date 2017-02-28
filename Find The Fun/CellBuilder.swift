@@ -20,41 +20,37 @@ extension Game {
     }
     
     //--------------------Cell of Description UITableView -------------------//
-    var gameDescriptionFields: [(UITableView,IndexPath) -> UITableViewCell] {
+    var gameDescriptionFields: [(UITableView,IndexPath, GameDescriptionTableViewController) -> UITableViewCell] {
         return [
-            { (tableView, indexPath) -> UITableViewCell in
+            { (tableView, indexPath,tableViewController) -> UITableViewCell in
                 self.getCellCoverHD(tableView: tableView, indexPath: indexPath)
             },
-            { (tableView,indexPath) -> UITableViewCell in
+            { (tableView,indexPath,tableViewController) -> UITableViewCell in
                 self.getCellCover(tableView: tableView, indexPath: indexPath)
             },
-            { (tableView,indexPath) -> UITableViewCell in
+            { (tableView,indexPath,tableViewController) -> UITableViewCell in
                 self.getCellSummary(tableView: tableView, indexPath: indexPath)
             },
-            { (tableView,indexPath) -> UITableViewCell in
+            { (tableView,indexPath,tableViewController) -> UITableViewCell in
                 self.getCellCompany(tableView: tableView, indexPath: indexPath)
             },
-            { (tableView,indexPath) -> UITableViewCell in
+            { (tableView,indexPath,tableViewController) -> UITableViewCell in
                 self.getCellPublished(tableView: tableView, indexPath: indexPath)
             },
-//            { (tableView,indexPath) -> UITableViewCell in
-//                self.getCellRate(tableView: tableView, indexPath: indexPath)
-//            },
-            { (tableView,indexPath) -> UITableViewCell in
+            { (tableView,indexPath,tableViewController) -> UITableViewCell in
                 self.getCellGenres(tableView: tableView, indexPath: indexPath)
             },
-            { (tableView,indexPath) -> UITableViewCell in
+            { (tableView,indexPath,tableViewController) -> UITableViewCell in
                 self.getCellGameModes(tableView: tableView, indexPath: indexPath)
             },
-            { (tableView,indexPath) -> UITableViewCell in
-                self.getCellScreenshots(tableView: tableView, indexPath: indexPath)
+            { (tableView,indexPath,tableViewController) -> UITableViewCell in
+                self.getCellScreenshots(tableView: tableView, indexPath: indexPath, tableViewController: tableViewController)
             },
-            { (tableView,indexPath) -> UITableViewCell in
+            { (tableView,indexPath,tableViewController) -> UITableViewCell in
                 self.getCellRelatedInDescription(tableView: tableView, indexPath: indexPath)
             },
-            {
-                (tableView, indexPath) -> UITableViewCell in
-                self.getCellVideos(tableView: tableView, indexPath: indexPath)
+            { (tableView, indexPath,tableViewController) -> UITableViewCell in
+                self.getCellVideos(tableView: tableView, indexPath: indexPath, tableViewController: tableViewController)
             }
         ]
     }
@@ -128,7 +124,6 @@ extension Game {
     }
     func getCellGameModes(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameModesTableViewCell, for: indexPath) as! GameModesTableViewCell
-        
         cell.backgroundColor = ColorUI.background
         cell.gameModes?.textColor = ColorUI.text
         nameGameModeDB(id: gameModes, callback: { nameGameModes in
@@ -144,17 +139,19 @@ extension Game {
         return cell
     }
     
-    func getCellScreenshots(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.screenshotsTableViewCell, for: indexPath) as! ScreenshotsTableViewCell
-        cell.backgroundColor = ColorUI.background
-        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+    func getCellScreenshots(tableView: UITableView, indexPath: IndexPath, tableViewController: GameDescriptionTableViewController) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ScreenshotCollectionTableViewCell", for: indexPath) as! ScreenshotCollectionTableViewCell
+        guard let screenshots = screenshots else { return cell }
+        cell.screenshot = screenshots
+        cell.delegate = tableViewController
         return cell
     }
     
-    func getCellVideos(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.videosTableViewCell, for: indexPath) as! VideosTableViewCell
-        cell.backgroundColor = ColorUI.background
-        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+    func getCellVideos(tableView: UITableView, indexPath: IndexPath, tableViewController: GameDescriptionTableViewController) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCollectionTableViewCell", for: indexPath) as! VideoCollectionTableViewCell
+        guard let videos = videos else { return cell }
+        cell.video = videos
+        cell.delegate = tableViewController
         return cell
     }
     
@@ -173,28 +170,12 @@ extension Game {
         case 4:
             navigationController.navigationBar.isTranslucent = false
             navigationController.pushViewController(ReleaseDateTableViewController(arrayReleaseDate: releaseDate), animated: true)
-        case 7:
-            navigationController.navigationBar.isTranslucent = false
-            if let screenshots = screenshots {
-                navigationController.pushViewController(ScreenshotsCollectionViewController(arrayScreenshots: screenshots), animated: true)
-            } else {
-                let alert = Alert(title: "Sorry", message: "Screenshots not found!")
-                navigationController.present(alert.alertControllerLaunch(), animated: true, completion: nil)
-            }
         case 8:
             navigationController.navigationBar.isTranslucent = false
             if let genres = genres {
                 navigationController.pushViewController(RelatedTableViewController(idGenres: genres), animated: true)
             } else {
                 let alert = Alert(title: "Sorry", message: "Related games not found!")
-                navigationController.present(alert.alertControllerLaunch(), animated: true, completion: nil)
-            }
-        case 9:
-            navigationController.navigationBar.isTranslucent = false
-            if let videos = videos {
-                navigationController.pushViewController(VideoCollectionViewController(videos: videos), animated: true)
-            } else {
-                let alert = Alert(title: "Sorry", message: "Video not found!")
                 navigationController.present(alert.alertControllerLaunch(), animated: true, completion: nil)
             }
         default:

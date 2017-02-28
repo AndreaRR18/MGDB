@@ -109,7 +109,7 @@ class FavouriteDescriptionTableViewController: UITableViewController {
     }
     
     func removeFavourite(sender: UIButton) {
-        let alertController = UIAlertController(title: nil, message: "Are you sure you want to delete \(favouriteGameDescription.name!)", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: nil, message: "Are you sure you want to delete \(favouriteGameDescription.name ?? "")", preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
             deleteFavouriteGame(id: Int32(self.favouriteGameDescription.id))
             _ = self.navigationController?.popViewController(animated: true)

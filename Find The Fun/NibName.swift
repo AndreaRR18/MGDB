@@ -9,15 +9,16 @@ struct NibName {
     static var publishedTableViewCell: String { return "PublishedTableViewCell" }
     static var platformTableViewCell: String { return "PlatformTableViewCell" }
     static var ratingTableViewCell: String { return "RatingTableViewCell" }
-    static var screenshotsTableViewCell: String { return "ScreenshotsTableViewCell" }
+    static var screenshotsCollectionTableViewCell: String { return "ScreenshotCollectionTableViewCell" }
     static var genreTableViewCell: String { return "GenreTableViewCell" }
     static var gameModesTableViewCell: String { return "GameModesTableViewCell" }
     static var relatedInDescriptionTableViewCell: String { return "RelatedInDescriptionTableViewCell" }
-    static var videosTableViewCell: String { return "VideosTableViewCell" }
+    static var videoDescriptionCollectionViewCell: String { return "VideoDescriptionCollectionViewCell" }
     static var coverViewController: String { return "CoverViewController" }
     static var releaseDateTableViewCell: String { return "ReleaseDateTableViewCell" }
-    static var screenshotCollectionViewCell: String { return "ScreenshotCollectionViewCell" }
-    static var videoCollectionViewCell: String { return "VideoCollectionViewCell" }
+    static var screenshotTableCollectionViewCell: String { return "ScreenshotTableCollectionViewCell" }
+    static var videoCollectionTableViewCell: String { return "VideoCollectionTableViewCell" }
+    
 }
 
 struct Identifier {
@@ -29,13 +30,13 @@ struct Identifier {
     static var publishedTableViewCell: String { return "PublishedTableViewCell" }
     static var platformTableViewCell: String { return "PlatformTableViewCell" }
     static var ratingTableViewCell: String { return "RatingTableViewCell" }
-    static var screenshotsTableViewCell: String { return "ScreenshotsTableViewCell" }
+    static var screenshotsCollectionTableViewCell: String { return "ScreenshotCollectionTableViewCell" }
     static var genreTableViewCell: String { return "GenreTableViewCell" }
     static var gameModesTableViewCell: String { return "GameModesTableViewCell" }
     static var relatedInDescriptionTableViewCell: String { return "RelatedInDescriptionTableViewCell" }
-    static var videosTableViewCell: String { return "VideosTableViewCell" }
+    static var videoDescriptionCollectionViewCell: String { return "VideoDescriptionCollectionViewCell" }
     static var coverViewController: String { return "CoverViewController" }
     static var releaseDateTableViewCell: String { return "ReleaseDateTableViewCell" }
-    static var screenshotCollectionViewCell: String { return "ScreenshotCollectionViewCell" }
-    static var videoCollectionViewCell: String { return "VideoCollectionViewCell" }
+    static var screenshotTableCollectionViewCell: String { return "ScreenshotTableCollectionViewCell" }
+    static var videoCollectionTableViewCell: String { return "VideoCollectionTableViewCell" }
 }

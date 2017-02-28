@@ -4,8 +4,12 @@ struct ActivityIndicator {
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     let activityIndicatorFooter = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     let view: UIView
-    init(view: UIView) {
+    let background: UIColor
+    let activityIndicatorColor: UIColor
+    init(view: UIView, background: UIColor = UIColor.white, activityIndicatorColor: UIColor = UIColor.gray) {
         self.view = view
+        self.background = background
+        self.activityIndicatorColor = activityIndicatorColor
     }
     
     func startAnimating() {
@@ -14,7 +18,8 @@ struct ActivityIndicator {
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         activityIndicator.backgroundColor = UIColor.white
         activityIndicator.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        
+        activityIndicator.backgroundColor = background
+        activityIndicator.color = activityIndicatorColor
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
     }

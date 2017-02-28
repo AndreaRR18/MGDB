@@ -33,15 +33,15 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gtW-fN-lFr">
-                        <rect key="frame" x="150" y="70" width="80" height="20"/>
+                        <rect key="frame" x="150" y="70" width="85" height="20"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jzG-Np-nQJ">
-                                <rect key="frame" x="0.0" y="0.0" width="80" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="85" height="20"/>
                                 <color key="tintColor" red="0.1960784314" green="0.56862745100000001" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="trackTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </progressView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RatingStar" translatesAutoresizingMaskIntoConstraints="NO" id="HnS-ds-lId">
-                                <rect key="frame" x="0.0" y="0.0" width="80" height="20"/>
+                                <rect key="frame" x="0.0" y="0.0" width="85" height="20"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -51,7 +51,7 @@
                             <constraint firstItem="jzG-Np-nQJ" firstAttribute="top" secondItem="gtW-fN-lFr" secondAttribute="top" id="Q0t-c1-rvz"/>
                             <constraint firstItem="HnS-ds-lId" firstAttribute="top" secondItem="gtW-fN-lFr" secondAttribute="top" id="TYj-L1-uMn"/>
                             <constraint firstAttribute="trailing" secondItem="HnS-ds-lId" secondAttribute="trailing" id="c3g-g6-WBk"/>
-                            <constraint firstAttribute="width" constant="80" id="cWk-NI-9vN"/>
+                            <constraint firstAttribute="width" constant="85" id="cWk-NI-9vN"/>
                             <constraint firstAttribute="bottom" secondItem="jzG-Np-nQJ" secondAttribute="bottom" id="gne-vI-PyR"/>
                             <constraint firstAttribute="bottom" secondItem="HnS-ds-lId" secondAttribute="bottom" id="lu4-TR-2Tj"/>
                             <constraint firstAttribute="height" constant="20" id="pYC-Iw-AsG"/>

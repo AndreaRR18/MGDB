@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="229" id="KGk-i7-Jjw" customClass="ScreenshotCollectionTableViewCell" customModule="Find_The_Fun" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="449" height="229"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="449" height="229"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Screenshot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSx-Zb-yMr">
+                        <rect key="frame" x="13" y="13" width="423" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="dpQ-a4-41E"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="k45-bQ-G25">
+                        <rect key="frame" x="13" y="38" width="423" height="177.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NQm-bE-neW">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="k45-bQ-G25" secondAttribute="trailing" constant="5" id="3vT-uV-9nC"/>
+                    <constraint firstItem="iSx-Zb-yMr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="FF6-ZK-2ic"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="k45-bQ-G25" secondAttribute="bottom" constant="5" id="K6P-Qk-O6D"/>
+                    <constraint firstItem="k45-bQ-G25" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="Lk2-I5-JQR"/>
+                    <constraint firstItem="iSx-Zb-yMr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="dVp-VQ-tCG"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="iSx-Zb-yMr" secondAttribute="trailing" constant="5" id="g22-7k-kzb"/>
+                    <constraint firstItem="k45-bQ-G25" firstAttribute="top" secondItem="iSx-Zb-yMr" secondAttribute="bottom" constant="5" id="tgY-sg-VZV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="screenshotCollectionview" destination="k45-bQ-G25" id="qiZ-xo-Sfw"/>
+            </connections>
+            <point key="canvasLocation" x="90.5" y="144.5"/>
+        </tableViewCell>
+    </objects>
+</document>
