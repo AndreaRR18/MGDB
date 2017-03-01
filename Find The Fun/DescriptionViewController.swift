@@ -5,6 +5,7 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var tableView: UITableView?
     @IBOutlet weak var headerImage: UIImageView?
+    @IBOutlet weak var headerBlurImage: UIImageView?
     @IBOutlet weak var headerView: UIView?
     @IBOutlet weak var footerView: UIView?
     @IBOutlet weak var homeButton: UIButton?
@@ -49,14 +50,6 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
         tableView?.register(UINib(nibName: NibName.relatedInDescriptionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.relatedInDescriptionTableViewCell)
         tableView?.register(UINib(nibName: NibName.videoCollectionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.videoCollectionTableViewCell)
         
-//        let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(GameDescriptionTableViewController.saveFavourite(sender:)))
-//        let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(GameDescriptionTableViewController.removeFavourite(sender:)))
-//        
-//        if fetchGameFavourite(id: Int32(gameDescription.idGame)) {
-//            navigationItem.rightBarButtonItem = saveButton
-//        } else {
-//            navigationItem.rightBarButtonItem = trashButton
-//        }
         title = gameDescription.name
         tableView?.backgroundColor = UIColor.clear
         navigationController?.navigationBar.tintColor = UIColor.white
@@ -80,6 +73,7 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
                 imageTransition: .crossDissolve(0.1),
                 runImageTransitionIfCached: true,
                 completion: { _ in
+                    print("scaricata")
                     guard let headerView = self.headerView else { return }
                     self.headerImage = UIImageView(frame: headerView.bounds)
                     self.headerImage?.contentMode = UIViewContentMode.scaleAspectFill
