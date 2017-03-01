@@ -5,9 +5,6 @@ import Runes
 import AlamofireImage
 import CoreData
 
-let offset_HeaderStop: CGFloat = 40.0
-let distance_W_LabelHeader: CGFloat = 30.0
-
 class GameTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var offset = 0
