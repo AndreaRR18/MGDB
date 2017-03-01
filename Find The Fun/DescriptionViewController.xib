@@ -13,12 +13,12 @@
             <connections>
                 <outlet property="backButton" destination="BhI-lC-9d4" id="pbt-70-KNE"/>
                 <outlet property="footerView" destination="fjo-cn-9Oy" id="LY8-9t-IkF"/>
-                <outlet property="headerImage" destination="qya-Ve-j0B" id="GWO-Q8-3sB"/>
                 <outlet property="headerView" destination="lDh-hW-y4H" id="eqF-Mf-0jG"/>
                 <outlet property="homeButton" destination="l2M-yd-Eef" id="tPZ-XE-5Wi"/>
                 <outlet property="saveButton" destination="xaW-a4-xfV" id="ohf-jb-gaf"/>
                 <outlet property="shareButton" destination="hr5-lH-Dsk" id="biq-81-Rjs"/>
                 <outlet property="tableView" destination="bVM-Yn-7nS" id="ujW-7O-Sje"/>
+                <outlet property="titleLabel" destination="maE-iH-w1Y" id="ogM-Sr-eRR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,9 +30,12 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDh-hW-y4H" userLabel="Header">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qya-Ve-j0B">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="maE-iH-w1Y">
+                            <rect key="frame" x="166" y="200" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhI-lC-9d4">
                             <rect key="frame" x="5" y="15" width="20" height="20"/>
                             <constraints>
@@ -49,10 +52,8 @@
                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="Rcy-fn-AXd"/>
-                        <constraint firstAttribute="bottom" secondItem="qya-Ve-j0B" secondAttribute="bottom" id="cuW-5M-kP0"/>
-                        <constraint firstItem="qya-Ve-j0B" firstAttribute="leading" secondItem="lDh-hW-y4H" secondAttribute="leading" id="dbK-iY-Msu"/>
-                        <constraint firstItem="qya-Ve-j0B" firstAttribute="top" secondItem="lDh-hW-y4H" secondAttribute="top" id="eor-s4-5eO"/>
-                        <constraint firstAttribute="trailing" secondItem="qya-Ve-j0B" secondAttribute="trailing" id="jTJ-ah-6N4"/>
+                        <constraint firstItem="maE-iH-w1Y" firstAttribute="centerX" secondItem="lDh-hW-y4H" secondAttribute="centerX" id="bjc-pN-PNi"/>
+                        <constraint firstItem="maE-iH-w1Y" firstAttribute="top" secondItem="lDh-hW-y4H" secondAttribute="top" constant="200" id="kZl-c2-tY2"/>
                         <constraint firstItem="BhI-lC-9d4" firstAttribute="top" secondItem="lDh-hW-y4H" secondAttribute="top" constant="15" id="nrA-qm-1yU"/>
                         <constraint firstItem="BhI-lC-9d4" firstAttribute="leading" secondItem="lDh-hW-y4H" secondAttribute="leading" constant="5" id="uTg-fP-Nex"/>
                     </constraints>

@@ -3,14 +3,15 @@ import SafariServices
 
 class DescriptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var headerImage: UIImageView!
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var footerView: UIView!
-    @IBOutlet weak var homeButton: UIButton!
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var tableView: UITableView?
+    @IBOutlet weak var headerImage: UIImageView?
+    @IBOutlet weak var headerView: UIView?
+    @IBOutlet weak var footerView: UIView?
+    @IBOutlet weak var homeButton: UIButton?
+    @IBOutlet weak var saveButton: UIButton?
+    @IBOutlet weak var shareButton: UIButton?
     @IBOutlet weak var backButton: UIButton?
+    @IBOutlet weak var titleLabel: UILabel?
     
     @IBAction func backButtonAction(_ sender: Any) {
         navigationController?.isNavigationBarHidden = false
@@ -33,44 +34,59 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: NibName.coverHDTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverHDTableViewCell)
-        tableView.register(UINib(nibName: NibName.coverTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverTableViewCell)
-        tableView.register(UINib(nibName: NibName.summaryTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.summaryTableViewCell)
-        tableView.register(UINib(nibName: NibName.companyTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.companyTableViewCell)
-        tableView.register(UINib(nibName: NibName.publishedTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.publishedTableViewCell)
-        tableView.register(UINib(nibName: NibName.platformTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.platformTableViewCell)
-        tableView.register(UINib(nibName: NibName.ratingTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.ratingTableViewCell)
-        tableView.register(UINib(nibName: NibName.screenshotsCollectionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.screenshotsCollectionTableViewCell)
-        tableView.register(UINib(nibName: NibName.genreTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.genreTableViewCell)
-        tableView.register(UINib(nibName: NibName.gameModesTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameModesTableViewCell)
-        tableView.register(UINib(nibName: NibName.relatedInDescriptionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.relatedInDescriptionTableViewCell)
-        tableView.register(UINib(nibName: NibName.videoCollectionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.videoCollectionTableViewCell)
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        tableView?.register(UINib(nibName: NibName.coverHDTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverHDTableViewCell)
+        tableView?.register(UINib(nibName: NibName.coverTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverTableViewCell)
+        tableView?.register(UINib(nibName: NibName.summaryTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.summaryTableViewCell)
+        tableView?.register(UINib(nibName: NibName.companyTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.companyTableViewCell)
+        tableView?.register(UINib(nibName: NibName.publishedTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.publishedTableViewCell)
+        tableView?.register(UINib(nibName: NibName.platformTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.platformTableViewCell)
+        tableView?.register(UINib(nibName: NibName.ratingTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.ratingTableViewCell)
+        tableView?.register(UINib(nibName: NibName.screenshotsCollectionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.screenshotsCollectionTableViewCell)
+        tableView?.register(UINib(nibName: NibName.genreTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.genreTableViewCell)
+        tableView?.register(UINib(nibName: NibName.gameModesTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameModesTableViewCell)
+        tableView?.register(UINib(nibName: NibName.relatedInDescriptionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.relatedInDescriptionTableViewCell)
+        tableView?.register(UINib(nibName: NibName.videoCollectionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.videoCollectionTableViewCell)
         
-        let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(GameDescriptionTableViewController.saveFavourite(sender:)))
-        let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(GameDescriptionTableViewController.removeFavourite(sender:)))
-        
-        if fetchGameFavourite(id: Int32(gameDescription.idGame)) {
-            navigationItem.rightBarButtonItem = saveButton
-        } else {
-            navigationItem.rightBarButtonItem = trashButton
-        }
+//        let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(GameDescriptionTableViewController.saveFavourite(sender:)))
+//        let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(GameDescriptionTableViewController.removeFavourite(sender:)))
+//        
+//        if fetchGameFavourite(id: Int32(gameDescription.idGame)) {
+//            navigationItem.rightBarButtonItem = saveButton
+//        } else {
+//            navigationItem.rightBarButtonItem = trashButton
+//        }
         title = gameDescription.name
-        tableView.backgroundColor = UIColor.clear
+        tableView?.backgroundColor = UIColor.clear
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
         navigationController?.isNavigationBarHidden = true
         
+        
+        backButton?.layer.shadowColor = UIColor.black.cgColor
+        backButton?.layer.shadowOpacity = 3
+        backButton?.layer.shadowOffset = CGSize.zero
+        backButton?.layer.shadowRadius = 4
+        
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if let url = getCover(url: gameDescription.cover?.url) {
             headerImage?.af_setImage(
                 withURL: url,
                 imageTransition: .crossDissolve(0.1),
                 runImageTransitionIfCached: true,
                 completion: { _ in
+                    guard let headerView = self.headerView else { return }
+                    self.headerImage = UIImageView(frame: headerView.bounds)
+                    self.headerImage?.contentMode = UIViewContentMode.scaleAspectFill
+                    guard let headerImage = self.headerImage, let titleLabel = self.titleLabel else { return }
+                    headerView.insertSubview(headerImage, aboveSubview: titleLabel)
             })
         }
-        
     }
     
     
