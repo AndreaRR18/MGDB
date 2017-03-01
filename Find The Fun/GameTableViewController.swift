@@ -56,9 +56,6 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         let footerView = UIView(frame: CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         footerView.backgroundColor = UIColor.white
         tableView.tableFooterView = footerView
-        let info = UIBarButtonItem(image: #imageLiteral(resourceName: "infoIcon"), style: .done, target: self, action: #selector(GameTableViewController.presentInfoPage))
-//        let info = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(GameTableViewController.presentInfoPage))
-        tabBarController?.navigationItem.leftBarButtonItem = info
         checkReachability()
     }
     
@@ -139,10 +136,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
             self.tableView.reloadData()
         })
     }
-    
-    func presentInfoPage() {
-        navigationController?.pushViewController(DescriptionViewController(game: arrayGames[2]), animated: true)
-    }
+ 
 }
 
 

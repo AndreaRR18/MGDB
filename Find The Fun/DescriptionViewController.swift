@@ -2,8 +2,8 @@ import UIKit
 import SafariServices
 
 let offset_HeaderStop:CGFloat = 50.0 // At this offset the Header stops its transformations
-let offset_B_LabelHeader:CGFloat = 63.0 // At this offset the Black label reaches the Header
-let distance_W_LabelHeader:CGFloat = 183.0 // The distance between the bottom of the Header and the top of the White Label
+let offset_B_LabelHeader:CGFloat = 61.0 // At this offset the Black label reaches the Header
+let distance_W_LabelHeader:CGFloat = 173.0 // The distance between the bottom of the Header and the top of the White Label
 
 class DescriptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
@@ -19,11 +19,53 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var titleLabel: UILabel?
     var blurredHeaderImageView: UIImageView?
     var referenceThumbnail: UIImageView?
+    var gameDescription: Game
+    
     @IBAction func backButtonAction(_ sender: Any) {
         navigationController?.isNavigationBarHidden = false
         _ = navigationController?.popViewController(animated: true)
     }
-    var gameDescription: Game
+    
+    @IBAction func homeButtonAction(_ sender: Any) {
+        navigationController?.isNavigationBarHidden = false
+        _ = navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @IBAction func saveButtonAction(_ sender: Any) {
+        saveFavourite()
+    }
+    
+    
+    @IBAction func shareButtonAction(_ sender: Any) {
+        let firstActivityItem = "Look this game:"
+        let secondActivityItem : NSURL = NSURL(string: gameDescription.internetPage!)!
+        // If you want to put an image
+        
+        let activityViewController : UIActivityViewController = UIActivityViewController(
+            activityItems: [firstActivityItem, secondActivityItem], applicationActivities: nil)
+        
+        // This lines is for the popover you need to show in iPad
+        activityViewController.popoverPresentationController?.sourceView = (sender as! UIButton)
+        
+        // This line remove the arrow of the popover to show in iPad
+        
+        activityViewController.popoverPresentationController?.permittedArrowDirections = .unknown
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
+        
+        // Anything you want to exclude
+        activityViewController.excludedActivityTypes = [
+            UIActivityType.postToWeibo,
+            UIActivityType.print,
+            UIActivityType.assignToContact,
+            UIActivityType.saveToCameraRoll,
+            UIActivityType.addToReadingList,
+            UIActivityType.postToFlickr,
+            UIActivityType.postToVimeo,
+            UIActivityType.postToTencentWeibo
+        ]
+        
+        self.present(activityViewController, animated: true, completion: nil)
+    }
     
     required init(game: Game) {
         self.gameDescription = game
@@ -81,24 +123,20 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
             runImageTransitionIfCached: true,
             completion: { _ in
                 self.headerBlurImage?.image = self.headerImage?.image
-                let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.init(rawValue: 10)!)
+                let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
                 let blurEffectView = UIVisualEffectView(effect: blurEffect)
                 blurEffectView.frame = (self.headerBlurImage?.bounds)!
                 self.headerBlurImage?.addSubview(blurEffectView)
-                
-                
-                //                self.headerImage = UIImageView(frame: headerView.bounds)
-                //                self.headerImage?.contentMode = UIViewContentMode.scaleAspectFill
-                //                guard let headerImage = self.headerImage, let titleLabel = self.titleLabel else { return }
-                //                headerView.insertSubview(headerImage, aboveSubview: titleLabel)
-                
-                
-                
-                //                self.headerBlurImage?.image = headerImage.image?.blurredImage(withRadius: 10, iterations: 20, tintColor: UIColor.clear)
-                
         })
+        if !(navigationController?.isNavigationBarHidden)! {
+            navigationController?.isNavigationBarHidden = true
+        }
         headerBlurImage?.alpha = 0.0
         headerView?.clipsToBounds = true
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -125,29 +163,14 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
             let avatarSizeVariation = ((referenceThumbnail.bounds.height * (1.0 + avatarScaleFactor)) - referenceThumbnail.bounds.height) / 2.0
             thumbnailTransform = CATransform3DTranslate(thumbnailTransform, 0, avatarSizeVariation, 0)
             thumbnailTransform = CATransform3DScale(thumbnailTransform, 1.0 - avatarScaleFactor, 1.0 - avatarScaleFactor, 0)
-            
-            //                        if offset <= offset_HeaderStop {
-            //
-            //                            if referenceThumbnail.layer.zPosition < headerView.layer.zPosition{
-            //                                headerView.layer.zPosition = 0
-            //                            }
-            //
-            //                        }else {
-            //                            if referenceThumbnail.layer.zPosition >= headerView.layer.zPosition{
-            //                                headerView.layer.zPosition = 1
-            //                                backButton?.layer.zPosition = 2
-            //                            }
-            //                        }
         }
-        
-        
     }
     
     
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gameDescription.gameDescriptionFields.count
+        return gameDescriptionFields.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -155,97 +178,100 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverHDTableViewCell, for: indexPath) as! CoverHDTableViewCell
-            //            cell.url = getHDImage(url: gameDescription.cover?.url)
-            cell.backgroundColor = UIColor.clear
-            cell.coverHQ?.image = #imageLiteral(resourceName: "emptyBackground")
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
-            if referenceThumbnail == nil {
-                referenceThumbnail = cell.thumbnail
-            }
-            cell.url = getCoverMed(url: gameDescription.cover?.url)
-            cell.name?.text = gameDescription.name
-            cell.rating = Float(gameDescription.rating ?? 1)
-            cell.layer.zPosition = 3
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.summaryTableViewCell, for: indexPath) as! SummaryTableViewCell
-            cell.backgroundColor = ColorUI.background
-            cell.isSelected = false
-            cell.textSummary = gameDescription.summary
-            cell.summaryText?.textColor = ColorUI.text
-            return cell
-        case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.companyTableViewCell, for: indexPath) as! CompanyTableViewCell
-            cell.backgroundColor = ColorUI.background
-            cell.company?.textColor = ColorUI.text
-            if let developers = gameDescription.developers {
-                nameCompanyDB(id: developers, callback: { nameCompany, new in
-                    cell.company?.text = nameCompany
-                    if new {
-                        _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { _ in
-                            tableView.reloadData()
-                        })
-                    }
-                })
-            } else {
-                cell.company?.text = "N.D."
-            }
-            return cell
-        case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.publishedTableViewCell, for: indexPath) as! PublishedTableViewCell
-            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-            cell.backgroundColor = ColorUI.background
-            cell.firstReleaseDate?.textColor = ColorUI.text
-            return cell
-        case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.genreTableViewCell, for: indexPath) as! GenreTableViewCell
-            cell.backgroundColor = ColorUI.background
-            cell.genres?.textColor = ColorUI.text
-            nameGenreDB(id: gameDescription.genres, callback: { nameGenre in
-                cell.genres?.text = nameGenre
-            })
-            return cell
-        case 6:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameModesTableViewCell, for: indexPath) as! GameModesTableViewCell
-            cell.backgroundColor = ColorUI.background
-            cell.gameModes?.textColor = ColorUI.text
-            nameGameModeDB(id: gameDescription.gameModes, callback: { nameGameModes in
-                cell.gameModes?.text = nameGameModes
-            })
-            return cell
-        case 7:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.screenshotsCollectionTableViewCell, for: indexPath) as! ScreenshotCollectionTableViewCell
-            guard let screenshots = gameDescription.screenshots else { return cell }
-            cell.screenshot = screenshots
-            return cell
-        case 8:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.relatedInDescriptionTableViewCell, for: indexPath) as! RelatedInDescriptionTableViewCell
-            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
-            cell.backgroundColor = ColorUI.background
-            return cell
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.videoCollectionTableViewCell, for: indexPath) as! VideoCollectionTableViewCell
-            guard let videos = gameDescription.videos else { return cell }
-            cell.video = videos
-            return cell
-        }
+                return gameDescriptionFields[indexPath.row](tableView, indexPath)
+        //        switch indexPath.row {
+        //        case 0:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverHDTableViewCell, for: indexPath) as! CoverHDTableViewCell
+        //            cell.backgroundColor = UIColor.clear
+        //            cell.coverHQ?.image = #imageLiteral(resourceName: "emptyBackground")
+        //            return cell
+        //        case 1:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
+        //            if referenceThumbnail == nil {
+        //                referenceThumbnail = cell.thumbnail
+        //            }
+        //            cell.url = getCoverMed(url: gameDescription.cover?.url)
+        //            cell.name?.text = gameDescription.name
+        //            cell.rating = Float(gameDescription.rating ?? 1)
+        //            cell.layer.zPosition = 3
+        //            return cell
+        //        case 2:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.summaryTableViewCell, for: indexPath) as! SummaryTableViewCell
+        //            cell.backgroundColor = ColorUI.background
+        //            cell.isSelected = false
+        //            cell.textSummary = gameDescription.summary
+        //            cell.summaryText?.textColor = ColorUI.text
+        //            return cell
+        //        case 3:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.companyTableViewCell, for: indexPath) as! CompanyTableViewCell
+        //            cell.backgroundColor = ColorUI.background
+        //            cell.company?.textColor = ColorUI.text
+        //            if let developers = gameDescription.developers {
+        //                nameCompanyDB(id: developers, callback: { nameCompany, new in
+        //                    cell.company?.text = nameCompany
+        //                    if new {
+        //                        _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { _ in
+        //                            tableView.reloadData()
+        //                        })
+        //                    }
+        //                })
+        //            } else {
+        //                cell.company?.text = "N.D."
+        //            }
+        //            return cell
+        //        case 4:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.publishedTableViewCell, for: indexPath) as! PublishedTableViewCell
+        //            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        //            cell.backgroundColor = ColorUI.background
+        //            cell.firstReleaseDate?.textColor = ColorUI.text
+        //            return cell
+        //        case 5:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.genreTableViewCell, for: indexPath) as! GenreTableViewCell
+        //            cell.backgroundColor = ColorUI.background
+        //            cell.genres?.textColor = ColorUI.text
+        //            nameGenreDB(id: gameDescription.genres, callback: { nameGenre in
+        //                cell.genres?.text = nameGenre
+        //            })
+        //            return cell
+        //        case 6:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameModesTableViewCell, for: indexPath) as! GameModesTableViewCell
+        //            cell.backgroundColor = ColorUI.background
+        //            cell.gameModes?.textColor = ColorUI.text
+        //            nameGameModeDB(id: gameDescription.gameModes, callback: { nameGameModes in
+        //                cell.gameModes?.text = nameGameModes
+        //            })
+        //            return cell
+        //        case 7:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.screenshotsCollectionTableViewCell, for: indexPath) as! ScreenshotCollectionTableViewCell
+        //            guard let screenshots = gameDescription.screenshots else { return cell }
+        //            cell.screenshot = screenshots
+        //            cell.delegate = self
+        //            return cell
+        //        case 8:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.relatedInDescriptionTableViewCell, for: indexPath) as! RelatedInDescriptionTableViewCell
+        //            cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        //            cell.backgroundColor = ColorUI.background
+        //            return cell
+        //        default:
+        //            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.videoCollectionTableViewCell, for: indexPath) as! VideoCollectionTableViewCell
+        //            guard let videos = gameDescription.videos else { return cell }
+        //            cell.video = videos
+        //            cell.delegate = self
+        //            return cell
+        //        }
         //        let gameViewController = GameDescriptionTableViewController(game: gameDescription)
         //        return gameDescription.gameDescriptionFields[indexPath.row](tableView, indexPath, gameViewController)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let navController = navigationController else { return }
+        navController.isNavigationBarHidden = false
         gameDescription.didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func saveFavourite(sender: UIButton) {
-        let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(GameDescriptionTableViewController.removeFavourite(sender:)))
+    func saveFavourite() {
+        let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(removeFavourite))
         navigationItem.rightBarButtonItem = trashButton
         let cover = UIImageView()
         cover.af_setImage(
@@ -263,8 +289,8 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
         })
     }
     
-    func removeFavourite(sender: UIButton) {
-        let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(GameDescriptionTableViewController.saveFavourite(sender:)))
+    func removeFavourite() {
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(saveFavourite))
         let alertController = UIAlertController(title: nil, message: "Are you sure you want to delete \(gameDescription.name)", preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
             deleteFavouriteGame(id: Int32(self.gameDescription.idGame))
@@ -289,6 +315,144 @@ extension DescriptionViewController: VideoDelegate, ScreenshotDelegate {
     }
     
     
+}
+
+
+extension DescriptionViewController {
+    
+    var gameDescriptionFields: [(UITableView,IndexPath) -> UITableViewCell] {
+        return [
+            { (tableView, indexPath) -> UITableViewCell in
+                self.getCellCoverHD(tableView: tableView, indexPath: indexPath)
+            },
+            { (tableView,indexPath) -> UITableViewCell in
+                self.getCellCover(tableView: tableView, indexPath: indexPath)
+            },
+            { (tableView,indexPath) -> UITableViewCell in
+                self.getCellSummary(tableView: tableView, indexPath: indexPath)
+            },
+            { (tableView,indexPath) -> UITableViewCell in
+                self.getCellCompany(tableView: tableView, indexPath: indexPath)
+            },
+            { (tableView,indexPath) -> UITableViewCell in
+                self.getCellPublished(tableView: tableView, indexPath: indexPath)
+            },
+            { (tableView,indexPath) -> UITableViewCell in
+                self.getCellGenres(tableView: tableView, indexPath: indexPath)
+            },
+            { (tableView,indexPath) -> UITableViewCell in
+                self.getCellGameModes(tableView: tableView, indexPath: indexPath)
+            },
+            { (tableView,indexPath) -> UITableViewCell in
+                self.getCellScreenshots(tableView: tableView, indexPath: indexPath)
+            },
+            { (tableView,indexPath) -> UITableViewCell in
+                self.getCellRelatedInDescription(tableView: tableView, indexPath: indexPath)
+            },
+            { (tableView, indexPath) -> UITableViewCell in
+                self.getCellVideos(tableView: tableView, indexPath: indexPath)
+            }
+        ]
+    }
+    
+    
+    func getCellCoverHD(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverHDTableViewCell, for: indexPath) as! CoverHDTableViewCell
+        cell.backgroundColor = UIColor.clear
+        cell.coverHQ?.image = #imageLiteral(resourceName: "emptyBackground")
+        return cell
+    }
+    
+    func getCellCover(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
+        if referenceThumbnail == nil {
+            referenceThumbnail = cell.thumbnail
+        }
+        cell.url = getCoverMed(url: gameDescription.cover?.url)
+        cell.name?.text = gameDescription.name
+        cell.rating = Float(gameDescription.rating ?? 1)
+        cell.layer.zPosition = 3
+        return cell
+    }
+    
+    func getCellSummary(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.summaryTableViewCell, for: indexPath) as! SummaryTableViewCell
+        cell.backgroundColor = ColorUI.background
+        cell.isSelected = false
+        cell.textSummary = gameDescription.summary
+        cell.summaryText?.textColor = ColorUI.text
+        return cell
+    }
+    
+    func getCellCompany(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.companyTableViewCell, for: indexPath) as! CompanyTableViewCell
+        cell.backgroundColor = ColorUI.background
+        cell.company?.textColor = ColorUI.text
+        if let developers = gameDescription.developers {
+            nameCompanyDB(id: developers, callback: { nameCompany, new in
+                cell.company?.text = nameCompany
+                if new {
+                    _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { _ in
+                        tableView.reloadData()
+                    })
+                }
+            })
+        } else {
+            cell.company?.text = "N.D."
+        }
+        return cell
+    }
+    
+    func getCellPublished(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.publishedTableViewCell, for: indexPath) as! PublishedTableViewCell
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        cell.backgroundColor = ColorUI.background
+        cell.firstReleaseDate?.textColor = ColorUI.text
+        return cell
+    }
+    
+    func getCellGenres(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.genreTableViewCell, for: indexPath) as! GenreTableViewCell
+        cell.backgroundColor = ColorUI.background
+        cell.genres?.textColor = ColorUI.text
+        nameGenreDB(id: gameDescription.genres, callback: { nameGenre in
+            cell.genres?.text = nameGenre
+        })
+        return cell
+    }
+    
+    func getCellGameModes(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameModesTableViewCell, for: indexPath) as! GameModesTableViewCell
+        cell.backgroundColor = ColorUI.background
+        cell.gameModes?.textColor = ColorUI.text
+        nameGameModeDB(id: gameDescription.gameModes, callback: { nameGameModes in
+            cell.gameModes?.text = nameGameModes
+        })
+        return cell
+    }
+    
+    func getCellScreenshots(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.screenshotsCollectionTableViewCell, for: indexPath) as! ScreenshotCollectionTableViewCell
+        guard let screenshots = gameDescription.screenshots else { return cell }
+        cell.screenshot = screenshots
+        cell.delegate = self
+        return cell
+    }
+    
+    func getCellRelatedInDescription(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.relatedInDescriptionTableViewCell, for: indexPath) as! RelatedInDescriptionTableViewCell
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        cell.backgroundColor = ColorUI.background
+        return cell
+    }
+    
+    func getCellVideos(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.videoCollectionTableViewCell, for: indexPath) as! VideoCollectionTableViewCell
+        guard let videos = gameDescription.videos else { return cell }
+        cell.video = videos
+        cell.delegate = self
+        return cell
+    }
 }
 
 
