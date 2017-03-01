@@ -5,6 +5,9 @@ import Runes
 import AlamofireImage
 import CoreData
 
+let offset_HeaderStop: CGFloat = 40.0
+let distance_W_LabelHeader: CGFloat = 30.0
+
 class GameTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var offset = 0
@@ -56,6 +59,9 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         let footerView = UIView(frame: CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         footerView.backgroundColor = UIColor.white
         tableView.tableFooterView = footerView
+        let info = UIBarButtonItem(image: #imageLiteral(resourceName: "infoIcon"), style: .done, target: self, action: #selector(GameTableViewController.presentInfoPage))
+//        let info = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(GameTableViewController.presentInfoPage))
+        tabBarController?.navigationItem.leftBarButtonItem = info
         checkReachability()
     }
     
@@ -135,6 +141,10 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
             self.refreshControl?.endRefreshing()
             self.tableView.reloadData()
         })
+    }
+    
+    func presentInfoPage() {
+        navigationController?.pushViewController(DescriptionViewController(game: arrayGames[2]), animated: true)
     }
 }
 

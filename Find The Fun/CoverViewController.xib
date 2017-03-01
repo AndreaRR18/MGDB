@@ -42,10 +42,10 @@
                     </connections>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRU-1N-GiD">
-                    <rect key="frame" x="330" y="622" width="25" height="25"/>
+                    <rect key="frame" x="335" y="627" width="20" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="25" id="5Qc-Ul-xIx"/>
-                        <constraint firstAttribute="width" constant="25" id="zAr-Te-wrU"/>
+                        <constraint firstAttribute="height" constant="20" id="5Qc-Ul-xIx"/>
+                        <constraint firstAttribute="width" constant="20" id="zAr-Te-wrU"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <state key="normal" image="CloseCross">
@@ -56,10 +56,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ya7-xQ-0xm">
-                    <rect key="frame" x="20" y="622" width="25" height="25"/>
+                    <rect key="frame" x="20" y="627" width="20" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="25" id="8xi-uX-kP9"/>
-                        <constraint firstAttribute="width" constant="25" id="skt-rx-ily"/>
+                        <constraint firstAttribute="height" constant="20" id="8xi-uX-kP9"/>
+                        <constraint firstAttribute="width" constant="20" id="skt-rx-ily"/>
                     </constraints>
                     <state key="normal" image="DownloadIcon"/>
                     <connections>

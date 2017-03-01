@@ -34,6 +34,7 @@ class GameDescriptionTableViewController: UITableViewController, UITabBarDelegat
         self.tableView.register(UINib(nibName: NibName.gameModesTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameModesTableViewCell)
         self.tableView.register(UINib(nibName: NibName.relatedInDescriptionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.relatedInDescriptionTableViewCell)
         self.tableView.register(UINib(nibName: NibName.videoCollectionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.videoCollectionTableViewCell)
+
         
         let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(GameDescriptionTableViewController.saveFavourite(sender:)))
         let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(GameDescriptionTableViewController.removeFavourite(sender:)))
@@ -72,6 +73,7 @@ class GameDescriptionTableViewController: UITableViewController, UITabBarDelegat
     
     func saveFavourite(sender: UIButton) {
         let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(GameDescriptionTableViewController.removeFavourite(sender:)))
+        
         navigationItem.rightBarButtonItem = trashButton
         let cover = UIImageView()
         cover.af_setImage(

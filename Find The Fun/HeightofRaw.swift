@@ -18,11 +18,11 @@ func heightRowInGameDescription(indexPath: Int) -> CGFloat {
     case 6:
         return 60
     case 7:
-        return 200
+        return 150
     case 8:
         return 60
     case 9:
-        return 200
+        return 160
     default:
         return 0
     }

@@ -14,7 +14,7 @@ class VideoCollectionTableViewCell: UITableViewCell {
         didSet {
             self.collectionViewVideo?.register(UINib(nibName: NibName.videoDescriptionCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: Identifier.videoDescriptionCollectionViewCell)
             let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-            layout.itemSize = CGSize(width: 145, height: 160)
+            layout.itemSize = CGSize(width: 145, height: 140)
             layout.sectionInset = UIEdgeInsetsMake(5, 20, 15, 20)
             layout.minimumInteritemSpacing = 10
             layout.scrollDirection = .horizontal

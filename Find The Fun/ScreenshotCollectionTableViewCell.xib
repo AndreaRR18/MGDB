@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="k45-bQ-G25">
-                        <rect key="frame" x="13" y="38" width="423" height="177.5"/>
+                        <rect key="frame" x="8" y="38" width="433" height="182.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NQm-bE-neW">
                             <size key="itemSize" width="50" height="50"/>
@@ -40,10 +40,10 @@
                     </collectionView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="k45-bQ-G25" secondAttribute="trailing" constant="5" id="3vT-uV-9nC"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="k45-bQ-G25" secondAttribute="trailing" id="3vT-uV-9nC"/>
                     <constraint firstItem="iSx-Zb-yMr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="FF6-ZK-2ic"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="k45-bQ-G25" secondAttribute="bottom" constant="5" id="K6P-Qk-O6D"/>
-                    <constraint firstItem="k45-bQ-G25" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="Lk2-I5-JQR"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="k45-bQ-G25" secondAttribute="bottom" id="K6P-Qk-O6D"/>
+                    <constraint firstItem="k45-bQ-G25" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Lk2-I5-JQR"/>
                     <constraint firstItem="iSx-Zb-yMr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="dVp-VQ-tCG"/>
                     <constraint firstAttribute="trailingMargin" secondItem="iSx-Zb-yMr" secondAttribute="trailing" constant="5" id="g22-7k-kzb"/>
                     <constraint firstItem="k45-bQ-G25" firstAttribute="top" secondItem="iSx-Zb-yMr" secondAttribute="bottom" constant="5" id="tgY-sg-VZV"/>

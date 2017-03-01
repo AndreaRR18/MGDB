@@ -140,7 +140,7 @@ extension Game {
     }
     
     func getCellScreenshots(tableView: UITableView, indexPath: IndexPath, tableViewController: GameDescriptionTableViewController) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ScreenshotCollectionTableViewCell", for: indexPath) as! ScreenshotCollectionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.screenshotsCollectionTableViewCell, for: indexPath) as! ScreenshotCollectionTableViewCell
         guard let screenshots = screenshots else { return cell }
         cell.screenshot = screenshots
         cell.delegate = tableViewController
@@ -148,7 +148,7 @@ extension Game {
     }
     
     func getCellVideos(tableView: UITableView, indexPath: IndexPath, tableViewController: GameDescriptionTableViewController) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCollectionTableViewCell", for: indexPath) as! VideoCollectionTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.videoCollectionTableViewCell, for: indexPath) as! VideoCollectionTableViewCell
         guard let videos = videos else { return cell }
         cell.video = videos
         cell.delegate = tableViewController
