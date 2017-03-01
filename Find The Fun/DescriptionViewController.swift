@@ -2,8 +2,8 @@ import UIKit
 import SafariServices
 
 let offset_HeaderStop:CGFloat = 50.0 // At this offset the Header stops its transformations
-let offset_B_LabelHeader:CGFloat = 195.0 // At this offset the Black label reaches the Header
-let distance_W_LabelHeader:CGFloat = 35.0 // The distance between the bottom of the Header and the top of the White Label
+let offset_B_LabelHeader:CGFloat = 63.0 // At this offset the Black label reaches the Header
+let distance_W_LabelHeader:CGFloat = 183.0 // The distance between the bottom of the Header and the top of the White Label
 
 class DescriptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
@@ -57,6 +57,7 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
         
         title = gameDescription.name
         tableView?.backgroundColor = UIColor.clear
+        
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
         navigationController?.isNavigationBarHidden = true
@@ -72,19 +73,28 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        titleLabel?.text = gameDescription.name
         guard let url = getHDImage(url: gameDescription.cover?.url) else { return }
         headerImage?.af_setImage(
             withURL: url,
             imageTransition: .crossDissolve(0.1),
             runImageTransitionIfCached: true,
             completion: { _ in
-                print("scaricata")
-                guard let headerView = self.headerView else { return }
-                self.headerImage = UIImageView(frame: headerView.bounds)
-                self.headerImage?.contentMode = UIViewContentMode.scaleAspectFill
-                guard let headerImage = self.headerImage, let titleLabel = self.titleLabel else { return }
-                headerView.insertSubview(headerImage, aboveSubview: titleLabel)
-                self.headerBlurImage?.image = headerImage.image?.blurredImage(withRadius: 10, iterations: 20, tintColor: UIColor.clear)
+                self.headerBlurImage?.image = self.headerImage?.image
+                let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.init(rawValue: 10)!)
+                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+                blurEffectView.frame = (self.headerBlurImage?.bounds)!
+                self.headerBlurImage?.addSubview(blurEffectView)
+                
+                
+                //                self.headerImage = UIImageView(frame: headerView.bounds)
+                //                self.headerImage?.contentMode = UIViewContentMode.scaleAspectFill
+                //                guard let headerImage = self.headerImage, let titleLabel = self.titleLabel else { return }
+                //                headerView.insertSubview(headerImage, aboveSubview: titleLabel)
+                
+                
+                
+                //                self.headerBlurImage?.image = headerImage.image?.blurredImage(withRadius: 10, iterations: 20, tintColor: UIColor.clear)
                 
         })
         headerBlurImage?.alpha = 0.0
@@ -98,36 +108,36 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
         var headerTrasform = CATransform3DIdentity
         
         if offset < CGFloat(0) {
-            let headerScaleFactor: CGFloat = -(offset - 90) / headerView.bounds.height
+            let headerScaleFactor: CGFloat = -(offset) / headerView.bounds.height
             let headerSizeVariation = ((headerView.bounds.height * (1.0 + headerScaleFactor)) - headerView.bounds.height)/2.0
             headerTrasform = CATransform3DTranslate(headerTrasform, 0, headerSizeVariation, 0)
             headerTrasform = CATransform3DScale(headerTrasform, 1.0 + headerScaleFactor, 1.0 + headerScaleFactor, 0)
             headerView.layer.transform = headerTrasform
         } else {
-            headerTrasform = CATransform3DTranslate(headerTrasform, 0, max(-offset_HeaderStop, -offset - 90), 0)
+            headerTrasform = CATransform3DTranslate(headerTrasform, 0, max(-offset_HeaderStop, -offset), 0)
             
             let labelTransform = CATransform3DMakeTranslation(0, max(-distance_W_LabelHeader, offset_B_LabelHeader - offset - 90), 0)
             titleLabel?.layer.transform = labelTransform
             
-            headerBlurImage?.alpha = min(1.0, (offset - 90 - offset_B_LabelHeader)/distance_W_LabelHeader)
+            headerBlurImage?.alpha = min(1.0, (offset - offset_B_LabelHeader)/distance_W_LabelHeader)
             
-            let avatarScaleFactor = (min(offset_HeaderStop, offset - 90)) / referenceThumbnail.bounds.height / 1.4 // Slow down the animation
+            let avatarScaleFactor = (min(offset_HeaderStop, offset)) / referenceThumbnail.bounds.height / 1.4 // Slow down the animation
             let avatarSizeVariation = ((referenceThumbnail.bounds.height * (1.0 + avatarScaleFactor)) - referenceThumbnail.bounds.height) / 2.0
             thumbnailTransform = CATransform3DTranslate(thumbnailTransform, 0, avatarSizeVariation, 0)
             thumbnailTransform = CATransform3DScale(thumbnailTransform, 1.0 - avatarScaleFactor, 1.0 - avatarScaleFactor, 0)
             
-//                        if offset <= offset_HeaderStop {
-//            
-//                            if referenceThumbnail.layer.zPosition < headerView.layer.zPosition{
-//                                headerView.layer.zPosition = 0
-//                            }
-//            
-//                        }else {
-//                            if referenceThumbnail.layer.zPosition >= headerView.layer.zPosition{
-//                                headerView.layer.zPosition = 1
-//                                backButton?.layer.zPosition = 2
-//                            }
-//                        }
+            //                        if offset <= offset_HeaderStop {
+            //
+            //                            if referenceThumbnail.layer.zPosition < headerView.layer.zPosition{
+            //                                headerView.layer.zPosition = 0
+            //                            }
+            //
+            //                        }else {
+            //                            if referenceThumbnail.layer.zPosition >= headerView.layer.zPosition{
+            //                                headerView.layer.zPosition = 1
+            //                                backButton?.layer.zPosition = 2
+            //                            }
+            //                        }
         }
         
         
