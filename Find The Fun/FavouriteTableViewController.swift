@@ -45,14 +45,14 @@ class FavouriteTableViewController: UITableViewController {
     }
     
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
-        let game = arrayFavouriteGames[indexPath.row]
-        cell.cover?.image = UIImage(data: game.image as! Data)
-        cell.name?.text = game.name
-        cell.years?.text = ""
-        return cell
-    }
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
+//        let game = arrayFavouriteGames[indexPath.row]
+//        cell.cover?.image = UIImage(data: game.image as! Data)
+//        cell.name?.text = game.name
+//        cell.years?.text = ""
+//        return cell
+//    }
     
     
     func getGame() {

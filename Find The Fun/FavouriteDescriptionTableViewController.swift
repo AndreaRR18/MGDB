@@ -69,40 +69,40 @@ class FavouriteDescriptionTableViewController: UITableViewController {
         return heightRowInGameDescription(indexPath: indexPath.row)
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverHDTableViewCell, for: indexPath) as! CoverHDTableViewCell
-            cell.coverHQ?.image = UIImage(data: favouriteGameDescription.image as! Data)
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
-            cell.thumbnail?.image = UIImage(data: favouriteGameDescription.image as! Data)
-            cell.name?.text = favouriteGameDescription.name
-            cell.layer.zPosition = 2
-            return cell
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.summaryTableViewCell, for: indexPath) as! SummaryTableViewCell
-            cell.summary?.text = favouriteGameDescription.summary
-            return cell
-        case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.companyTableViewCell, for: indexPath) as! CompanyTableViewCell
-            cell.company?.text = favouriteGameDescription.company
-            return cell
-        case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.ratingTableViewCell, for: indexPath) as! RatingTableViewCell
-            cell.rate?.text = "\(favouriteGameDescription.rating)"
-            return cell
-        case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.genreTableViewCell, for: indexPath) as! GenreTableViewCell
-            cell.genres?.text = favouriteGameDescription.genre
-            return cell
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameModesTableViewCell, for: indexPath) as! GameModesTableViewCell
-            cell.gameModes?.text = favouriteGameDescription.gamemode
-            return cell
-        }
-    }
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        switch indexPath.row {
+//        case 0:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverHDTableViewCell, for: indexPath) as! CoverHDTableViewCell
+//            cell.coverHQ?.image = UIImage(data: favouriteGameDescription.image as! Data)
+//            return cell
+//        case 1:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
+//            cell.thumbnail?.image = UIImage(data: favouriteGameDescription.image as! Data)
+//            cell.name?.text = favouriteGameDescription.name
+//            cell.layer.zPosition = 2
+//            return cell
+//        case 2:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.summaryTableViewCell, for: indexPath) as! SummaryTableViewCell
+//            cell.summary?.text = favouriteGameDescription.summary
+//            return cell
+//        case 3:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.companyTableViewCell, for: indexPath) as! CompanyTableViewCell
+//            cell.company?.text = favouriteGameDescription.company
+//            return cell
+//        case 4:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.ratingTableViewCell, for: indexPath) as! RatingTableViewCell
+//            cell.rate?.text = "\(favouriteGameDescription.rating)"
+//            return cell
+//        case 5:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.genreTableViewCell, for: indexPath) as! GenreTableViewCell
+//            cell.genres?.text = favouriteGameDescription.genre
+//            return cell
+//        default:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameModesTableViewCell, for: indexPath) as! GameModesTableViewCell
+//            cell.gameModes?.text = favouriteGameDescription.gamemode
+//            return cell
+//        }
+//    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

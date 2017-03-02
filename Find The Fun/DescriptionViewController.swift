@@ -244,20 +244,13 @@ extension DescriptionViewController {
     
     func getCellCoverHD(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverHDTableViewCell, for: indexPath) as! CoverHDTableViewCell
-        cell.backgroundColor = UIColor.clear
-        cell.coverHQ?.image = #imageLiteral(resourceName: "emptyBackground")
+        cell.configureCoverHDTableViewCell()
         return cell
     }
     
     func getCellCover(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
-//        if referenceThumbnail == nil {
-//            referenceThumbnail = cell.thumbnail
-//        }
-        cell.url = getCoverMed(url: gameDescription.cover?.url)
-        cell.name?.text = gameDescription.name
-        cell.rating = Float(gameDescription.rating ?? 1)
-        cell.layer.zPosition = 3
+        cell.configureCoverTableViewCell(gameDescription)
         return cell
     }
     
