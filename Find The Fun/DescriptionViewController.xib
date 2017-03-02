@@ -90,8 +90,8 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaW-a4-xfV">
-                            <rect key="frame" x="172" y="10" width="30" height="25"/>
-                            <state key="normal">
+                            <rect key="frame" x="170" y="10" width="34" height="25"/>
+                            <state key="normal" title="Save">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>

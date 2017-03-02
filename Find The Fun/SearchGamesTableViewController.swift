@@ -53,7 +53,11 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return arrayGames[indexPath.row].getCellForTableViewController(tableView: tableView, indexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
+        cell.configureGameCell(arrayGames[indexPath.row])
+        return cell
+
+//        return arrayGames[indexPath.row].getCellForTableViewController(tableView: tableView, indexPath: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -6,18 +6,18 @@ import UIKit
 extension Game {
     
     //--------------------Cell of First UITableView -------------------//
-    func getCellForTableViewController(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
-        cell.backgroundColor = ColorUI.background
-        cell.name?.textColor = ColorUI.text
-        cell.years?.textColor = ColorUI.text
-        cell.cover?.clipsToBounds = true
-        cell.name?.text = name
-        cell.years?.text = releaseDate?.first?.year.map(String.init)
-        cell.rating = Float(rating ?? 1)
-        cell.url = getCoverSmall(url: cover?.url)
-        return cell
-    }
+//    func getCellForTableViewController(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
+//        cell.backgroundColor = ColorUI.background
+//        cell.name?.textColor = ColorUI.text
+//        cell.years?.textColor = ColorUI.text
+//        cell.cover?.clipsToBounds = true
+//        cell.name?.text = name
+//        cell.years?.text = releaseDate?.first?.year.map(String.init)
+//        cell.rating = Float(rating ?? 1)
+//        cell.url = getCoverSmall(url: cover?.url)
+//        return cell
+//    }
     
     //--------------------Cell of Description UITableView -------------------//
 //    var gameDescriptionFields: [(UITableView,IndexPath, GameDescriptionTableViewController) -> UITableViewCell] {

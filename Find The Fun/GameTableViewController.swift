@@ -15,6 +15,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.tableView.register(UINib(nibName: NibName.gameCellTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameCellTableViewCell)
         
         let activityIndicator = ActivityIndicator(view: view)
@@ -39,6 +40,8 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
         refreshControl?.tintColor = UIColor.gray
+        
+        navigationController?.toolbar.isHidden = false
     }
     
     deinit {
@@ -48,6 +51,11 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if navigationController?.isNavigationBarHidden == true {
+            navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
+        
         tabBarController?.navigationItem.titleView = nil
         tabBarController?.tabBar.barTintColor = ColorUI.tabBar
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
@@ -57,9 +65,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         footerView.backgroundColor = UIColor.white
         tableView.tableFooterView = footerView
         checkReachability()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
+        
         tabBarController?.navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "homeIcon 35x35"))
     }
     
@@ -80,7 +86,10 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return arrayGames[indexPath.row].getCellForTableViewController(tableView: tableView, indexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
+        cell.configureGameCell(arrayGames[indexPath.row])
+        return cell
+        //        return arrayGames[indexPath.row].getCellForTableViewController(tableView: tableView, indexPath: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
