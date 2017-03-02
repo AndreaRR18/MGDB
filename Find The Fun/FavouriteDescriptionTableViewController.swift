@@ -42,6 +42,11 @@ class FavouriteDescriptionTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if navigationController?.isNavigationBarHidden == true {
+            navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
+
         tabBarController?.navigationItem.titleView = nil
         tabBarController?.navigationItem.title = favouriteGameDescription.name
         tableView.reloadData()

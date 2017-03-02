@@ -44,6 +44,11 @@ class RelatedTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if navigationController?.isNavigationBarHidden == true {
+            navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
+
         tabBarController?.navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
         tabBarController?.navigationItem.titleView = nil
         tabBarController?.navigationItem.title = "Related Games"
