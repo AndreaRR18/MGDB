@@ -22,6 +22,10 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if navigationController?.isNavigationBarHidden == true {
+            navigationController?.setNavigationBarHidden(false, animated: animated)
+        }
         tabBarController?.navigationItem.title = nil
         tabBarController?.navigationItem.titleView = searchController?.searchBar
     }

@@ -25,23 +25,12 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzk-Bc-Uqu">
-                        <rect key="frame" x="126.5" y="21.5" width="0.0" height="0.0"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Jzk-Bc-Uqu" firstAttribute="leading" secondItem="QCa-Fz-xd0" secondAttribute="trailing" constant="8.5" id="5He-th-o7r"/>
                     <constraint firstItem="QCa-Fz-xd0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="UlM-cU-FA7"/>
-                    <constraint firstItem="Jzk-Bc-Uqu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="WGH-NP-cpc"/>
                     <constraint firstItem="QCa-Fz-xd0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="dKV-KZ-QgO"/>
                 </constraints>
             </tableViewCellContentView>
-            <connections>
-                <outlet property="firstReleaseDate" destination="Jzk-Bc-Uqu" id="kSD-VY-Ddt"/>
-            </connections>
         </tableViewCell>
     </objects>
 </document>

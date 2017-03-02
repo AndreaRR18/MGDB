@@ -11,9 +11,9 @@ class CoverTableViewCell: UITableViewCell {
         thumbnail?.layer.cornerRadius = 30
     }
     
-    func configureCoverTableViewCell(_ game: Game) {
+    func configureCoverTableViewCell(_ cover: Cover?, _ title: String, _ rating: Int?) {
         thumbnail?.af_setImage(
-            withURL: getCoverMed(url: game.cover?.url)!,
+            withURL: getCoverMed(url: cover?.url)!,
             placeholderImage: #imageLiteral(resourceName: "img-not-found"),
             filter: nil,
             progress: nil,
@@ -26,9 +26,8 @@ class CoverTableViewCell: UITableViewCell {
                 self.thumbnail?.layer.shadowOffset = CGSize.zero
                 self.thumbnail?.layer.shadowRadius = 4
         })
-        name?.text = game.name
-        ratingProgressView?.progress = Float(game.rating ?? 1) / Float(100)
+        name?.text = title
+        ratingProgressView?.progress = Float(rating ?? 1) / Float(100)
         self.layer.zPosition = 3
-
     }
 }

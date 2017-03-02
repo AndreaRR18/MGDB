@@ -24,6 +24,7 @@ class FavouriteTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tabBarController?.navigationItem.titleView = nil
         tabBarController?.navigationItem.title = "Favourite"
         getGame()

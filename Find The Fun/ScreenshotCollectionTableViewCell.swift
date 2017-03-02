@@ -3,24 +3,13 @@ import UIKit
 protocol ScreenshotDelegate: class {
     func openImage(url: String)
 }
-class ScreenshotCollectionTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var screenshotCollectionview: UICollectionView?
+class ScreenshotCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+
+    @IBOutlet weak private var screenshotCollectionview: UICollectionView?
     weak var delegate: ScreenshotDelegate?
+    private var screenshot: [Screenshot] = []
 
-    var screenshot: [Screenshot] = [] {
-        didSet {
-            self.screenshotCollectionview?.register(UINib(nibName: NibName.screenshotTableCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: Identifier.screenshotTableCollectionViewCell)
-            let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-            layout.itemSize = CGSize(width: 145, height: 145)
-            layout.sectionInset = UIEdgeInsetsMake(5, 20, 15, 20)
-            layout.minimumInteritemSpacing = 10
-            layout.scrollDirection = .horizontal
-            screenshotCollectionview?.setCollectionViewLayout(layout, animated: true)
-            screenshotCollectionview?.delegate = self
-            screenshotCollectionview?.dataSource = self
-        }
-    }
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -28,10 +17,18 @@ class ScreenshotCollectionTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
-}
-
-extension ScreenshotCollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    func configureScreenshotCollectionTableViewCell(_ screenshot: [Screenshot]) {
+        self.screenshotCollectionview?.register(UINib(nibName: NibName.screenshotTableCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: Identifier.screenshotTableCollectionViewCell)
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 145, height: 145)
+        layout.sectionInset = UIEdgeInsetsMake(5, 20, 15, 20)
+        layout.minimumInteritemSpacing = 10
+        layout.scrollDirection = .horizontal
+        self.screenshot = screenshot
+        screenshotCollectionview?.setCollectionViewLayout(layout, animated: true)
+        screenshotCollectionview?.delegate = self
+        screenshotCollectionview?.dataSource = self
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return screenshot.count

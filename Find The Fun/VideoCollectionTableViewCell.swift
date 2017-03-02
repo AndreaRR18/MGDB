@@ -5,24 +5,11 @@ protocol VideoDelegate: class {
     func openSafariView(_ url: URL)
 }
 
-class VideoCollectionTableViewCell: UITableViewCell {
+class VideoCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    @IBOutlet weak var collectionViewVideo: UICollectionView?
+    @IBOutlet weak private var collectionViewVideo: UICollectionView?
     weak var delegate: VideoDelegate?
-
-    var video: [Video] = [] {
-        didSet {
-            self.collectionViewVideo?.register(UINib(nibName: NibName.videoDescriptionCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: Identifier.videoDescriptionCollectionViewCell)
-            let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-            layout.itemSize = CGSize(width: 145, height: 140)
-            layout.sectionInset = UIEdgeInsetsMake(5, 20, 15, 20)
-            layout.minimumInteritemSpacing = 10
-            layout.scrollDirection = .horizontal
-            collectionViewVideo?.setCollectionViewLayout(layout, animated: true)
-            collectionViewVideo?.delegate = self
-            collectionViewVideo?.dataSource = self
-        }
-    }
+    private var video: [Video] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,10 +18,19 @@ class VideoCollectionTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-}
-
-
-extension VideoCollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func configureVideoCollectionTableViewCell (_ video: [Video]) {
+        self.collectionViewVideo?.register(UINib(nibName: NibName.videoDescriptionCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: Identifier.videoDescriptionCollectionViewCell)
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 145, height: 140)
+        layout.sectionInset = UIEdgeInsetsMake(5, 20, 15, 20)
+        layout.minimumInteritemSpacing = 10
+        layout.scrollDirection = .horizontal
+        collectionViewVideo?.setCollectionViewLayout(layout, animated: true)
+        collectionViewVideo?.delegate = self
+        collectionViewVideo?.dataSource = self
+        self.video = video
+    }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (video.count)
@@ -52,4 +48,5 @@ extension VideoCollectionTableViewCell: UICollectionViewDelegate, UICollectionVi
         print(url)
         self.delegate?.openSafariView(url)
     }
+
 }

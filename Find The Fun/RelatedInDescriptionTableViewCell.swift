@@ -10,4 +10,7 @@ class RelatedInDescriptionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    func configureRelatedInDescriptionTableViewCell() {
+        self.backgroundColor = ColorUI.background
+    }
 }

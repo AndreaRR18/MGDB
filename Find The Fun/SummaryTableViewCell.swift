@@ -2,17 +2,17 @@ import UIKit
 
 class SummaryTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var summary: UILabel?
-    @IBOutlet weak var summaryText: UITextView?
+    @IBOutlet weak private var summary: UILabel?
+    @IBOutlet weak private var summaryText: UITextView?
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    var textSummary: String? {
-        didSet {
-            summaryText?.text = textSummary
-            summaryText?.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
-        }
+    func configureSummaryTableViewCell(_ summary: String?) {
+        self.backgroundColor = ColorUI.background
+        summaryText?.text = summary
+        summaryText?.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
+        summaryText?.textColor = ColorUI.text
     }
 }

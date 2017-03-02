@@ -2,7 +2,7 @@ import UIKit
 
 class CompanyTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var company: UILabel?
+    @IBOutlet weak private var company: UILabel?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -12,4 +12,9 @@ class CompanyTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    func configureCompanyTableViewCell(_ company: String) {
+        self.backgroundColor = ColorUI.background
+        self.company?.textColor = ColorUI.text
+        self.company?.text = company
+    }
 }
