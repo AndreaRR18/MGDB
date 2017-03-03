@@ -11,6 +11,9 @@ extension Game {
         navigationController.pushViewController(DescriptionViewController(game: game), animated: true)
     }
 //    func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, game: Game) {
+//        navigationController.pushViewController(DescriptionViewController(game: game), animated: true)
+//    }
+//    func didSelectGame(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController, game: Game) {
 //        navigationController.pushViewController(GameDescriptionTableViewController(game: game), animated: true)
 //    }
     

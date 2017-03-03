@@ -9,8 +9,10 @@ class FavouriteDescriptionTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         tableView.delegate = self
         tableView.dataSource = self
+        
         self.tableView.register(UINib(nibName: NibName.coverHDTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverHDTableViewCell)
         self.tableView.register(UINib(nibName: NibName.coverTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverTableViewCell)
         self.tableView.register(UINib(nibName: NibName.summaryTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.summaryTableViewCell)
@@ -20,22 +22,29 @@ class FavouriteDescriptionTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: NibName.ratingTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.ratingTableViewCell)
         self.tableView.register(UINib(nibName: NibName.genreTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.genreTableViewCell)
         self.tableView.register(UINib(nibName: NibName.gameModesTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameModesTableViewCell)
+        
         tabBarController?.tabBar.barTintColor = ColorUI.tabBar
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white
         tabBarController?.tabBar.unselectedItemTintColor = ColorUI.unselectedItemTabBar
-        title = favouriteGameDescription.name
+        
+        
+        navigationItem.title = favouriteGameDescription.name
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
+        
         let backItem = UIBarButtonItem()
         backItem.title = nil
         tabBarController?.navigationItem.backBarButtonItem = backItem
+        
         view.backgroundColor = ColorUI.backgoundTableView
+        
         let viewFooter = UIView()
         viewFooter.backgroundColor = ColorUI.backgoundTableView
-        self.tableView.tableFooterView = viewFooter
-        self.view.backgroundColor = ColorUI.backgoundTableView
-        tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
+        tableView.tableFooterView = viewFooter
+        view.backgroundColor = ColorUI.backgoundTableView
+        navigationController?.navigationBar.barTintColor = ColorUI.navBar
+        
         let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(removeFavourite(sender:)))
         navigationItem.rightBarButtonItem = trashButton
     }

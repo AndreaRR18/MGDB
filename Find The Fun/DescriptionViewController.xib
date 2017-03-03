@@ -12,13 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DescriptionViewController" customModule="Find_The_Fun" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="BhI-lC-9d4" id="pbt-70-KNE"/>
-                <outlet property="footerView" destination="fjo-cn-9Oy" id="LY8-9t-IkF"/>
                 <outlet property="headerBlurImage" destination="oFM-nv-ceO" id="Uho-rc-YWX"/>
                 <outlet property="headerImage" destination="zMj-qu-PKG" id="cG8-Sd-UBl"/>
                 <outlet property="headerView" destination="lDh-hW-y4H" id="eqF-Mf-0jG"/>
-                <outlet property="homeButton" destination="l2M-yd-Eef" id="tPZ-XE-5Wi"/>
-                <outlet property="saveButton" destination="xaW-a4-xfV" id="ohf-jb-gaf"/>
-                <outlet property="shareButton" destination="hr5-lH-Dsk" id="biq-81-Rjs"/>
                 <outlet property="tableView" destination="bVM-Yn-7nS" id="ujW-7O-Sje"/>
                 <outlet property="titleLabel" destination="maE-iH-w1Y" id="ogM-Sr-eRR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -63,10 +59,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8f9-W9-kV2" userLabel="Body">
-                    <rect key="frame" x="0.0" y="60" width="375" height="562"/>
+                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bVM-Yn-7nS">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="562"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </tableView>
                     </subviews>
@@ -75,50 +71,6 @@
                         <constraint firstAttribute="bottom" secondItem="bVM-Yn-7nS" secondAttribute="bottom" id="Opz-sN-1PT"/>
                         <constraint firstItem="bVM-Yn-7nS" firstAttribute="leading" secondItem="8f9-W9-kV2" secondAttribute="leading" id="ReO-3c-rbG"/>
                         <constraint firstItem="bVM-Yn-7nS" firstAttribute="top" secondItem="8f9-W9-kV2" secondAttribute="top" id="lVP-Ua-aFg"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjo-cn-9Oy" userLabel="Footer">
-                    <rect key="frame" x="0.0" y="622" width="375" height="45"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2M-yd-Eef">
-                            <rect key="frame" x="40" y="10" width="30" height="25"/>
-                            <state key="normal" image="homeIcon 30x30">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="homeButtonAction:" destination="-1" eventType="touchUpInside" id="BNU-BK-sU7"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaW-a4-xfV">
-                            <rect key="frame" x="170" y="10" width="34" height="25"/>
-                            <state key="normal" title="Save">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="saveButtonAction:" destination="-1" eventType="touchUpInside" id="3VZ-mM-B9e"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hr5-lH-Dsk">
-                            <rect key="frame" x="313" y="10" width="22" height="25"/>
-                            <state key="normal" image="send30x30">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="shareButtonAction:" destination="-1" eventType="touchUpInside" id="Rr5-zl-2cb"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" red="0.1960784314" green="0.56862745100000001" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstItem="xaW-a4-xfV" firstAttribute="centerX" secondItem="fjo-cn-9Oy" secondAttribute="centerX" id="L5D-G7-wxW"/>
-                        <constraint firstAttribute="bottom" secondItem="xaW-a4-xfV" secondAttribute="bottom" constant="10" id="S9j-Hr-AWk"/>
-                        <constraint firstItem="xaW-a4-xfV" firstAttribute="top" secondItem="fjo-cn-9Oy" secondAttribute="top" constant="10" id="Toy-6e-iYL"/>
-                        <constraint firstItem="l2M-yd-Eef" firstAttribute="top" secondItem="fjo-cn-9Oy" secondAttribute="top" constant="10" id="X8G-lE-uQ8"/>
-                        <constraint firstItem="l2M-yd-Eef" firstAttribute="leading" secondItem="fjo-cn-9Oy" secondAttribute="leading" constant="40" id="a0k-xn-4pI"/>
-                        <constraint firstAttribute="trailing" secondItem="hr5-lH-Dsk" secondAttribute="trailing" constant="40" id="aGf-Sn-XNz"/>
-                        <constraint firstAttribute="bottom" secondItem="l2M-yd-Eef" secondAttribute="bottom" constant="10" id="hgu-4C-Wcx"/>
-                        <constraint firstItem="hr5-lH-Dsk" firstAttribute="top" secondItem="fjo-cn-9Oy" secondAttribute="top" constant="10" id="kIY-mc-t4x"/>
-                        <constraint firstAttribute="bottom" secondItem="hr5-lH-Dsk" secondAttribute="bottom" constant="10" id="uVp-FL-leX"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhI-lC-9d4">
@@ -137,24 +89,18 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="8f9-W9-kV2" secondAttribute="trailing" id="13O-q9-Iwd"/>
                 <constraint firstItem="lDh-hW-y4H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6bZ-wf-cXJ"/>
-                <constraint firstAttribute="bottom" secondItem="8f9-W9-kV2" secondAttribute="bottom" constant="45" id="DmH-C3-QrI"/>
-                <constraint firstAttribute="trailing" secondItem="fjo-cn-9Oy" secondAttribute="trailing" id="GUQ-0V-CQB"/>
+                <constraint firstAttribute="bottom" secondItem="8f9-W9-kV2" secondAttribute="bottom" id="DmH-C3-QrI"/>
                 <constraint firstItem="BhI-lC-9d4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="I2w-eA-LP5"/>
                 <constraint firstAttribute="trailing" secondItem="lDh-hW-y4H" secondAttribute="trailing" id="LRS-hA-kQ6"/>
                 <constraint firstItem="8f9-W9-kV2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VAN-P0-wuQ"/>
                 <constraint firstItem="8f9-W9-kV2" firstAttribute="top" secondItem="lDh-hW-y4H" secondAttribute="bottom" constant="-80" id="Wzp-Cr-ckp"/>
-                <constraint firstItem="fjo-cn-9Oy" firstAttribute="top" secondItem="8f9-W9-kV2" secondAttribute="bottom" id="bV9-9B-HQd"/>
                 <constraint firstItem="BhI-lC-9d4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="cau-uf-Nwb"/>
                 <constraint firstItem="lDh-hW-y4H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="erG-dg-QJX"/>
-                <constraint firstAttribute="bottom" secondItem="fjo-cn-9Oy" secondAttribute="bottom" id="rzB-yP-Daw"/>
-                <constraint firstItem="fjo-cn-9Oy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wpg-4e-BqT"/>
             </constraints>
-            <point key="canvasLocation" x="19" y="49"/>
+            <point key="canvasLocation" x="18.5" y="48.5"/>
         </view>
     </objects>
     <resources>
         <image name="back icon" width="30" height="43"/>
-        <image name="homeIcon 30x30" width="30" height="30"/>
-        <image name="send30x30" width="22" height="30"/>
     </resources>
 </document>

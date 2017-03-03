@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="243" height="228"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="243" height="228"/>
+                <rect key="frame" x="0.0" y="0.0" width="243" height="227"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7D7-w9-2UK">
@@ -50,6 +50,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="collectionViewVideo" destination="7D7-w9-2UK" id="UsJ-yq-lHN"/>
+                <outlet property="videoLabel" destination="hFI-wM-uuf" id="yLp-a7-cpK"/>
             </connections>
             <point key="canvasLocation" x="-13.5" y="144"/>
         </tableViewCell>

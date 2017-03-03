@@ -49,9 +49,10 @@ class RelatedTableViewController: UITableViewController {
             navigationController?.setNavigationBarHidden(false, animated: animated)
         }
 
-        tabBarController?.navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
-        tabBarController?.navigationItem.titleView = nil
-        tabBarController?.navigationItem.title = "Related Games"
+        navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
+        navigationItem.title = "Related Games"
+        navigationController?.navigationBar.tintColor = UIColor.white
+        
         tabBarController?.tabBar.barTintColor = ColorUI.tabBar
         tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white

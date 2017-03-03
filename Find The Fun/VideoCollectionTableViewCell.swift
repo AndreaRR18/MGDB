@@ -6,7 +6,8 @@ protocol VideoDelegate: class {
 }
 
 class VideoCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
-
+    
+    @IBOutlet weak var videoLabel: UILabel?
     @IBOutlet weak private var collectionViewVideo: UICollectionView?
     weak var delegate: VideoDelegate?
     private var video: [Video] = []
@@ -14,7 +15,7 @@ class VideoCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, U
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -48,5 +49,5 @@ class VideoCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, U
         print(url)
         self.delegate?.openSafariView(url)
     }
-
+    
 }

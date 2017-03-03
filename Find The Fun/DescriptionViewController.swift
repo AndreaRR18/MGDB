@@ -11,10 +11,6 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var headerImage: UIImageView?
     @IBOutlet weak var headerBlurImage: UIImageView?
     @IBOutlet weak var headerView: UIView?
-    @IBOutlet weak var footerView: UIView?
-    @IBOutlet weak var homeButton: UIButton?
-    @IBOutlet weak var saveButton: UIButton?
-    @IBOutlet weak var shareButton: UIButton?
     @IBOutlet weak var backButton: UIButton?
     @IBOutlet weak var titleLabel: UILabel?
     var blurredHeaderImageView: UIImageView?
@@ -85,13 +81,13 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
         tableView?.register(UINib(nibName: NibName.relatedInDescriptionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.relatedInDescriptionTableViewCell)
         tableView?.register(UINib(nibName: NibName.videoCollectionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.videoCollectionTableViewCell)
         tableView?.backgroundColor = UIColor.clear
-        
-        homeButton?.setImage(UIImage(named: "home"), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         titleLabel?.text = gameDescription.name
+        
         guard let url = getHDImage(url: gameDescription.cover?.url) else { return }
         headerImage?.af_setImage(
             withURL: url,
@@ -104,11 +100,16 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
                 blurEffectView.frame = (self.headerBlurImage?.bounds)!
                 self.headerBlurImage?.addSubview(blurEffectView)
         })
+        
         if navigationController?.isNavigationBarHidden == false {
             navigationController?.setNavigationBarHidden(true, animated: animated)
+            
         }
+        
+        tabBarController?.tabBar.isTranslucent = false
         headerBlurImage?.alpha = 0.0
         headerView?.clipsToBounds = true
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -143,11 +144,37 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return heightRowInGameDescription(indexPath: indexPath.row)
+        switch indexPath.row {
+        case 0:
+            return 90
+        case 1:
+            return 90
+        case 2:
+            return 250
+        case 3:
+            return 60
+        case 4:
+            return 60
+        case 5:
+            return 60
+        case 6:
+            return 60
+        case 7:
+            guard gameDescription.screenshots != nil else { return 0 }
+            return 150
+        case 8:
+            return 60
+        case 9:
+            guard gameDescription.videos != nil else { return 0 }
+            return 160
+        default:
+            return 0
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-                return gameDescriptionFields[indexPath.row](tableView, indexPath)
+        return gameDescriptionFields[indexPath.row](tableView, indexPath)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -271,7 +298,7 @@ extension DescriptionViewController {
                     })
                 }
             })
-        } 
+        }
         return cell
     }
     
@@ -300,7 +327,9 @@ extension DescriptionViewController {
     
     func getCellScreenshots(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.screenshotsCollectionTableViewCell, for: indexPath) as! ScreenshotCollectionTableViewCell
+        if gameDescription.screenshots == nil || gameDescription.screenshots?.count == 0 { cell.screenshotLabel?.text = "" }
         guard let screenshots = gameDescription.screenshots else { return cell }
+        if screenshots.count == 0 { cell.screenshotLabel?.text = "" }
         cell.configureScreenshotCollectionTableViewCell(screenshots)
         cell.delegate = self
         return cell
@@ -314,11 +343,14 @@ extension DescriptionViewController {
     
     func getCellVideos(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.videoCollectionTableViewCell, for: indexPath) as! VideoCollectionTableViewCell
+        if gameDescription.videos == nil || gameDescription.videos?.count == 0 { cell.videoLabel?.text = "" }
         guard let videos = gameDescription.videos else { return cell }
         cell.configureVideoCollectionTableViewCell(videos)
         cell.delegate = self
         return cell
     }
+    
+    
 }
 
 

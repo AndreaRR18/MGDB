@@ -7,7 +7,9 @@ protocol ScreenshotDelegate: class {
 class ScreenshotCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak private var screenshotCollectionview: UICollectionView?
+    @IBOutlet weak var screenshotLabel: UILabel?
     weak var delegate: ScreenshotDelegate?
+    
     private var screenshot: [Screenshot] = []
 
     override func awakeFromNib() {

@@ -10,28 +10,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tabBarController = UITabBarController()
         
-        let newsViewGameTableViewController = GameTableViewController()
-        newsViewGameTableViewController.tabBarItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "homeIcon 30x30"), tag: 0)
+        let navControllerGameTableViewController = UINavigationController(rootViewController: GameTableViewController())
+        navControllerGameTableViewController.tabBarItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "homeIcon 30x30"), tag: 0)
         
-        let searchGameTableViewController = SearchGamesTableViewController()
-        searchGameTableViewController.tabBarItem = UITabBarItem(title: "Search", image: #imageLiteral(resourceName: "search 30x30"), tag: 1)
-        
-        let favouriteGameTableViewController = FavouriteTableViewController()
-        favouriteGameTableViewController.tabBarItem = UITabBarItem(title: "Favourite", image: #imageLiteral(resourceName: "favourites 40x40"), tag: 2)
-        
-        let aboutViewGameTableViewController = About()
-        aboutViewGameTableViewController.tabBarItem = UITabBarItem(title: "About", image: #imageLiteral(resourceName: "about 30x30"), tag: 3)
-        
-        let elementTabBarController = [newsViewGameTableViewController, searchGameTableViewController, favouriteGameTableViewController, aboutViewGameTableViewController]
+        let navControllerSearchGameTableViewController = UINavigationController(rootViewController: SearchGamesTableViewController())
+        navControllerSearchGameTableViewController.tabBarItem = UITabBarItem(title: "Search", image: #imageLiteral(resourceName: "search 30x30"), tag: 1)
+
+        let navControllerFavouriteGameTableViewController = UINavigationController(rootViewController: FavouriteTableViewController())
+        navControllerFavouriteGameTableViewController.tabBarItem = UITabBarItem(title: "Favourite", image: #imageLiteral(resourceName: "favourites 40x40"), tag: 2)
+
+        let navControllerAboutViewGameTableViewController = UINavigationController(rootViewController: About())
+        navControllerAboutViewGameTableViewController.tabBarItem = UITabBarItem(title: "About", image: #imageLiteral(resourceName: "about 30x30"), tag: 3)
+
+        let elementTabBarController = [navControllerGameTableViewController, navControllerSearchGameTableViewController, navControllerFavouriteGameTableViewController, navControllerAboutViewGameTableViewController]
+
         tabBarController.viewControllers = elementTabBarController
         tabBarController.navigationController?.navigationBar.isTranslucent = false
         tabBarController.navigationController?.navigationBar.isOpaque = false
-        
         tabBarController.navigationController?.navigationBar.tintColor = ColorUI.text
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: tabBarController)
-        window?.makeKeyAndVisible()        
+        self.window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
     }
     
     

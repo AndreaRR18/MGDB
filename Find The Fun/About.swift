@@ -13,9 +13,11 @@ class About: UIViewController {
             navigationController?.setNavigationBarHidden(false, animated: animated)
         }
 
-        tabBarController?.navigationItem.titleView = nil
-        tabBarController?.navigationItem.title = "About"
-        tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
+        
+        navigationItem.title = "About"
+        navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
+        navigationController?.navigationBar.barTintColor = ColorUI.navBar
+        
         tabBarController?.tabBar.isTranslucent = false
     }
     

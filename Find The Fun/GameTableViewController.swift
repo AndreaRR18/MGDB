@@ -15,19 +15,23 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.tableView.register(UINib(nibName: NibName.gameCellTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameCellTableViewCell)
         
         let activityIndicator = ActivityIndicator(view: view)
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)), name: NSNotification.Name(rawValue: ReachabilityDidChangeNotificationName), object: nil)
+        
         _ = reachability?.startNotifier()
+        
         //        if let reachabilityIsValid = reachability?.isReachable, reachabilityIsValid {
+        
         activityIndicator.startAnimating()
         let decodedJSON = DecodeJSON(url: gamesURL)
         decodedJSON.getNewGames(callback: { arrayGames in
             self.arrayGames = arrayGames
             activityIndicator.stopAnimating()
             self.tableView.reloadData()
+        
         })
         //        }else {
         //            do {
@@ -37,6 +41,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         //                print(error)
         //            }
         //        }
+        
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
         refreshControl?.tintColor = UIColor.gray
@@ -56,18 +61,25 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
             navigationController?.setNavigationBarHidden(false, animated: animated)
         }
         
-        tabBarController?.navigationItem.titleView = nil
+        
+
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "homeIcon 35x35"))
+        navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
+        navigationController?.navigationBar.barTintColor = ColorUI.navBar
+
         tabBarController?.tabBar.barTintColor = ColorUI.tabBar
-        tabBarController?.navigationController?.navigationBar.barTintColor = ColorUI.navBar
         tabBarController?.tabBar.tintColor = UIColor.white
         tabBarController?.tabBar.unselectedItemTintColor = ColorUI.unselectedItemTabBar
+        
         let footerView = UIView(frame: CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         footerView.backgroundColor = UIColor.white
         tableView.tableFooterView = footerView
+        
+        
         checkReachability()
         
-        tabBarController?.navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "homeIcon 35x35"))
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

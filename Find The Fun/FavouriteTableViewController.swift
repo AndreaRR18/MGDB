@@ -30,8 +30,10 @@ class FavouriteTableViewController: UITableViewController {
             navigationController?.setNavigationBarHidden(false, animated: animated)
         }
 
-        tabBarController?.navigationItem.titleView = nil
-        tabBarController?.navigationItem.title = "Favourite"
+        navigationItem.title = "Favourite"
+        navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
+        navigationController?.navigationBar.barTintColor = ColorUI.navBar
+
         getGame()
         tableView.reloadData()
     }

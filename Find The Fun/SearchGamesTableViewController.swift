@@ -2,46 +2,55 @@ import UIKit
 import CoreData
 import Foundation
 
-class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate {
+class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
     
     var arrayGames: [Game] = []
-    var searchController: UISearchController?
-    var searchActive = true
-    
+//    var searchController: UISearchController?
+    let searchBar = UISearchBar()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.register(UINib(nibName: NibName.gameCellTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameCellTableViewCell)
-        tabBarController?.tabBar.isTranslucent = false
-        searchController = UISearchController(searchResultsController: nil)
-        searchController?.searchBar.tintColor = UIColor.black
-        searchController?.searchBar.delegate = self
-        searchController?.hidesNavigationBarDuringPresentation = false
-        searchController?.dimsBackgroundDuringPresentation = false
-        searchController?.searchBar.placeholder = "Search game..."
         
+        self.tableView.register(UINib(nibName: NibName.gameCellTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameCellTableViewCell)
+        
+        let tableViewController = UITableViewController(style: .plain)
+        tableViewController.tableView.dataSource = self
+        tableViewController.tableView.delegate = self
+        tableViewController.tableView.register(UINib(nibName: NibName.gameCellTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameCellTableViewCell)
+        
+//        searchController = UISearchController(searchResultsController: tableViewController)
+//        searchController?.searchBar.delegate = self
+//        searchController?.hidesNavigationBarDuringPresentation = false
+//        searchController?.dimsBackgroundDuringPresentation = false
+//        searchController?.searchBar.placeholder = "Search game..."
+//        searchController?.searchResultsUpdater = self
+        
+        searchBar.showsCancelButton = true
+        searchBar.placeholder = "Search game..."
+        searchBar.delegate = self
+//        tableView.tableHeaderView = searchBar
+        navigationItem.titleView = searchBar
+        definesPresentationContext = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         if navigationController?.isNavigationBarHidden == true {
             navigationController?.setNavigationBarHidden(false, animated: animated)
         }
-        tabBarController?.navigationItem.title = nil
-        tabBarController?.navigationItem.titleView = searchController?.searchBar
+        navigationController?.navigationBar.barTintColor = ColorUI.navBar
+
+        tabBarController?.tabBar.isTranslucent = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        searchController?.searchBar.becomeFirstResponder()
+        searchBar.becomeFirstResponder()
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        if let searchController = searchController, searchController.isActive {
-            searchController.isActive = false
-        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -68,15 +77,20 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        searchController?.searchBar.endEditing(true)
+        searchBar.endEditing(true)
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchController?.searchBar.text else { return }
+        
+        guard let searchText = searchBar.text else { return }
         var textSearchChange = ""
-        if searchController?.searchBar.text != nil && textSearchChange != searchText {
+        if searchBar.text != nil && textSearchChange != searchText {
             self.arrayGames.removeAll()
             self.tableView.reloadData()
             textSearchChange = searchText
@@ -91,7 +105,8 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
                 self.tableView.reloadData()
             } else {
                 let alert = Alert(title: "Search result for: \(searchText)", message: "Your search returns no result.")
-                self.searchController?.present(alert.alertControllerLaunch(), animated: true, completion: nil)
+                self.present(alert.alertControllerLaunch(), animated: true, completion: nil)
+//                self.searchController?.present(alert.alertControllerLaunch(), animated: true, completion: nil)
                 activityIndicator.stopAnimating()
             }
         })

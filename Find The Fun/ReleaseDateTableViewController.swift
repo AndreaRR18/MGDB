@@ -20,8 +20,9 @@ class ReleaseDateTableViewController: UITableViewController {
             navigationController?.setNavigationBarHidden(false, animated: animated)
         }
 
-        tabBarController?.navigationItem.titleView = nil
-        tabBarController?.navigationItem.title = "Release Date"
+        navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationItem.title = "Release Date"
     }
     
     override func viewDidLoad() {
