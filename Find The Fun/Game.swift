@@ -28,7 +28,7 @@ extension Game: Decodable {
             <^> json <| "id"
             <*> json <| "name"
             <*> json <|? "summary"
-            <*> json <|? "rating"
+            <*> json <|? "aggregated_rating"
             <*> json <||? "developers"
             <*> json <|? "updated_at"
             <*> json <||? "release_dates"

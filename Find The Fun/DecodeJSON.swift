@@ -29,7 +29,7 @@ class DecodeJSON {
                         DispatchQueue.main.async {
                             if let arrayGames = self.arrayGames {
                                 callback(arrayGames
-                                    .filter { $0.cover != nil && $0.summary != nil})
+                                    .filter { $0.cover != nil })
                             }
                         }
                     } else {
@@ -65,7 +65,7 @@ class DecodeJSON {
                             if let arrayGames = self.arrayGames {
                                 callback(
                                     arrayGames
-                                        .filter { $0.cover != nil && $0.summary != nil && $0.updatedAt != nil})
+                                        .filter { $0.cover != nil && $0.updatedAt != nil})
                             }
                         }
                     } else {

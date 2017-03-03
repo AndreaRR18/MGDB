@@ -24,6 +24,7 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         
         navigationItem.titleView = searchBar
         definesPresentationContext = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,8 +76,8 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         searchBar.endEditing(true)
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

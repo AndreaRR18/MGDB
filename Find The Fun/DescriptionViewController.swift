@@ -150,6 +150,7 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
         case 1:
             return 90
         case 2:
+            guard let summary = gameDescription.summary, summary.characters.count > 0 else { return 0 }
             return 250
         case 3:
             return 60

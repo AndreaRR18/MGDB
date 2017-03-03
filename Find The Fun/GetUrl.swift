@@ -28,13 +28,13 @@ func getCover(url: String?) -> URL? {
 }
 
 func getUrlSearchedGames(title: String) -> String {
-    let urlEncode = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-    let gamesURLSearch = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50&filter[rating][gt]=1&search="+urlEncode!
+    guard let urlEncode = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)?.lowercased() else { return "" }
+    let gamesURLSearch = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50&filter[aggregated_rating][gt]=1&search="+urlEncode
     return gamesURLSearch
 }
 
 func getUrlOffsetdGames(offset: Int) -> String {
-    let gamesURLOffset = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=10&order=updated_at%3Adesc&filter[rating][gt]=1&offset="+"\(offset)"
+    let gamesURLOffset = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=10&order=updated_at%3Adesc&filter[aggregated_rating][gt]=1&offset="+"\(offset)"
     return gamesURLOffset
 }
 
