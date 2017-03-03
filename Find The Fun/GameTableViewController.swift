@@ -23,24 +23,23 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         
         _ = reachability?.startNotifier()
         
-        //        if let reachabilityIsValid = reachability?.isReachable, reachabilityIsValid {
-        
-        activityIndicator.startAnimating()
-        let decodedJSON = DecodeJSON(url: gamesURL)
-        decodedJSON.getNewGames(callback: { arrayGames in
-            self.arrayGames = arrayGames
-            activityIndicator.stopAnimating()
-            self.tableView.reloadData()
-        
-        })
-        //        }else {
-        //            do {
-        //                try self.arrayGames = cachedGame.getJSONData() ?? []
-        //                self.tableView.reloadData()
-        //            } catch {
-        //                print(error)
-        //            }
-        //        }
+        if let reachabilityIsValid = reachability?.isReachable, reachabilityIsValid {
+            activityIndicator.startAnimating()
+            let decodedJSON = DecodeJSON(url: gamesURL)
+            decodedJSON.getNewGames(callback: { arrayGames in
+                self.arrayGames = arrayGames
+                activityIndicator.stopAnimating()
+                self.tableView.reloadData()
+                
+            })
+        }else {
+            do {
+                try self.arrayGames = cachedGame.getJSONData() ?? []
+                self.tableView.reloadData()
+            } catch {
+                print(error)
+            }
+        }
         
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
@@ -62,11 +61,11 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         }
         
         
-
+        
         navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "homeIcon 35x35"))
         navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
         navigationController?.navigationBar.barTintColor = ColorUI.navBar
-
+        
         tabBarController?.tabBar.barTintColor = ColorUI.tabBar
         tabBarController?.tabBar.tintColor = UIColor.white
         tabBarController?.tabBar.unselectedItemTintColor = ColorUI.unselectedItemTabBar
@@ -156,7 +155,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
             self.tableView.reloadData()
         })
     }
- 
+    
 }
 
 

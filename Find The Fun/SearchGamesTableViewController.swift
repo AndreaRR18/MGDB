@@ -2,10 +2,9 @@ import UIKit
 import CoreData
 import Foundation
 
-class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
+class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate {
     
     var arrayGames: [Game] = []
-//    var searchController: UISearchController?
     let searchBar = UISearchBar()
 
     override func viewDidLoad() {
@@ -17,18 +16,12 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         tableViewController.tableView.dataSource = self
         tableViewController.tableView.delegate = self
         tableViewController.tableView.register(UINib(nibName: NibName.gameCellTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.gameCellTableViewCell)
-        
-//        searchController = UISearchController(searchResultsController: tableViewController)
-//        searchController?.searchBar.delegate = self
-//        searchController?.hidesNavigationBarDuringPresentation = false
-//        searchController?.dimsBackgroundDuringPresentation = false
-//        searchController?.searchBar.placeholder = "Search game..."
-//        searchController?.searchResultsUpdater = self
-        
+
         searchBar.showsCancelButton = true
         searchBar.placeholder = "Search game..."
         searchBar.delegate = self
-//        tableView.tableHeaderView = searchBar
+        searchBar.barTintColor = UIColor.white
+        
         navigationItem.titleView = searchBar
         definesPresentationContext = true
     }
