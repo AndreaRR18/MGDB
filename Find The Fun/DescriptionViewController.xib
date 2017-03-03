@@ -73,13 +73,19 @@
                         <constraint firstItem="bVM-Yn-7nS" firstAttribute="top" secondItem="8f9-W9-kV2" secondAttribute="top" id="lVP-Ua-aFg"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhI-lC-9d4">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back icon" translatesAutoresizingMaskIntoConstraints="NO" id="jR2-Mv-DCI">
                     <rect key="frame" x="15" y="28" width="10" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="10" id="N8U-Iz-0l2"/>
-                        <constraint firstAttribute="height" constant="20" id="nXu-i5-fCA"/>
+                        <constraint firstAttribute="height" constant="20" id="98O-OK-E0f"/>
+                        <constraint firstAttribute="width" constant="10" id="Bpp-Di-a7r"/>
                     </constraints>
-                    <state key="normal" title="Button" image="back icon"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhI-lC-9d4">
+                    <rect key="frame" x="8" y="20" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="N8U-Iz-0l2"/>
+                        <constraint firstAttribute="height" constant="30" id="nXu-i5-fCA"/>
+                    </constraints>
                     <connections>
                         <action selector="backButtonAction:" destination="-1" eventType="touchUpInside" id="oSD-nw-RLc"/>
                     </connections>
@@ -90,12 +96,14 @@
                 <constraint firstAttribute="trailing" secondItem="8f9-W9-kV2" secondAttribute="trailing" id="13O-q9-Iwd"/>
                 <constraint firstItem="lDh-hW-y4H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6bZ-wf-cXJ"/>
                 <constraint firstAttribute="bottom" secondItem="8f9-W9-kV2" secondAttribute="bottom" id="DmH-C3-QrI"/>
-                <constraint firstItem="BhI-lC-9d4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="I2w-eA-LP5"/>
+                <constraint firstItem="BhI-lC-9d4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="I2w-eA-LP5"/>
                 <constraint firstAttribute="trailing" secondItem="lDh-hW-y4H" secondAttribute="trailing" id="LRS-hA-kQ6"/>
+                <constraint firstItem="jR2-Mv-DCI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="28" id="MlU-YB-Ftq"/>
                 <constraint firstItem="8f9-W9-kV2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VAN-P0-wuQ"/>
                 <constraint firstItem="8f9-W9-kV2" firstAttribute="top" secondItem="lDh-hW-y4H" secondAttribute="bottom" constant="-80" id="Wzp-Cr-ckp"/>
-                <constraint firstItem="BhI-lC-9d4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="cau-uf-Nwb"/>
+                <constraint firstItem="BhI-lC-9d4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="cau-uf-Nwb"/>
                 <constraint firstItem="lDh-hW-y4H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="erG-dg-QJX"/>
+                <constraint firstItem="jR2-Mv-DCI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="uXJ-b0-K1I"/>
             </constraints>
             <point key="canvasLocation" x="18.5" y="48.5"/>
         </view>
