@@ -94,13 +94,17 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         let decodedJSON = DecodeJSON(url: getUrlSearchedGames(title: searchText))
         decodedJSON.getSearchGames(weak: { arrayGames in
             if arrayGames.count > 1 {
-                self.arrayGames = arrayGames
+                self.arrayGames = arrayGames.filter{ game in
+                    game.name
+                        .replacingOccurrences(of: " ", with: "")
+                        .lowercased()
+                        .contains(searchText.replacingOccurrences(of: " ", with: "").lowercased())
+                }
                 activityIndicator.stopAnimating()
                 self.tableView.reloadData()
             } else {
                 let alert = Alert(title: "Search result for: \(searchText)", message: "Your search returns no result.")
                 self.present(alert.alertControllerLaunch(), animated: true, completion: nil)
-//                self.searchController?.present(alert.alertControllerLaunch(), animated: true, completion: nil)
                 activityIndicator.stopAnimating()
             }
         })
