@@ -71,7 +71,11 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
         tableView?.register(UINib(nibName: NibName.coverHDTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverHDTableViewCell)
         tableView?.register(UINib(nibName: NibName.coverTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.coverTableViewCell)
         tableView?.register(UINib(nibName: NibName.summaryTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.summaryTableViewCell)
-        tableView?.register(UINib(nibName: NibName.companyTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.companyTableViewCell)
+//        tableView?.register(UINib(nibName: NibName.companyTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.companyTableViewCell)
+        tableView?.register(UINib(nibName: NibName.developersTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.developersTableViewCell)
+        tableView?.register(UINib(nibName: NibName.publishersTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.publishersTableViewCell)
+
+        
         tableView?.register(UINib(nibName: NibName.publishedTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.publishedTableViewCell)
         tableView?.register(UINib(nibName: NibName.platformTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.platformTableViewCell)
         tableView?.register(UINib(nibName: NibName.ratingTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.ratingTableViewCell)
@@ -143,6 +147,7 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
         return gameDescriptionFields.count
     }
     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
@@ -153,25 +158,28 @@ class DescriptionViewController: UIViewController, UITableViewDelegate, UITableV
             guard let summary = gameDescription.summary, summary.characters.count > 0 else { return 0 }
             return 250
         case 3:
-            return 60
+            guard let developers = gameDescription.developers else { return 0 }
+            return developersRowHeight(developers.count)
         case 4:
-            return 60
+            guard let publishers = gameDescription.publishers else { return 0 }
+            return developersRowHeight(publishers.count)
         case 5:
             return 60
         case 6:
             return 60
         case 7:
+            return 60
+        case 8:
             guard gameDescription.screenshots != nil else { return 0 }
             return 150
-        case 8:
-            return 60
         case 9:
+            return 60
+        case 10:
             guard gameDescription.videos != nil else { return 0 }
             return 160
         default:
             return 0
         }
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -231,7 +239,6 @@ extension DescriptionViewController: VideoDelegate, ScreenshotDelegate {
     
 }
 
-
 extension DescriptionViewController {
     
     var gameDescriptionFields: [(UITableView,IndexPath) -> UITableViewCell] {
@@ -246,7 +253,10 @@ extension DescriptionViewController {
                 self.getCellSummary(tableView: tableView, indexPath: indexPath)
             },
             { (tableView,indexPath) -> UITableViewCell in
-                self.getCellCompany(tableView: tableView, indexPath: indexPath)
+                self.getCellDevelopers(tableView: tableView, indexPath: indexPath)
+            },
+            { (tableView,indexPath) -> UITableViewCell in
+                self.getCellPublishers(tableView: tableView, indexPath: indexPath)
             },
             { (tableView,indexPath) -> UITableViewCell in
                 self.getCellPublished(tableView: tableView, indexPath: indexPath)
@@ -288,18 +298,34 @@ extension DescriptionViewController {
         return cell
     }
     
-    func getCellCompany(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.companyTableViewCell, for: indexPath) as! CompanyTableViewCell
+    func getCellDevelopers(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.developersTableViewCell, for: indexPath) as! DevelopersTableViewCell
         if let developers = gameDescription.developers {
             nameCompanyDB(id: developers, callback: { nameCompany, new in
-                cell.configureCompanyTableViewCell(nameCompany)
+                cell.configureDeveloperTableViewCell(nameCompany)
                 if new {
-                    _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block: { _ in
+                    _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
                         tableView.reloadData()
                     })
                 }
             })
         }
+        return cell
+    }
+    
+    func getCellPublishers(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.publishersTableViewCell, for: indexPath) as! PublishersTableViewCell
+        if let publishers = gameDescription.publishers {
+            nameCompanyDB(id: publishers, callback: { nameCompany, new in
+                cell.configurePublishersTableViewCell(nameCompany)
+                if new {
+                    _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
+                        tableView.reloadData()
+                    })
+                }
+            })
+        }
+
         return cell
     }
     

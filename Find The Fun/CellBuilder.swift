@@ -25,10 +25,10 @@ extension Game {
         switch indexPath.row {
         case 1:
             navigationController.present(CoverViewController(coverURL: cover?.url), animated: true, completion: nil)
-        case 4:
+        case 5:
             navigationController.navigationBar.isTranslucent = false
             navigationController.pushViewController(ReleaseDateTableViewController(arrayReleaseDate: releaseDate), animated: true)
-        case 8:
+        case 9:
             navigationController.navigationBar.isTranslucent = false
             if let genres = genres {
                 navigationController.pushViewController(RelatedTableViewController(idGenres: genres), animated: true)

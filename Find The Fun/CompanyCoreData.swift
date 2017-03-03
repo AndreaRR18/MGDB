@@ -37,7 +37,7 @@ func fetchCompany(id: Int32) -> String? {
     return nil
 }
 
-func nameCompanyDB(id: [Int], callback:@escaping (String, Bool) -> ()) {
+func nameCompanyDB(id: [Int], callback:@escaping ([String], Bool) -> ()) {
     var companies: [String] = []
     var new = true
     id.forEach{ idCompany in
@@ -55,7 +55,7 @@ func nameCompanyDB(id: [Int], callback:@escaping (String, Bool) -> ()) {
             })
         }
     }
-    callback(companies.joined(separator: "-"), new)
+    callback(companies, new)
 }
 
 

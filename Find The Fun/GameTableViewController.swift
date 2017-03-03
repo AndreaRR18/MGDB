@@ -97,15 +97,14 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
-        cell.configureGameCell(arrayGames[indexPath.row])
-        return cell
+        let game = GameCell(game: arrayGames[indexPath.row])
+        return game.getCell(tableView: tableView, indexPath: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       let game = GameCell(game: arrayGames[indexPath.row])
         guard let navController = navigationController else { return }
-        arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayGames[indexPath.row])
-        tableView.deselectRow(at: indexPath, animated: true)
+        game.didSelectCell(tableView: tableView, indexPath: indexPath, navigationController: navController)
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

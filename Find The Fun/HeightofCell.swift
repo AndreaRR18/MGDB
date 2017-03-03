@@ -28,6 +28,11 @@ func heightRowInGameDescription(indexPath: Int) -> CGFloat {
     }
 }
 
+func developersRowHeight (_ numberOfDevelopers: Int) -> CGFloat {
+    let height = 55
+    let heightLabel = 45
+    return  CGFloat((heightLabel * numberOfDevelopers) + height)
+}
 
 func heightSummary(_ numberOfCharacters: Int) -> CGFloat {
     if numberOfCharacters < 50 {

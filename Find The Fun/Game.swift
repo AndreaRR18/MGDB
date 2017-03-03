@@ -12,6 +12,7 @@ struct Game {
     let summary: String? //summary
     let rating: Int? //rating
     let developers: [Int]?  //developers
+    let publishers: [Int]? // publishers
     let updatedAt: Int? //updated_at
     let releaseDate: [ReleaseDate]?  //release_dates
     let cover: Cover? //cover
@@ -30,6 +31,7 @@ extension Game: Decodable {
             <*> json <|? "summary"
             <*> json <|? "aggregated_rating"
             <*> json <||? "developers"
+            <*> json <||? "publishers"
             <*> json <|? "updated_at"
             <*> json <||? "release_dates"
             <*> json <|? "cover"

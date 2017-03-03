@@ -5,7 +5,7 @@ import Curry
 struct Platform {
     let idPlatform: Int //id
     let namePlatform: String //name
-    
+    let games: [Int]?
     let logoPlatform: LogoPlatform? //logo
 }
 
@@ -14,6 +14,7 @@ extension Platform: Decodable {
         return curry(Platform.init)
             <^> json <| "id"
             <*> json <| "name"
+            <*> json <||? "games"
             <*> json <|? "logo"
     }
 }
