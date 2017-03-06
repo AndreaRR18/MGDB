@@ -9,6 +9,7 @@ class DecodeJSON {
     var arrayPlatforms: [Platform]? = nil
     var arrayGenres: [Genre]? = nil
     var arrayGameModes: [GameMode]? = nil
+    var company: Company?
     
     init(url: String) {
         self.url = url
@@ -81,12 +82,25 @@ class DecodeJSON {
     }
     
     func parsingJsonDataGame(data: Data) -> [Game]? {
-        var games: [Game]? = []
-        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-        if let j: Any = jsonResult {
-            games = decode(j)
+        do {
+            let deserialized = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+//            let array = try TypeCast.get(deserialized, as: [Any].self)
+//            let firstObject = try TypeCast.get(array.first, as: [String:Any].self)
+                return decode(deserialized).flatMap{ $0 }
         }
-        return games.flatMap{ $0 }
+        catch let error {
+            print("--------")
+            print(error)
+            print("--------")
+            return nil
+        }
+
+//        var games: [Game]? = []
+//        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+//        if let j: Any = jsonResult {
+//            games = decode(j)
+//        }
+//        return games.flatMap{ $0 }
     }
     
     //-------------------------------Companies-------------------------------
@@ -119,12 +133,66 @@ class DecodeJSON {
     }
     
     func parsingJsonDataCompanies(data: Data) -> [Company]? {
-        var companies: [Company]? = []
-        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-        if let j: Any = jsonResult {
-            companies = decode(j)
+        
+        do {
+            let deserialized = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            //            let array = try TypeCast.get(deserialized, as: [Any].self)
+            //            let firstObject = try TypeCast.get(array.first, as: [String:Any].self)
+            return decode(deserialized).flatMap{ $0 }
         }
-        return companies.flatMap{ $0 }
+        catch let error {
+            print("--------")
+            print(error)
+            print("--------")
+            return nil
+        }
+
+//        var companies: [Company]? = []
+//        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+//        if let j: Any = jsonResult {
+//            companies = decode(j)
+//        }
+//        return companies.flatMap{ $0 }
+    }
+    
+    //-------------------------------Single Company-------------------------------
+
+    func getCompany(callback:@escaping (Company) -> ()) {
+            if let url = URL(string: url) {
+                let req = NSMutableURLRequest(url: url)
+                req.setValue(IGDBKey.apiKey, forHTTPHeaderField: IGDBKey.header)
+                let task = URLSession.shared.dataTask(with: req as URLRequest, completionHandler: {
+                    (data, response, error) -> Void in
+                    if let data = data {
+                        self.company = self.parsingJsonDataCompany(data: data)
+                        DispatchQueue.main.async {
+                            guard let company = self.company else { return }
+                                callback(company)
+                        }
+                    } else {
+                        print("\(error)")
+                    }
+                })
+                task.resume()
+                
+            } else {
+                print("URL errato!")
+            }
+    }
+    
+    func parsingJsonDataCompany(data: Data) -> Company? {
+        do {
+            let deserialized = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            let array = try TypeCast.get(deserialized, as: [Any].self)
+            let firstObject = try TypeCast.get(array.first, as: [String:Any].self)
+            return try Company.decode(JSON(firstObject)).dematerialize()
+        }
+        catch let error {
+            print("--------")
+            print(error)
+            print("--------")
+            return nil
+        }
     }
     
     //-------------------------------Platforms-------------------------------
@@ -157,12 +225,26 @@ class DecodeJSON {
     }
     
     func parsingJsonDataPlatforms(data: Data) -> [Platform]? {
-        var platform: [Platform]? = []
-        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-        if let j: Any = jsonResult {
-            platform = decode(j)
+        
+        do {
+            let deserialized = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            //            let array = try TypeCast.get(deserialized, as: [Any].self)
+            //            let firstObject = try TypeCast.get(array.first, as: [String:Any].self)
+            return decode(deserialized).flatMap{ $0 }
         }
-        return platform.flatMap{ $0 }
+        catch let error {
+            print("--------")
+            print(error)
+            print("--------")
+            return nil
+        }
+
+//        var platform: [Platform]? = []
+//        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+//        if let j: Any = jsonResult {
+//            platform = decode(j)
+//        }
+//        return platform.flatMap{ $0 }
     }
     
     
@@ -196,12 +278,26 @@ class DecodeJSON {
     }
     
     func parsingJsonDataGenres(data: Data) -> [Genre]? {
-        var genre: [Genre]? = []
-        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-        if let j: Any = jsonResult {
-            genre = decode(j)
+        
+        do {
+            let deserialized = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            //            let array = try TypeCast.get(deserialized, as: [Any].self)
+            //            let firstObject = try TypeCast.get(array.first, as: [String:Any].self)
+            return decode(deserialized).flatMap{ $0 }
         }
-        return genre.flatMap{ $0 }
+        catch let error {
+            print("--------")
+            print(error)
+            print("--------")
+            return nil
+        }
+
+//        var genre: [Genre]? = []
+//        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+//        if let j: Any = jsonResult {
+//            genre = decode(j)
+//        }
+//        return genre.flatMap{ $0 }
     }
     
     //-------------------------------GameModes-------------------------------
@@ -234,12 +330,26 @@ class DecodeJSON {
     }
     
     func parsingJsonDataGameModes(data: Data) -> [GameMode]? {
-        var gameModes: [GameMode]? = []
-        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-        if let j: Any = jsonResult {
-            gameModes = decode(j)
+        
+        do {
+            let deserialized = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            //            let array = try TypeCast.get(deserialized, as: [Any].self)
+            //            let firstObject = try TypeCast.get(array.first, as: [String:Any].self)
+            return decode(deserialized).flatMap{ $0 }
         }
-        return gameModes.flatMap{ $0 }
+        catch let error {
+            print("--------")
+            print(error)
+            print("--------")
+            return nil
+        }
+
+//        var gameModes: [GameMode]? = []
+//        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+//        if let j: Any = jsonResult {
+//            gameModes = decode(j)
+//        }
+//        return gameModes.flatMap{ $0 }
     }
     
     //-------------------------------Related Game-------------------------------
@@ -267,12 +377,26 @@ class DecodeJSON {
     }
     
     func parsingJsonDataRelatedGamesFromID(data: Data) -> [Game]? {
-        var games: [Game]? = []
-        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-        if let j: Any = jsonResult {
-            games = decode(j)
+        
+        do {
+            let deserialized = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+            //            let array = try TypeCast.get(deserialized, as: [Any].self)
+            //            let firstObject = try TypeCast.get(array.first, as: [String:Any].self)
+            return decode(deserialized).flatMap{ $0 }
         }
-        return games.flatMap{ $0 }
+        catch let error {
+            print("--------")
+            print(error)
+            print("--------")
+            return nil
+        }
+
+//        var games: [Game]? = []
+//        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+//        if let j: Any = jsonResult {
+//            games = decode(j)
+//        }
+//        return games.flatMap{ $0 }
     }
     
 }

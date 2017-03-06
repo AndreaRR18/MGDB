@@ -12,6 +12,7 @@ func saveCompany(idCompany: Int32, nameCompany: String) {
     do {
         try context.save()
         arrayCompanies.append(newCompany)
+        print("Save \(nameCompany)")
     } catch let error as NSError {
         print("Could not save. \(error), \(error.userInfo)")
     }
@@ -26,7 +27,7 @@ func fetchCompany(id: Int32) -> String? {
     do {
         let results = try context.fetch(request)
         for result in results as! [NSManagedObject] {
-            if id == result.value(forKey: "idCompany") as? Int32 {
+            if id == result.value(forKey: "idCompany") as! Int32 {
                 stringOfCompanies = result.value(forKey: "nameCompany") as? String
                 return stringOfCompanies
             }
@@ -57,6 +58,23 @@ func nameCompanyDB(id: [Int], callback:@escaping ([String], Bool) -> ()) {
     }
     callback(companies, new)
 }
+
+func companyDB(id: Int, callback:@escaping (String, Bool) -> ()) {
+    var new = true
+    if let nameCompany = fetchCompany(id: Int32(id)) {
+        new = false
+        callback(nameCompany, new)
+    } else {
+        let decodeJSON = DecodeJSON(url: getUrlIDCompany(idCompany: id))
+        decodeJSON.getCompany(callback: { company in
+            callback(company.name, new)
+            saveCompany(idCompany: Int32(company.idCompany), nameCompany: company.name)
+//            callback(company.name, new)
+        })
+    }
+}
+
+
 
 
 
