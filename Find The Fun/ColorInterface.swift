@@ -14,6 +14,7 @@ struct ColorUI {
     static let backgoundTableView = UIColor.white
     static let text = UIColor.black
     static let separator = UIColor.init(red: 4/255, green: 124/255, blue: 16/255, alpha: 0.8)
-    static let headerInSection = UIColor.init(red: 4/255, green: 124/255, blue: 16/255, alpha: 0.9)
     static let unselectedItemTabBar = UIColor.black
+    static let backgroundTableViewCell = UIColor.init(red: 228/255, green: 228/255, blue: 228/255, alpha: 1)
+    static let headerInSection = UIColor.init(red: 241/255, green: 241/255, blue: 241/255, alpha: 1)
 }

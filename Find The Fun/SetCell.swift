@@ -158,25 +158,30 @@ class DeveloperCell: CellFactory {
     }
 }
 
-
 class ReleaseDateCell: CellFactory {
-    private let releaseDate: [ReleaseDate]
+    private let releaseDate: ReleaseDate
     
-    init(_ releaseDate: [ReleaseDate]) {
+    init(_ releaseDate: ReleaseDate) {
         self.releaseDate = releaseDate
     }
     
     func didSelectCell(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController) {
-        navigationController.navigationBar.isTranslucent = false
-        navigationController.pushViewController(ReleaseDateTableViewController(arrayReleaseDate: releaseDate), animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.publishedTableViewCell, for: indexPath) as! PublishedTableViewCell
-        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.releaseDatePlatformTableViewCell, for: indexPath) as! ReleaseDatePlatformTableViewCell
         cell.backgroundColor = ColorUI.background
+        namePlatformDB(id: releaseDate.platform, callback: { namePlatform, new in
+            cell.configureReleaseDateTableViewCell(namePlatform, self.releaseDate.human)
+            if new {
+                _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
+                    tableView.reloadData()
+                })
+            }
+
+        })
         return cell
-        
     }
 }
 
@@ -264,8 +269,8 @@ class ScreenshotCell: CellFactory, ScreenshotDelegate {
     }
     
     func openImage(url: String) {
-        guard let navigationController = navigationController else { return }
-        navigationController.present(CoverViewController(coverURL: url), animated: true, completion: nil)
+        guard let navController = navigationController else { return }
+        navController.present(CoverViewController(coverURL: url), animated: true, completion: nil)
     }
     
 }

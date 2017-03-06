@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7D7-w9-2UK">
-                        <rect key="frame" x="5" y="35" width="233" height="192.5"/>
+                        <rect key="frame" x="5" y="5" width="233" height="222.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uF7-c5-F31">
                             <size key="itemSize" width="50" height="50"/>
@@ -28,29 +28,16 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFI-wM-uuf">
-                        <rect key="frame" x="13" y="10" width="225" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="eZr-tm-15D"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="7D7-w9-2UK" secondAttribute="bottom" id="Dau-YX-gEe"/>
-                    <constraint firstItem="hFI-wM-uuf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Z2P-kL-Qm2"/>
-                    <constraint firstItem="7D7-w9-2UK" firstAttribute="top" secondItem="hFI-wM-uuf" secondAttribute="bottom" constant="5" id="hOb-sh-JqY"/>
+                    <constraint firstItem="7D7-w9-2UK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Fza-qj-Ph1"/>
                     <constraint firstItem="7D7-w9-2UK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="ils-F4-ivC"/>
-                    <constraint firstAttribute="trailing" secondItem="hFI-wM-uuf" secondAttribute="trailing" constant="5" id="mfT-kt-jb9"/>
                     <constraint firstAttribute="trailing" secondItem="7D7-w9-2UK" secondAttribute="trailing" constant="5" id="nru-oV-O6s"/>
-                    <constraint firstItem="hFI-wM-uuf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="q5k-Cy-AAL"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="collectionViewVideo" destination="7D7-w9-2UK" id="UsJ-yq-lHN"/>
-                <outlet property="videoLabel" destination="hFI-wM-uuf" id="yLp-a7-cpK"/>
             </connections>
             <point key="canvasLocation" x="-13.5" y="144"/>
         </tableViewCell>

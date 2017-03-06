@@ -16,29 +16,21 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="70.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Game modes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eif-ky-NIe">
-                        <rect key="frame" x="13" y="25" width="112.5" height="21"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First person" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="hZF-us-A8O">
-                        <rect key="frame" x="130.5" y="13" width="176.5" height="44.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="13" y="10" width="294" height="50.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="eif-ky-NIe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="JKp-ih-6bq"/>
-                    <constraint firstItem="hZF-us-A8O" firstAttribute="leading" secondItem="eif-ky-NIe" secondAttribute="trailing" constant="5" id="KFd-Bn-7FQ"/>
-                    <constraint firstItem="eif-ky-NIe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="ZbU-OJ-ftc"/>
-                    <constraint firstItem="hZF-us-A8O" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="cv0-4l-5yQ"/>
+                    <constraint firstItem="hZF-us-A8O" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="cv0-4l-5yQ"/>
+                    <constraint firstItem="hZF-us-A8O" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="jkl-LM-hyA"/>
                     <constraint firstAttribute="trailingMargin" secondItem="hZF-us-A8O" secondAttribute="trailing" constant="5" id="tsz-jb-z8q"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="hZF-us-A8O" secondAttribute="bottom" constant="5" id="ywS-jx-5qz"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="hZF-us-A8O" secondAttribute="bottom" constant="2" id="ywS-jx-5qz"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

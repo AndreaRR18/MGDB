@@ -38,20 +38,21 @@ func fetchPlatform(id: Int32) -> String? {
     return nil
 }
 
-func namePlatformDB(id: Int?, callback:@escaping (String) -> ()) {
+func namePlatformDB(id: Int?, callback:@escaping (String, Bool) -> ()) {
+    var new = true
     if let idPlatform = id {
         if let namePlatform = fetchPlatform(id: Int32(idPlatform)) {
-            callback(namePlatform)
+            new = false
+            callback(namePlatform, new)
         } else {
             let decodeJSON = DecodeJSON(url: getUrlIDPlatform(idPlatform: idPlatform))
             decodeJSON.getPlatform(callback: { arrayPlatforms in
                 guard let idPlatform = arrayPlatforms.first?.idPlatform, let namePlatform = arrayPlatforms.first?.namePlatform else { return }
                 savePlatform(idPlatform: Int32(idPlatform), namePlatform: namePlatform)
-                callback(namePlatform)
+                callback(namePlatform, new)
             })
         }
     } else {
-        return callback("N.D.")
+        return callback("N.D.", new)
     }
 }
-

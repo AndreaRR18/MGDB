@@ -20,25 +20,27 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="company" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="qc2-xf-8C0">
-                        <rect key="frame" x="25" y="11" width="282" height="21"/>
+                        <rect key="frame" x="25" y="13" width="282" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wmd-f0-tXf">
+                        <rect key="frame" x="10" y="11.5" width="10" height="20.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="E3S-fT-BZI"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black point" translatesAutoresizingMaskIntoConstraints="NO" id="tNT-ra-yxm">
-                        <rect key="frame" x="10" y="17" width="10" height="10"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="10" id="Xqh-TR-swj"/>
-                            <constraint firstAttribute="width" constant="10" id="w4n-pr-qZK"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="tNT-ra-yxm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1Dx-YE-p7a"/>
-                    <constraint firstItem="tNT-ra-yxm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="C92-Qe-Pdi"/>
+                    <constraint firstItem="Wmd-f0-tXf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="7Pp-uQ-Gf7"/>
+                    <constraint firstItem="Wmd-f0-tXf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Kvw-E4-w00"/>
+                    <constraint firstItem="qc2-xf-8C0" firstAttribute="leading" secondItem="Wmd-f0-tXf" secondAttribute="trailing" constant="5" id="LjF-ow-wkd"/>
                     <constraint firstAttribute="trailingMargin" secondItem="qc2-xf-8C0" secondAttribute="trailing" constant="5" id="TWr-j0-nuu"/>
                     <constraint firstItem="qc2-xf-8C0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bUh-y9-dhc"/>
-                    <constraint firstItem="qc2-xf-8C0" firstAttribute="leading" secondItem="tNT-ra-yxm" secondAttribute="trailing" constant="5" id="mNi-nn-r1O"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -46,7 +48,4 @@
             </connections>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="black point" width="980" height="980"/>
-    </resources>
 </document>

@@ -15,7 +15,7 @@ struct NibName {
     static var relatedInDescriptionTableViewCell: String { return "RelatedInDescriptionTableViewCell" }
     static var videoDescriptionCollectionViewCell: String { return "VideoDescriptionCollectionViewCell" }
     static var coverViewController: String { return "CoverViewController" }
-    static var releaseDateTableViewCell: String { return "ReleaseDateTableViewCell" }
+    static var releaseDatePlatformTableViewCell: String { return "ReleaseDatePlatformTableViewCell" }
     static var screenshotTableCollectionViewCell: String { return "ScreenshotTableCollectionViewCell" }
     static var videoCollectionTableViewCell: String { return "VideoCollectionTableViewCell" }
     static var developersTableViewCell: String { return "DevelopersTableViewCell" }
@@ -39,7 +39,7 @@ struct Identifier {
     static var relatedInDescriptionTableViewCell: String { return "RelatedInDescriptionTableViewCell" }
     static var videoDescriptionCollectionViewCell: String { return "VideoDescriptionCollectionViewCell" }
     static var coverViewController: String { return "CoverViewController" }
-    static var releaseDateTableViewCell: String { return "ReleaseDateTableViewCell" }
+    static var releaseDatePlatformTableViewCell: String { return "ReleaseDatePlatformTableViewCell" }
     static var screenshotTableCollectionViewCell: String { return "ScreenshotTableCollectionViewCell" }
     static var videoCollectionTableViewCell: String { return "VideoCollectionTableViewCell" }
     static var developersTableViewCell: String { return "DevelopersTableViewCell" }
