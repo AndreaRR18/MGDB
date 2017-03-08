@@ -20,7 +20,7 @@ struct NibName {
     static var videoCollectionTableViewCell: String { return "VideoCollectionTableViewCell" }
     static var developersTableViewCell: String { return "DevelopersTableViewCell" }
     static var publishersTableViewCell: String { return "PublishersTableViewCell" }
-
+    static var favouriteCollectionCell: String { return "FavouriteCollectionViewCell" }
     
 }
 
@@ -44,5 +44,5 @@ struct Identifier {
     static var videoCollectionTableViewCell: String { return "VideoCollectionTableViewCell" }
     static var developersTableViewCell: String { return "DevelopersTableViewCell" }
     static var publishersTableViewCell: String { return "PublishersTableViewCell" }
-
+    static var favouriteCollectionCell: String { return "FavouriteCollectionViewCell" }
 }

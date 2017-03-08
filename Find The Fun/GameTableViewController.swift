@@ -61,8 +61,10 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         }
         
         
-        
-        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "homeIcon 35x35"))
+        let headerImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
+        headerImage.contentMode = .scaleAspectFit
+        headerImage.image = UIImage(named: "prova-esagono-play-def")
+        navigationItem.titleView = headerImage
         navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
         navigationController?.navigationBar.barTintColor = ColorUI.navBar
         
@@ -78,7 +80,6 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         checkReachability()
         
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -155,6 +156,9 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         })
     }
     
+    func pushInfoPage() {
+        navigationController?.pushViewController(About(), animated: true)
+    }
 }
 
 

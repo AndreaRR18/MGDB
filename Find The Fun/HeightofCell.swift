@@ -63,3 +63,38 @@ func heightSummary(_ numberOfCharacters: Int) -> CGFloat {
         return 520
     }
 }
+
+func heightSectionDescription(_ section: Int,_ game: Game) -> CGFloat {
+    switch section {
+    case 9:
+        return 0
+    case 0:
+        return 0
+    case 1:
+        guard game.summary != nil  else { return 0 }
+        return 35
+    case 2:
+        guard let developers = game.developers, developers.count > 0 else { return 0 }
+        return 35
+    case 3:
+        guard let publishers = game.publishers, publishers.count > 0  else { return 0 }
+        return 35
+    case 4:
+        guard let releaseDate = game.releaseDate, releaseDate.count > 0 else { return 0 }
+        return 35
+    case 5:
+        guard let genres = game.genres, genres.count > 0 else { return 0 }
+        return 35
+    case 6:
+        guard let gameModes = game.gameModes, gameModes.count > 0 else { return 0 }
+        return 35
+    case 7:
+        guard let screenshots = game.screenshots, screenshots.count > 0 else { return 0 }
+        return 35
+    case 8:
+        guard let videos = game.videos, videos.count > 0 else { return 0 }
+        return 35
+    default:
+        return 0
+    }
+}

@@ -19,6 +19,7 @@ class ScreenshotCollectionTableViewCell: UITableViewCell, UICollectionViewDelega
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
     func configureScreenshotCollectionTableViewCell(_ screenshot: [Screenshot]) {
         self.screenshotCollectionview?.register(UINib(nibName: NibName.screenshotTableCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: Identifier.screenshotTableCollectionViewCell)
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -46,4 +47,5 @@ class ScreenshotCollectionTableViewCell: UITableViewCell, UICollectionViewDelega
         guard let url = screenshot[indexPath.row].url else  { return }
         self.delegate?.openImage(url: url)
     }
+    
 }

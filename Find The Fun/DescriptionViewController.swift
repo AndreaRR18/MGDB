@@ -5,7 +5,7 @@ let offset_HeaderStop:CGFloat = 50.0 // At this offset the Header stops its tran
 let offset_B_LabelHeader:CGFloat = 61.0 // At this offset the Black label reaches the Header
 let distance_W_LabelHeader:CGFloat = 173.0 // The distance between the bottom of the Header and the top of the White Label
 
-final class DescriptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, VideoDelegate, ScreenshotDelegate {
+final class DescriptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     @IBOutlet weak private var tableView: UITableView?
     @IBOutlet weak private var headerImage: UIImageView?
@@ -80,6 +80,7 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
         buildTableDescription()
         
         tableView?.backgroundColor = UIColor.clear
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -146,55 +147,32 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = ColorUI.headerInSection
+        let headerView = UIView()
         let titleSectionCustom = UILabel()
+        
+        headerView.backgroundColor = ColorUI.headerInSection
+        headerView.addSubview(titleSectionCustom)
+        
         titleSectionCustom.text = titleSection[section]
+        titleSectionCustom.translatesAutoresizingMaskIntoConstraints = false
         titleSectionCustom.sizeToFit()
         titleSectionCustom.textColor = UIColor.black
-        titleSectionCustom.font = UIFont.boldSystemFont(ofSize: 17)
-        titleSectionCustom.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(titleSectionCustom)
-        view.addConstraints(NSLayoutConstraint.constraints(
-            withVisualFormat: "V:[label]-8-|",
-            options: NSLayoutFormatOptions(rawValue: 0),
-            metrics: nil,
-            views: ["label":titleSectionCustom]))
-        view.addConstraint(NSLayoutConstraint(
-            item: view,
-            attribute: .centerX,
-            relatedBy: .equal,
-            toItem: titleSectionCustom,
-            attribute: .centerX,
-            multiplier: 3,
-            constant: 0))
-        return view
+        titleSectionCustom.font = UIFont.boldSystemFont(ofSize: 15)
+        
+        let leadingConstranint = titleSectionCustom.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 10)
+        let bottomConstraint = titleSectionCustom.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -10)
+        let widthConstraint = titleSectionCustom.widthAnchor.constraint(equalTo: headerView.widthAnchor, constant: 300)
+        let constraint = [leadingConstranint, bottomConstraint, widthConstraint]
+        
+        NSLayoutConstraint.activate(constraint)
+        
+        headerView.addConstraints(constraint)
+        
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 0
-        } else if section == 1, gameDescription.summary == nil {
-            return 0
-        } else if section == 2, gameDescription.developers == nil {
-            return 0
-        } else if section == 3, gameDescription.publishers == nil {
-            return 0
-        } else if section == 4, gameDescription.releaseDate == nil {
-            return 0
-        } else if section == 5, gameDescription.genres == nil {
-            return 0
-        } else if section == 6, gameDescription.gameModes == nil {
-            return 0
-        } else if section == 7, gameDescription.screenshots == nil {
-            return 0
-        } else if section == 8, gameDescription.videos == nil {
-            return 0
-        } else if section == 9 {
-            return 20
-        } else {
-            return 60
-        }
+        return heightSectionDescription(section, gameDescription)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -240,50 +218,91 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
         cellFactories[indexPath.section][indexPath.row].didSelectCell(tableView: tableView, indexPath: indexPath, navigationController: navController)
     }
     
-    func saveFavourite() {
-        let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(removeFavourite))
-        navigationItem.rightBarButtonItem = trashButton
-        let cover = UIImageView()
-        cover.af_setImage(
-            withURL: getCover(url: gameDescription.cover?.url)!,
-            placeholderImage: #imageLiteral(resourceName: "img-not-found"),
-            filter: nil,
-            progress: nil,
-            progressQueue: DispatchQueue.main,
-            imageTransition: UIImageView.ImageTransition.crossDissolve(0.1),
-            runImageTransitionIfCached: true,
-            completion: { _ in
-                saveFavouriteGame(
-                    game: self.gameDescription,
-                    image: cover.image!)
-        })
-    }
+//    func saveGame() {
+//        let cover = UIImageView()
+//        cover.af_setImage(
+//            withURL: getCover(url: gameDescription.cover?.url)!,
+//            placeholderImage: #imageLiteral(resourceName: "img-not-found"),
+//            filter: nil,
+//            progress: nil,
+//            progressQueue: DispatchQueue.main,
+//            imageTransition: UIImageView.ImageTransition.crossDissolve(0.1),
+//            runImageTransitionIfCached: true,
+//            completion: { _ in
+//                saveFavouriteGame(
+//                    game: self.gameDescription,
+//                    image: cover.image!)
+//                self.tableView?.reloadData()
+//        })
+//        
+//    }
+//    
+//    func removeGame() {
+//        let alertController = UIAlertController(title: nil, message: "Are you sure you want to delete \(gameDescription.name)", preferredStyle: .actionSheet)
+//        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+//            deleteFavouriteGame(id: Int32(self.gameDescription.idGame))
+//            self.tableView?.reloadData()
+//        }
+//        alertController.addAction(deleteAction)
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+//        alertController.addAction(cancelAction)
+//        navigationController?.present(alertController, animated: true, completion: nil)
+//    }
+//    
+//    func shareGame() {
+//        _ = UITableViewRowAction(style: UITableViewRowActionStyle.default, title: "Share", handler: { (action, indexPath) -> Void in
+//            guard let page = self.gameDescription.internetPage else { return }
+//            let defaultText: Any = "Just checking in at " + "m."+page.replacingOccurrences(of: "https://www.", with: "")
+//            let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+//            self.present(activityController, animated: true, completion: nil)
+//        })
+//    }
     
-    func removeFavourite() {
-        let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(saveFavourite))
-        let alertController = UIAlertController(title: nil, message: "Are you sure you want to delete \(gameDescription.name)", preferredStyle: .actionSheet)
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
-            deleteFavouriteGame(id: Int32(self.gameDescription.idGame))
-            self.navigationItem.rightBarButtonItem = saveButton
-        }
-        alertController.addAction(deleteAction)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertController.addAction(cancelAction)
-        navigationController?.present(alertController, animated: true, completion: nil)
-    }
     
-    func openSafariView(_ url: URL) {
-        let safariVC = SFSafariViewController(url: url)
-        self.present(safariVC, animated: true, completion: nil)
-    }
+    //    func saveFavourite() {
+    //        let trashButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(removeFavourite))
+    //        navigationItem.rightBarButtonItem = trashButton
+    //        let cover = UIImageView()
+    //        cover.af_setImage(
+    //            withURL: getCover(url: gameDescription.cover?.url)!,
+    //            placeholderImage: #imageLiteral(resourceName: "img-not-found"),
+    //            filter: nil,
+    //            progress: nil,
+    //            progressQueue: DispatchQueue.main,
+    //            imageTransition: UIImageView.ImageTransition.crossDissolve(0.1),
+    //            runImageTransitionIfCached: true,
+    //            completion: { _ in
+    //                saveFavouriteGame(
+    //                    game: self.gameDescription,
+    //                    image: cover.image!)
+    //        })
+    //    }
+    //
+    //    func removeFavourite() {
+    //        let saveButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(saveFavourite))
+    //        let alertController = UIAlertController(title: nil, message: "Are you sure you want to delete \(gameDescription.name)", preferredStyle: .actionSheet)
+    //        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+    //            deleteFavouriteGame(id: Int32(self.gameDescription.idGame))
+    //            self.navigationItem.rightBarButtonItem = saveButton
+    //        }
+    //        alertController.addAction(deleteAction)
+    //        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+    //        alertController.addAction(cancelAction)
+    //        navigationController?.present(alertController, animated: true, completion: nil)
+    //    }
     
-    func openImage(url: String) {
-        navigationController?.present(CoverViewController(coverURL: url), animated: true, completion: nil)
-    }
+//    func openSafariView(_ url: URL) {
+//        let safariVC = SFSafariViewController(url: url)
+//        self.present(safariVC, animated: true, completion: nil)
+//    }
+//    
+//    func openImage(url: String) {
+//        navigationController?.present(CoverViewController(coverURL: url), animated: true, completion: nil)
+//    }
     
     func buildTableDescription() {
         let header = HeaderCell()
-        let cover = CoverCell(gameDescription.cover, gameDescription.name, gameDescription.rating)
+        let cover = CoverCell(gameDescription, navigationController, tableView)
         let summary = SummaryCell(gameDescription.summary)
         gameDescription.developers?.forEach { idDeveloper in
             arrayDevelopers.append(DeveloperCell(idDeveloper))

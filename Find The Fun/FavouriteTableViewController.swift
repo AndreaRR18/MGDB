@@ -33,7 +33,6 @@ class FavouriteTableViewController: UITableViewController {
         navigationItem.title = "Favourite"
         navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
         navigationController?.navigationBar.barTintColor = ColorUI.navBar
-
         getGame()
         tableView.reloadData()
     }
@@ -54,6 +53,8 @@ class FavouriteTableViewController: UITableViewController {
     
     
 //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let game = GameCell(game: arrayFavouriteGames[indexPath.row])
+//        return game.getCell(tableView: tableView, indexPath: indexPath)
 //        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
 //        let game = arrayFavouriteGames[indexPath.row]
 //        cell.cover?.image = UIImage(data: game.image as! Data)
@@ -93,4 +94,5 @@ class FavouriteTableViewController: UITableViewController {
         tableView.reloadData()
     }
 }
+
 

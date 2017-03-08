@@ -40,27 +40,79 @@ class HeaderCell: CellFactory {
 }
 
 
-class CoverCell: CellFactory {
-    private let cover: Cover?
-    private let name: String
-    private let rating: Int?
+class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegate {
+    private let game: Game?
+    private let navController: UINavigationController?
+    private let tableView: UITableView?
     
-    init( _ cover: Cover?, _ name: String, _ rating: Int?) {
-        self.cover = cover
-        self.name = name
-        self.rating = rating
+    init(_ game: Game?, _ navController: UINavigationController?, _ tableView: UITableView?) {
+        self.game = game
+        self.navController = navController
+        self.tableView = tableView
     }
     
     func didSelectCell(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController) {
-        guard let url = cover?.url else { return }
-        navigationController.present(CoverViewController(coverURL: url), animated: true, completion: nil)
+//        guard let url = game?.cover?.url else { return }
+//        navigationController.present(CoverViewController(coverURL: url), animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
-        cell.configureCoverTableViewCell(cover, name, rating)
+        cell.configureCoverTableViewCell(game)
+        cell.favouriteDelegate = self
+        cell.shareDelegate = self
+        cell.showCoverDelegate = self
         return cell
     }
+    
+    func saveGame() {
+        guard let game = game else { return }
+        let cover = UIImageView()
+        cover.af_setImage(
+            withURL: getCover(url: game.cover?.url)!,
+            placeholderImage: #imageLiteral(resourceName: "img-not-found"),
+            filter: nil,
+            progress: nil,
+            progressQueue: DispatchQueue.main,
+            imageTransition: UIImageView.ImageTransition.crossDissolve(0.1),
+            runImageTransitionIfCached: true,
+            completion: { _ in
+                guard let cover = cover.image else { return }
+                saveFavouriteGame(
+                    game: game,
+                    image: cover)
+                self.tableView?.reloadData()
+        })
+        
+    }
+    
+    func removeGame() {
+        guard let game = game else { return }
+        let alertController = UIAlertController(title: nil, message: "Are you sure you want to delete \(game.name)", preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            deleteFavouriteGame(id: Int32(game.idGame))
+            self.tableView?.reloadData()
+        }
+        alertController.addAction(deleteAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+        navController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    func shareGame() {
+            guard let page = self.game?.internetPage else { return }
+            let defaultText: Any = "Just checking in at " + "m."+page.replacingOccurrences(of: "https://www.", with: "")
+            let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+            self.navController?.present(activityController, animated: true, completion: nil)
+    }
+    
+    func showCover() {
+        guard let url = game?.cover?.url else { return }
+        navController?.present(CoverViewController(coverURL: url), animated: true, completion: nil)
+    }
+
+    
 }
 
 

@@ -16,18 +16,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="264"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="264"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="263.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Vdd-fC-UxW">
-                        <rect key="frame" x="13" y="13" width="294" height="237"/>
+                        <rect key="frame" x="8" y="13" width="299" height="237"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Vdd-fC-UxW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="7L9-kp-IjH"/>
+                    <constraint firstItem="Vdd-fC-UxW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="7L9-kp-IjH"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Vdd-fC-UxW" secondAttribute="bottom" constant="5" id="RQt-ln-AEO"/>
                     <constraint firstItem="Vdd-fC-UxW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4.5" id="V8i-LE-9jl"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Vdd-fC-UxW" secondAttribute="trailing" constant="5" id="av6-f0-zkc"/>

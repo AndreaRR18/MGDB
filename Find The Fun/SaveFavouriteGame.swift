@@ -72,7 +72,7 @@ func deleteFavouriteGame(id: Int32) {
     }
 }
 
-func fetchGameFavourite(id: Int32) -> Bool {
+func alreadySaved(id: Int32) -> Bool {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
     let context = appDelegate.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FavouriteGameData")
@@ -83,12 +83,12 @@ func fetchGameFavourite(id: Int32) -> Bool {
         let results = try context.fetch(request)
         for result in results as! [NSManagedObject] {
             if id == result.value(forKey: "id") as? Int32 {
-                return false
+                return true
             }
         }
     } catch let error as NSError {
         print("Could not fetch. \(error), \(error.userInfo)")
     }
-    return true
+    return false
 }
 
