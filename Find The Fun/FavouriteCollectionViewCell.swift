@@ -16,6 +16,10 @@ class FavouriteCollectionViewCell: UICollectionViewCell {
         ratingBar?.progress = Float(game.rating) / Float(100)
         self.layer.borderWidth = 0.3
         self.layer.borderColor = UIColor.lightGray.cgColor
+        self.image?.layer.shadowColor = UIColor.black.cgColor
+        self.image?.layer.shadowOpacity = 3
+        self.image?.layer.shadowOffset = CGSize.zero
+        self.image?.layer.shadowRadius = 10
     }
     
     override func awakeFromNib() {

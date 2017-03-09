@@ -103,9 +103,10 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       let game = GameCell(game: arrayGames[indexPath.row])
+//       let game = GameCell(game: arrayGames[indexPath.row])
         guard let navController = navigationController else { return }
-        game.didSelectCell(tableView: tableView, indexPath: indexPath, navigationController: navController)
+        GameCell(game: arrayGames[indexPath.row]).didSelectCell(tableView: tableView, indexPath: indexPath, navigationController: navController)
+//        game.didSelectCell(tableView: tableView, indexPath: indexPath, navigationController: navController)
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

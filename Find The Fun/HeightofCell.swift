@@ -98,3 +98,32 @@ func heightSectionDescription(_ section: Int,_ game: Game) -> CGFloat {
         return 0
     }
 }
+
+func heightFavouriteSectionDescription(_ section: Int,_ game: FavouriteGameData) -> CGFloat {
+    switch section {
+    case 9:
+        return 0
+    case 0:
+        return 0
+    case 1:
+        guard game.summary != nil  else { return 0 }
+        return 35
+    case 2:
+        guard game.company != nil else { return 0 }
+        return 35
+    case 3:
+        guard game.company != nil else { return 0 }
+        return 35
+    case 4:
+        guard game.gamemode != nil else { return 0 }
+        return 35
+    case 5:
+        guard game.genre != nil else { return 0 }
+        return 35
+    case 6:
+        guard game.gamemode != nil else { return 0 }
+        return 35
+    default:
+        return 0
+    }
+}

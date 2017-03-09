@@ -103,10 +103,27 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
     }
     
     func shareGame() {
-            guard let page = self.game?.internetPage else { return }
-            let defaultText: Any = "Just checking in at " + "m."+page.replacingOccurrences(of: "https://www.", with: "")
-            let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
-            self.navController?.present(activityController, animated: true, completion: nil)
+        let firstActivityItem = "Look this game:"
+                let secondActivityItem : NSURL = NSURL(string: game!.internetPage!)!
+                let activityViewController : UIActivityViewController = UIActivityViewController(
+                    activityItems: [firstActivityItem, secondActivityItem], applicationActivities: nil)
+                activityViewController.popoverPresentationController?.permittedArrowDirections = .unknown
+                activityViewController.popoverPresentationController?.sourceRect = CGRect(x: 150, y: 150, width: 0, height: 0)
+                activityViewController.excludedActivityTypes = [
+                    UIActivityType.postToWeibo,
+                    UIActivityType.print,
+                    UIActivityType.assignToContact,
+                    UIActivityType.saveToCameraRoll,
+                    UIActivityType.addToReadingList,
+                    UIActivityType.postToFlickr,
+                    UIActivityType.postToVimeo,
+                    UIActivityType.postToTencentWeibo
+                ]
+                navController?.present(activityViewController, animated: true, completion: nil)
+//            guard let page = self.game?.internetPage else { return }
+//            let defaultText: Any = "Just checking in at " + "m."+page.replacingOccurrences(of: "https://www.", with: "")
+//            let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+//            self.navController?.present(activityController, animated: true, completion: nil)
     }
     
     func showCover() {

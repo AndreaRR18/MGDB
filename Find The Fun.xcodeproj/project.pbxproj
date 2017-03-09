@@ -44,6 +44,8 @@
 		654C4CCA1E6F268700CB07D2 /* FavouriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654C4CC81E6F268700CB07D2 /* FavouriteCollectionViewCell.xib */; };
 		654C4CCD1E6F269F00CB07D2 /* FavouriteCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654C4CCB1E6F269F00CB07D2 /* FavouriteCollectionViewController.swift */; };
 		654C4CCE1E6F269F00CB07D2 /* FavouriteCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654C4CCC1E6F269F00CB07D2 /* FavouriteCollectionViewController.xib */; };
+		654C4CD11E71B34D00CB07D2 /* FavouriteDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654C4CCF1E71B34D00CB07D2 /* FavouriteDescriptionViewController.swift */; };
+		654C4CD21E71B34D00CB07D2 /* FavouriteDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 654C4CD01E71B34D00CB07D2 /* FavouriteDescriptionViewController.xib */; };
 		655564DC1E4345820022C87F /* ReleaseDateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655564DA1E4345820022C87F /* ReleaseDateTableViewController.swift */; };
 		655564DD1E4345820022C87F /* ReleaseDateTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 655564DB1E4345820022C87F /* ReleaseDateTableViewController.xib */; };
 		655564E61E4346EF0022C87F /* ReleaseDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655564E41E4346EF0022C87F /* ReleaseDateTableViewCell.swift */; };
@@ -176,6 +178,8 @@
 		654C4CC81E6F268700CB07D2 /* FavouriteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteCollectionViewCell.xib; sourceTree = "<group>"; };
 		654C4CCB1E6F269F00CB07D2 /* FavouriteCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteCollectionViewController.swift; sourceTree = "<group>"; };
 		654C4CCC1E6F269F00CB07D2 /* FavouriteCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteCollectionViewController.xib; sourceTree = "<group>"; };
+		654C4CCF1E71B34D00CB07D2 /* FavouriteDescriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteDescriptionViewController.swift; sourceTree = "<group>"; };
+		654C4CD01E71B34D00CB07D2 /* FavouriteDescriptionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteDescriptionViewController.xib; sourceTree = "<group>"; };
 		655564DA1E4345820022C87F /* ReleaseDateTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseDateTableViewController.swift; sourceTree = "<group>"; };
 		655564DB1E4345820022C87F /* ReleaseDateTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReleaseDateTableViewController.xib; sourceTree = "<group>"; };
 		655564E41E4346EF0022C87F /* ReleaseDateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseDateTableViewCell.swift; sourceTree = "<group>"; };
@@ -568,6 +572,8 @@
 		659F87521E6597200089067E /* Old file */ = {
 			isa = PBXGroup;
 			children = (
+				65B395B81E40E73500E373B3 /* FavouriteDescriptionTableViewController.swift */,
+				65B395B91E40E73500E373B3 /* FavouriteDescriptionTableViewController.xib */,
 				65B395B51E40E6F500E373B3 /* FavouriteTable */,
 				65FF50CC1E6726BF0004FE42 /* GameDescriptionOld */,
 				65CD7AD41E5DC7D4004DCBAD /* Screenshots */,
@@ -629,8 +635,8 @@
 		65B395B61E40E71200E373B3 /* FavouriteDescription */ = {
 			isa = PBXGroup;
 			children = (
-				65B395B81E40E73500E373B3 /* FavouriteDescriptionTableViewController.swift */,
-				65B395B91E40E73500E373B3 /* FavouriteDescriptionTableViewController.xib */,
+				654C4CCF1E71B34D00CB07D2 /* FavouriteDescriptionViewController.swift */,
+				654C4CD01E71B34D00CB07D2 /* FavouriteDescriptionViewController.xib */,
 			);
 			name = FavouriteDescription;
 			sourceTree = "<group>";
@@ -757,6 +763,7 @@
 				652934941E37969300D2F9ED /* CoverViewController.xib in Resources */,
 				655565191E44A78D0022C87F /* RelatedInDescriptionTableViewCell.xib in Resources */,
 				65B2DEFD1E2CFC2100C3DE70 /* CoverTableViewCell.xib in Resources */,
+				654C4CD21E71B34D00CB07D2 /* FavouriteDescriptionViewController.xib in Resources */,
 				65B395C51E42468800E373B3 /* GameModesTableViewCell.xib in Resources */,
 				65B395B41E40E6C500E373B3 /* FavouriteTableViewController.xib in Resources */,
 				65B2DF051E2CFE9B00C3DE70 /* CompanyTableViewCell.xib in Resources */,
@@ -804,6 +811,7 @@
 				658B30D11E6090D30006AD85 /* PlatformCoreData.swift in Sources */,
 				6541CBAD1E3B90E60071C711 /* Company.swift in Sources */,
 				65B503CC1E6D7AD800ADD9C6 /* TypeCast.swift in Sources */,
+				654C4CD11E71B34D00CB07D2 /* FavouriteDescriptionViewController.swift in Sources */,
 				658B30CB1E608DD70006AD85 /* LogoCompany.swift in Sources */,
 				656C39011E27D1FC0095EDBC /* About.swift in Sources */,
 				659368CF1E64317000E73CBD /* SearchedGameCache.swift in Sources */,

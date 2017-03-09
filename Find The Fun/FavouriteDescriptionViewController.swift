@@ -1,28 +1,26 @@
 import UIKit
 import SafariServices
 
-let offset_HeaderStop:CGFloat = 50.0 // At this offset the Header stops its transformations
-let offset_B_LabelHeader:CGFloat = 90.0 // At this offset the Black label reaches the Header
-let distance_W_LabelHeader:CGFloat = 173.0 // The distance between the bottom of the Header and the top of the White Label
 
-final class DescriptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+
+    @IBOutlet weak var tableView: UITableView?
+    @IBOutlet weak var headerImage: UIImageView?
+    @IBOutlet weak var headerBlurImage: UIImageView?
+    @IBOutlet weak var headerView: UIView?
+    @IBOutlet weak var backButton: UIButton?
+    @IBOutlet weak var titleLabel: UILabel?
     
-    @IBOutlet weak private var tableView: UITableView?
-    @IBOutlet weak private var headerImage: UIImageView?
-    @IBOutlet weak private var headerBlurImage: UIImageView?
-    @IBOutlet weak private var headerView: UIView?
-    @IBOutlet weak private var backButton: UIButton?
-    @IBOutlet weak private var titleLabel: UILabel?
     private var blurredHeaderImageView: UIImageView?
     private var referenceThumbnail: UIImageView?
-    private var gameDescription: Game
+    private var gameDescription: FavouriteGameData
     private var arrayDevelopers: [DeveloperCell] = []
     private var arrayPublishers: [PublisherCell] = []
     private var arrayReleaseDate: [ReleaseDateCell] = []
     private var cellFactories: [[CellFactory]] = []
     private let titleSection = ["", "Summary", "Developers", "Publishers", "Release Date", "Genres", "Games Mode", "Screenshots", "Video", ""]
     
-    required init(game: Game) {
+    required init(game: FavouriteGameData) {
         self.gameDescription = game
         super.init(nibName: "DescriptionViewController", bundle: nil)
     }
@@ -30,11 +28,11 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     @IBAction func backButtonAction(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
@@ -56,39 +54,39 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
         tableView?.register(UINib(nibName: NibName.relatedInDescriptionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.relatedInDescriptionTableViewCell)
         tableView?.register(UINib(nibName: NibName.videoCollectionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.videoCollectionTableViewCell)
         
-        buildTableDescription()
+//        buildTableDescription()
         
         tableView?.backgroundColor = UIColor.clear
-
+        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        titleLabel?.text = gameDescription.name
-        tableView?.reloadData()
-        guard let url = getHDImage(url: gameDescription.cover?.url) else { return }
-        headerImage?.af_setImage(
-            withURL: url,
-            imageTransition: .crossDissolve(0.1),
-            runImageTransitionIfCached: true,
-            completion: { _ in
-                self.headerBlurImage?.image = self.headerImage?.image
-                let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
-                let blurEffectView = UIVisualEffectView(effect: blurEffect)
-                blurEffectView.frame = (self.headerBlurImage?.bounds)!
-                self.headerBlurImage?.addSubview(blurEffectView)
-        })
-        
-        if navigationController?.isNavigationBarHidden == false {
-            navigationController?.setNavigationBarHidden(true, animated: animated)
-            
-        }
-        
-        tabBarController?.tabBar.isTranslucent = false
-        headerBlurImage?.alpha = 0.0
-        headerView?.clipsToBounds = true
-        
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        titleLabel?.text = gameDescription.name
+//        tableView?.reloadData()
+////        guard let url = getHDImage(url: gameDescription.cover?.url) else { return }
+//        headerImage?.af_setImage(
+//            withURL: url,
+//            imageTransition: .crossDissolve(0.1),
+//            runImageTransitionIfCached: true,
+//            completion: { _ in
+//                self.headerBlurImage?.image = self.headerImage?.image
+//                let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+//                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//                blurEffectView.frame = (self.headerBlurImage?.bounds)!
+//                self.headerBlurImage?.addSubview(blurEffectView)
+//        })
+//        
+//        if navigationController?.isNavigationBarHidden == false {
+//            navigationController?.setNavigationBarHidden(true, animated: animated)
+//            
+//        }
+//        
+//        tabBarController?.tabBar.isTranslucent = false
+//        headerBlurImage?.alpha = 0.0
+//        headerView?.clipsToBounds = true
+//        
+//    }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -151,7 +149,7 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return heightSectionDescription(section, gameDescription)
+        return heightFavouriteSectionDescription(section, gameDescription)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -164,24 +162,18 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
         case 2:
             return 50
         case 3:
-            guard gameDescription.developers != nil else { return 0 }
+            guard gameDescription.company != nil else { return 0 }
             return 50
         case 4:
-            guard gameDescription.publishers != nil else { return 0 }
+            guard gameDescription.company != nil else { return 0 }
             return 50
         case 5:
             return 50
         case 6:
             return 50
         case 7:
-            guard gameDescription.screenshots != nil else { return 0 }
-            return 150
-        case 8:
-            guard gameDescription.videos != nil else { return 0 }
-            return 150
-        case 9:
             return 50
-        case 10:
+        case 8:
             return 160
         default:
             return 0
@@ -197,26 +189,25 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
         cellFactories[indexPath.section][indexPath.row].didSelectCell(tableView: tableView, indexPath: indexPath, navigationController: navController)
     }
     
-    func buildTableDescription() {
-        let header = HeaderCell()
-        let cover = CoverCell(gameDescription, navigationController, tableView)
-        let summary = SummaryCell(gameDescription.summary)
-        gameDescription.developers?.forEach { idDeveloper in
-            arrayDevelopers.append(DeveloperCell(idDeveloper))
-        }
-        gameDescription.publishers?.forEach { idPublishers in
-            arrayPublishers.append(PublisherCell(idPublishers))
-        }
-        gameDescription.releaseDate?.forEach { releaseDate in
-            arrayReleaseDate.append(ReleaseDateCell(releaseDate))
-        }
-        let genres = GenreCell(gameDescription.genres ?? [])
-        let gamesMode = GameModeCell(gameDescription.gameModes ?? [])
-        let screenshots = ScreenshotCell(screenshots: gameDescription.screenshots, navigationController: navigationController)
-        let related = RelatedCell(gameDescription.genres ?? [])
-        let video = VideoCell(video: gameDescription.videos, navigationController: navigationController)
-        
-        cellFactories = [[header, cover], [summary], arrayDevelopers, arrayPublishers, arrayReleaseDate, [genres], [gamesMode], [screenshots], [video], [related] ]
-    }
+//    func buildTableDescription() {
+//        let header = HeaderCell()
+//        let cover = CoverCell(gameDescription, navigationController, tableView)
+//        let summary = SummaryCell(gameDescription.summary)
+//        gameDescription.developers?.forEach { idDeveloper in
+//            arrayDevelopers.append(DeveloperCell(idDeveloper))
+//        }
+//        gameDescription.publishers?.forEach { idPublishers in
+//            arrayPublishers.append(PublisherCell(idPublishers))
+//        }
+//        gameDescription.releaseDate?.forEach { releaseDate in
+//            arrayReleaseDate.append(ReleaseDateCell(releaseDate))
+//        }
+//        let genres = GenreCell(gameDescription.genres ?? [])
+//        let gamesMode = GameModeCell(gameDescription.gameModes ?? [])
+//        let screenshots = ScreenshotCell(screenshots: gameDescription.screenshots, navigationController: navigationController)
+//        
+//        cellFactories = [[header, cover], [summary], arrayDevelopers, arrayPublishers, arrayReleaseDate, [genres], [gamesMode], [screenshots], [video], [related] ]
+//    }
+
     
 }

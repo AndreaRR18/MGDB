@@ -5,13 +5,18 @@ private let reuseIdentifier = "FavouriteCollectionViewCell"
 class FavouriteCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var favouriteGame: [FavouriteGameData]? = []
-    private let sectionInsets = UIEdgeInsets(top: 40, left: 10, bottom: 40, right: 10)
+    private let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 40, right: 10)
     private let itemsPerRow: CGFloat = 2
     var favouriteGameChange: [FavouriteGameData] = []
     
     init() {
         super.init(nibName: "FavouriteCollectionViewController", bundle: nil)
         self.favouriteGame = self.getGame()
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("ChangeFavouriteGame"), object: nil, queue: nil) { _ in
+            self.favouriteGame = self.getGame()
+            self.collectionView?.reloadData()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,6 +77,10 @@ class FavouriteCollectionViewController: UICollectionViewController, UICollectio
         cell.configureFavouriteGameCell(favouriteGame?[indexPath.row])
         return cell
     }
+    
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let navController = navigationController else { return }
+//    }
     
     
     
