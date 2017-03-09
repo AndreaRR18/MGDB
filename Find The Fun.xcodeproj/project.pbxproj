@@ -568,6 +568,7 @@
 		659F87521E6597200089067E /* Old file */ = {
 			isa = PBXGroup;
 			children = (
+				65B395B51E40E6F500E373B3 /* FavouriteTable */,
 				65FF50CC1E6726BF0004FE42 /* GameDescriptionOld */,
 				65CD7AD41E5DC7D4004DCBAD /* Screenshots */,
 				658257A21E4C69CD004AD4C6 /* Videos */,
@@ -606,7 +607,10 @@
 		65B395B01E40E69100E373B3 /* Favourite */ = {
 			isa = PBXGroup;
 			children = (
-				65B395B51E40E6F500E373B3 /* FavouriteTable */,
+				654C4CCB1E6F269F00CB07D2 /* FavouriteCollectionViewController.swift */,
+				654C4CCC1E6F269F00CB07D2 /* FavouriteCollectionViewController.xib */,
+				654C4CC71E6F268700CB07D2 /* FavouriteCollectionViewCell.swift */,
+				654C4CC81E6F268700CB07D2 /* FavouriteCollectionViewCell.xib */,
 				65B395B61E40E71200E373B3 /* FavouriteDescription */,
 				65B395BC1E40EC6300E373B3 /* SaveFavouriteGame.swift */,
 			);
@@ -618,10 +622,6 @@
 			children = (
 				65B395B11E40E6C500E373B3 /* FavouriteTableViewController.swift */,
 				65B395B21E40E6C500E373B3 /* FavouriteTableViewController.xib */,
-				654C4CCB1E6F269F00CB07D2 /* FavouriteCollectionViewController.swift */,
-				654C4CCC1E6F269F00CB07D2 /* FavouriteCollectionViewController.xib */,
-				654C4CC71E6F268700CB07D2 /* FavouriteCollectionViewCell.swift */,
-				654C4CC81E6F268700CB07D2 /* FavouriteCollectionViewCell.xib */,
 			);
 			name = FavouriteTable;
 			sourceTree = "<group>";

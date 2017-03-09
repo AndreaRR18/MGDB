@@ -52,8 +52,6 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
     }
     
     func didSelectCell(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController) {
-//        guard let url = game?.cover?.url else { return }
-//        navigationController.present(CoverViewController(coverURL: url), animated: true, completion: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -66,9 +64,11 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
         return cell
     }
     
-    func saveGame() {
+    func saveGame(game: Game?) {
         guard let game = game else { return }
         let cover = UIImageView()
+        let activityIndicator = ActivityIndicator(view: self.tableView!, background: .clear, activityIndicatorColor: .darkGray)
+        activityIndicator.startAnimating()
         cover.af_setImage(
             withURL: getCover(url: game.cover?.url)!,
             placeholderImage: #imageLiteral(resourceName: "img-not-found"),
@@ -79,20 +79,22 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
             runImageTransitionIfCached: true,
             completion: { _ in
                 guard let cover = cover.image else { return }
-                saveFavouriteGame(
+                                saveFavouriteGame(
                     game: game,
                     image: cover)
+                activityIndicator.stopAnimating()
                 self.tableView?.reloadData()
+                NotificationCenter.default.post(name: NSNotification.Name("ChangeFavouriteGame"), object: nil)
         })
-        
     }
     
-    func removeGame() {
+    func removeGame(game: Game?) {
         guard let game = game else { return }
         let alertController = UIAlertController(title: nil, message: "Are you sure you want to delete \(game.name)", preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
             deleteFavouriteGame(id: Int32(game.idGame))
             self.tableView?.reloadData()
+            NotificationCenter.default.post(name: NSNotification.Name("ChangeFavouriteGame"), object: nil)
         }
         alertController.addAction(deleteAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)

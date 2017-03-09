@@ -5,7 +5,7 @@ class TabBar: UITabBarController {
     
     let newsViewGameTableViewController = GameTableViewController()
     let searchGameTableViewController = SearchGamesTableViewController()
-    let favouriteGameTableViewController = FavouriteTableViewController()
+    let favouriteGameTableViewController = FavouriteCollectionViewController()
     let aboutViewGameTableViewController = About()
     
     func setTabBarController() -> [UIViewController] {

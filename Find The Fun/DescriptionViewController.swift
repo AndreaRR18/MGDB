@@ -2,7 +2,7 @@ import UIKit
 import SafariServices
 
 let offset_HeaderStop:CGFloat = 50.0 // At this offset the Header stops its transformations
-let offset_B_LabelHeader:CGFloat = 61.0 // At this offset the Black label reaches the Header
+let offset_B_LabelHeader:CGFloat = 90.0 // At this offset the Black label reaches the Header
 let distance_W_LabelHeader:CGFloat = 173.0 // The distance between the bottom of the Header and the top of the White Label
 
 final class DescriptionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
@@ -80,7 +80,7 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
         buildTableDescription()
         
         tableView?.backgroundColor = UIColor.clear
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -178,7 +178,7 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 90
+            return 105
         case 1:
             guard let summary = gameDescription.summary, summary.characters.count > 0 else { return 0 }
             return 250

@@ -1,8 +1,8 @@
 import UIKit
 
 protocol FavouriteDelegate: class {
-    func saveGame()
-    func removeGame()
+    func saveGame(game: Game?)
+    func removeGame(game: Game?)
 }
 
 protocol ShareDelegate: class {
@@ -68,21 +68,19 @@ class CoverTableViewCell: UITableViewCell {
         self.layer.zPosition = 3
         self.game = game
         if let game = game, alreadySaved(id: Int32(game.idGame)) {
-            saveButton?.setImage(#imageLiteral(resourceName: "StarFull"), for: .normal)
-            saveButton?.addTarget(self, action: #selector(self.removeGame), for: .touchUpInside)
+            saveButton?.setImage(#imageLiteral(resourceName: "fullStar"), for: .normal)
         } else {
-            saveButton?.setImage(#imageLiteral(resourceName: "StarEmpty"), for: .normal)
-            saveButton?.addTarget(self, action: #selector(self.saveGame), for: .touchUpInside)
+            saveButton?.setImage(#imageLiteral(resourceName: "emptyStar"), for: .normal)
         }
         shareButton?.addTarget(self, action: #selector(self.shareGame), for: .touchUpInside)
     }
     
     func saveGame() {
-      self.favouriteDelegate?.saveGame()
+        self.favouriteDelegate?.saveGame(game: game)
     }
     
     func removeGame() {
-        self.favouriteDelegate?.removeGame()
+        self.favouriteDelegate?.removeGame(game: game)
     }
     
     func shareGame() {

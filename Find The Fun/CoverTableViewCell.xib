@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="343" height="66"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="343" height="65.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="343" height="66"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="a1O-v6-S5j">
@@ -59,28 +59,27 @@
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="G8I-So-lr5">
-                        <rect key="frame" x="296" y="10" width="20" height="76"/>
+                        <rect key="frame" x="296" y="10" width="35" height="76"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fad-0K-rUs">
-                                <rect key="frame" x="0.0" y="0.0" width="20" height="28"/>
+                                <rect key="frame" x="0.0" y="0.0" width="35" height="28"/>
                                 <state key="normal" image="share"/>
                                 <connections>
                                     <action selector="share:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mTr-sA-VKY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7C-81-j9U">
-                                <rect key="frame" x="0.0" y="48" width="20" height="28"/>
+                                <rect key="frame" x="2.5" y="48" width="30" height="28"/>
                                 <state key="normal">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="favourite:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="d0O-w8-hXO"/>
-                                    <action selector="favoutire:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1nH-y2-m23"/>
                                 </connections>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="width" constant="20" id="9RC-NZ-PS8"/>
+                            <constraint firstAttribute="width" constant="35" id="9RC-NZ-PS8"/>
                             <constraint firstAttribute="height" constant="75.5" id="ZUv-Jw-Rhu"/>
                         </constraints>
                     </stackView>

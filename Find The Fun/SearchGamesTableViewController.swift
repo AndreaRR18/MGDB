@@ -98,7 +98,7 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
                     game.name
                         .replacingOccurrences(of: " ", with: "")
                         .lowercased()
-//                        .contains(searchText.replacingOccurrences(of: " ", with: "").lowercased())
+                        .contains(searchText.replacingOccurrences(of: " ", with: "").lowercased())
                 }
                 activityIndicator.stopAnimating()
                 self.tableView.reloadData()

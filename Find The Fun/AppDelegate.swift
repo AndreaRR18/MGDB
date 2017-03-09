@@ -16,14 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navControllerSearchGameTableViewController = UINavigationController(rootViewController: SearchGamesTableViewController())
         navControllerSearchGameTableViewController.tabBarItem = UITabBarItem(title: "Search", image: #imageLiteral(resourceName: "lens35x35"), tag: 1)
 
-//        let navControllerFavouriteGameTableViewController = UINavigationController(rootViewController: FavouriteTableViewController())
-//        navControllerFavouriteGameTableViewController.tabBarItem = UITabBarItem(title: "Favourite", image: #imageLiteral(resourceName: "favourites 40x40"), tag: 2)
+        let navControllerFavouriteGameTableViewController = UINavigationController(rootViewController: FavouriteCollectionViewController())
+        navControllerFavouriteGameTableViewController.tabBarItem = UITabBarItem(title: "Favourite", image: #imageLiteral(resourceName: "iconFavourite"), tag: 2)
 
         let navControllerAboutViewGameTableViewController = UINavigationController(rootViewController: About())
         navControllerAboutViewGameTableViewController.tabBarItem = UITabBarItem(title: "About", image: #imageLiteral(resourceName: "infoButton"), tag: 3)
 
-        let elementTabBarController = [navControllerGameTableViewController, navControllerSearchGameTableViewController , navControllerAboutViewGameTableViewController]
-//        let elementTabBarController = [navControllerGameTableViewController, navControllerSearchGameTableViewController, navControllerFavouriteGameTableViewController, navControllerAboutViewGameTableViewController]
+        let elementTabBarController = [navControllerGameTableViewController, navControllerSearchGameTableViewController, navControllerFavouriteGameTableViewController, navControllerAboutViewGameTableViewController]
 
         tabBarController.viewControllers = elementTabBarController
         tabBarController.navigationController?.navigationBar.isTranslucent = false
