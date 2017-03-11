@@ -46,6 +46,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         refreshControl?.tintColor = UIColor.gray
         
         navigationController?.toolbar.isHidden = false
+
     }
     
     deinit {
@@ -94,7 +95,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 140
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
