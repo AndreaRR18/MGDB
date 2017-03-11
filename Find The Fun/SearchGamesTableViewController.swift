@@ -67,8 +67,8 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let navController = navigationController else { return }
-        arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayGames[indexPath.row])
-        
+//        arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayGames[indexPath.row])
+        GameCell(game: arrayGames[indexPath.row]).didSelectCell(tableView: tableView, indexPath: indexPath, navigationController: navController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 

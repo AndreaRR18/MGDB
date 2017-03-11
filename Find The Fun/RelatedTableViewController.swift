@@ -80,13 +80,11 @@ class RelatedTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
         cell.configureGameCell(arrayGames[indexPath.row])
         return cell
-
-//        return arrayGames[indexPath.row].getCellForTableViewController(tableView: tableView, indexPath: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let navController = navigationController else { return }
-        arrayGames[indexPath.row].didSelectGame(tableView: tableView, indexPath: indexPath, navigationController: navController, game: arrayGames[indexPath.row])
+        GameCell(game: arrayGames[indexPath.row]).didSelectCell(tableView: tableView, indexPath: indexPath, navigationController: navController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

@@ -1,15 +1,5 @@
 import Foundation
 import UIKit
-import SafariServices
-
-protocol CellFactory {
-    func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell
-    func didSelectCell(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController)
-}
-
-
-
-
 
 class FavouriteCoverCell: CellFactory, ShareDelegate, FavouriteDelegate {
     private let name: String?
@@ -98,17 +88,3 @@ class FavouriteCoverCell: CellFactory, ShareDelegate, FavouriteDelegate {
         navController?.present(activityViewController, animated: true, completion: nil)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
