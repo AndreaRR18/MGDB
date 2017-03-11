@@ -75,6 +75,18 @@ class CoverTableViewCell: UITableViewCell {
         shareButton?.addTarget(self, action: #selector(self.shareGame), for: .touchUpInside)
     }
     
+    func configureFavouriteCoverTableViewCell(_ name: String?, _ image: UIImage?, _ rating: Int?) {
+        thumbnail?.layer.shadowColor = UIColor.black.cgColor
+        thumbnail?.layer.shadowOpacity = 3
+        thumbnail?.layer.shadowOffset = CGSize.zero
+        thumbnail?.layer.shadowRadius = 4
+        thumbnail?.image = image
+        self.name?.text = name
+        self.ratingProgressView?.progress = Float(game?.rating ?? 1) / Float(100)
+        saveButton?.isHidden = true
+        shareButton?.isHidden = true
+    }
+    
     func saveGame() {
         self.favouriteDelegate?.saveGame(game: game)
     }

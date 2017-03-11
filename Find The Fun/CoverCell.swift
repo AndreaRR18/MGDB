@@ -1,29 +1,13 @@
 import Foundation
 import UIKit
-import SafariServices
 
-protocol CellFactory {
-    func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell
-    func didSelectCell(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController)
-}
-
-
-
-
-
-class FavouriteCoverCell: CellFactory, ShareDelegate, FavouriteDelegate {
-    private let name: String?
-    private let cover: UIImage?
-    private let rating: Int?
-    private let internetPage: String?
+class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegate {
+    private let game: Game?
     private let navController: UINavigationController?
     private let tableView: UITableView?
     
-    init(name: String?, cover: UIImage?, rating: Int?, internetPage: String?, navController: UINavigationController?, tableView: UITableView?) {
-        self.name = name
-        self.cover = cover
-        self.rating = rating
-        self.internetPage = internetPage
+    init(_ game: Game?, _ navController: UINavigationController?, _ tableView: UITableView?) {
+        self.game = game
         self.navController = navController
         self.tableView = tableView
     }
@@ -34,9 +18,10 @@ class FavouriteCoverCell: CellFactory, ShareDelegate, FavouriteDelegate {
     
     func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
-        cell.configureFavouriteCoverTableViewCell(name, cover, rating)
+        cell.configureCoverTableViewCell(game)
         cell.favouriteDelegate = self
         cell.shareDelegate = self
+        cell.showCoverDelegate = self
         return cell
     }
     
@@ -80,7 +65,7 @@ class FavouriteCoverCell: CellFactory, ShareDelegate, FavouriteDelegate {
     
     func shareGame() {
         let firstActivityItem = "Look this game:"
-        let secondActivityItem : NSURL = NSURL(string: internetPage!)!
+        let secondActivityItem : NSURL = NSURL(string: game!.internetPage!)!
         let activityViewController : UIActivityViewController = UIActivityViewController(
             activityItems: [firstActivityItem, secondActivityItem], applicationActivities: nil)
         activityViewController.popoverPresentationController?.permittedArrowDirections = .unknown
@@ -97,18 +82,11 @@ class FavouriteCoverCell: CellFactory, ShareDelegate, FavouriteDelegate {
         ]
         navController?.present(activityViewController, animated: true, completion: nil)
     }
+    
+    func showCover() {
+        guard let url = game?.cover?.url else { return }
+        navController?.present(CoverViewController(coverURL: url), animated: true, completion: nil)
+    }
+    
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

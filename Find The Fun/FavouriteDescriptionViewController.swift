@@ -54,39 +54,11 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
         tableView?.register(UINib(nibName: NibName.relatedInDescriptionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.relatedInDescriptionTableViewCell)
         tableView?.register(UINib(nibName: NibName.videoCollectionTableViewCell, bundle: nil), forCellReuseIdentifier: Identifier.videoCollectionTableViewCell)
         
-//        buildTableDescription()
+        buildTableDescription()
         
         tableView?.backgroundColor = UIColor.clear
         
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        titleLabel?.text = gameDescription.name
-//        tableView?.reloadData()
-////        guard let url = getHDImage(url: gameDescription.cover?.url) else { return }
-//        headerImage?.af_setImage(
-//            withURL: url,
-//            imageTransition: .crossDissolve(0.1),
-//            runImageTransitionIfCached: true,
-//            completion: { _ in
-//                self.headerBlurImage?.image = self.headerImage?.image
-//                let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
-//                let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//                blurEffectView.frame = (self.headerBlurImage?.bounds)!
-//                self.headerBlurImage?.addSubview(blurEffectView)
-//        })
-//        
-//        if navigationController?.isNavigationBarHidden == false {
-//            navigationController?.setNavigationBarHidden(true, animated: animated)
-//            
-//        }
-//        
-//        tabBarController?.tabBar.isTranslucent = false
-//        headerBlurImage?.alpha = 0.0
-//        headerView?.clipsToBounds = true
-//        
-//    }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -184,30 +156,16 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
         return cellFactories[indexPath.section][indexPath.row].getCell(tableView: tableView, indexPath: indexPath)
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let navController = navigationController else { return }
-        cellFactories[indexPath.section][indexPath.row].didSelectCell(tableView: tableView, indexPath: indexPath, navigationController: navController)
+    func buildTableDescription() {
+        let game = Game(idGame: Int(gameDescription.id), name: gameDescription.name!, summary: gameDescription.summary, rating: Int(gameDescription.rating), developers: nil, publishers: nil, updatedAt: nil, releaseDate: nil, cover: nil, genres: nil, gameModes: nil, screenshots: nil, internetPage: nil, videos: nil)
+        let header = HeaderCell()
+        let cover = FavouriteCoverCell(name: game.name, cover: UIImage(data: gameDescription.image as! Data), rating: Int(gameDescription.rating), internetPage: nil, navController: navigationController, tableView: tableView)
+        
+        let summary = SummaryCell(gameDescription.summary)
+        let genres = GenreCell(game.genres ?? [])
+        let gamesMode = GameModeCell(game.gameModes ?? [])
+        cellFactories = [[header, cover], [summary], [genres], [gamesMode] ]
     }
-    
-//    func buildTableDescription() {
-//        let header = HeaderCell()
-//        let cover = CoverCell(gameDescription, navigationController, tableView)
-//        let summary = SummaryCell(gameDescription.summary)
-//        gameDescription.developers?.forEach { idDeveloper in
-//            arrayDevelopers.append(DeveloperCell(idDeveloper))
-//        }
-//        gameDescription.publishers?.forEach { idPublishers in
-//            arrayPublishers.append(PublisherCell(idPublishers))
-//        }
-//        gameDescription.releaseDate?.forEach { releaseDate in
-//            arrayReleaseDate.append(ReleaseDateCell(releaseDate))
-//        }
-//        let genres = GenreCell(gameDescription.genres ?? [])
-//        let gamesMode = GameModeCell(gameDescription.gameModes ?? [])
-//        let screenshots = ScreenshotCell(screenshots: gameDescription.screenshots, navigationController: navigationController)
-//        
-//        cellFactories = [[header, cover], [summary], arrayDevelopers, arrayPublishers, arrayReleaseDate, [genres], [gamesMode], [screenshots], [video], [related] ]
-//    }
 
     
 }

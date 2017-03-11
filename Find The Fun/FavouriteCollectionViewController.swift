@@ -78,9 +78,10 @@ class FavouriteCollectionViewController: UICollectionViewController, UICollectio
         return cell
     }
     
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let navController = navigationController else { return }
-//    }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let navController = navigationController, let favouriteGame = favouriteGame?[indexPath.row] else { return }
+        navController.pushViewController(FavouriteDescriptionViewController(game: favouriteGame), animated: true)
+    }
     
     
     
