@@ -46,7 +46,6 @@ class VideoCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let idVideo = video[indexPath.row].video_id, let url = getVideo(videoid: idVideo) else { return }
-        print(url)
         self.delegate?.openSafariView(url)
     }
     

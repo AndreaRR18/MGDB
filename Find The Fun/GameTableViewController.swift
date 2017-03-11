@@ -103,10 +103,8 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//       let game = GameCell(game: arrayGames[indexPath.row])
         guard let navController = navigationController else { return }
         GameCell(game: arrayGames[indexPath.row]).didSelectCell(tableView: tableView, indexPath: indexPath, navigationController: navController)
-//        game.didSelectCell(tableView: tableView, indexPath: indexPath, navigationController: navController)
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -139,7 +137,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         if r.isReachable {
             print("Sono Connesso!")
         } else {
-            print("Oops, mi dispiace ma non ce la faccio!")
+            print("Non sono Connesso!")
         }
     }
     
