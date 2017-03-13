@@ -2,7 +2,8 @@ import UIKit
 
 private let reuseIdentifier = "FavouriteCollectionViewCell"
 
-class FavouriteCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class FavouriteCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, DeleteDelegate {
+    
     
     var favouriteGame: [FavouriteGameData]? = []
     private let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 40, right: 10)
@@ -74,6 +75,7 @@ class FavouriteCollectionViewController: UICollectionViewController, UICollectio
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.favouriteCollectionCell, for: indexPath) as! FavouriteCollectionViewCell
+        cell.delegate = self
         cell.configureFavouriteGameCell(favouriteGame?[indexPath.row])
         return cell
     }
@@ -110,4 +112,10 @@ class FavouriteCollectionViewController: UICollectionViewController, UICollectio
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
             return sectionInsets.left
         }
+    
+    func delete(idGame: Int32) {
+        deleteFavouriteGame(id: idGame)
+        NotificationCenter.default.post(name: NSNotification.Name("ChangeFavouriteGame"), object: nil)
+    }
+
 }

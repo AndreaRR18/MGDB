@@ -109,10 +109,10 @@ func heightFavouriteSectionDescription(_ section: Int,_ game: FavouriteGameData)
         guard game.summary != nil  else { return 0 }
         return 35
     case 2:
-        guard game.company != nil else { return 0 }
+        guard game.developers != nil else { return 0 }
         return 35
     case 3:
-        guard game.company != nil else { return 0 }
+        guard game.publishers != nil else { return 0 }
         return 35
     case 4:
         guard game.gamemode != nil else { return 0 }

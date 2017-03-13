@@ -134,10 +134,10 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
         case 2:
             return 50
         case 3:
-            guard gameDescription.company != nil else { return 0 }
+            guard gameDescription.developers != nil else { return 0 }
             return 50
         case 4:
-            guard gameDescription.company != nil else { return 0 }
+            guard gameDescription.publishers != nil else { return 0 }
             return 50
         case 5:
             return 50
@@ -157,7 +157,23 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
     }
     
     func buildTableDescription() {
-        let game = Game(idGame: Int(gameDescription.id), name: gameDescription.name!, summary: gameDescription.summary, rating: Int(gameDescription.rating), developers: nil, publishers: nil, updatedAt: nil, releaseDate: nil, cover: nil, genres: nil, gameModes: nil, screenshots: nil, internetPage: nil, videos: nil)
+        let game = Game(
+            idGame: Int(gameDescription.id),
+            name: gameDescription.name ?? "",
+            summary: gameDescription.summary,
+            rating: Int(gameDescription.rating),
+            developers: gameDescription.developers?.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy: ", ").flatMap{ Int($0) },
+            publishers: gameDescription.developers?.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy: ", ").flatMap{ Int($0) },
+            updatedAt: nil,
+            releaseDate: nil,
+            cover: nil,
+            genres: gameDescription.genre?.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy: ", ").flatMap{ Int($0) },
+            gameModes: gameDescription.gamemode?.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy: ", ").flatMap{ Int($0) },
+            screenshots: nil,
+            internetPage: gameDescription.internetPage,
+            videos: nil)
+        
+        
         let header = HeaderCell()
         let cover = FavouriteCoverCell(name: game.name, cover: UIImage(data: gameDescription.image as! Data), rating: Int(gameDescription.rating), internetPage: nil, navController: navigationController, tableView: tableView)
         

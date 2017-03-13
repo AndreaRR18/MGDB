@@ -61,9 +61,36 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0w-m6-pQF">
+                        <rect key="frame" x="159" y="10" width="30" height="30"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="56C-yh-FuB">
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6R-xY-Imn">
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                <connections>
+                                    <action selector="deleteAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="7Mr-zJ-Wq4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="56C-yh-FuB" secondAttribute="trailing" id="8RS-sA-byP"/>
+                            <constraint firstAttribute="bottom" secondItem="56C-yh-FuB" secondAttribute="bottom" id="GWt-X6-ir8"/>
+                            <constraint firstItem="Q6R-xY-Imn" firstAttribute="top" secondItem="d0w-m6-pQF" secondAttribute="top" id="QLN-gC-eRs"/>
+                            <constraint firstItem="56C-yh-FuB" firstAttribute="top" secondItem="d0w-m6-pQF" secondAttribute="top" id="RZB-B6-MOF"/>
+                            <constraint firstAttribute="trailing" secondItem="Q6R-xY-Imn" secondAttribute="trailing" id="SgK-Db-HCF"/>
+                            <constraint firstItem="56C-yh-FuB" firstAttribute="leading" secondItem="d0w-m6-pQF" secondAttribute="leading" id="UuF-Kp-WAZ"/>
+                            <constraint firstAttribute="width" constant="30" id="ZMf-kz-bns"/>
+                            <constraint firstItem="Q6R-xY-Imn" firstAttribute="leading" secondItem="d0w-m6-pQF" secondAttribute="leading" id="hgw-Dc-d5n"/>
+                            <constraint firstAttribute="height" constant="30" id="kY4-q5-Hlz"/>
+                            <constraint firstAttribute="bottom" secondItem="Q6R-xY-Imn" secondAttribute="bottom" id="w43-I6-zvx"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="d0w-m6-pQF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="32h-dw-x0p"/>
                 <constraint firstItem="K0X-on-Mud" firstAttribute="top" secondItem="l0L-hp-Do2" secondAttribute="bottom" constant="3" id="4DO-ls-m8A"/>
                 <constraint firstItem="f6r-33-hNe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="57e-Dz-DJn"/>
                 <constraint firstItem="l0L-hp-Do2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="7Je-7W-HEI"/>
@@ -76,10 +103,12 @@
                 <constraint firstItem="f6r-33-hNe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Xin-0w-88m"/>
                 <constraint firstAttribute="bottom" secondItem="K0X-on-Mud" secondAttribute="bottom" constant="5" id="cBR-bp-shw"/>
                 <constraint firstAttribute="trailing" secondItem="l0L-hp-Do2" secondAttribute="trailing" constant="5" id="eEZ-J2-Bc6"/>
+                <constraint firstAttribute="trailing" secondItem="d0w-m6-pQF" secondAttribute="trailing" constant="10" id="lrb-GY-qcM"/>
                 <constraint firstItem="4c7-Nd-CG9" firstAttribute="top" secondItem="l0L-hp-Do2" secondAttribute="bottom" constant="10" id="mmq-h2-MM0"/>
             </constraints>
             <size key="customSize" width="199" height="255"/>
             <connections>
+                <outlet property="delete" destination="56C-yh-FuB" id="EvF-nN-UP6"/>
                 <outlet property="image" destination="f6r-33-hNe" id="oF1-Gd-Whw"/>
                 <outlet property="ratingBar" destination="1M8-UH-JLR" id="0h4-M8-Bxo"/>
                 <outlet property="title" destination="l0L-hp-Do2" id="RnQ-mG-fWo"/>

@@ -70,7 +70,8 @@ class FavouriteCoverCell: CellFactory, ShareDelegate, FavouriteDelegate {
     
     func shareGame() {
         let firstActivityItem = "Look this game:"
-        let secondActivityItem : NSURL = NSURL(string: internetPage!)!
+        guard let internetPage = internetPage, let NSURL = NSURL(string: internetPage) else { return }
+        let secondActivityItem : NSURL = NSURL
         let activityViewController : UIActivityViewController = UIActivityViewController(
             activityItems: [firstActivityItem, secondActivityItem], applicationActivities: nil)
         activityViewController.popoverPresentationController?.permittedArrowDirections = .unknown

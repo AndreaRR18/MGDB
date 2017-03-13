@@ -83,8 +83,9 @@ class CoverTableViewCell: UITableViewCell {
         thumbnail?.image = image
         self.name?.text = name
         self.ratingProgressView?.progress = Float(game?.rating ?? 1) / Float(100)
-        saveButton?.isHidden = true
-        shareButton?.isHidden = true
+        saveButton?.setImage(#imageLiteral(resourceName: "fullStar"), for: .normal)
+        saveButton?.addTarget(self, action: #selector(self.removeGame), for: .touchUpInside)
+//        shareButton?.addTarget(self, action: #selector(self.shareGame), for: .touchUpInside)        
     }
     
     func saveGame() {

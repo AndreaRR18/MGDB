@@ -4,14 +4,14 @@ import CoreData
 
 func saveCompany(idCompany: Int32, nameCompany: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    var arrayCompanies: [NSManagedObject] = []
+//    var arrayCompanies: [NSManagedObject] = []
     let context = appDelegate.persistentContainer.viewContext
     let newCompany = NSEntityDescription.insertNewObject(forEntityName: "CompaniesData", into: context)
     newCompany.setValue(idCompany, forKey: "idCompany")
     newCompany.setValue(nameCompany, forKey: "nameCompany")
     do {
         try context.save()
-        arrayCompanies.append(newCompany)
+//        arrayCompanies.append(newCompany)
         print("Save \(nameCompany)")
     } catch let error as NSError {
         print("Could not save. \(error), \(error.userInfo)")

@@ -23,7 +23,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         
         _ = reachability?.startNotifier()
         
-        if let reachabilityIsValid = reachability?.isReachable, reachabilityIsValid {
+//        if let reachabilityIsValid = reachability?.isReachable, reachabilityIsValid {
             activityIndicator.startAnimating()
             let decodedJSON = DecodeJSON(url: gamesURL)
             decodedJSON.getNewGames(callback: { arrayGames in
@@ -32,14 +32,14 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
                 self.tableView.reloadData()
                 
             })
-        }else {
-            do {
-                try self.arrayGames = cachedGame.getJSONData() ?? []
-                self.tableView.reloadData()
-            } catch {
-                print(error)
-            }
-        }
+//        }else {
+//            do {
+//                try self.arrayGames = cachedGame.getJSONData() ?? []
+//                self.tableView.reloadData()
+//            } catch {
+//                print(error)
+//            }
+//        }
         
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
