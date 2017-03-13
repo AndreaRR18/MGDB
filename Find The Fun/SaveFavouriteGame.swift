@@ -6,7 +6,6 @@ import AlamofireImage
 func saveFavouriteGame(game: Game, image: UIImage) {
     
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    var arrayFavouriteGames: [NSManagedObject] = []
     let context = appDelegate.persistentContainer.viewContext
     let newFavuoriteGame = NSEntityDescription.insertNewObject(forEntityName: "FavouriteGameData", into: context)
     newFavuoriteGame.setValue(game.idGame, forKey: "id")
@@ -22,7 +21,6 @@ func saveFavouriteGame(game: Game, image: UIImage) {
     newFavuoriteGame.setValue(newCoverData, forKey: "image")
     do {
         try context.save()
-        arrayFavouriteGames.append(newFavuoriteGame)
     } catch let error as NSError {
         print("Could not save. \(error), \(error.userInfo)")
     }

@@ -4,14 +4,12 @@ import CoreData
 
 func saveGenre(idGenre: Int32, nameGenre: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    var arrayGenres: [NSManagedObject] = []
     let context = appDelegate.persistentContainer.viewContext
-    let newGenre = NSEntityDescription.insertNewObject(forEntityName: "GenresData", into: context)
+    let newGenre = NSEntityDescription.insertNewObject(forEntityName: "GenreData", into: context)
     newGenre.setValue(idGenre, forKey: "idGenre")
     newGenre.setValue(nameGenre, forKey: "nameGenre")
     do {
         try context.save()
-        arrayGenres.append(newGenre)
     } catch let error as NSError {
         print("Could not save. \(error), \(error.userInfo)")
     }
@@ -21,7 +19,7 @@ func fetchGenre(id: Int32) -> String? {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
     var stringOfGenre: String?
     let context = appDelegate.persistentContainer.viewContext
-    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GenresData")
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GenreData")
     request.returnsObjectsAsFaults = false
     do {
         let results = try context.fetch(request)

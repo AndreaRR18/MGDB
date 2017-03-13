@@ -6,7 +6,7 @@ func saveCompany(idCompany: Int32, nameCompany: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
 //    var arrayCompanies: [NSManagedObject] = []
     let context = appDelegate.persistentContainer.viewContext
-    let newCompany = NSEntityDescription.insertNewObject(forEntityName: "CompaniesData", into: context)
+    let newCompany = NSEntityDescription.insertNewObject(forEntityName: "CompanyData", into: context)
     newCompany.setValue(idCompany, forKey: "idCompany")
     newCompany.setValue(nameCompany, forKey: "nameCompany")
     do {
@@ -22,7 +22,7 @@ func fetchCompany(id: Int32) -> String? {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
     var stringOfCompanies: String?
     let context = appDelegate.persistentContainer.viewContext
-    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CompaniesData")
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CompanyData")
     request.returnsObjectsAsFaults = false
     do {
         let results = try context.fetch(request)

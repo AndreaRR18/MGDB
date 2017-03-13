@@ -5,14 +5,12 @@ import CoreData
 
 func savePlatform(idPlatform: Int32, namePlatform: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    var arrayPlatform: [NSManagedObject] = []
     let context = appDelegate.persistentContainer.viewContext
-    let newCompany = NSEntityDescription.insertNewObject(forEntityName: "PlatformsData", into: context)
+    let newCompany = NSEntityDescription.insertNewObject(forEntityName: "PlatformData", into: context)
     newCompany.setValue(idPlatform, forKey: "idPlatform")
     newCompany.setValue(namePlatform, forKey: "namePlatform")
     do {
         try context.save()
-        arrayPlatform.append(newCompany)
     } catch let error as NSError {
         print("Could not save. \(error), \(error.userInfo)")
     }
@@ -22,7 +20,7 @@ func fetchPlatform(id: Int32) -> String? {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
     var stringOfCompanies: String?
     let context = appDelegate.persistentContainer.viewContext
-    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PlatformsData")
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PlatformData")
     request.returnsObjectsAsFaults = false
     do {
         let results = try context.fetch(request)

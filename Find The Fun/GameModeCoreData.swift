@@ -4,14 +4,12 @@ import CoreData
 
 func saveGameMode(idGameModes: Int32, nameGameModes: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    var arrayGameModes: [NSManagedObject] = []
     let context = appDelegate.persistentContainer.viewContext
-    let newGameModes = NSEntityDescription.insertNewObject(forEntityName: "GameModesData", into: context)
+    let newGameModes = NSEntityDescription.insertNewObject(forEntityName: "GameModeData", into: context)
     newGameModes.setValue(idGameModes, forKey: "idGameModes")
     newGameModes.setValue(nameGameModes, forKey: "nameGameModes")
     do {
         try context.save()
-        arrayGameModes.append(newGameModes)
     } catch let error as NSError {
         print("Could not save. \(error), \(error.userInfo)")
     }
@@ -21,7 +19,7 @@ func fetchGameMode(id: Int32) -> String? {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
     var stringOfGameModes: String?
     let context = appDelegate.persistentContainer.viewContext
-    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GameModesData")
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GameModeData")
     request.returnsObjectsAsFaults = false
     do {
         let results = try context.fetch(request)
