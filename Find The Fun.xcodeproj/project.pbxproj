@@ -294,6 +294,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65304C2A1E7706A500339064 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		6541CBF11E40A5560071C711 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,6 +454,7 @@
 		656C38FD1E27D1FC0095EDBC /* Find The Fun */ = {
 			isa = PBXGroup;
 			children = (
+				65304C2A1E7706A500339064 /* CoreData */,
 				656C38FE1E27D1FC0095EDBC /* AppDelegate.swift */,
 				6541CBF41E40A5B30071C711 /* Model */,
 				65B2DEF81E2CFB7500C3DE70 /* News TableView  */,

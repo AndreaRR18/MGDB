@@ -109,6 +109,7 @@
             <size key="customSize" width="199" height="255"/>
             <connections>
                 <outlet property="delete" destination="56C-yh-FuB" id="EvF-nN-UP6"/>
+                <outlet property="deleteButton" destination="Q6R-xY-Imn" id="3VY-Ow-4yW"/>
                 <outlet property="image" destination="f6r-33-hNe" id="oF1-Gd-Whw"/>
                 <outlet property="ratingBar" destination="1M8-UH-JLR" id="0h4-M8-Bxo"/>
                 <outlet property="title" destination="l0L-hp-Do2" id="RnQ-mG-fWo"/>

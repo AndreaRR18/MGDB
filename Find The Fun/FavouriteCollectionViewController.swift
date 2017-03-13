@@ -13,7 +13,7 @@ class FavouriteCollectionViewController: UICollectionViewController, UICollectio
     init() {
         super.init(nibName: "FavouriteCollectionViewController", bundle: nil)
         self.favouriteGame = self.getGame()
-        
+
         NotificationCenter.default.addObserver(forName: NSNotification.Name("ChangeFavouriteGame"), object: nil, queue: nil) { _ in
             self.favouriteGame = self.getGame()
             self.collectionView?.reloadData()
@@ -28,7 +28,7 @@ class FavouriteCollectionViewController: UICollectionViewController, UICollectio
         super.viewDidLoad()
         
         collectionView?.register(UINib(nibName: NibName.favouriteCollectionCell, bundle: nil), forCellWithReuseIdentifier: Identifier.favouriteCollectionCell)
-
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection  = .vertical
         collectionView?.setCollectionViewLayout(layout, animated: true)
@@ -41,13 +41,16 @@ class FavouriteCollectionViewController: UICollectionViewController, UICollectio
             self.favouriteGame = self.getGame()
             self.collectionView?.reloadData()
         }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(self.showButton))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         
-
+        
+        
         if navigationController?.isNavigationBarHidden == true {
             navigationController?.setNavigationBarHidden(false, animated: animated)
         }
@@ -98,24 +101,27 @@ class FavouriteCollectionViewController: UICollectionViewController, UICollectio
         }
     }
     
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-            let availableWidth = view.frame.width - paddingSpace
-            let widthPerItem = availableWidth / itemsPerRow
-            return CGSize(width: widthPerItem, height: 200)
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        return CGSize(width: widthPerItem, height: 200)
+    }
     
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return sectionInsets
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
     
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return sectionInsets.left
-        }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
+    }
     
     func delete(idGame: Int32) {
         deleteFavouriteGame(id: idGame)
         NotificationCenter.default.post(name: NSNotification.Name("ChangeFavouriteGame"), object: nil)
     }
-
+    
+    func showButton() {
+        NotificationCenter.default.post(name: NSNotification.Name("ShowHideButton"), object: nil)
+    }
 }

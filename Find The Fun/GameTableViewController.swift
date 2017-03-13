@@ -64,7 +64,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         
         let headerImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 45, height: 45))
         headerImage.contentMode = .scaleAspectFit
-        headerImage.image = UIImage(named: "prova-esagono-play-def")
+        headerImage.image = UIImage(named: "ufo")
         navigationItem.titleView = headerImage
         navigationController?.navigationBar.titleTextAttributes = [ NSForegroundColorAttributeName : UIColor.white]
         navigationController?.navigationBar.barTintColor = ColorUI.navBar

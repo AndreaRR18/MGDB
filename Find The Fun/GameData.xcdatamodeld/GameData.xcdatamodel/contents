@@ -3,8 +3,9 @@
     <entity name="CompanyData" representedClassName="CompanyData" syncable="YES" codeGenerationType="class">
         <attribute name="idCompany" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nameCompany" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="favouriteGame" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavouriteGameData" inverseName="companies" inverseEntity="FavouriteGameData" syncable="YES"/>
+        <relationship name="favouritegame" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavouriteGameData" inverseName="companies" inverseEntity="FavouriteGameData" syncable="YES"/>
     </entity>
+    <entity name="CompanyDB" representedClassName="CompanyDB" syncable="YES" codeGenerationType="class"/>
     <entity name="FavouriteGameData" representedClassName=".FavouriteGameData" syncable="YES" codeGenerationType="class">
         <attribute name="developers" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gamemode" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,27 +17,38 @@
         <attribute name="publishers" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="companies" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CompanyData" inverseName="favouriteGame" inverseEntity="CompanyData" syncable="YES"/>
+        <relationship name="companies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CompanyData" inverseName="favouritegame" inverseEntity="CompanyData" syncable="YES"/>
+        <relationship name="gamesmode" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameModeData" inverseName="favouritegames" inverseEntity="GameModeData" syncable="YES"/>
+        <relationship name="genres" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GenreData" inverseName="favouritegames" inverseEntity="GenreData" syncable="YES"/>
     </entity>
+    <entity name="GameDB" representedClassName="GameDB" syncable="YES" codeGenerationType="class"/>
     <entity name="GameModeData" representedClassName="GameModeData" syncable="YES" codeGenerationType="class">
         <attribute name="idGameModes" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nameGameModes" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="favouritegames" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavouriteGameData" inverseName="gamesmode" inverseEntity="FavouriteGameData" syncable="YES"/>
     </entity>
+    <entity name="GameModeDB" representedClassName="GameModeDB" syncable="YES" codeGenerationType="class"/>
     <entity name="GenreData" representedClassName="GenreData" syncable="YES" codeGenerationType="class">
         <attribute name="idGenre" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nameGenre" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="favouritegames" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FavouriteGameData" inverseName="genres" inverseEntity="FavouriteGameData" syncable="YES"/>
     </entity>
+    <entity name="GenreDB" representedClassName="GenreDB" syncable="YES" codeGenerationType="class"/>
     <entity name="PlatformData" representedClassName="PlatformData" syncable="YES" codeGenerationType="class">
         <attribute name="idPlatform" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="namePlatform" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="SearchElementData" representedClassName="SearchElementData" syncable="YES" codeGenerationType="class"/>
     <elements>
-        <element name="CompanyData" positionX="-261" positionY="8" width="128" height="88"/>
-        <element name="GameModeData" positionX="180" positionY="69" width="128" height="73"/>
-        <element name="GenreData" positionX="-261" positionY="-75" width="128" height="73"/>
+        <element name="CompanyData" positionX="-261" positionY="8" width="128" height="90"/>
+        <element name="FavouriteGameData" positionX="-38" positionY="-162" width="128" height="240"/>
+        <element name="GameModeData" positionX="180" positionY="69" width="128" height="90"/>
+        <element name="GenreData" positionX="-378" positionY="-81" width="128" height="90"/>
         <element name="PlatformData" positionX="-261" positionY="-162" width="128" height="73"/>
-        <element name="FavouriteGameData" positionX="-38" positionY="-162" width="128" height="210"/>
         <element name="SearchElementData" positionX="-261" positionY="189" width="128" height="45"/>
+        <element name="GameDB" positionX="475" positionY="-144" width="128" height="45"/>
+        <element name="CompanyDB" positionX="475" positionY="36" width="128" height="45"/>
+        <element name="GenreDB" positionX="475" positionY="-27" width="128" height="45"/>
+        <element name="GameModeDB" positionX="477" positionY="-90" width="128" height="45"/>
     </elements>
 </model>
