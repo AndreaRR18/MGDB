@@ -13,7 +13,7 @@ class GameModeCell: CellFactory {
     
     func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameModesTableViewCell, for: indexPath) as! GameModesTableViewCell
-        nameGameModeDB(id: gameMode, callback: { nameGameModes in
+        GameModeCoreData.nameGameModeDB(id: gameMode, callback: { nameGameModes in
             cell.configureGameModesTableViewCell(nameGameModes)
         })
         return cell

@@ -3,9 +3,9 @@ import CoreData
 import UIKit
 import AlamofireImage
 
-func saveFavouriteGame(game: Game, image: UIImage) {
+func saveFavouriteGame(game: Game, image: UIImage?) {
     
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate, let image = image else { return }
     let context = appDelegate.persistentContainer.viewContext
     let newFavuoriteGame = NSEntityDescription.insertNewObject(forEntityName: "FavouriteGameData", into: context)
     newFavuoriteGame.setValue(game.idGame, forKey: "id")
@@ -29,7 +29,7 @@ func saveFavouriteGame(game: Game, image: UIImage) {
 func stringCompany(companyIDs: [Int]?) -> String {
     var company = [String]()
     companyIDs?.forEach { id in
-        guard let companyName = fetchCompany(id: Int32(id)) else { return }
+        guard let companyName = CompanyCoreData.fetchCompany(id: Int32(id)) else { return }
         company.append(companyName)
     }
     return company.joined(separator: ", ")
@@ -38,7 +38,7 @@ func stringCompany(companyIDs: [Int]?) -> String {
 func stringGenres(genresIDs: [Int]?) -> String {
     var genres = [String]()
     genresIDs?.forEach { id in
-        guard let genresName = fetchGenre(id: Int32(id)) else { return }
+        guard let genresName = GenreCoreData.fetchGenre(id: Int32(id)) else { return }
         genres.append(genresName)
     }
     return genres.joined(separator: ", ")
@@ -47,7 +47,7 @@ func stringGenres(genresIDs: [Int]?) -> String {
 func stringGameModes(gameModesIDs: [Int]?) -> String {
     var gameModes = [String]()
     gameModesIDs?.forEach { id in
-        guard let gameModesName = fetchGameMode(id: Int32(id)) else { return }
+        guard let gameModesName = GameModeCoreData.fetchGameMode(id: Int32(id)) else { return }
         gameModes.append(gameModesName)
     }
     return gameModes.joined(separator: ", ")

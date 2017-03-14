@@ -49,7 +49,7 @@ struct SaveDeleteButton {
                           completion: { _ in
                             saveFavouriteGame(
                                 game: self.gameDescription,
-                                image: cover.image!)
+                                image: cover.image)
                             activityIndicator.stopAnimating()
                             
         })

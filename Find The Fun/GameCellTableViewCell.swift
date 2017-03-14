@@ -25,9 +25,11 @@ class GameCellTableViewCell: UITableViewCell {
         
         ratingStar?.progress = Float(game.rating ?? 1) / Float(100)
         
+        guard let coverUrl = getCoverSmall(url: game.cover?.url) else { return }
+        
         cover?.contentMode = .scaleAspectFit
         cover?.af_setImage(
-            withURL: getCoverSmall(url: game.cover?.url)!,
+            withURL: coverUrl,
             placeholderImage: #imageLiteral(resourceName: "img-not-found"),
             filter: nil,
             progress: nil,

@@ -14,7 +14,7 @@ class CompanyCell: CellFactory {
     
     func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.companyTableViewCell, for: indexPath) as! CompanyTableViewCell
-        companyDB(id: company, callback: { nameCompany, new in
+        CompanyCoreData.companyDB(id: company, callback: { nameCompany, new in
             cell.configureCompanyTableViewCell(nameCompany)
             if new {
                 _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
@@ -39,7 +39,7 @@ class PublisherCell: CellFactory {
     
     func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.companyTableViewCell, for: indexPath) as! CompanyTableViewCell
-        companyDB(id: company, callback: { nameCompany, new in
+        CompanyCoreData.companyDB(id: company, callback: { nameCompany, new in
             cell.configureCompanyTableViewCell(nameCompany)
             if new {
                 _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
@@ -64,7 +64,7 @@ class DeveloperCell: CellFactory {
     
     func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.companyTableViewCell, for: indexPath) as! CompanyTableViewCell
-        companyDB(id: company, callback: { nameCompany, new in
+        CompanyCoreData.companyDB(id: company, callback: { nameCompany, new in
             cell.configureCompanyTableViewCell(nameCompany)
             if new {
                 _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in

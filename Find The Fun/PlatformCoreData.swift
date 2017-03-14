@@ -2,8 +2,9 @@ import Foundation
 import UIKit
 import CoreData
 
-
-func savePlatform(idPlatform: Int32, namePlatform: String) {
+class PlatformCoreData {
+    
+static func savePlatform(idPlatform: Int32, namePlatform: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     let context = appDelegate.persistentContainer.viewContext
     let newCompany = NSEntityDescription.insertNewObject(forEntityName: "PlatformData", into: context)
@@ -16,7 +17,7 @@ func savePlatform(idPlatform: Int32, namePlatform: String) {
     }
 }
 
-func fetchPlatform(id: Int32) -> String? {
+static func fetchPlatform(id: Int32) -> String? {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
     let context = appDelegate.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PlatformData")
@@ -34,7 +35,7 @@ func fetchPlatform(id: Int32) -> String? {
     return nil
 }
 
-func namePlatformDB(id: Int?, callback:@escaping (String, Bool) -> ()) {
+static func namePlatformDB(id: Int?, callback:@escaping (String, Bool) -> ()) {
     var new = true
     if let idPlatform = id {
         if let namePlatform = fetchPlatform(id: Int32(idPlatform)) {
@@ -51,4 +52,6 @@ func namePlatformDB(id: Int?, callback:@escaping (String, Bool) -> ()) {
     } else {
         return callback("N.D.", new)
     }
+}
+
 }

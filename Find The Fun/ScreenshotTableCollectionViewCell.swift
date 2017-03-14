@@ -2,7 +2,7 @@ import UIKit
 
 class ScreenshotTableCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var screenshotImage: UIImageView?
+    @IBOutlet weak private var screenshotImage: UIImageView?
     
     static var screenshotCollectionIdentifier: String { return "ScreenshotTableCollectionViewCell" }
     
@@ -13,10 +13,11 @@ class ScreenshotTableCollectionViewCell: UICollectionViewCell {
     
     var url: URL? {
         didSet{
-            let activitiIndicator = ActivityIndicator(view: screenshotImage!)
+            guard let url = url else { return }
+            let activitiIndicator = ActivityIndicator(view: screenshotImage)
             activitiIndicator.startAnimating()
             screenshotImage?.af_setImage(
-                withURL: url!,
+                withURL: url,
                 placeholderImage: #imageLiteral(resourceName: "img-not-found"),
                 filter: nil,
                 progress: nil,

@@ -64,9 +64,10 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         titleLabel?.text = gameDescription.name
-        tableView?.reloadData()
-        guard let url = getHDImage(url: gameDescription.cover?.url) else { return }
+        
+        guard let url = getHDImage(url: gameDescription.cover?.url), let boundHeader = self.headerBlurImage?.bounds else { return }
         headerImage?.af_setImage(
             withURL: url,
             imageTransition: .crossDissolve(0.1),
@@ -75,7 +76,7 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
                 self.headerBlurImage?.image = self.headerImage?.image
                 let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
                 let blurEffectView = UIVisualEffectView(effect: blurEffect)
-                blurEffectView.frame = (self.headerBlurImage?.bounds)!
+                blurEffectView.frame = boundHeader
                 self.headerBlurImage?.addSubview(blurEffectView)
         })
         

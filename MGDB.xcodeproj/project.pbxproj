@@ -433,7 +433,7 @@
 				654BF7061E29344B00A82610 /* Curry.framework */,
 				654BF7031E29344700A82610 /* Runes.framework */,
 				654BF6FF1E29343E00A82610 /* Argo.framework */,
-				656C38FD1E27D1FC0095EDBC /* Find The Fun */,
+				656C38FD1E27D1FC0095EDBC /* MGDB */,
 				656C390A1E27D1FC0095EDBC /* Info.plist */,
 				6541CBC21E3F4FEC0071C711 /* GameData.xcdatamodeld */,
 				656C39051E27D1FC0095EDBC /* Assets.xcassets */,
@@ -451,7 +451,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		656C38FD1E27D1FC0095EDBC /* Find The Fun */ = {
+		656C38FD1E27D1FC0095EDBC /* MGDB */ = {
 			isa = PBXGroup;
 			children = (
 				65304C2A1E7706A500339064 /* CoreData */,
@@ -471,6 +471,7 @@
 				658B30C01E607D080006AD85 /* NibName.swift */,
 				659F87521E6597200089067E /* Old file */,
 			);
+			name = MGDB;
 			path = "Find The Fun";
 			sourceTree = "<group>";
 		};
@@ -1111,7 +1112,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "Find The Fun/Info.plist";
+				INFOPLIST_FILE = "Find the Fun/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.developer.andrea.Find-The-Fun";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1131,7 +1132,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "Find The Fun/Info.plist";
+				INFOPLIST_FILE = "Find the Fun/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.developer.andrea.Find-The-Fun";
 				PRODUCT_NAME = "$(TARGET_NAME)";

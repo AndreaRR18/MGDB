@@ -49,8 +49,9 @@ class CoverTableViewCell: UITableViewCell {
     }
     
     func configureCoverTableViewCell(_ game: Game?) {
+        guard let coverUrl = getCoverMed(url: game?.cover?.url) else { return }
         thumbnail?.af_setImage(
-            withURL: getCoverMed(url: game?.cover?.url)!,
+            withURL: coverUrl,
             placeholderImage: #imageLiteral(resourceName: "img-not-found"),
             filter: nil,
             progress: nil,
@@ -82,7 +83,8 @@ class CoverTableViewCell: UITableViewCell {
         thumbnail?.layer.shadowRadius = 4
         thumbnail?.image = image
         self.name?.text = name
-        self.ratingProgressView?.progress = Float(game?.rating ?? 1) / Float(100)
+        self.ratingProgressView?.progress = Float(rating ?? 1) / Float(100)
+        self.layer.zPosition = 3
         saveButton?.setImage(#imageLiteral(resourceName: "fullStar"), for: .normal)
         saveButton?.addTarget(self, action: #selector(self.removeGame), for: .touchUpInside)
 //        shareButton?.addTarget(self, action: #selector(self.shareGame), for: .touchUpInside)        

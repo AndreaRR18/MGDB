@@ -19,9 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navControllerFavouriteGameTableViewController = UINavigationController(rootViewController: FavouriteCollectionViewController())
         navControllerFavouriteGameTableViewController.tabBarItem = UITabBarItem(title: "Favourite", image: #imageLiteral(resourceName: "iconFavourite"), tag: 2)
 
-//        let navControllerAboutViewGameTableViewController = UINavigationController(rootViewController: About())
-//        navControllerAboutViewGameTableViewController.tabBarItem = UITabBarItem(title: "About", image: #imageLiteral(resourceName: "infoButton"), tag: 3)
-
         let elementTabBarController = [navControllerGameTableViewController, navControllerSearchGameTableViewController, navControllerFavouriteGameTableViewController]
 
         tabBarController.viewControllers = elementTabBarController

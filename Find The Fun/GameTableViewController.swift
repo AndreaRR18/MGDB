@@ -10,9 +10,8 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     var offset = 0
 //    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=*&limit=50&order=updated_at%3Adesc&filter[aggregated_rating][gt]=1"
 
-    let gamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=id,name,summary,aggregated_rating,developers,publishers,updated_at,release_dates,cover,genres,game_modes,screenshots,url,videos&limit=50&order=updated_at%3Adesc&filter[aggregated_rating][gt]=1"
+    let newGamesURL = "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=id,name,summary,aggregated_rating,developers,publishers,updated_at,release_dates,cover,genres,game_modes,screenshots,url,videos&limit=50&order=updated_at%3Adesc&filter[aggregated_rating][gt]=1"
 
-    
     var arrayGames: [Game] = []
     var reachability: Reachability? = Reachability.networkReachabilityForInternetConnection()
     let cachedGame = CacheGame(fileName: "data", fileExtension: .JSON, subDirectory: "NewGame", directory: .applicationSupportDirectory)
@@ -29,7 +28,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         
 //        if let reachabilityIsValid = reachability?.isReachable, reachabilityIsValid {
             activityIndicator.startAnimating()
-            let decodedJSON = DecodeJSON(url: gamesURL)
+            let decodedJSON = DecodeJSON(url: newGamesURL)
             decodedJSON.getNewGames(callback: { arrayGames in
                 self.arrayGames = arrayGames
                 activityIndicator.stopAnimating()
@@ -152,7 +151,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     
     func refresh() {
         self.refreshControl?.beginRefreshing()
-        let decodedJSON = DecodeJSON(url: gamesURL)
+        let decodedJSON = DecodeJSON(url: newGamesURL)
         decodedJSON.getNewGames(callback: { arrayGames in
             self.arrayGames = arrayGames
             self.refreshControl?.endRefreshing()

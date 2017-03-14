@@ -57,7 +57,7 @@ class DecodeJSON {
                     (data, response, error) -> Void in
                     if let data = data {
                         do {
-                            try cacheJson.saveFile(dataForJson: data)
+                            try cacheJson?.saveFile(dataForJson: data)
                         } catch {
                             print(error)
                         }

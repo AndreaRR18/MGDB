@@ -26,12 +26,12 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
     }
     
     func saveGame(game: Game?) {
-        guard let game = game else { return }
+        guard let game = game, let url = getCover(url: game.cover?.url ?? "") else { return }
         let cover = UIImageView()
         let activityIndicator = ActivityIndicator(view: self.tableView!, background: .clear, activityIndicatorColor: .darkGray)
         activityIndicator.startAnimating()
         cover.af_setImage(
-            withURL: getCover(url: game.cover?.url)!,
+            withURL: url,
             placeholderImage: #imageLiteral(resourceName: "img-not-found"),
             filter: nil,
             progress: nil,
@@ -65,7 +65,8 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
     
     func shareGame() {
         let firstActivityItem = "Look this game:"
-        let secondActivityItem : NSURL = NSURL(string: game!.internetPage!)!
+        guard let internetPage = game?.internetPage, let nsUrl = NSURL(string: internetPage) else { return }
+        let secondActivityItem : NSURL = nsUrl
         let activityViewController : UIActivityViewController = UIActivityViewController(
             activityItems: [firstActivityItem, secondActivityItem], applicationActivities: nil)
         activityViewController.popoverPresentationController?.permittedArrowDirections = .unknown

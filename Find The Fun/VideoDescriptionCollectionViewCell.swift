@@ -12,10 +12,11 @@ class VideoDescriptionCollectionViewCell: UICollectionViewCell {
 
     var url: URL? {
         didSet{
-            let activitiIndicator = ActivityIndicator(view: thumbnailVideo!)
+            guard let url = url else { return }
+            let activitiIndicator = ActivityIndicator(view: thumbnailVideo)
             activitiIndicator.startAnimating()
             thumbnailVideo?.af_setImage(
-                withURL: url!,
+                withURL: url,
                 placeholderImage: #imageLiteral(resourceName: "img-not-found"),
                 filter: nil,
                 progress: nil,

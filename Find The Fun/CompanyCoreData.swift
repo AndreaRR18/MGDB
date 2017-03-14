@@ -2,7 +2,9 @@ import Foundation
 import UIKit
 import CoreData
 
-func saveCompany(idCompany: Int32, nameCompany: String) {
+class CompanyCoreData {
+    
+static func saveCompany(idCompany: Int32, nameCompany: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     let context = appDelegate.persistentContainer.viewContext
     let newCompany = NSEntityDescription.insertNewObject(forEntityName: "CompanyData", into: context)
@@ -16,7 +18,7 @@ func saveCompany(idCompany: Int32, nameCompany: String) {
     }
 }
 
-func fetchCompany(id: Int32) -> String? {
+static func fetchCompany(id: Int32) -> String? {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
     let context = appDelegate.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CompanyData")
@@ -34,7 +36,7 @@ func fetchCompany(id: Int32) -> String? {
     return nil
 }
 
-func nameCompanyDB(id: [Int], callback:@escaping ([String], Bool) -> ()) {
+static func nameCompanyDB(id: [Int], callback:@escaping ([String], Bool) -> ()) {
     var companies: [String] = []
     var new = true
     id.forEach{ idCompany in
@@ -55,21 +57,19 @@ func nameCompanyDB(id: [Int], callback:@escaping ([String], Bool) -> ()) {
     callback(companies, new)
 }
 
-func companyDB(id: Int, callback:@escaping (String, Bool) -> ()) {
+static func companyDB(id: Int, callback:@escaping (String, Bool) -> ()) {
     var new = true
-    if let nameCompany = fetchCompany(id: Int32(id)) {
+    if let nameCompany = CompanyCoreData.fetchCompany(id: Int32(id)) {
         new = false
         callback(nameCompany, new)
     } else {
         let decodeJSON = DecodeJSON(url: getUrlIDCompany(idCompany: id))
         decodeJSON.getCompany(callback: { company in
             callback(company.name, new)
-            saveCompany(idCompany: Int32(company.idCompany), nameCompany: company.name)
+            CompanyCoreData.saveCompany(idCompany: Int32(company.idCompany), nameCompany: company.name)
         })
     }
 }
 
-
-
-
+}
 

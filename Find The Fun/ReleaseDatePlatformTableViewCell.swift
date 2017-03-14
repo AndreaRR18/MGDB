@@ -12,6 +12,7 @@ class ReleaseDatePlatformTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+    
     func configureReleaseDateTableViewCell(_ platform: String?, _ date: String?) {
         self.backgroundColor = ColorUI.background
         self.platform?.textColor = ColorUI.text

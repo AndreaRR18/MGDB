@@ -15,14 +15,11 @@ class ReleaseDateCell: CellFactory {
     func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.releaseDatePlatformTableViewCell, for: indexPath) as! ReleaseDatePlatformTableViewCell
         cell.backgroundColor = ColorUI.background
-        namePlatformDB(id: releaseDate.platform, callback: { namePlatform, new in
+        PlatformCoreData.namePlatformDB(id: releaseDate.platform, callback: { namePlatform, new in
             cell.configureReleaseDateTableViewCell(namePlatform, self.releaseDate.human)
             if new {
-                _ = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
-                    tableView.reloadData()
-                })
+                tableView.reloadData()
             }
-            
         })
         return cell
     }

@@ -39,14 +39,16 @@ class CacheGame {
         }
     }
     
-    init(fileName: String, fileExtension: FileExtension, subDirectory: String, directory: FileManager.SearchPathDirectory) {
+    init?(fileName: String, fileExtension: FileExtension, subDirectory: String, directory: FileManager.SearchPathDirectory) {
         self.fileName = (fileName + fileExtension.rawValue)
         self.subDirectory = "/\(subDirectory)"
         self.directory = directory
         self.directoryPath = NSSearchPathForDirectoriesInDomains(directory, .userDomainMask, true)[0]
         self.filePath = directoryPath + self.subDirectory
         let path: String = "\(filePath)/\(self.fileName)"
-        self.fullyQualifiedPath = URL(string: path.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlPathAllowed)!)!
+        guard let pathUrl = path.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlPathAllowed), let url = URL(string: pathUrl) else { return nil }
+        self.fullyQualifiedPath = url
+        //      self.fullyQualifiedPath = URL(string: path.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlPathAllowed)!)!
         createDirectory()
     }
     
@@ -79,11 +81,11 @@ class CacheGame {
         }
     }
     
-    convenience init(fileName: String, fileExtension: FileExtension, subDirectory: String) {
+    convenience init?(fileName: String, fileExtension: FileExtension, subDirectory: String) {
         self.init(fileName: fileName, fileExtension: fileExtension, subDirectory: subDirectory, directory: .applicationSupportDirectory)
     }
     
-    convenience init(fileName: String, fileExtension: FileExtension) {
+    convenience init?(fileName: String, fileExtension: FileExtension) {
         self.init(fileName: fileName, fileExtension: fileExtension, subDirectory: "", directory: .applicationSupportDirectory)
     }
     
@@ -123,7 +125,7 @@ class CacheGame {
     }
     func parsingJsonDataGame(data: Data) -> [Game]? {
         var games: [Game]? = []
-        let jsonResult: Any? = try! JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+        let jsonResult: Any? = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
         if let j: Any = jsonResult {
             games = decode(j)
         }

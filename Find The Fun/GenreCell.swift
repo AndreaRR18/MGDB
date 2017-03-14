@@ -14,7 +14,7 @@ class GenreCell: CellFactory {
     
     func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.genreTableViewCell, for: indexPath) as! GenreTableViewCell
-        nameGenreDB(id: genre, callback: { nameGenre in
+        GenreCoreData.nameGenreDB(id: genre, callback: { nameGenre in
             cell.configureGenreTableViewCell(nameGenre)
         })
         return cell

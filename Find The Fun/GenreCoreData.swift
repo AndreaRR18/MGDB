@@ -2,7 +2,9 @@ import Foundation
 import UIKit
 import CoreData
 
-func saveGenre(idGenre: Int32, nameGenre: String) {
+class GenreCoreData {
+    
+static func saveGenre(idGenre: Int32, nameGenre: String) {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     let context = appDelegate.persistentContainer.viewContext
     let newGenre = NSEntityDescription.insertNewObject(forEntityName: "GenreData", into: context)
@@ -15,7 +17,7 @@ func saveGenre(idGenre: Int32, nameGenre: String) {
     }
 }
 
-func fetchGenre(id: Int32) -> String? {
+static func fetchGenre(id: Int32) -> String? {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
     let context = appDelegate.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GenreData")
@@ -33,7 +35,7 @@ func fetchGenre(id: Int32) -> String? {
     return nil
 }
 
-func nameGenreDB(id: [Int]?, callback:@escaping (String) -> ()) {
+static func nameGenreDB(id: [Int]?, callback:@escaping (String) -> ()) {
     var genres: [String] = []
     guard let id = id else { return }
     id.forEach{ idGenre in
@@ -50,4 +52,6 @@ func nameGenreDB(id: [Int]?, callback:@escaping (String) -> ()) {
         }
     }
     callback(genres.joined(separator: ", "))
+}
+
 }

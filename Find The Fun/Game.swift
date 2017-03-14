@@ -10,14 +10,14 @@ struct Game {
     let name: String  //name
     
     let summary: String? //summary
-    let rating: Int? //rating
+    let rating: Int? //aggregated_rating
     let developers: [Int]?  //developers
     let publishers: [Int]? // publishers
     let updatedAt: Int? //updated_at
     let releaseDate: [ReleaseDate]?  //release_dates
     let cover: Cover? //cover
     let genres: [Int]? //genres
-    let gameModes: [Int]? //GameModes
+    let gameModes: [Int]? //game_modes
     let screenshots: [Screenshot]? //screenshots
     let internetPage: String? //url
     let videos: [Video]? //videos
