@@ -390,7 +390,6 @@
 		655564E31E43461F0022C87F /* Description Cell */ = {
 			isa = PBXGroup;
 			children = (
-				6598A7101E7371A2000C3E5D /* New Group */,
 				6598A70B1E737156000C3E5D /* Header */,
 				6598A70C1E737162000C3E5D /* Cover */,
 				6598A70D1E737170000C3E5D /* Summary */,
@@ -609,13 +608,6 @@
 				6598A71C1E737AD1000C3E5D /* ReleaseDateCell.swift */,
 			);
 			name = ReleaseDate;
-			sourceTree = "<group>";
-		};
-		6598A7101E7371A2000C3E5D /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
 			sourceTree = "<group>";
 		};
 		6598A7111E7371CF000C3E5D /* Genre */ = {
