@@ -11,24 +11,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         
         let navControllerGameTableViewController = UINavigationController(rootViewController: GameTableViewController())
-        navControllerGameTableViewController.tabBarItem = UITabBarItem(title: "Home", image: #imageLiteral(resourceName: "home35x35"), tag: 0)
+        
+        navControllerGameTableViewController.tabBarItem = UITabBarItem(
+            title: "Home",
+            image: #imageLiteral(resourceName: "home35x35"),
+            tag: 0)
         
         let navControllerSearchGameTableViewController = UINavigationController(rootViewController: SearchGamesTableViewController())
-        navControllerSearchGameTableViewController.tabBarItem = UITabBarItem(title: "Search", image: #imageLiteral(resourceName: "lens35x35"), tag: 1)
+        
+        navControllerSearchGameTableViewController.tabBarItem = UITabBarItem(
+            title: "Search",
+            image: #imageLiteral(resourceName: "lens35x35"),
+            tag: 1)
 
         let navControllerFavouriteGameTableViewController = UINavigationController(rootViewController: FavouriteCollectionViewController())
-        navControllerFavouriteGameTableViewController.tabBarItem = UITabBarItem(title: "Favourite", image: #imageLiteral(resourceName: "iconFavourite"), tag: 2)
+        
+        navControllerFavouriteGameTableViewController.tabBarItem = UITabBarItem(
+            title: "Favourite",
+            image: #imageLiteral(resourceName: "iconFavourite"),
+            tag: 2)
 
         let elementTabBarController = [navControllerGameTableViewController, navControllerSearchGameTableViewController, navControllerFavouriteGameTableViewController]
 
         tabBarController.viewControllers = elementTabBarController
+        
         tabBarController.navigationController?.navigationBar.isTranslucent = false
+        
         tabBarController.navigationController?.navigationBar.isOpaque = false
+        
         tabBarController.navigationController?.navigationBar.tintColor = ColorUI.text
         
         window = UIWindow(frame: UIScreen.main.bounds)
+        
         self.window?.rootViewController = tabBarController
+        
         window?.makeKeyAndVisible()
+
     }
     
     
@@ -37,18 +55,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
     
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
     
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
     
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
+    
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
@@ -56,7 +78,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
     
+    
     // MARK: - Core Data stack
+    
     
     lazy var persistentContainer: NSPersistentContainer = {
         /*
@@ -85,7 +109,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
     
+    
     // MARK: - Core Data Saving support
+    
     
     func saveContext () {
         let context = persistentContainer.viewContext
@@ -102,4 +128,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-
