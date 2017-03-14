@@ -198,7 +198,7 @@
 		655565161E44A78D0022C87F /* RelatedInDescriptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedInDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		655565171E44A78D0022C87F /* RelatedInDescriptionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RelatedInDescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		656763441E2FEB650095AFAD /* DecodeJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodeJSON.swift; sourceTree = "<group>"; };
-		656C38FB1E27D1FC0095EDBC /* Find The Fun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find The Fun.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		656C38FB1E27D1FC0095EDBC /* MGDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MGDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		656C38FE1E27D1FC0095EDBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		656C39001E27D1FC0095EDBC /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		656C39051E27D1FC0095EDBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Find The Fun/Assets.xcassets"; sourceTree = "<group>"; };
@@ -446,7 +446,7 @@
 		656C38FC1E27D1FC0095EDBC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				656C38FB1E27D1FC0095EDBC /* Find The Fun.app */,
+				656C38FB1E27D1FC0095EDBC /* MGDB.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -787,9 +787,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		656C38FA1E27D1FC0095EDBC /* Find The Fun */ = {
+		656C38FA1E27D1FC0095EDBC /* MGDB */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 656C390D1E27D1FC0095EDBC /* Build configuration list for PBXNativeTarget "Find The Fun" */;
+			buildConfigurationList = 656C390D1E27D1FC0095EDBC /* Build configuration list for PBXNativeTarget "MGDB" */;
 			buildPhases = (
 				656C38F71E27D1FC0095EDBC /* Sources */,
 				656C38F81E27D1FC0095EDBC /* Frameworks */,
@@ -801,9 +801,9 @@
 			);
 			dependencies = (
 			);
-			name = "Find The Fun";
+			name = MGDB;
 			productName = "Find The Fun";
-			productReference = 656C38FB1E27D1FC0095EDBC /* Find The Fun.app */;
+			productReference = 656C38FB1E27D1FC0095EDBC /* MGDB.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -824,7 +824,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 656C38F61E27D1FC0095EDBC /* Build configuration list for PBXProject "Find The Fun" */;
+			buildConfigurationList = 656C38F61E27D1FC0095EDBC /* Build configuration list for PBXProject "MGDB" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -837,7 +837,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				656C38FA1E27D1FC0095EDBC /* Find The Fun */,
+				656C38FA1E27D1FC0095EDBC /* MGDB */,
 			);
 		};
 /* End PBXProject section */
@@ -1143,7 +1143,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		656C38F61E27D1FC0095EDBC /* Build configuration list for PBXProject "Find The Fun" */ = {
+		656C38F61E27D1FC0095EDBC /* Build configuration list for PBXProject "MGDB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				656C390B1E27D1FC0095EDBC /* Debug */,
@@ -1152,7 +1152,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		656C390D1E27D1FC0095EDBC /* Build configuration list for PBXNativeTarget "Find The Fun" */ = {
+		656C390D1E27D1FC0095EDBC /* Build configuration list for PBXNativeTarget "MGDB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				656C390E1E27D1FC0095EDBC /* Debug */,

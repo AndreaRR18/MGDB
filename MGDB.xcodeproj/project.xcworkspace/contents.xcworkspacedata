@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Find The Fun.xcodeproj">
+      location = "self:/Users/Andrea/FTFun/MGDB.xcodeproj">
    </FileRef>
 </Workspace>

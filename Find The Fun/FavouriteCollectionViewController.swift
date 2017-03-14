@@ -49,8 +49,6 @@ class FavouriteCollectionViewController: UICollectionViewController, UICollectio
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
-        
         if navigationController?.isNavigationBarHidden == true {
             navigationController?.setNavigationBarHidden(false, animated: animated)
         }

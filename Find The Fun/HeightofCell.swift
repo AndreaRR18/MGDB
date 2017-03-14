@@ -115,7 +115,6 @@ func heightFavouriteSectionDescription(_ section: Int,_ game: FavouriteGameData)
         guard game.publishers != nil else { return 0 }
         return 35
     case 4:
-        guard game.gamemode != nil else { return 0 }
         return 35
     case 5:
         guard game.genre != nil else { return 0 }

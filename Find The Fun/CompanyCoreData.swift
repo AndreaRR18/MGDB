@@ -18,7 +18,6 @@ func saveCompany(idCompany: Int32, nameCompany: String) {
 
 func fetchCompany(id: Int32) -> String? {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
-    var stringOfCompanies: String?
     let context = appDelegate.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CompanyData")
     request.returnsObjectsAsFaults = false
@@ -26,8 +25,7 @@ func fetchCompany(id: Int32) -> String? {
         let results = try context.fetch(request)
         for result in results as! [NSManagedObject] {
             if id == result.value(forKey: "idCompany") as! Int32 {
-                stringOfCompanies = result.value(forKey: "nameCompany") as? String
-                return stringOfCompanies
+                return result.value(forKey: "nameCompany") as? String
             }
         }
     } catch let error as NSError {
@@ -67,7 +65,6 @@ func companyDB(id: Int, callback:@escaping (String, Bool) -> ()) {
         decodeJSON.getCompany(callback: { company in
             callback(company.name, new)
             saveCompany(idCompany: Int32(company.idCompany), nameCompany: company.name)
-//            callback(company.name, new)
         })
     }
 }

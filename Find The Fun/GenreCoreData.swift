@@ -17,7 +17,6 @@ func saveGenre(idGenre: Int32, nameGenre: String) {
 
 func fetchGenre(id: Int32) -> String? {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
-    var stringOfGenre: String?
     let context = appDelegate.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GenreData")
     request.returnsObjectsAsFaults = false
@@ -25,8 +24,7 @@ func fetchGenre(id: Int32) -> String? {
         let results = try context.fetch(request)
         for result in results as! [NSManagedObject] {
             if id == result.value(forKey: "idGenre") as? Int32 {
-                stringOfGenre = result.value(forKey: "nameGenre") as? String
-                return stringOfGenre
+                return result.value(forKey: "nameGenre") as? String
             }
         }
     } catch let error as NSError {
@@ -34,7 +32,6 @@ func fetchGenre(id: Int32) -> String? {
     }
     return nil
 }
-
 
 func nameGenreDB(id: [Int]?, callback:@escaping (String) -> ()) {
     var genres: [String] = []
@@ -50,7 +47,6 @@ func nameGenreDB(id: [Int]?, callback:@escaping (String) -> ()) {
                     saveGenre(idGenre: Int32($0.idGenre), nameGenre: $0.nameGenre)
                 })
             })
-            
         }
     }
     callback(genres.joined(separator: ", "))

@@ -151,6 +151,7 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        print(section)
         return heightSectionDescription(section, gameDescription)
     }
     

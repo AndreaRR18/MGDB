@@ -17,7 +17,6 @@ func saveGameMode(idGameModes: Int32, nameGameModes: String) {
 
 func fetchGameMode(id: Int32) -> String? {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
-    var stringOfGameModes: String?
     let context = appDelegate.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GameModeData")
     request.returnsObjectsAsFaults = false
@@ -25,8 +24,7 @@ func fetchGameMode(id: Int32) -> String? {
         let results = try context.fetch(request)
         for result in results as! [NSManagedObject] {
             if id == result.value(forKey: "idGameModes") as? Int32 {
-                stringOfGameModes = result.value(forKey: "nameGameModes") as? String
-                return stringOfGameModes
+                return result.value(forKey: "nameGameModes") as? String
             }
         }
     } catch let error as NSError {
@@ -50,7 +48,6 @@ func nameGameModeDB(id: [Int]?, callback:@escaping (String) -> ()) {
                     saveGameMode(idGameModes: Int32($0.idGameModes), nameGameModes: $0.nameGameModes)
                 })
             })
-            
         }
     }
     callback(gamesMode.joined(separator: ", "))

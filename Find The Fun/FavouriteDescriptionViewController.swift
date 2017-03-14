@@ -57,7 +57,6 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
         buildTableDescription()
         
         tableView?.backgroundColor = UIColor.clear
-        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -86,6 +85,17 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
     
     
     // MARK: - Table view data source
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        headerImage?.image = UIImage(data: gameDescription.image as! Data)
+        
+        if navigationController?.isNavigationBarHidden == false {
+            navigationController?.setNavigationBarHidden(true, animated: animated)
+        }
+        
+        titleLabel?.text = gameDescription.name
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellFactories[section].count
@@ -175,9 +185,11 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
         
         
         let header = HeaderCell()
-        let cover = FavouriteCoverCell(name: game.name, cover: UIImage(data: gameDescription.image as! Data), rating: Int(gameDescription.rating), internetPage: nil, navController: navigationController, tableView: tableView)
+        let cover = FavouriteCoverCell(name: game.name, cover: UIImage(data: gameDescription.image as! Data), rating: game.rating, internetPage: game.internetPage, navController: navigationController, tableView: tableView)
         
         let summary = SummaryCell(gameDescription.summary)
+//        let developers = DeveloperCell()
+//        let publishers = PublisherCell()
         let genres = GenreCell(game.genres ?? [])
         let gamesMode = GameModeCell(game.gameModes ?? [])
         cellFactories = [[header, cover], [summary], [genres], [gamesMode] ]

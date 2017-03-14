@@ -18,7 +18,6 @@ func savePlatform(idPlatform: Int32, namePlatform: String) {
 
 func fetchPlatform(id: Int32) -> String? {
     guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
-    var stringOfCompanies: String?
     let context = appDelegate.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PlatformData")
     request.returnsObjectsAsFaults = false
@@ -26,8 +25,7 @@ func fetchPlatform(id: Int32) -> String? {
         let results = try context.fetch(request)
         for result in results as! [NSManagedObject] {
             if id == result.value(forKey: "idPlatform") as! Int32 {
-                stringOfCompanies = result.value(forKey: "namePlatform") as? String
-                return stringOfCompanies
+                return result.value(forKey: "namePlatform") as? String
             }
         }
     } catch let error as NSError {
