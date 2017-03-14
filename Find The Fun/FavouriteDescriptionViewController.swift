@@ -76,6 +76,8 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
         }
         
         titleLabel?.text = gameDescription.name
+     
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
         
     }
     

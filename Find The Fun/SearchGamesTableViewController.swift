@@ -73,27 +73,27 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
+        
         return arrayGames.count
-    
+        
     }
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 120
-    
+        
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
         
         cell.configureGameCell(arrayGames[indexPath.row])
         
         return cell
-    
+        
     }
     
     
@@ -102,26 +102,26 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         guard let navController = navigationController else { return }
         
         GameCell( game: arrayGames[indexPath.row]).didSelectCell(
-                tableView: tableView,
-                indexPath: indexPath,
-                navigationController: navController)
+            tableView: tableView,
+            indexPath: indexPath,
+            navigationController: navController)
         
         tableView.deselectRow(at: indexPath, animated: true)
-    
+        
     }
     
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
         searchBar.endEditing(true)
-    
+        
     }
     
     
     internal func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
         searchBar.endEditing(true)
-    
+        
     }
     
     
@@ -138,7 +138,7 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
             self.tableView.reloadData()
             
             textSearchChange = searchText
-        
+            
         }
         
         let activityIndicator = ActivityIndicator(view: self.view)
@@ -152,18 +152,22 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
             if arrayGames.count > 1 {
                 
                 self.arrayGames = arrayGames.filter{ game in
-                   
+                    
                     game.name
                         .replacingOccurrences(of: " ", with: "")
                         .lowercased()
                         .contains(searchText.replacingOccurrences(of: " ", with: "").lowercased())
-                
-                }
+                    
+                    
+                    }
+                    .sorted(by: { (a, b) -> Bool in
+                        a.rating ?? 1 > b.rating ?? 1
+                    })
                 
                 activityIndicator.stopAnimating()
                 
                 self.tableView.reloadData()
-            
+                
             } else {
                 
                 let alert = Alert(
@@ -176,11 +180,11 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
                     completion: nil)
                 
                 activityIndicator.stopAnimating()
-            
+                
             }
-        
+            
         })
-    
+        
     }
-
+    
 }

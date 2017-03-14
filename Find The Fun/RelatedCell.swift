@@ -17,6 +17,10 @@ class RelatedCell: CellFactory {
         
         navigationController.navigationBar.isTranslucent = false
         
+        tableView.deselectRow(
+            at: indexPath,
+            animated: true)
+        
         navigationController.pushViewController(
             RelatedTableViewController(idGenres: genre),
             animated: true)

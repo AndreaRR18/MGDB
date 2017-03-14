@@ -159,6 +159,8 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
         
         tableView?.backgroundColor = UIColor.clear
         
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        
     }
     
     
