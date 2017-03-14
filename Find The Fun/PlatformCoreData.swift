@@ -42,7 +42,7 @@ static func namePlatformDB(id: Int?, callback:@escaping (String, Bool) -> ()) {
             new = false
             callback(namePlatform, new)
         } else {
-            let decodeJSON = DecodeJSON(url: getUrlIDPlatform(idPlatform: idPlatform))
+            let decodeJSON = DecodeJSON(url: GetUrl.getUrlIDPlatform(idPlatform: idPlatform))
             decodeJSON.getPlatform(callback: { arrayPlatforms in
                 guard let idPlatform = arrayPlatforms.first?.idPlatform, let namePlatform = arrayPlatforms.first?.namePlatform else { return }
                 savePlatform(idPlatform: Int32(idPlatform), namePlatform: namePlatform)

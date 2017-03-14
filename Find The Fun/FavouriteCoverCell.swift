@@ -31,7 +31,7 @@ class FavouriteCoverCell: CellFactory, ShareDelegate, FavouriteDelegate {
     }
     
     func saveGame(game: Game?) {
-        guard let game = game, let tableView = self.tableView, let coverUrl = getCover(url: game.cover?.url) else { return }
+        guard let game = game, let tableView = self.tableView, let coverUrl = GetUrl.getCover(url: game.cover?.url) else { return }
         let cover = UIImageView()
         let activityIndicator = ActivityIndicator(view: tableView, background: .clear, activityIndicatorColor: .darkGray)
         activityIndicator.startAnimating()

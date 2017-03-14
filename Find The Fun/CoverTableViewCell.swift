@@ -49,7 +49,7 @@ class CoverTableViewCell: UITableViewCell {
     }
     
     func configureCoverTableViewCell(_ game: Game?) {
-        guard let coverUrl = getCoverMed(url: game?.cover?.url) else { return }
+        guard let coverUrl = GetUrl.getCoverMed(url: game?.cover?.url) else { return }
         thumbnail?.af_setImage(
             withURL: coverUrl,
             placeholderImage: #imageLiteral(resourceName: "img-not-found"),

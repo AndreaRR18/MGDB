@@ -42,7 +42,7 @@ static func nameGenreDB(id: [Int]?, callback:@escaping (String) -> ()) {
         if let nameGenre = fetchGenre(id: Int32(idGenre)) {
             genres.append(nameGenre)
         } else {
-            let decodeJSON = DecodeJSON(url: getUrlIDGenres(idGenre: idGenre))
+            let decodeJSON = DecodeJSON(url: GetUrl.getUrlIDGenres(idGenre: idGenre))
             decodeJSON.getGenres(callback: { arrayGenres in
                 arrayGenres.forEach({
                     genres.append( $0.nameGenre )

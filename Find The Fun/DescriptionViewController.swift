@@ -67,7 +67,7 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
         
         titleLabel?.text = gameDescription.name
         
-        guard let url = getHDImage(url: gameDescription.cover?.url), let boundHeader = self.headerBlurImage?.bounds else { return }
+        guard let url = GetUrl.getHDImage(url: gameDescription.cover?.url), let boundHeader = self.headerBlurImage?.bounds else { return }
         headerImage?.af_setImage(
             withURL: url,
             imageTransition: .crossDissolve(0.1),

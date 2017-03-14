@@ -41,7 +41,7 @@ class CoverViewController: UIViewController, UIGestureRecognizerDelegate {
         coverScrollView?.maximumZoomScale = 4.0
         coverScrollView?.minimumZoomScale = 1.0
         coverScrollView?.alwaysBounceVertical = true
-        if let urlExist = getCover(url: coverURL) {
+        if let urlExist = GetUrl.getCover(url: coverURL) {
             coverHighResolution?.af_setImage(
                 withURL: urlExist,
                 imageTransition: .crossDissolve(0.1),

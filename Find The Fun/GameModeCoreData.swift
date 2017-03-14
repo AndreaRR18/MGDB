@@ -43,7 +43,7 @@ class GameModeCoreData {
             if let nameGameMode = fetchGameMode(id: Int32(idGameMode)) {
                 gamesMode.append(nameGameMode)
             } else {
-                let decodeJSON = DecodeJSON(url: getUrlIDGameModes(idGameModes: idGameMode))
+                let decodeJSON = DecodeJSON(url: GetUrl.getUrlIDGameModes(idGameModes: idGameMode))
                 decodeJSON.getGameModes(callback: { arrayGameMode in
                     arrayGameMode.forEach({
                         gamesMode.append( $0.nameGameModes )

@@ -33,7 +33,7 @@ class RelatedTableViewController: UITableViewController {
             let idGames = commonElement
                 .map(String.init)
                 .joined(separator: ",")
-            let decodedJSON = DecodeJSON(url: getUrlIDGame(idGame: idGames))
+            let decodedJSON = DecodeJSON(url: GetUrl.getUrlIDGame(idGame: idGames))
             decodedJSON.getNewGames(callback: {games in
                 self.arrayGames = games.filter { $0.rating ?? 0 > 0 }
                 self.tableView.reloadData()
@@ -92,7 +92,7 @@ class RelatedTableViewController: UITableViewController {
         idGenres.forEach{ genre in
             var arrayOfArrayIDGames: [[Int]] = []
             var arrayIDGames: [Int] = []
-            let decodedJSON = DecodeJSON(url: getUrlIDGenres(idGenre: genre))
+            let decodedJSON = DecodeJSON(url: GetUrl.getUrlIDGenres(idGenre: genre))
             decodedJSON.getGenres(callback: { arrayGenre in
                 guard let games = arrayGenre.first?.games else { return }
                 arrayIDGames += games

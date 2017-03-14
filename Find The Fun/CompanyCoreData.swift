@@ -44,7 +44,7 @@ static func nameCompanyDB(id: [Int], callback:@escaping ([String], Bool) -> ()) 
             new = false
             companies.append(nameCompany)
         } else {
-            let decodeJSON = DecodeJSON(url: getUrlIDCompany(idCompany: idCompany))
+            let decodeJSON = DecodeJSON(url: GetUrl.getUrlIDCompany(idCompany: idCompany))
             decodeJSON.getCompanies(callback: { arrayCompanies in
                 arrayCompanies.forEach({
                     companies.append( $0.name )
@@ -63,7 +63,7 @@ static func companyDB(id: Int, callback:@escaping (String, Bool) -> ()) {
         new = false
         callback(nameCompany, new)
     } else {
-        let decodeJSON = DecodeJSON(url: getUrlIDCompany(idCompany: id))
+        let decodeJSON = DecodeJSON(url: GetUrl.getUrlIDCompany(idCompany: id))
         decodeJSON.getCompany(callback: { company in
             callback(company.name, new)
             CompanyCoreData.saveCompany(idCompany: Int32(company.idCompany), nameCompany: company.name)

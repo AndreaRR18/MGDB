@@ -39,7 +39,7 @@ class ScreenshotCollectionTableViewCell: UITableViewCell, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.screenshotTableCollectionViewCell, for: indexPath) as! ScreenshotTableCollectionViewCell
-        cell.url = getCoverMed(url: screenshot[indexPath.row].url)
+        cell.url = GetUrl.getCoverMed(url: screenshot[indexPath.row].url)
         return cell
     }
     

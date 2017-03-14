@@ -39,13 +39,13 @@ class VideoCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.videoDescriptionCollectionViewCell, for: indexPath) as! VideoDescriptionCollectionViewCell
-        cell.url = getImagePreviewVideo(videoid: video[indexPath.row].video_id)
+        cell.url = GetUrl.getImagePreviewVideo(videoid: video[indexPath.row].video_id)
         cell.titleVideo?.text = video[indexPath.row].name
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let idVideo = video[indexPath.row].video_id, let url = getVideo(videoid: idVideo) else { return }
+        guard let idVideo = video[indexPath.row].video_id, let url = GetUrl.getVideo(videoid: idVideo) else { return }
         self.delegate?.openSafariView(url)
     }
     

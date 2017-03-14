@@ -26,7 +26,7 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
     }
     
     func saveGame(game: Game?) {
-        guard let game = game, let url = getCover(url: game.cover?.url ?? "") else { return }
+        guard let game = game, let url = GetUrl.getCover(url: game.cover?.url ?? "") else { return }
         let cover = UIImageView()
         let activityIndicator = ActivityIndicator(view: self.tableView!, background: .clear, activityIndicatorColor: .darkGray)
         activityIndicator.startAnimating()
