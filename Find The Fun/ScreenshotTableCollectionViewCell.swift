@@ -7,15 +7,20 @@ class ScreenshotTableCollectionViewCell: UICollectionViewCell {
     static var screenshotCollectionIdentifier: String { return "ScreenshotTableCollectionViewCell" }
     
     override func awakeFromNib() {
+        
         super.awakeFromNib()
-        // Initialization code
+
     }
     
     var url: URL? {
         didSet{
+            
             guard let url = url else { return }
+            
             let activitiIndicator = ActivityIndicator(view: screenshotImage)
+            
             activitiIndicator.startAnimating()
+            
             screenshotImage?.af_setImage(
                 withURL: url,
                 placeholderImage: #imageLiteral(resourceName: "img-not-found"),
@@ -27,7 +32,9 @@ class ScreenshotTableCollectionViewCell: UICollectionViewCell {
                 completion: { _ in
                     activitiIndicator.stopAnimating()
             })
+        
         }
+    
     }
 
 }
