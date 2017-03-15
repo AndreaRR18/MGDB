@@ -59,6 +59,7 @@ class CoverTableViewCell: UITableViewCell {
     
     }
 
+    
     override func awakeFromNib() {
         
         super.awakeFromNib()
@@ -66,6 +67,7 @@ class CoverTableViewCell: UITableViewCell {
         thumbnail?.layer.cornerRadius = 30
     
     }
+    
     
     func configureCoverTableViewCell(_ game: Game?) {
         

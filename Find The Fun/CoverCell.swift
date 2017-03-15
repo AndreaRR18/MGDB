@@ -53,7 +53,8 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
         let activityIndicator = ActivityIndicator(
             view: self.tableView,
             background: .clear,
-            activityIndicatorColor: .darkGray)
+            activityIndicatorColor: .white,
+            withBackground: true)
         
         activityIndicator.startAnimating()
         

@@ -14,21 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         navControllerGameTableViewController.tabBarItem = UITabBarItem(
             title: "Home",
-            image: #imageLiteral(resourceName: "home35x35"),
+            image: #imageLiteral(resourceName: "home 30x30"),
             tag: 0)
         
         let navControllerSearchGameTableViewController = UINavigationController(rootViewController: SearchGamesTableViewController())
         
         navControllerSearchGameTableViewController.tabBarItem = UITabBarItem(
             title: "Search",
-            image: #imageLiteral(resourceName: "lens35x35"),
+            image: #imageLiteral(resourceName: "searching 30x30"),
             tag: 1)
 
         let navControllerFavouriteGameTableViewController = UINavigationController(rootViewController: FavouriteCollectionViewController())
         
         navControllerFavouriteGameTableViewController.tabBarItem = UITabBarItem(
             title: "Favourite",
-            image: #imageLiteral(resourceName: "iconFavourite"),
+            image: #imageLiteral(resourceName: "star 30x30"),
             tag: 2)
 
         let elementTabBarController = [navControllerGameTableViewController, navControllerSearchGameTableViewController, navControllerFavouriteGameTableViewController]

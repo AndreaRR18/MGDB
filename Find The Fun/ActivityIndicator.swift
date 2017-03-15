@@ -12,7 +12,11 @@ struct ActivityIndicator {
     
     private let activityIndicatorColor: UIColor
     
-    init(view: UIView?, background: UIColor = UIColor.white, activityIndicatorColor: UIColor = UIColor.gray) {
+    private let withBackground: Bool
+    
+    private let loadingBackground: UIView = UIView()
+
+    init(view: UIView?, background: UIColor = UIColor.white, activityIndicatorColor: UIColor = UIColor.gray, withBackground: Bool = false) {
     
         self.view = view
         
@@ -20,12 +24,29 @@ struct ActivityIndicator {
         
         self.activityIndicatorColor = activityIndicatorColor
     
+        self.withBackground = withBackground
     }
     
     
     func startAnimating() {
     
         guard let view = view else { return }
+        
+        if withBackground {
+            
+            loadingBackground.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+            
+            loadingBackground.center = view.center
+            
+            loadingBackground.backgroundColor = UIColor.init(red: 153/255, green: 153/255, blue: 153/255, alpha: 0.5)
+            
+            loadingBackground.clipsToBounds = true
+            
+            loadingBackground.layer.cornerRadius = 10
+            
+            view.addSubview(loadingBackground)
+            
+        }
         
         activityIndicator.center = view.center
         
@@ -49,7 +70,9 @@ struct ActivityIndicator {
     
     
     func stopAnimating() {
-    
+        
+        loadingBackground.isHidden = true
+        
         activityIndicator.stopAnimating()
     
     }
