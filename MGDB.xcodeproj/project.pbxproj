@@ -356,13 +356,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		655564D81E43453C0022C87F /* Cover */ = {
+		655564D81E43453C0022C87F /* ImageDetail */ = {
 			isa = PBXGroup;
 			children = (
 				652934911E37969300D2F9ED /* CoverViewController.swift */,
 				652934921E37969300D2F9ED /* CoverViewController.xib */,
 			);
-			name = Cover;
+			name = ImageDetail;
 			sourceTree = "<group>";
 		};
 		655564E31E43461F0022C87F /* Description Cell */ = {
@@ -677,7 +677,7 @@
 				659F87571E65CF6F0089067E /* DescriptionViewController.swift */,
 				659F87581E65CF6F0089067E /* DescriptionViewController.xib */,
 				655564E31E43461F0022C87F /* Description Cell */,
-				655564D81E43453C0022C87F /* Cover */,
+				655564D81E43453C0022C87F /* ImageDetail */,
 				6555650D1E44A6370022C87F /* Related */,
 			);
 			name = "Description TableView";

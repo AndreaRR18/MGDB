@@ -69,6 +69,16 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
         
         headerImage?.image = UIImage(data: gameDescription.image as! Data)
         
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        
+        blurEffectView.frame = headerBlurImage?.bounds ?? CGRect(x: 0, y: 0, width: 500, height: 600)
+        
+        headerBlurImage?.addSubview(blurEffectView)
+
+        headerBlurImage?.alpha = 0.0
+        
         if navigationController?.isNavigationBarHidden == false {
             
             navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -77,6 +87,7 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
         
         titleLabel?.text = gameDescription.name
      
+
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         
     }
@@ -278,31 +289,34 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            return 105
-        case 1:
-            guard let summary = gameDescription.summary, summary.characters.count > 0 else { return 0 }
-            return 250
-        case 2:
-            return 50
-        case 3:
-            guard gameDescription.developers != nil else { return 0 }
-            return 50
-        case 4:
-            guard gameDescription.publishers != nil else { return 0 }
-            return 50
-        case 5:
-            return 50
-        case 6:
-            return 50
-        case 7:
-            return 50
-        case 8:
-            return 160
-        default:
-            return 0
-        }
+        
+        return heightRowInFavouriteGameDescription(indexPath: indexPath, gameDescription: gameDescription)
+        
+//        switch indexPath.section {
+//        case 0:
+//            return 105
+//        case 1:
+//            guard let summary = gameDescription.summary, summary.characters.count > 0 else { return 0 }
+//            return 250
+//        case 2:
+//            return 50
+//        case 3:
+//            guard gameDescription.developers != nil else { return 0 }
+//            return 50
+//        case 4:
+//            guard gameDescription.publishers != nil else { return 0 }
+//            return 50
+//        case 5:
+//            return 50
+//        case 6:
+//            return 50
+//        case 7:
+//            return 50
+//        case 8:
+//            return 160
+//        default:
+//            return 0
+//        }
     }
     
     

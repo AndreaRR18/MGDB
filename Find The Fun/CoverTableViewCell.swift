@@ -141,10 +141,9 @@ class CoverTableViewCell: UITableViewCell {
         
         self.layer.zPosition = 3
         
-        saveButton?.setImage(#imageLiteral(resourceName: "fullStar"), for: .normal)
+        saveButton?.setImage(#imageLiteral(resourceName: "emptyBackground"), for: .disabled)
         
-        saveButton?.addTarget(self, action: #selector(self.removeGame), for: .touchUpInside)
-        
+        saveButton?.isEnabled = false
     }
     
     

@@ -287,37 +287,40 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            return 105
-        case 1:
-            guard let summary = gameDescription.summary, summary.characters.count > 0 else { return 0 }
-            return 250
-        case 2:
-            return 50
-        case 3:
-            guard gameDescription.developers != nil else { return 0 }
-            return 50
-        case 4:
-            guard gameDescription.publishers != nil else { return 0 }
-            return 50
-        case 5:
-            return 50
-        case 6:
-            return 50
-        case 7:
-            guard gameDescription.screenshots != nil else { return 0 }
-            return 150
-        case 8:
-            guard gameDescription.videos != nil else { return 0 }
-            return 150
-        case 9:
-            return 50
-        case 10:
-            return 160
-        default:
-            return 0
-        }
+        
+        return heightRowInGameDescription(indexPath: indexPath, gameDescription: gameDescription)
+        
+//      switch indexPath.section {
+//        case 0:
+//            return 105
+//        case 1:
+//            guard let summary = gameDescription.summary, summary.characters.count > 0 else { return 0 }
+//            return 250
+//        case 2:
+//            return 50
+//        case 3:
+//            guard gameDescription.developers != nil else { return 0 }
+//            return 50
+//        case 4:
+//            guard gameDescription.publishers != nil else { return 0 }
+//            return 50
+//        case 5:
+//            return 50
+//        case 6:
+//            return 50
+//        case 7:
+//            guard gameDescription.screenshots != nil else { return 0 }
+//            return 150
+//        case 8:
+//            guard gameDescription.videos != nil else { return 0 }
+//            return 150
+//        case 9:
+//            return 50
+//        case 10:
+//            return 160
+//        default:
+//            return 0
+//        }
     }
     
     

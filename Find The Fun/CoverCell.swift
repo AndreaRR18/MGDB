@@ -44,7 +44,7 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
     }
     
     
-    func saveGame(game: Game?) {
+    internal func saveGame(game: Game?) {
         
         guard let game = game, let url = GetUrl.getCover(url: game.cover?.url ?? "") else { return }
         
@@ -85,7 +85,7 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
     }
     
     
-    func removeGame(game: Game?) {
+    internal func removeGame(game: Game?) {
         
         guard let game = game else { return }
         
@@ -125,7 +125,7 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
     }
     
     
-    func shareGame() {
+    internal func shareGame() {
         
         let firstActivityItem = "Look this game:"
         
@@ -160,7 +160,7 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
     }
     
     
-    func showCover() {
+    internal func showCover() {
         
         guard let url = game?.cover?.url else { return }
         
