@@ -14,12 +14,10 @@ class DecodeJSON {
     
     //-------------------------------SearchGame-------------------------------
     
-    func getSearchGames(weak callback:@escaping ([Game]) -> ()) {
+    func getSearchGames(weak callback: @escaping (() throws -> ([Game])) -> ()) {
         
         if let url = URL(string: url) {
-            
             let req = NSMutableURLRequest(url: url)
-            
             req.setValue(
                 IGDBKey.apiKey,
                 forHTTPHeaderField: IGDBKey.header)
@@ -31,22 +29,25 @@ class DecodeJSON {
                     completionHandler: { (data, response, error) -> Void in
                         if let data = data {
                             DispatchQueue.main.async {
-                                guard let arrayGames = self.parsingJsonDataGame(data: data) else { return }
-                                callback(arrayGames.filter { $0.cover != nil })
+                                if let arrayGames = self.parsingJsonDataGame(data: data) {
+                                    callback {arrayGames.filter { $0.cover != nil } }
+                                }else {
+                                    callback { throw "Dati inconsistenti" }
+                                }
                             }
                         } else {
-                            print("\(error)")
+                            callback { throw "\(error)" }
                         }
                 })
             task.resume()
         } else {
-            print("URL errato!")
+            callback { throw "URL errato!" }
         }
     }
     
     //-------------------------------New Game-------------------------------
     
-    func getNewGames(callback:@escaping ([Game]) -> ()) {
+    func getNewGames(callback: @escaping (() throws -> ([Game])) -> ()) {
         
         //        let cacheJson = CacheGame(
         //            fileName: "data",
@@ -78,16 +79,19 @@ class DecodeJSON {
                             //                            }
                             
                             DispatchQueue.main.async {
-                                guard let arrayGames = self.parsingJsonDataGame(data: data) else  { return }
-                                callback(arrayGames.filter { $0.cover != nil && $0.updatedAt != nil})
+                                if let arrayGames = self.parsingJsonDataGame(data: data) {
+                                    callback { arrayGames.filter { $0.cover != nil && $0.updatedAt != nil} }
+                                }else  {
+                                    callback { throw "Dati inconsistenti!" }
+                                }
                             }
                         } else {
-                            print("\(error)")
+                            callback { throw "\(error)" }
                         }
                 })
             task.resume()
         } else {
-            print("URL errato!")
+            callback { throw "URL errato!" }
         }
     }
     
@@ -106,26 +110,9 @@ class DecodeJSON {
     }
     
     
-    
-    //-------------------------------Companies-------------------------------
-    
-    func parsingJsonDataCompanies(data: Data) -> [Company]? {
-        do {
-            let deserialized = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-            return decode(deserialized).flatMap{ $0 }
-        }
-        catch let error {
-            print("--------")
-            print(error)
-            print("--------")
-            return nil
-        }
-    }
-    
-    
     //-------------------------------Single Company-------------------------------
     
-    func getCompany(callback: @escaping (() throws -> (Company)) -> ()) {
+    func getCompany(weak callback: @escaping (() throws -> (Company)) -> ()) {
         
         if let url = URL(string: url) {
             let req = NSMutableURLRequest(url: url)
@@ -139,18 +126,19 @@ class DecodeJSON {
                     completionHandler: { (data, response, error) -> Void in
                         if let data = data {
                             DispatchQueue.main.async {
-                                guard let company = self.parsingJsonDataCompany(data: data) else { return }
-                                callback { return company }
+                                if let company = self.parsingJsonDataCompany(data: data) {
+                                    callback { company }
+                                }else {
+                                    callback { throw "Dati inconsistenti!" }
+                                }
                             }
                         } else {
-                            print("\(error)")
+                            callback { throw "\(error)" }
                         }
                 })
             task.resume()
         } else {
-            print("URL errato!")
             callback { throw "URL errato!" }
-            
         }
     }
     
@@ -173,7 +161,7 @@ class DecodeJSON {
     
     //-------------------------------Platforms-------------------------------
     
-    func getPlatform(callback:@escaping ([Platform]) -> ()) {
+    func getPlatform(callback: @escaping (() throws -> [Platform]) -> ()) {
         if let url = URL(string: url) {
             let req = NSMutableURLRequest(url: url)
             req.setValue(
@@ -186,16 +174,19 @@ class DecodeJSON {
                     completionHandler: { (data, response, error) -> Void in
                         if let data = data {
                             DispatchQueue.main.async {
-                                guard let arrayPlatforms = self.parsingJsonDataPlatforms(data: data) else { return }
-                                callback(arrayPlatforms)
+                                if let arrayPlatforms = self.parsingJsonDataPlatforms(data: data) {
+                                    callback { arrayPlatforms }
+                                }else {
+                                    callback { throw "Dati inconsistenti!" }
+                                }
                             }
                         } else {
-                            print("\(error)")
+                            callback { throw "\(error)" }
                         }
                 })
             task.resume()
         } else {
-            print("URL errato!")
+            callback { throw "URL errato!" }
         }
     }
     
@@ -217,7 +208,7 @@ class DecodeJSON {
     
     //-------------------------------Genres-------------------------------
     
-    func getGenres(callback:@escaping ([Genre]) -> ()) {
+    func getGenres(callback: @escaping ( () throws -> [Genre]) -> ()) {
         if let url = URL(string: url) {
             let req = NSMutableURLRequest(url: url)
             req.setValue(
@@ -231,16 +222,19 @@ class DecodeJSON {
                     completionHandler: { (data, response, error) -> Void in
                         if let data = data {
                             DispatchQueue.main.async {
-                                guard let arrayGenres = self.parsingJsonDataGenres(data: data) else { return }
-                                callback(arrayGenres)
+                                if let arrayGenres = self.parsingJsonDataGenres(data: data) {
+                                    callback { arrayGenres }
+                                }else {
+                                    callback { throw "Dati inconsistenti" }
+                                }
                             }
                         } else {
-                            print("\(error)")
+                            callback { throw "\(error)" }
                         }
                 })
             task.resume()
         } else {
-            print("URL errato!")
+            callback { throw "URL errato!" }
         }
     }
     
@@ -261,7 +255,7 @@ class DecodeJSON {
     
     //-------------------------------GameModes-------------------------------
     
-    func getGameModes(callback:@escaping ([GameMode]) -> ()) {
+    func getGameModes(callback:@escaping (() throws -> [GameMode]) -> ()) {
         if let url = URL(string: url) {
             let req = NSMutableURLRequest(url: url)
             req.setValue(
@@ -274,16 +268,19 @@ class DecodeJSON {
                     completionHandler: { (data, response, error) -> Void in
                         if let data = data {
                             DispatchQueue.main.async {
-                                guard let arrayGameModes = self.parsingJsonDataGameModes(data: data) else { return }
-                                callback(arrayGameModes)
+                                if let arrayGameModes = self.parsingJsonDataGameModes(data: data) {
+                                    callback { arrayGameModes }
+                                }else {
+                                    callback { throw "Dati inconsistenti!" }
+                                }
                             }
                         } else {
-                            print("\(error)")
+                            callback { throw "\(error)" }
                         }
                 })
             task.resume()
         } else {
-            print("URL errato!")
+            callback { throw "URL errato!" }
         }
     }
     
@@ -304,7 +301,7 @@ class DecodeJSON {
     
     //-------------------------------Related Game-------------------------------
     
-    func getGamesFromID(callback:@escaping (Game) -> ()) {
+    func getGamesFromID(callback:@escaping (() throws -> (Game)) -> ()) {
         if let url = URL(string: url) {
             let req = NSMutableURLRequest(url: url)
             req.setValue(
@@ -317,16 +314,19 @@ class DecodeJSON {
                     completionHandler: { (data, response, error) -> Void in
                         if let data = data {
                             DispatchQueue.main.async {
-                                guard let games = self.parsingJsonDataRelatedGamesFromID(data: data)?.first else { return }
-                                callback(games)
+                                if let games = self.parsingJsonDataRelatedGamesFromID(data: data)?.first {
+                                    callback { games }
+                                }else {
+                                    callback { throw "Dati inconsistenti!" }
+                                }
                             }
                         } else {
-                            print("\(error)")
+                            callback { throw "\(error)" }
                         }
                 })
             task.resume()
         } else {
-            print("URL errato!")
+            callback { throw "URL errato!" }
         }
     }
     

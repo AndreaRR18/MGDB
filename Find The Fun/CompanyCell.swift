@@ -16,7 +16,7 @@ class PublisherCell: CellFactory {
             animated: true)
     }
     
-    func getCell(tableView: UITableView, indexPath: IndexPath, handleError: (Error) -> ()) -> UITableViewCell {
+    func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.companyTableViewCell, for: indexPath) as! CompanyTableViewCell
         
         CompanyCoreData.companyDB(
@@ -55,7 +55,7 @@ class DeveloperCell: CellFactory {
     }
     
     
-    func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+    func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.companyTableViewCell, for: indexPath) as! CompanyTableViewCell
         
         CompanyCoreData.companyDB(
@@ -70,9 +70,9 @@ class DeveloperCell: CellFactory {
                     }
                 }
                 catch let error {
-                    
+                    handleError(error)
                 }
-
+                
         })
         
         return cell
