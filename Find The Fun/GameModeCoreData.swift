@@ -6,10 +6,13 @@ class GameModeCoreData {
     
     static func saveGameMode(idGameModes: Int32, nameGameModes: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
         let context = appDelegate.persistentContainer.viewContext
         let newGameModes = NSEntityDescription.insertNewObject(forEntityName: "GameModeData", into: context)
+        
         newGameModes.setValue(idGameModes, forKey: "idGameModes")
         newGameModes.setValue(nameGameModes, forKey: "nameGameModes")
+        
         do {
             try context.save()
         } catch let error as NSError {
@@ -19,9 +22,12 @@ class GameModeCoreData {
     
     static func fetchGameMode(id: Int32) -> String? {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
+        
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GameModeData")
+        
         request.returnsObjectsAsFaults = false
+        
         do {
             let results = try context.fetch(request)
             for result in results as! [NSManagedObject] {
@@ -38,12 +44,15 @@ class GameModeCoreData {
     
     static func nameGameModeDB(id: [Int]?, callback:@escaping (String) -> ()) {
         var gamesMode: [String] = []
+        
         guard let id = id else { return }
+        
         id.forEach{ idGameMode in
             if let nameGameMode = fetchGameMode(id: Int32(idGameMode)) {
                 gamesMode.append(nameGameMode)
             } else {
                 let decodeJSON = DecodeJSON(url: GetUrl.getUrlIDGameModes(idGameModes: idGameMode))
+                
                 decodeJSON.getGameModes(callback: { arrayGameMode in
                     arrayGameMode.forEach({
                         gamesMode.append( $0.nameGameModes )

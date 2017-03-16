@@ -3,71 +3,38 @@ import UIKit
 
 
 func heightRowInGameDescription(indexPath: IndexPath, gameDescription: Game) -> CGFloat {
-    
     switch indexPath.section {
-    
     case 0:
-    
         return 105
-    
     case 1:
-    
         guard let summary = gameDescription.summary, summary.characters.count > 0 else { return 0 }
-        
         return 250
-
     case 2:
-    
         guard gameDescription.developers != nil else { return 0 }
-        
         return 50
-    
     case 3:
-    
         guard gameDescription.publishers != nil else { return 0 }
-        
         return 50
-    
     case 4:
-   
         guard gameDescription.releaseDate != nil else { return 0 }
-        
         return 50
-    
     case 5:
-    
         guard gameDescription.genres != nil else { return 0 }
-        
         return 50
-    
     case 6:
-    
         guard gameDescription.gameModes != nil else { return 0 }
-        
         return 50
-    
     case 7:
-    
         guard gameDescription.screenshots != nil else { return 0 }
-        
         return 180
-    
     case 8:
-    
         guard gameDescription.videos != nil else { return 0 }
-        
         return 150
-    
     case 9:
-    
         return 50
-    
     default:
-    
         return 0
-    
     }
-
 }
 
 

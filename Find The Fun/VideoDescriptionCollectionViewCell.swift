@@ -1,20 +1,16 @@
 import UIKit
 
 class VideoDescriptionCollectionViewCell: UICollectionViewCell {
-
-    @IBOutlet weak var titleVideo: UILabel?
     
+    @IBOutlet weak var titleVideo: UILabel?
     @IBOutlet weak var thumbnailVideo: UIImageView?
     
     override func awakeFromNib() {
-        
         super.awakeFromNib()
-        
     }
-
+    
     var url: URL? {
         didSet{
-            
             guard let url = url else { return }
             
             let activitiIndicator = ActivityIndicator(view: thumbnailVideo)
@@ -30,13 +26,8 @@ class VideoDescriptionCollectionViewCell: UICollectionViewCell {
                 imageTransition: UIImageView.ImageTransition.crossDissolve(0.1),
                 runImageTransitionIfCached: true,
                 completion: { _ in
-                    
                     activitiIndicator.stopAnimating()
-            
             })
-        
         }
-    
     }
-
 }

@@ -10,7 +10,6 @@ class GameCell: CellFactory {
     }
     
     func didSelectCell(tableView: UITableView, indexPath: IndexPath, navigationController: UINavigationController) {
-        
         navigationController.pushViewController(
             DescriptionViewController(game: game),
             animated: true)
@@ -21,8 +20,9 @@ class GameCell: CellFactory {
     }
     
     func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
+        //        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
+        let cell = (tableView.dequeueReusableCell(withIdentifier: GameCellTableViewCell.cellIdentifier) as? GameCellTableViewCell)
+            ?? GameCellTableViewCell.fromXIB
         
         cell.configureGameCell(game)
         
