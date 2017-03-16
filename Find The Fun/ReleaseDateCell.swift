@@ -19,7 +19,9 @@ class ReleaseDateCell: CellFactory {
     
     
     func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.releaseDatePlatformTableViewCell, for: indexPath) as! ReleaseDatePlatformTableViewCell
+        let cell = (tableView.dequeueReusableCell(withIdentifier: ReleaseDatePlatformTableViewCell.cellIdentifier) as? ReleaseDatePlatformTableViewCell) ?? ReleaseDatePlatformTableViewCell.fromXIB
+
+//        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.releaseDatePlatformTableViewCell, for: indexPath) as! ReleaseDatePlatformTableViewCell
 
         cell.backgroundColor = ColorUI.background
         guard let platform = releaseDate.platform else { return cell }

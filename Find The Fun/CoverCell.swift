@@ -20,7 +20,9 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
     
     
     func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
+        let cell = (tableView.dequeueReusableCell(withIdentifier: CoverTableViewCell.cellIdentifier) as? CoverTableViewCell) ?? CoverTableViewCell.fromXIB
+
+//        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
         
         cell.configureCoverTableViewCell(game)
         cell.favouriteDelegate = self

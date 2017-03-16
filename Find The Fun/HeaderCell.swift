@@ -9,7 +9,9 @@ class HeaderCell: CellFactory {
     
     
     func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverHDTableViewCell, for: indexPath) as! CoverHDTableViewCell
+        let cell = (tableView.dequeueReusableCell(withIdentifier: CoverHDTableViewCell.cellIdentifier) as? CoverHDTableViewCell) ?? CoverHDTableViewCell.fromXIB
+
+//        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverHDTableViewCell, for: indexPath) as! CoverHDTableViewCell
         
         cell.configureCoverHDTableViewCell()
         

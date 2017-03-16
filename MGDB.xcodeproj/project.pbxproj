@@ -263,6 +263,7 @@
 				659D26E21E575D72004DF1B5 /* HeightofCell.swift */,
 				65B503CB1E6D7AD800ADD9C6 /* TypeCast.swift */,
 				65ACA0E21E79FE8300B40A70 /* XIBConstructible.swift */,
+				65CD7AD21E5DB1F7004DCBAD /* RandomElementFromArray.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -404,7 +405,6 @@
 				6541CBF51E40A5CF0071C711 /* Json */,
 				655564E81E4347010022C87F /* IGDB */,
 				6541CBF11E40A5560071C711 /* Utilities */,
-				65CD7AD11E5DB1DD004DCBAD /* RandomElementArray */,
 				65CD7AD01E5DA8AF004DCBAD /* Reachability */,
 				652692081E5340AB00A32CF6 /* CachedGame.swift */,
 				658B30C01E607D080006AD85 /* NibName.swift */,
@@ -647,14 +647,6 @@
 				652692061E5319FD00A32CF6 /* Reachability.swift */,
 			);
 			name = Reachability;
-			sourceTree = "<group>";
-		};
-		65CD7AD11E5DB1DD004DCBAD /* RandomElementArray */ = {
-			isa = PBXGroup;
-			children = (
-				65CD7AD21E5DB1F7004DCBAD /* RandomElementFromArray.swift */,
-			);
-			name = RandomElementArray;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

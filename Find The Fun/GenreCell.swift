@@ -18,7 +18,9 @@ class GenreCell: CellFactory {
     
     
     func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.genreTableViewCell, for: indexPath) as! GenreTableViewCell
+        let cell = (tableView.dequeueReusableCell(withIdentifier: GenreTableViewCell.cellIdentifier) as? GenreTableViewCell) ?? GenreTableViewCell.fromXIB
+
+//        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.genreTableViewCell, for: indexPath) as! GenreTableViewCell
         
         GenreCoreData.nameGenreDB(
             id: genre,

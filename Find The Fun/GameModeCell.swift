@@ -22,7 +22,9 @@ class GameModeCell: CellFactory {
 //    }
     
     func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameModesTableViewCell, for: indexPath) as! GameModesTableViewCell
+        let cell = (tableView.dequeueReusableCell(withIdentifier: GameModesTableViewCell.cellIdentifier) as? GameModesTableViewCell) ?? GameModesTableViewCell.fromXIB
+
+//        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameModesTableViewCell, for: indexPath) as! GameModesTableViewCell
         
         GameModeCoreData.nameGameModeDB(
             id: gameMode,
