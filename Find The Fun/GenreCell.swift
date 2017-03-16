@@ -17,13 +17,18 @@ class GenreCell: CellFactory {
     }
     
     
-    func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+    func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.genreTableViewCell, for: indexPath) as! GenreTableViewCell
         
         GenreCoreData.nameGenreDB(
             id: genre,
-            callback: { nameGenre in
-                cell.configureGenreTableViewCell(nameGenre)
+            callback: { getGenre in
+                do {
+                    let nameGenre = try getGenre()
+                    cell.configureGenreTableViewCell(nameGenre)
+                } catch let error {
+                    handleError(error)
+                }
         })
         
         return cell

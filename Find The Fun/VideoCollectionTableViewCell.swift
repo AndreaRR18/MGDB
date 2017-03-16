@@ -6,9 +6,13 @@ protocol VideoDelegate: class {
 }
 
 
-class VideoCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+final class VideoCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, XIBConstructible {
     
     @IBOutlet weak private var collectionViewVideo: UICollectionView?
+    
+    static var cellIdentifier: String {
+        return "VideoCollectionTableViewCell"
+    }
     
     weak var delegate: VideoDelegate?
     private var video: [Video] = []

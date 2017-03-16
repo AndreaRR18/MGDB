@@ -230,7 +230,8 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
         return cellFactories[indexPath.section][indexPath.row]
             .getCell(
                 tableView: tableView,
-                indexPath: indexPath)
+                indexPath: indexPath,
+                handleError: { _ in })
     }
     
     

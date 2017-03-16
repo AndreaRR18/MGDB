@@ -13,7 +13,7 @@ protocol ShowCoverDelegate: class {
     func showCover()
 }
 
-class CoverTableViewCell: UITableViewCell {
+final class CoverTableViewCell: UITableViewCell, XIBConstructible {
     
     @IBOutlet weak private var thumbnail: UIImageView?
     @IBOutlet weak private var name: UILabel?
@@ -22,6 +22,10 @@ class CoverTableViewCell: UITableViewCell {
     @IBOutlet weak var saveButton: UIButton?
     
     private var game: Game? = nil
+    
+    static var cellIdentifier: String {
+        return "CoverTableViewCell"
+    }
     
     weak var favouriteDelegate: FavouriteDelegate?
     weak var shareDelegate: ShareDelegate?

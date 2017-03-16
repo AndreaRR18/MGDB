@@ -42,10 +42,8 @@ class GameModeCoreData {
     }
     
     
-    static func nameGameModeDB(id: [Int]?, callback:@escaping (String) -> ()) {
+    static func nameGameModeDB(id: [Int], callback:@escaping (() throws -> (String)) -> ()) {
         var gamesMode: [String] = []
-        
-        guard let id = id else { return }
         
         id.forEach{ idGameMode in
             if let nameGameMode = fetchGameMode(id: Int32(idGameMode)) {
@@ -53,15 +51,20 @@ class GameModeCoreData {
             } else {
                 let decodeJSON = DecodeJSON(url: GetUrl.getUrlIDGameModes(idGameModes: idGameMode))
                 
-                decodeJSON.getGameModes(callback: { arrayGameMode in
-                    arrayGameMode.forEach({
-                        gamesMode.append( $0.nameGameModes )
-                        saveGameMode(idGameModes: Int32($0.idGameModes), nameGameModes: $0.nameGameModes)
-                    })
+                decodeJSON.getGameModes(callback: { getGameMode in
+                    do {
+                        let arrayGameMode = try getGameMode()
+                        arrayGameMode.forEach({
+                            gamesMode.append( $0.nameGameModes )
+                            saveGameMode(idGameModes: Int32($0.idGameModes), nameGameModes: $0.nameGameModes)
+                        })
+                    } catch let error {
+                        callback { throw error }
+                    }
                 })
             }
         }
-        callback(gamesMode.joined(separator: ", "))
+        callback { gamesMode.joined(separator: ", ") }
     }
     
 }

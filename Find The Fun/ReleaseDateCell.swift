@@ -18,17 +18,22 @@ class ReleaseDateCell: CellFactory {
     }
     
     
-    func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+    func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.releaseDatePlatformTableViewCell, for: indexPath) as! ReleaseDatePlatformTableViewCell
 
         cell.backgroundColor = ColorUI.background
-        
+        guard let platform = releaseDate.platform else { return cell }
         PlatformCoreData.namePlatformDB(
-            id: releaseDate.platform,
-            callback: { namePlatform, new in
-                cell.configureReleaseDateTableViewCell(namePlatform, self.releaseDate.human)
-                if new {
-                    tableView.reloadData()
+            id: platform,
+            callback: { getTuple in
+                do {
+                        let (namePlatform, new) = try getTuple()
+                    cell.configureReleaseDateTableViewCell(namePlatform, self.releaseDate.human)
+                    if new {
+                        tableView.reloadData()
+                    }
+                } catch let error {
+                    handleError(error)
                 }
         })
         

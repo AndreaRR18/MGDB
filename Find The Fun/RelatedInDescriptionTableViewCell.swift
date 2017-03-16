@@ -1,7 +1,11 @@
 import UIKit
 
-class RelatedInDescriptionTableViewCell: UITableViewCell {
+final class RelatedInDescriptionTableViewCell: UITableViewCell, XIBConstructible {
     
+    static var cellIdentifier: String {
+        return "RelatedInDescriptionTableViewCell"
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

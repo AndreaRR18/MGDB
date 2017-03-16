@@ -8,7 +8,7 @@ class HeaderCell: CellFactory {
     }
     
     
-    func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+    func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverHDTableViewCell, for: indexPath) as! CoverHDTableViewCell
         
         cell.configureCoverHDTableViewCell()

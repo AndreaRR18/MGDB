@@ -121,7 +121,8 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         return GameCell(game: arrayGames[indexPath.row])
             .getCell(
                 tableView: tableView,
-                indexPath: indexPath)
+                indexPath: indexPath,
+                handleError: {_ in })
     }
     
     

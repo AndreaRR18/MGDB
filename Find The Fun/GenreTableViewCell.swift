@@ -1,8 +1,12 @@
 import UIKit
 
-class GenreTableViewCell: UITableViewCell {
+final class GenreTableViewCell: UITableViewCell, XIBConstructible {
     
     @IBOutlet weak private var genres: UILabel?
+    
+    static var cellIdentifier: String {
+        return "GenreTableViewCell"
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

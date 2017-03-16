@@ -5,9 +5,14 @@ protocol ScreenshotDelegate: class {
 }
 
 
-class ScreenshotCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+final class ScreenshotCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, XIBConstructible {
     
     @IBOutlet weak private var screenshotCollectionview: UICollectionView?
+    
+    static var cellIdentifier: String {
+        return "ScreenshotCollectionTableViewCell"
+    }
+
     
     weak var delegate: ScreenshotDelegate?
     private var screenshot: [Screenshot] = []

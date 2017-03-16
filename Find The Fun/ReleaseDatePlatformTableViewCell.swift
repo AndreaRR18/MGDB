@@ -1,10 +1,14 @@
 import UIKit
 
-class ReleaseDatePlatformTableViewCell: UITableViewCell {
+final class ReleaseDatePlatformTableViewCell: UITableViewCell, XIBConstructible {
     
     @IBOutlet weak var platform: UILabel?
     @IBOutlet weak var date: UILabel?
     
+    static var cellIdentifier: String {
+        return "ReleaseDatePlatformTableViewCell"
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

@@ -1,8 +1,12 @@
 import UIKit
 
-class CompanyTableViewCell: UITableViewCell {
+final class CompanyTableViewCell: UITableViewCell, XIBConstructible {
     
     @IBOutlet weak private var company: UILabel?
+    
+    static var cellIdentifier: String {
+        return "CompanyTableViewCell"
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

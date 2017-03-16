@@ -1,8 +1,12 @@
 import UIKit
 
-class GameModesTableViewCell: UITableViewCell {
+final class GameModesTableViewCell: UITableViewCell, XIBConstructible {
     
     @IBOutlet weak private var gameModes: UILabel?
+    
+    static var cellIdentifier: String {
+        return "GameModesTableViewCell"
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

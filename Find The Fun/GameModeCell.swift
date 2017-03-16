@@ -16,18 +16,23 @@ class GameModeCell: CellFactory {
             animated: true)
     }
     
-    static func getCellHeight(for values: [Int]?) -> CGFloat {
-        guard gameModes != nil else { return 0 }
-        return 50
-    }
+//    static func getCellHeight(for values: [Int]?) -> CGFloat {
+//        guard gameMode != nil else { return 0 }
+//        return 50
+//    }
     
-    func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+    func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameModesTableViewCell, for: indexPath) as! GameModesTableViewCell
         
         GameModeCoreData.nameGameModeDB(
             id: gameMode,
-            callback: { nameGameModes in
-                cell.configureGameModesTableViewCell(nameGameModes)
+            callback: { getGameModes in
+                do {
+                    let nameGameModes = try getGameModes()
+                    cell.configureGameModesTableViewCell(nameGameModes)
+                } catch let error {
+                    handleError(error)
+                }
         })
         
         return cell

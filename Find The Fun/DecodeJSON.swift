@@ -31,12 +31,14 @@ class DecodeJSON {
                             DispatchQueue.main.async {
                                 if let arrayGames = self.parsingJsonDataGame(data: data) {
                                     callback {arrayGames.filter { $0.cover != nil } }
-                                }else {
+                                } else {
                                     callback { throw "Dati inconsistenti" }
                                 }
                             }
+                        } else if let error = error {
+                            callback { throw error }
                         } else {
-                            callback { throw "\(error)" }
+                            callback { throw "No data" }
                         }
                 })
             task.resume()
@@ -85,9 +87,12 @@ class DecodeJSON {
                                     callback { throw "Dati inconsistenti!" }
                                 }
                             }
+                        } else if let error = error {
+                            callback { throw error }
                         } else {
-                            callback { throw "\(error)" }
+                            callback { throw "No data" }
                         }
+                        
                 })
             task.resume()
         } else {
@@ -132,9 +137,12 @@ class DecodeJSON {
                                     callback { throw "Dati inconsistenti!" }
                                 }
                             }
+                        }  else if let error = error {
+                            callback { throw error }
                         } else {
-                            callback { throw "\(error)" }
+                            callback { throw "No data" }
                         }
+                        
                 })
             task.resume()
         } else {
@@ -161,7 +169,7 @@ class DecodeJSON {
     
     //-------------------------------Platforms-------------------------------
     
-    func getPlatform(callback: @escaping (() throws -> [Platform]) -> ()) {
+    func getPlatform(callback: @escaping (() throws -> ([Platform])) -> ()) {
         if let url = URL(string: url) {
             let req = NSMutableURLRequest(url: url)
             req.setValue(
@@ -180,9 +188,12 @@ class DecodeJSON {
                                     callback { throw "Dati inconsistenti!" }
                                 }
                             }
+                        } else if let error = error {
+                            callback { throw error }
                         } else {
-                            callback { throw "\(error)" }
+                            callback { throw "No data" }
                         }
+                        
                 })
             task.resume()
         } else {
@@ -208,7 +219,7 @@ class DecodeJSON {
     
     //-------------------------------Genres-------------------------------
     
-    func getGenres(callback: @escaping ( () throws -> [Genre]) -> ()) {
+    func getGenres(callback: @escaping ( () throws -> ([Genre])) -> ()) {
         if let url = URL(string: url) {
             let req = NSMutableURLRequest(url: url)
             req.setValue(
@@ -228,9 +239,12 @@ class DecodeJSON {
                                     callback { throw "Dati inconsistenti" }
                                 }
                             }
+                        }  else if let error = error {
+                            callback { throw error }
                         } else {
-                            callback { throw "\(error)" }
+                            callback { throw "No data" }
                         }
+                        
                 })
             task.resume()
         } else {
@@ -255,7 +269,7 @@ class DecodeJSON {
     
     //-------------------------------GameModes-------------------------------
     
-    func getGameModes(callback:@escaping (() throws -> [GameMode]) -> ()) {
+    func getGameModes(callback:@escaping (() throws -> ([GameMode])) -> ()) {
         if let url = URL(string: url) {
             let req = NSMutableURLRequest(url: url)
             req.setValue(
@@ -274,8 +288,10 @@ class DecodeJSON {
                                     callback { throw "Dati inconsistenti!" }
                                 }
                             }
+                        }  else if let error = error {
+                            callback { throw error }
                         } else {
-                            callback { throw "\(error)" }
+                            callback { throw "No data" }
                         }
                 })
             task.resume()
@@ -320,8 +336,10 @@ class DecodeJSON {
                                     callback { throw "Dati inconsistenti!" }
                                 }
                             }
+                        }  else if let error = error {
+                            callback { throw error }
                         } else {
-                            callback { throw "\(error)" }
+                            callback { throw "No data" }
                         }
                 })
             task.resume()

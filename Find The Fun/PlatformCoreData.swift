@@ -42,24 +42,25 @@ class PlatformCoreData {
         return nil
     }
     
-    static func namePlatformDB(id: Int?, callback:@escaping (String, Bool) -> ()) {
+    static func namePlatformDB(id: Int, callback: @escaping (() throws -> (String, Bool)) -> ()) {
         var new = true
-        
-        if let idPlatform = id {
-            if let namePlatform = fetchPlatform(id: Int32(idPlatform)) {
-                new = false
-                callback(namePlatform, new)
-            } else {
-                let decodeJSON = DecodeJSON(url: GetUrl.getUrlIDPlatform(idPlatform: idPlatform))
-                
-                decodeJSON.getPlatform(callback: { arrayPlatforms in
+        if let namePlatform = fetchPlatform(id: Int32(id)) {
+            new = false
+            callback { (namePlatform, new) }
+        } else {
+            
+            let decodeJSON = DecodeJSON(url: GetUrl.getUrlIDPlatform(idPlatform: id))
+            
+            decodeJSON.getPlatform(callback: { getPlatform in
+                do {
+                    let arrayPlatforms = try getPlatform()
                     guard let idPlatform = arrayPlatforms.first?.idPlatform, let namePlatform = arrayPlatforms.first?.namePlatform else { return }
                     savePlatform(idPlatform: Int32(idPlatform), namePlatform: namePlatform)
-                    callback(namePlatform, new)
-                })
-            }
-        } else {
-            return callback("N.D.", new)
+                    callback { (namePlatform, new) }
+                } catch let error {
+                    callback { throw error }
+                }
+            })
         }
     }
     

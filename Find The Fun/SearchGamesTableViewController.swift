@@ -134,7 +134,7 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
                 } else {
                     let alert = Alert(
                         title: "Search result for: \(searchText)",
-                        message: "Your search returns no result.")
+                        message: "Your search returned no result.")
                     self.present(
                         alert.alertControllerLaunch(),
                         animated: true,
@@ -142,9 +142,13 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
                     activityIndicator.stopAnimating()
                 }
                 
+            
             } catch let error {
-                callback { throw error }
+                print("------------------------")
+                print("\(error)")
+                print("------------------------")
             }
+
             
         })
     }

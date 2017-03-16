@@ -27,7 +27,7 @@ class FavouriteCoverCell: CellFactory, ShareDelegate, FavouriteDelegate {
     }
     
     
-    func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+    func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.coverTableViewCell, for: indexPath) as! CoverTableViewCell
         
         cell.configureFavouriteCoverTableViewCell(name, cover, rating)
