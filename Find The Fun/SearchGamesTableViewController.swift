@@ -114,30 +114,38 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         
         let decodedJSON = DecodeJSON(url: GetUrl.getUrlSearchedGames(title: searchText))
         
-        decodedJSON.getSearchGames(weak: { arrayGames in
-            if arrayGames.count > 1 {
-                self.arrayGames = arrayGames.filter{ game in
-                    game.name
-                        .replacingOccurrences(of: " ", with: "")
-                        .lowercased()
-                        .contains(searchText.replacingOccurrences(of: " ", with: "").lowercased())
-                    }
-                    .sorted(by: { (a, b) -> Bool in
-                        a.rating ?? 1 > b.rating ?? 1
-                    })
+        decodedJSON.getSearchGames(callback: { getSearchGame in
+            
+            do {
+                let arrayGames = try getSearchGame()
+                if arrayGames.count > 1 {
+                    self.arrayGames = arrayGames.filter{ game in
+                        game.name
+                            .replacingOccurrences(of: " ", with: "")
+                            .lowercased()
+                            .contains(searchText.replacingOccurrences(of: " ", with: "").lowercased())
+                        }
+                        .sorted(by: { (a, b) -> Bool in
+                            a.rating ?? 1 > b.rating ?? 1
+                        })
+                    
+                    activityIndicator.stopAnimating()
+                    self.tableView.reloadData()
+                } else {
+                    let alert = Alert(
+                        title: "Search result for: \(searchText)",
+                        message: "Your search returns no result.")
+                    self.present(
+                        alert.alertControllerLaunch(),
+                        animated: true,
+                        completion: nil)
+                    activityIndicator.stopAnimating()
+                }
                 
-                activityIndicator.stopAnimating()
-                self.tableView.reloadData()
-            } else {
-                let alert = Alert(
-                    title: "Search result for: \(searchText)",
-                    message: "Your search returns no result.")
-                self.present(
-                    alert.alertControllerLaunch(),
-                    animated: true,
-                    completion: nil)
-                activityIndicator.stopAnimating()
+            } catch let error {
+                callback { throw error }
             }
+            
         })
     }
 }

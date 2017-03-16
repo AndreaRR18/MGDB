@@ -76,10 +76,15 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         
         let decodedJSON = DecodeJSON(url: GetUrl.newGamesURL)
         
-        decodedJSON.getNewGames(callback: { arrayGames in
-            self.arrayGames = arrayGames
-            activityIndicator.stopAnimating()
-            self.tableView.reloadData()
+        decodedJSON.getNewGames(callback: { getNewGame in
+            do {
+                let arrayGames = try getNewGame()
+                self.arrayGames = arrayGames
+                activityIndicator.stopAnimating()
+                self.tableView.reloadData()
+            } catch let error {
+                print("\(error)")
+            }
         })
         //        }else {
         //            do {
@@ -162,9 +167,15 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
             offset += 30
             let decodedJSON = DecodeJSON(url: GetUrl.getUrlOffsetdGames(offset: offset))
             
-            decodedJSON.getNewGames(callback: { arrayGames in
-                self.arrayGames += arrayGames
-                self.tableView.reloadData()
+            decodedJSON.getNewGames(callback: { getNewGames in
+                do {
+                    let arrayGames = try getNewGames()
+                    self.arrayGames += arrayGames
+                    self.tableView.reloadData()
+                } catch let error {
+                    print("\(error)")
+                }
+                
             })
         }
     }
@@ -190,11 +201,16 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         
         let decodedJSON = DecodeJSON(url: GetUrl.newGamesURL)
         
-        decodedJSON.getNewGames(callback: { arrayGames in
-            self.arrayGames = arrayGames
-            self.refreshControl?.endRefreshing()
-            self.tableView.reloadData()
-        })
+        decodedJSON.getNewGames(callback: { getNewGames in
+            do {
+                let arrayGames = try getNewGames()
+                self.arrayGames = arrayGames
+                self.refreshControl?.endRefreshing()
+                self.tableView.reloadData()
+            } catch let error {
+                print("\(error)")
+            }
+                    })
     }
 }
 

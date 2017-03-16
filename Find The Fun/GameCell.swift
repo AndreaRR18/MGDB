@@ -19,10 +19,9 @@ class GameCell: CellFactory {
             animated: true)
     }
     
-    func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+    func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
         //        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
-        let cell = (tableView.dequeueReusableCell(withIdentifier: GameCellTableViewCell.cellIdentifier) as? GameCellTableViewCell)
-            ?? GameCellTableViewCell.fromXIB
+        let cell = (tableView.dequeueReusableCell(withIdentifier: GameCellTableViewCell.cellIdentifier) as? GameCellTableViewCell) ?? GameCellTableViewCell.fromXIB
         
         cell.configureGameCell(game)
         

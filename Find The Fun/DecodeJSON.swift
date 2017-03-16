@@ -14,7 +14,7 @@ class DecodeJSON {
     
     //-------------------------------SearchGame-------------------------------
     
-    func getSearchGames(weak callback: @escaping (() throws -> ([Game])) -> ()) {
+    func getSearchGames(callback: @escaping (() throws -> ([Game])) -> ()) {
         
         if let url = URL(string: url) {
             let req = NSMutableURLRequest(url: url)
@@ -112,7 +112,7 @@ class DecodeJSON {
     
     //-------------------------------Single Company-------------------------------
     
-    func getCompany(weak callback: @escaping (() throws -> (Company)) -> ()) {
+    func getCompany(callback: @escaping (() throws -> (Company)) -> ()) {
         
         if let url = URL(string: url) {
             let req = NSMutableURLRequest(url: url)

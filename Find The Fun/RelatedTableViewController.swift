@@ -47,10 +47,15 @@ class RelatedTableViewController: UITableViewController {
             let decodedJSON = DecodeJSON(url: GetUrl.getUrlIDGame(idGame: idGames))
             
             decodedJSON.getNewGames(
-                callback: {games in
-                    self.arrayGames = games.filter { $0.rating ?? 0 > 0 }
-                    self.tableView.reloadData()
-                    activityIndicator.stopAnimating()
+                callback: {getNewGames in
+                    do {
+                       let games = try getNewGames()
+                        self.arrayGames = games.filter { $0.rating ?? 0 > 0 }
+                        self.tableView.reloadData()
+                        activityIndicator.stopAnimating()
+                    } catch let error {
+                        print("\(error)")
+                    }
             })
         }
     }
