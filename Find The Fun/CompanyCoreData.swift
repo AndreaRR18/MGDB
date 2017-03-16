@@ -36,37 +36,23 @@ static func fetchCompany(id: Int32) -> String? {
     return nil
 }
 
-static func nameCompanyDB(id: [Int], callback:@escaping ([String], Bool) -> ()) {
-    var companies: [String] = []
-    var new = true
-    id.forEach{ idCompany in
-        if let nameCompany = fetchCompany(id: Int32(idCompany)) {
-            new = false
-            companies.append(nameCompany)
-        } else {
-            let decodeJSON = DecodeJSON(url: GetUrl.getUrlIDCompany(idCompany: idCompany))
-            decodeJSON.getCompanies(callback: { arrayCompanies in
-                arrayCompanies.forEach({
-                    companies.append( $0.name )
-                    saveCompany(idCompany: Int32($0.idCompany), nameCompany: $0.name)
-                })
-                
-            })
-        }
-    }
-    callback(companies, new)
-}
-
-static func companyDB(id: Int, callback:@escaping (String, Bool) -> ()) {
+static func companyDB(id: Int, callback: @escaping (() throws -> (String, Bool)) -> ()) {
     var new = true
     if let nameCompany = CompanyCoreData.fetchCompany(id: Int32(id)) {
         new = false
-        callback(nameCompany, new)
+        callback { (nameCompany, new) }
     } else {
         let decodeJSON = DecodeJSON(url: GetUrl.getUrlIDCompany(idCompany: id))
-        decodeJSON.getCompany(callback: { company in
-            callback(company.name, new)
-            CompanyCoreData.saveCompany(idCompany: Int32(company.idCompany), nameCompany: company.name)
+        decodeJSON.getCompany(callback: { getCompany in
+            
+            do {
+                let company = try getCompany()
+                callback { (company.name, new) }
+                CompanyCoreData.saveCompany(idCompany: Int32(company.idCompany), nameCompany: company.name)
+            } catch let error {
+                callback { throw error }
+            }
+            
         })
     }
 }

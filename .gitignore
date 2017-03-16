@@ -1,6 +1,3 @@
-Find The Fun.xcodeproj/project.xcworkspace/xcuserdata
-Find The Fun.xcodeproj/xcuserdata
 *.bcsymbolmap
 Carthage/Checkouts
-Carthage/Build/iOS/Alamofire.framework.dSYM
-Carthage/Build/iOS/AlamofireImage.framework.dSYM
+MGDB.xcodeproj/project.xcworkspace/xcuserdata

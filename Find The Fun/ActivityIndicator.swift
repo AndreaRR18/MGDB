@@ -15,10 +15,7 @@ struct ActivityIndicator {
         self.background = background
         self.activityIndicatorColor = activityIndicatorColor
         self.withBackground = withBackground
-    }
-    
-    
-    func startAnimating() {
+        
         guard let view = view else { return }
         
         if withBackground {
@@ -40,7 +37,11 @@ struct ActivityIndicator {
         activityIndicator.color = activityIndicatorColor
         
         view.addSubview(activityIndicator)
-        
+    }
+    
+    
+    func startAnimating() {
+        loadingBackground.isHidden = false
         activityIndicator.startAnimating()
     }
     

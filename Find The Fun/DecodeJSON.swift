@@ -109,36 +109,6 @@ class DecodeJSON {
     
     //-------------------------------Companies-------------------------------
     
-    
-    func getCompanies(callback:@escaping ([Company]) -> ()) {
-        if let url = URL(string: url) {
-            
-            let req = NSMutableURLRequest(url: url)
-            req.setValue(
-                IGDBKey.apiKey,
-                forHTTPHeaderField: IGDBKey.header)
-            
-            let task = URLSession
-                .shared
-                .dataTask(
-                    with: req as URLRequest,
-                    completionHandler: { (data, response, error) -> Void in
-                        if let data = data {
-                            DispatchQueue.main.async {
-                                guard let arrayCompanies = self.parsingJsonDataCompanies(data: data) else  { return }
-                                callback(arrayCompanies)
-                            }
-                        } else {
-                            print("\(error)")
-                        }
-                })
-            task.resume()
-        } else {
-            print("URL errato!")
-        }
-    }
-    
-    
     func parsingJsonDataCompanies(data: Data) -> [Company]? {
         do {
             let deserialized = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
@@ -155,7 +125,7 @@ class DecodeJSON {
     
     //-------------------------------Single Company-------------------------------
     
-    func getCompany(callback:@escaping (Company) -> ()) {
+    func getCompany(callback: @escaping (() throws -> (Company)) -> ()) {
         
         if let url = URL(string: url) {
             let req = NSMutableURLRequest(url: url)
@@ -170,7 +140,7 @@ class DecodeJSON {
                         if let data = data {
                             DispatchQueue.main.async {
                                 guard let company = self.parsingJsonDataCompany(data: data) else { return }
-                                callback(company)
+                                callback { return company }
                             }
                         } else {
                             print("\(error)")
@@ -179,6 +149,8 @@ class DecodeJSON {
             task.resume()
         } else {
             print("URL errato!")
+            callback { throw "URL errato!" }
+            
         }
     }
     

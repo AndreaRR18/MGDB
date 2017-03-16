@@ -16,15 +16,22 @@ class PublisherCell: CellFactory {
             animated: true)
     }
     
-    func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+    func getCell(tableView: UITableView, indexPath: IndexPath, handleError: (Error) -> ()) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.companyTableViewCell, for: indexPath) as! CompanyTableViewCell
         
         CompanyCoreData.companyDB(
             id: company,
-            callback: { nameCompany, new in
-                cell.configureCompanyTableViewCell(nameCompany)
-                if new {
-                    tableView.reloadData()
+            callback: { getTuple  in
+                
+                do {
+                    let (nameCompany, new) = try getTuple()
+                    cell.configureCompanyTableViewCell(nameCompany)
+                    if new {
+                        tableView.reloadData()
+                    }
+                }
+                catch let error {
+                    handleError(error)
                 }
         })
         
@@ -53,11 +60,19 @@ class DeveloperCell: CellFactory {
         
         CompanyCoreData.companyDB(
             id: company,
-            callback: { nameCompany, new in
-                cell.configureCompanyTableViewCell(nameCompany)
-                if new {
-                    tableView.reloadData()
+            callback: { getTuple  in
+                
+                do {
+                    let (nameCompany, new) = try getTuple()
+                    cell.configureCompanyTableViewCell(nameCompany)
+                    if new {
+                        tableView.reloadData()
+                    }
                 }
+                catch let error {
+                    
+                }
+
         })
         
         return cell

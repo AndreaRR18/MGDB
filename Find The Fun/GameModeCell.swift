@@ -16,6 +16,10 @@ class GameModeCell: CellFactory {
             animated: true)
     }
     
+    static func getCellHeight(for values: [Int]?) -> CGFloat {
+        guard gameModes != nil else { return 0 }
+        return 50
+    }
     
     func getCell(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameModesTableViewCell, for: indexPath) as! GameModesTableViewCell

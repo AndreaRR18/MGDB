@@ -1,9 +1,14 @@
-//
-//  XIBConstructible.swift
-//  MGDB
-//
-//  Created by Andrea & Beatrice on 15/03/17.
-//  Copyright © 2017 Andrea. All rights reserved.
-//
-
 import Foundation
+import UIKit
+
+protocol XIBConstructible {
+    static var fromXIB: Self { get }
+}
+
+extension XIBConstructible {
+    static var fromXIB: Self {
+        return UINib(nibName: "\(Self.self)", bundle: nil)
+            .instantiate(withOwner: nil, options: nil)
+            .first as! Self
+    }
+}
