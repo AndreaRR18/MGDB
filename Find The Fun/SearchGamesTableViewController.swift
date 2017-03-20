@@ -99,21 +99,29 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     
     
     internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchBar.text else { return }
+        var textSearchChange: String?
+        guard let
+            searchText = searchBar.text,
+            textSearchChange != searchText,
+            searchText.replacingOccurrences(of: " ", with: "").characters.count > 0,
+            let url = GetUrl.getUrlSearchedGames(title: searchText)
+            
+            else {
+                let alert = Alert(
+                    title: "Warning",
+                    message: "Text filed is empty.")
+                self.present(
+                    alert.alertControllerLaunch(),
+                    animated: true,
+                    completion: nil)
+                return }
         
-        var textSearchChange = ""
-        
-        if searchBar.text != nil && textSearchChange != searchText {
-            self.arrayGames.removeAll()
-            self.tableView.reloadData()
-            textSearchChange = searchText
-        }
+        textSearchChange = searchText
         
         let activityIndicator = ActivityIndicator(view: self.view)
         activityIndicator.startAnimating()
         
-        let decodedJSON = DecodeJSON(url: GetUrl.getUrlSearchedGames(title: searchText))
-        
+        let decodedJSON = DecodeJSON(url: url)
         decodedJSON.getSearchGames(callback: { getSearchGame in
             
             do {
@@ -123,13 +131,13 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
                         game.name
                             .replacingOccurrences(of: " ", with: "")
                             .lowercased()
-                            .contains(searchText.replacingOccurrences(of: " ", with: "").lowercased())
+                            .contains(searchText.replacingOccurrences(of: " ", with: "")
+                                .lowercased())
                         }
                         .sorted(by: { (a, b) -> Bool in
                             a.rating ?? 1 > b.rating ?? 1
                         })
                     
-                    activityIndicator.stopAnimating()
                     self.tableView.reloadData()
                 } else {
                     let alert = Alert(
@@ -139,17 +147,16 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
                         alert.alertControllerLaunch(),
                         animated: true,
                         completion: nil)
-                    activityIndicator.stopAnimating()
                 }
-                
-            
+                activityIndicator.stopAnimating()
             } catch let error {
                 print("------------------------")
                 print("\(error)")
                 print("------------------------")
             }
-
+            
             
         })
+        
     }
 }

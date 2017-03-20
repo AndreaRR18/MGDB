@@ -12,6 +12,8 @@
 		650123741E375B8F007A12AD /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650123731E375B8F007A12AD /* AlamofireImage.framework */; };
 		650123751E375B8F007A12AD /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 650123731E375B8F007A12AD /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		650123791E3762DE007A12AD /* GetUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650123781E3762DE007A12AD /* GetUrl.swift */; };
+		6502B7801E80114E0067D62B /* GetUrlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502B77F1E80114E0067D62B /* GetUrlTests.swift */; };
+		6502B7831E80174F0067D62B /* GameTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502B7821E80174F0067D62B /* GameTableViewControllerTests.swift */; };
 		652692031E5228AE00A32CF6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652692021E5228AE00A32CF6 /* Alert.swift */; };
 		652692051E530A0000A32CF6 /* SaveDeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652692041E530A0000A32CF6 /* SaveDeleteButton.swift */; };
 		652692071E5319FD00A32CF6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652692061E5319FD00A32CF6 /* Reachability.swift */; };
@@ -107,7 +109,18 @@
 		65B503CF1E6DBB0F00ADD9C6 /* ReleaseDatePlatformTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B503CD1E6DBB0F00ADD9C6 /* ReleaseDatePlatformTableViewCell.swift */; };
 		65B503D01E6DBB0F00ADD9C6 /* ReleaseDatePlatformTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B503CE1E6DBB0F00ADD9C6 /* ReleaseDatePlatformTableViewCell.xib */; };
 		65CD7AD31E5DB1F7004DCBAD /* RandomElementFromArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD7AD21E5DB1F7004DCBAD /* RandomElementFromArray.swift */; };
+		65F0098C1E7C43D4001A5F37 /* MGDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F0098B1E7C43D4001A5F37 /* MGDBTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		65F0098E1E7C43D4001A5F37 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 656C38F31E27D1FC0095EDBC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 656C38FA1E27D1FC0095EDBC;
+			remoteInfo = MGDB;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		654BF7021E29343E00A82610 /* Embed Frameworks */ = {
@@ -131,6 +144,8 @@
 		650123701E375B87007A12AD /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		650123731E375B8F007A12AD /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		650123781E3762DE007A12AD /* GetUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUrl.swift; sourceTree = "<group>"; };
+		6502B77F1E80114E0067D62B /* GetUrlTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUrlTests.swift; sourceTree = "<group>"; };
+		6502B7821E80174F0067D62B /* GameTableViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewControllerTests.swift; sourceTree = "<group>"; };
 		652692021E5228AE00A32CF6 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		652692041E530A0000A32CF6 /* SaveDeleteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveDeleteButton.swift; sourceTree = "<group>"; };
 		652692061E5319FD00A32CF6 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -228,6 +243,9 @@
 		65B503CD1E6DBB0F00ADD9C6 /* ReleaseDatePlatformTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseDatePlatformTableViewCell.swift; sourceTree = "<group>"; };
 		65B503CE1E6DBB0F00ADD9C6 /* ReleaseDatePlatformTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReleaseDatePlatformTableViewCell.xib; sourceTree = "<group>"; };
 		65CD7AD21E5DB1F7004DCBAD /* RandomElementFromArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomElementFromArray.swift; sourceTree = "<group>"; };
+		65F009891E7C43D4001A5F37 /* MGDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MGDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65F0098B1E7C43D4001A5F37 /* MGDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGDBTests.swift; sourceTree = "<group>"; };
+		65F0098D1E7C43D4001A5F37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,9 +261,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		65F009861E7C43D4001A5F37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6502B7811E8017340067D62B /* New TableView */ = {
+			isa = PBXGroup;
+			children = (
+				6502B7821E80174F0067D62B /* GameTableViewControllerTests.swift */,
+			);
+			name = "New TableView";
+			sourceTree = "<group>";
+		};
 		65304C2A1E7706A500339064 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +411,7 @@
 				6541CBC21E3F4FEC0071C711 /* GameData.xcdatamodeld */,
 				656C39051E27D1FC0095EDBC /* Assets.xcassets */,
 				656C39071E27D1FC0095EDBC /* LaunchScreen.storyboard */,
+				65F0098A1E7C43D4001A5F37 /* MGDBTests */,
 				656C38FC1E27D1FC0095EDBC /* Products */,
 				654BF6F21E29252000A82610 /* Frameworks */,
 			);
@@ -387,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				656C38FB1E27D1FC0095EDBC /* MGDB.app */,
+				65F009891E7C43D4001A5F37 /* MGDBTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -649,6 +684,17 @@
 			name = Reachability;
 			sourceTree = "<group>";
 		};
+		65F0098A1E7C43D4001A5F37 /* MGDBTests */ = {
+			isa = PBXGroup;
+			children = (
+				6502B7811E8017340067D62B /* New TableView */,
+				65F0098B1E7C43D4001A5F37 /* MGDBTests.swift */,
+				65F0098D1E7C43D4001A5F37 /* Info.plist */,
+				6502B77F1E80114E0067D62B /* GetUrlTests.swift */,
+			);
+			path = MGDBTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -671,6 +717,24 @@
 			productReference = 656C38FB1E27D1FC0095EDBC /* MGDB.app */;
 			productType = "com.apple.product-type.application";
 		};
+		65F009881E7C43D4001A5F37 /* MGDBTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65F009921E7C43D4001A5F37 /* Build configuration list for PBXNativeTarget "MGDBTests" */;
+			buildPhases = (
+				65F009851E7C43D4001A5F37 /* Sources */,
+				65F009861E7C43D4001A5F37 /* Frameworks */,
+				65F009871E7C43D4001A5F37 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				65F0098F1E7C43D4001A5F37 /* PBXTargetDependency */,
+			);
+			name = MGDBTests;
+			productName = MGDBTests;
+			productReference = 65F009891E7C43D4001A5F37 /* MGDBTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -686,6 +750,12 @@
 						DevelopmentTeam = EUQ43QLTML;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+					};
+					65F009881E7C43D4001A5F37 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = EUQ43QLTML;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 656C38FA1E27D1FC0095EDBC;
 					};
 				};
 			};
@@ -703,6 +773,7 @@
 			projectRoot = "";
 			targets = (
 				656C38FA1E27D1FC0095EDBC /* MGDB */,
+				65F009881E7C43D4001A5F37 /* MGDBTests */,
 			);
 		};
 /* End PBXProject section */
@@ -736,6 +807,13 @@
 				654C4CCA1E6F268700CB07D2 /* FavouriteCollectionViewCell.xib in Resources */,
 				659F87441E6491400089067E /* VideoCollectionTableViewCell.xib in Resources */,
 				656C39061E27D1FC0095EDBC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65F009871E7C43D4001A5F37 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,7 +912,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		65F009851E7C43D4001A5F37 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6502B7801E80114E0067D62B /* GetUrlTests.swift in Sources */,
+				6502B7831E80174F0067D62B /* GameTableViewControllerTests.swift in Sources */,
+				65F0098C1E7C43D4001A5F37 /* MGDBTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		65F0098F1E7C43D4001A5F37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 656C38FA1E27D1FC0095EDBC /* MGDB */;
+			targetProxy = 65F0098E1E7C43D4001A5F37 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		656C39071E27D1FC0095EDBC /* LaunchScreen.storyboard */ = {
@@ -981,6 +1077,34 @@
 			};
 			name = Release;
 		};
+		65F009901E7C43D4001A5F37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = EUQ43QLTML;
+				INFOPLIST_FILE = MGDBTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.developer.andrea.MGDBTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MGDB.app/MGDB";
+			};
+			name = Debug;
+		};
+		65F009911E7C43D4001A5F37 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = EUQ43QLTML;
+				INFOPLIST_FILE = MGDBTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.developer.andrea.MGDBTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MGDB.app/MGDB";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -998,6 +1122,15 @@
 			buildConfigurations = (
 				656C390E1E27D1FC0095EDBC /* Debug */,
 				656C390F1E27D1FC0095EDBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65F009921E7C43D4001A5F37 /* Build configuration list for PBXNativeTarget "MGDBTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65F009901E7C43D4001A5F37 /* Debug */,
+				65F009911E7C43D4001A5F37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

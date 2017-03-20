@@ -4,7 +4,7 @@ class ScreenshotTableCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak private var screenshotImage: UIImageView?
     
-    static var screenshotCollectionIdentifier: String { return "ScreenshotTableCollectionViewCell" }
+    static var cellIdentifier: String { return "ScreenshotTableCollectionViewCell" }
     
     override func awakeFromNib() {
         super.awakeFromNib()

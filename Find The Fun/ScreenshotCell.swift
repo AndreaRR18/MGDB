@@ -22,8 +22,6 @@ class ScreenshotCell: CellFactory, ScreenshotDelegate {
     
     func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
         let cell = (tableView.dequeueReusableCell(withIdentifier: ScreenshotCollectionTableViewCell.cellIdentifier) as? ScreenshotCollectionTableViewCell) ?? ScreenshotCollectionTableViewCell.fromXIB
-
-//        let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.screenshotsCollectionTableViewCell, for: indexPath) as! ScreenshotCollectionTableViewCell
         
         guard let screenshots = screenshots else { return cell }
         

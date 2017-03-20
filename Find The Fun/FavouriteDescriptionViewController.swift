@@ -231,7 +231,9 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
             .getCell(
                 tableView: tableView,
                 indexPath: indexPath,
-                handleError: { _ in })
+                handleError: { _ in
+                    print("Genere non trovato!")
+            })
     }
     
     
@@ -269,11 +271,11 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
         //        let developers = DeveloperCell()
         
         //        let publishers = PublisherCell()
+//        
+//        let genres = GenreCell(game.genres ?? [])
+//        
+//        let gamesMode = GameModeCell(game.gameModes ?? [])
         
-        let genres = GenreCell(game.genres ?? [])
-        
-        let gamesMode = GameModeCell(game.gameModes ?? [])
-        
-        cellFactories = [[header, cover], [summary], [genres], [gamesMode] ]
+        cellFactories = [[header, cover], [summary] ]
     }
 }

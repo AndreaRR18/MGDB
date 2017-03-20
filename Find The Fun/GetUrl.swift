@@ -32,9 +32,9 @@ class GetUrl {
     }
     
     
-    static func getUrlSearchedGames(title: String?) -> String {
-        guard let urlEncode = title?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)?.lowercased() else { return "" }
-        return "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=id,name,summary,aggregated_rating,developers,publishers,updated_at,release_dates,cover,genres,game_modes,screenshots,url,videos&limit=50&filter[aggregated_rating][gt]=1&search="+urlEncode
+    static func getUrlSearchedGames(title: String?) -> String? {
+        guard let title = title?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)?.lowercased(), title.characters.count > 0 else { return nil }
+        return "https://igdbcom-internet-game-database-v1.p.mashape.com/games/?fields=id,name,summary,aggregated_rating,developers,publishers,updated_at,release_dates,cover,genres,game_modes,screenshots,url,videos&limit=50&filter[aggregated_rating][gt]=1&search="+title
     }
     
     

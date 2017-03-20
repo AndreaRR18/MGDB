@@ -76,43 +76,6 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
         tableView?.delegate = self
         tableView?.dataSource = self
         
-//        tableView?.register(
-//            UINib(nibName: NibName.coverHDTableViewCell, bundle: nil),
-//            forCellReuseIdentifier: Identifier.coverHDTableViewCell)
-//        tableView?.register(
-//            UINib(nibName: NibName.coverTableViewCell, bundle: nil),
-//            forCellReuseIdentifier: Identifier.coverTableViewCell)
-//        tableView?.register(
-//            UINib(nibName: NibName.summaryTableViewCell, bundle: nil),
-//            forCellReuseIdentifier: Identifier.summaryTableViewCell)
-//        tableView?.register(
-//            UINib(nibName: NibName.companyTableViewCell, bundle: nil),
-//            forCellReuseIdentifier: Identifier.companyTableViewCell)
-//        tableView?.register(
-//            UINib(nibName: NibName.releaseDatePlatformTableViewCell, bundle: nil),
-//            forCellReuseIdentifier: Identifier.releaseDatePlatformTableViewCell)
-//        tableView?.register(
-//            UINib(nibName: NibName.platformTableViewCell, bundle: nil),
-//            forCellReuseIdentifier: Identifier.platformTableViewCell)
-//        tableView?.register(
-//            UINib(nibName: NibName.ratingTableViewCell, bundle: nil),
-//            forCellReuseIdentifier: Identifier.ratingTableViewCell)
-//        tableView?.register(
-//            UINib(nibName: NibName.screenshotsCollectionTableViewCell, bundle: nil),
-//            forCellReuseIdentifier: Identifier.screenshotsCollectionTableViewCell)
-//        tableView?.register(
-//            UINib(nibName: NibName.genreTableViewCell, bundle: nil),
-//            forCellReuseIdentifier: Identifier.genreTableViewCell)
-//        tableView?.register(
-//            UINib(nibName: NibName.gameModesTableViewCell, bundle: nil),
-//            forCellReuseIdentifier: Identifier.gameModesTableViewCell)
-//        tableView?.register(
-//            UINib(nibName: NibName.videoCollectionTableViewCell, bundle: nil),
-//            forCellReuseIdentifier: Identifier.videoCollectionTableViewCell)
-//        tableView?.register(
-//            UINib(nibName: NibName.relatedInDescriptionTableViewCell, bundle: nil),
-//            forCellReuseIdentifier: Identifier.relatedInDescriptionTableViewCell)
-        
         buildTableDescription()
         
         tableView?.backgroundColor = UIColor.clear
