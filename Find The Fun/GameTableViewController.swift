@@ -113,6 +113,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UIButton().sendActions(for: .touchUpInside)
         return 140
     }
     

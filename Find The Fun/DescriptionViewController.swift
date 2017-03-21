@@ -136,6 +136,7 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellFactories[section].count
+        
     }
     
     

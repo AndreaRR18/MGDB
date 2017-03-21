@@ -25,5 +25,10 @@ class MGDBTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+
+    
+    // per contare il numero di rows nella tableview dopo averla istanziata, serve per i test
+//    tableView.numberOfRows(inSection: <#T##Int#>)
+
     
 }

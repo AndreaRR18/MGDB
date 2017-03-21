@@ -126,17 +126,18 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
             
             do {
                 let arrayGames = try getSearchGame()
-                if arrayGames.count > 1 {
-                    self.arrayGames = arrayGames.filter{ game in
-                        game.name
-                            .replacingOccurrences(of: " ", with: "")
-                            .lowercased()
-                            .contains(searchText.replacingOccurrences(of: " ", with: "")
-                                .lowercased())
-                        }
-                        .sorted(by: { (a, b) -> Bool in
-                            a.rating ?? 1 > b.rating ?? 1
-                        })
+                
+                self.arrayGames = arrayGames.filter{ game in
+                    game.name
+                        .replacingOccurrences(of: " ", with: "")
+                        .lowercased()
+                        .contains(searchText.replacingOccurrences(of: " ", with: "")
+                            .lowercased())
+                    }
+                    .sorted(by: { (a, b) -> Bool in
+                        a.rating ?? 1 > b.rating ?? 1
+                    })
+                if self.arrayGames.count > 1 {
                     
                     self.tableView.reloadData()
                 } else {
