@@ -109,6 +109,7 @@
 		65B503CF1E6DBB0F00ADD9C6 /* ReleaseDatePlatformTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B503CD1E6DBB0F00ADD9C6 /* ReleaseDatePlatformTableViewCell.swift */; };
 		65B503D01E6DBB0F00ADD9C6 /* ReleaseDatePlatformTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B503CE1E6DBB0F00ADD9C6 /* ReleaseDatePlatformTableViewCell.xib */; };
 		65CD7AD31E5DB1F7004DCBAD /* RandomElementFromArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CD7AD21E5DB1F7004DCBAD /* RandomElementFromArray.swift */; };
+		65E24ABA1E81314C005F5059 /* ProvideArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E24AB91E81314C005F5059 /* ProvideArray.swift */; };
 		65F0098C1E7C43D4001A5F37 /* MGDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F0098B1E7C43D4001A5F37 /* MGDBTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -243,6 +244,7 @@
 		65B503CD1E6DBB0F00ADD9C6 /* ReleaseDatePlatformTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseDatePlatformTableViewCell.swift; sourceTree = "<group>"; };
 		65B503CE1E6DBB0F00ADD9C6 /* ReleaseDatePlatformTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReleaseDatePlatformTableViewCell.xib; sourceTree = "<group>"; };
 		65CD7AD21E5DB1F7004DCBAD /* RandomElementFromArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomElementFromArray.swift; sourceTree = "<group>"; };
+		65E24AB91E81314C005F5059 /* ProvideArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProvideArray.swift; path = "Find the Fun/ProvideArray.swift"; sourceTree = SOURCE_ROOT; };
 		65F009891E7C43D4001A5F37 /* MGDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MGDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F0098B1E7C43D4001A5F37 /* MGDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGDBTests.swift; sourceTree = "<group>"; };
 		65F0098D1E7C43D4001A5F37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 			children = (
 				656763441E2FEB650095AFAD /* DecodeJSON.swift */,
 				650123781E3762DE007A12AD /* GetUrl.swift */,
+				65E24AB91E81314C005F5059 /* ProvideArray.swift */,
 			);
 			name = Json;
 			sourceTree = "<group>";
@@ -881,6 +884,7 @@
 				6598A71F1E737AFA000C3E5D /* GenreCell.swift in Sources */,
 				652692071E5319FD00A32CF6 /* Reachability.swift in Sources */,
 				655565181E44A78D0022C87F /* RelatedInDescriptionTableViewCell.swift in Sources */,
+				65E24ABA1E81314C005F5059 /* ProvideArray.swift in Sources */,
 				65B395C01E42465300E373B3 /* GenreTableViewCell.swift in Sources */,
 				6598A71D1E737AD1000C3E5D /* ReleaseDateCell.swift in Sources */,
 				659F87471E64918A0089067E /* VideoDescriptionCollectionViewCell.swift in Sources */,

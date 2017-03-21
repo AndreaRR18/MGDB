@@ -16,6 +16,24 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         subDirectory: "NewGame",
         directory: .applicationSupportDirectory)
     
+
+    
+    init() {
+        super.init(nibName: "GameTableViewController", bundle: nil)
+        let activityIndicator = ActivityIndicator(view: view)
+        activityIndicator.startAnimating()
+        ProvideArray.newGames{ arrayGames in
+            self.arrayGames = arrayGames
+            activityIndicator.stopAnimating()
+            self.tableView.reloadData()
+        }
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -54,10 +72,6 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        self.tableView.register(
-        //            UINib(nibName: NibName.gameCellTableViewCell, bundle: nil),
-        //            forCellReuseIdentifier: Identifier.gameCellTableViewCell)
-        
         NotificationCenter
             .default
             .addObserver(
@@ -68,24 +82,22 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         
         _ = reachability?.startNotifier()
         
-        let activityIndicator = ActivityIndicator(view: view)
         
         //        if let reachabilityIsValid = reachability?.isReachable, reachabilityIsValid {
         
-        activityIndicator.startAnimating()
         
-        let decodedJSON = DecodeJSON(url: GetUrl.newGamesURL)
-        
-        decodedJSON.getNewGames(callback: { getNewGame in
-            do {
-                let arrayGames = try getNewGame()
-                self.arrayGames = arrayGames
-                activityIndicator.stopAnimating()
-                self.tableView.reloadData()
-            } catch let error {
-                print("\(error)")
-            }
-        })
+//        let decodedJSON = DecodeJSON(url: GetUrl.newGamesURL)
+//        
+//        decodedJSON.getNewGames(callback: { getNewGame in
+//            do {
+//                let arrayGames = try getNewGame()
+//                self.arrayGames = arrayGames
+//                activityIndicator.stopAnimating()
+//                self.tableView.reloadData()
+//            } catch let error {
+//                print("\(error)")
+//            }
+//        })
         //        }else {
         //            do {
         //                try self.arrayGames = cachedGame.getJSONData() ?? []

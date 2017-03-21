@@ -16,7 +16,6 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         }
         
         navigationController?.navigationBar.barTintColor = ColorUI.navBar
-        
         tabBarController?.tabBar.isTranslucent = false
     }
     
@@ -40,8 +39,6 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         searchBar.barTintColor = UIColor.white
         
         navigationItem.titleView = searchBar
-        
-        definesPresentationContext = true
     }
     
     
@@ -124,9 +121,7 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         let decodedJSON = DecodeJSON(url: url)
         decodedJSON.getSearchGames(callback: { getSearchGame in
             
-            do {
-                let arrayGames = try getSearchGame()
-                
+            ProvideArray.seachGames(url: url, callback: { arrayGames in
                 self.arrayGames = arrayGames.filter{ game in
                     game.name
                         .replacingOccurrences(of: " ", with: "")
@@ -138,7 +133,6 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
                         a.rating ?? 1 > b.rating ?? 1
                     })
                 if self.arrayGames.count > 1 {
-                    
                     self.tableView.reloadData()
                 } else {
                     let alert = Alert(
@@ -150,13 +144,8 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
                         completion: nil)
                 }
                 activityIndicator.stopAnimating()
-            } catch let error {
-                print("------------------------")
-                print("\(error)")
-                print("------------------------")
-            }
-            
-            
+                
+            })
         })
         
     }
