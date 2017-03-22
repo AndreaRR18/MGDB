@@ -40,7 +40,9 @@ class RelatedTableViewController: UITableViewController {
             activityIndicator.startAnimating()
         }
         
-        takeCommonIDGames { getElement in
+//        ProvideArray.takeCommonIDGames(idGenres: idGenres) { getElement in
+        
+        ProvideArray.getCommonGames(idGenres: idGenres) { getElement in
             do {
                 let commonElement = try getElement()
                 let idGames = commonElement
@@ -126,51 +128,51 @@ class RelatedTableViewController: UITableViewController {
     }
     
     
-    func takeIdGames(idGenres: [Int], idGame callback: @escaping (() throws -> (arrayIDGames: [Int], arrayOfArrayIDGames: [[Int]])) -> ()) {
-        
-        idGenres.forEach{ genre in
-            
-            var arrayOfArrayIDGames: [[Int]] = []
-            var arrayIDGames: [Int] = []
-            let decodedJSON = DecodeJSON(url: GetUrl.getUrlIDGenres(idGenre: genre))
-            
-            decodedJSON.getGenres( callback: { getGenre in
-                do {
-                    let arrayGenre = try getGenre()
-                    
-                    guard let games = arrayGenre.first?.games else { return }
-                    arrayIDGames += games
-                    arrayOfArrayIDGames.append(games)
-                    callback { (arrayIDGames, arrayOfArrayIDGames) }
-                    
-                } catch let error {
-                    callback { throw error }
-                }
-            })
-        }
-    }
-    
-    
-    func takeCommonIDGames(callback: @escaping(() throws -> ([Int])) -> ()) {
-        takeIdGames(idGenres: self.idGenres, idGame: { getTuple in
-            do {
-                let (arrayIDGames, arrayOfArrayIDGames) = try getTuple()
-                let arraySetIdGames = Set(arrayIDGames)
-                let arrayOfArraySetIdGames = arrayOfArrayIDGames.map(Set.init)
-                let commonElementSet = arrayOfArraySetIdGames.reduce(arraySetIdGames) { $0.intersection($1) }
-                
-                if commonElementSet.count > 100 {
-                    let arrayInt = Array(commonElementSet)<->
-                    let slice: [Int] = Array(arrayInt[0..<100])
-                    callback { slice }
-                } else {
-                    callback { Array(commonElementSet) }
-                }
-                
-            } catch let error {
-                print("\(error)")
-            }
-            
-        })
-    }
+//    func takeIdGames(idGenres: [Int], idGame callback: @escaping (() throws -> (arrayIDGames: [Int], arrayOfArrayIDGames: [[Int]])) -> ()) {
+//        
+//        idGenres.forEach{ genre in
+//            
+//            var arrayOfArrayIDGames: [[Int]] = []
+//            var arrayIDGames: [Int] = []
+//            let decodedJSON = DecodeJSON(url: GetUrl.getUrlIDGenres(idGenre: genre))
+//            
+//            decodedJSON.getGenres( callback: { getGenre in
+//                do {
+//                    let arrayGenre = try getGenre()
+//                    
+//                    guard let games = arrayGenre.first?.games else { return }
+//                    arrayIDGames += games
+//                    arrayOfArrayIDGames.append(games)
+//                    callback { (arrayIDGames, arrayOfArrayIDGames) }
+//                    
+//                } catch let error {
+//                    callback { throw error }
+//                }
+//            })
+//        }
+//    }
+//    
+//    
+//    func takeCommonIDGames(idGenres: [Int], callback: @escaping(() throws -> ([Int])) -> ()) {
+//        takeIdGames(idGenres: idGenres, idGame: { getTuple in
+//            do {
+//                let (arrayIDGames, arrayOfArrayIDGames) = try getTuple()
+//                let arraySetIdGames = Set(arrayIDGames)
+//                let arrayOfArraySetIdGames = arrayOfArrayIDGames.map(Set.init)
+//                let commonElementSet = arrayOfArraySetIdGames.reduce(arraySetIdGames) { $0.intersection($1) }
+//                
+//                if commonElementSet.count > 100 {
+//                    let arrayInt = Array(commonElementSet)<->
+//                    let slice: [Int] = Array(arrayInt[0..<100])
+//                    callback { slice }
+//                } else {
+//                    callback { Array(commonElementSet) }
+//                }
+//                
+//            } catch let error {
+//                print("\(error)")
+//            }
+//            
+//        })
+//    }
 }

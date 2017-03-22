@@ -48,7 +48,7 @@ class GenreCoreData {
             if let nameGenre = GenreCoreData.fetchGenre(id: Int32(idGenre)) {
                 genres.append(nameGenre)
             } else {
-                let decodeJSON = DecodeJSON(url: GetUrl.getUrlIDGenres(idGenre: idGenre))
+                let decodeJSON = DecodeJSON(url: GetUrl.getUrlIDGenre(idGenre: idGenre))
                 
                 decodeJSON.getGenres(callback: { getGenre in
                     do {

@@ -64,10 +64,13 @@ class GetUrl {
     }
     
     
-    static func getUrlIDGenres(idGenre: Int) -> String {
+    static func getUrlIDGenre(idGenre: Int) -> String {
         return "https://igdbcom-internet-game-database-v1.p.mashape.com/genres/"+"\(idGenre)"+"?fields=*"
     }
     
+    static func getUrlIDGenres(stringOfIDGenres: String) -> String {
+        return "https://igdbcom-internet-game-database-v1.p.mashape.com/genres/"+stringOfIDGenres+"?fields=*"
+    }
     
     static func getUrlIDGameModes(idGameModes: Int) -> String {
         return "https://igdbcom-internet-game-database-v1.p.mashape.com/game_modes/"+"\(idGameModes)"+"?fields=*"

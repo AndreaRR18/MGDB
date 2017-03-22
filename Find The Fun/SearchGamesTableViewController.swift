@@ -66,9 +66,7 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.gameCellTableViewCell, for: indexPath) as! GameCellTableViewCell
-        
         cell.configureGameCell(arrayGames[indexPath.row])
-        
         return cell
     }
     
@@ -120,7 +118,6 @@ class SearchGamesTableViewController: UITableViewController, UISearchBarDelegate
         
         let decodedJSON = DecodeJSON(url: url)
         decodedJSON.getSearchGames(callback: { getSearchGame in
-            
             ProvideArray.seachGames(url: url, callback: { arrayGames in
                 self.arrayGames = arrayGames.filter{ game in
                     game.name
