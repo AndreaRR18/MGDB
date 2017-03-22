@@ -21,21 +21,18 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
     
     func getCell(tableView: UITableView, indexPath: IndexPath, handleError: @escaping (Error) -> ()) -> UITableViewCell {
         let cell = (tableView.dequeueReusableCell(withIdentifier: CoverTableViewCell.cellIdentifier) as? CoverTableViewCell) ?? CoverTableViewCell.fromXIB
-        
         cell.configureCoverTableViewCell(game)
         cell.favouriteDelegate = self
         cell.shareDelegate = self
         cell.showCoverDelegate = self
-        
         return cell
     }
     
     
     internal func saveGame(game: Game?) {
         guard let game = game, let url = GetUrl.getCover(url: game.cover?.url ?? "") else { return }
-        
+    
         let cover = UIImageView()
-        
         let activityIndicator = ActivityIndicator(
             view: self.tableView,
             background: .clear,
@@ -74,8 +71,7 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
         
         let deleteAction = UIAlertAction(
             title: "Delete",
-            style: .destructive)
-        { _ in
+            style: .destructive){ _ in
             deleteFavouriteGame(id: Int32(game.idGame))
             self.tableView?.reloadData()
             NotificationCenter.default.post(

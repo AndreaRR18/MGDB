@@ -21,15 +21,17 @@ final class CoverTableViewCell: UITableViewCell, XIBConstructible {
     @IBOutlet weak var shareButton: UIButton?
     @IBOutlet weak var saveButton: UIButton?
     
+    weak var favouriteDelegate: FavouriteDelegate?
+    weak var shareDelegate: ShareDelegate?
+    weak var showCoverDelegate: ShowCoverDelegate?
+    
     private var game: Game? = nil
     
     static var cellIdentifier: String {
         return "CoverTableViewCell"
     }
     
-    weak var favouriteDelegate: FavouriteDelegate?
-    weak var shareDelegate: ShareDelegate?
-    weak var showCoverDelegate: ShowCoverDelegate?
+    
     
     @IBAction func showCover(_ sender: Any) {
         showCover()

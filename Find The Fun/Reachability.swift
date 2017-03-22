@@ -136,3 +136,31 @@ class Reachability: NSObject {
         }
     }
 }
+
+
+//------------------------ Code write in GameTableViewController ----------------
+//        if let reachabilityIsValid = reachability?.isReachable, reachabilityIsValid {
+
+
+//        let decodedJSON = DecodeJSON(url: GetUrl.newGamesURL)
+//
+//        decodedJSON.getNewGames(callback: { getNewGame in
+//            do {
+//                let arrayGames = try getNewGame()
+//                self.arrayGames = arrayGames
+//                activityIndicator.stopAnimating()
+//                self.tableView.reloadData()
+//            } catch let error {
+//                print("\(error)")
+//            }
+//        })
+//        }else {
+//            do {
+//                try self.arrayGames = cachedGame.getJSONData() ?? []
+//                self.tableView.reloadData()
+//            } catch {
+//                print(error)
+//            }
+//        }
+
+

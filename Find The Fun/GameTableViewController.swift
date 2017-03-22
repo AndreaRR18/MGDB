@@ -66,12 +66,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         tableView.tableFooterView = footerView
         
         checkReachability()
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+       
         NotificationCenter
             .default
             .addObserver(
@@ -81,32 +76,11 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
                 object: nil)
         
         _ = reachability?.startNotifier()
-        
-        
-        //        if let reachabilityIsValid = reachability?.isReachable, reachabilityIsValid {
-        
-        
-//        let decodedJSON = DecodeJSON(url: GetUrl.newGamesURL)
-//        
-//        decodedJSON.getNewGames(callback: { getNewGame in
-//            do {
-//                let arrayGames = try getNewGame()
-//                self.arrayGames = arrayGames
-//                activityIndicator.stopAnimating()
-//                self.tableView.reloadData()
-//            } catch let error {
-//                print("\(error)")
-//            }
-//        })
-        //        }else {
-        //            do {
-        //                try self.arrayGames = cachedGame.getJSONData() ?? []
-        //                self.tableView.reloadData()
-        //            } catch {
-        //                print(error)
-        //            }
-        //        }
-        
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
         refreshControl?.tintColor = UIColor.gray

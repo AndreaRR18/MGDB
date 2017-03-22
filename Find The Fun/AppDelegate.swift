@@ -34,17 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let elementTabBarController = [navControllerGameTableViewController, navControllerSearchGameTableViewController, navControllerFavouriteGameTableViewController]
 
         tabBarController.viewControllers = elementTabBarController
-        
         tabBarController.navigationController?.navigationBar.isTranslucent = false
-        
         tabBarController.navigationController?.navigationBar.isOpaque = false
-        
         tabBarController.navigationController?.navigationBar.tintColor = ColorUI.text
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        
-        self.window?.rootViewController = tabBarController
-        
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
 
     }
