@@ -5,9 +5,8 @@ import CoreData
 class GameModeCoreData {
     
     static func saveGameMode(idGameModes: Int32, nameGameModes: String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
-        let context = appDelegate.persistentContainer.viewContext
+        let context = DatabaseController.persistentContainer.viewContext
         let newGameModes = NSEntityDescription.insertNewObject(forEntityName: "GameModeData", into: context)
         
         newGameModes.setValue(idGameModes, forKey: "idGameModes")
@@ -21,9 +20,8 @@ class GameModeCoreData {
     }
     
     static func fetchGameMode(id: Int32) -> String? {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
         
-        let context = appDelegate.persistentContainer.viewContext
+        let context = DatabaseController.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GameModeData")
         
         request.returnsObjectsAsFaults = false

@@ -75,7 +75,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
                 name: NSNotification.Name(rawValue: ReachabilityDidChangeNotificationName),
                 object: nil)
         
-        _ = reachability?.startNotifier()
+       
     }
     
     
@@ -84,6 +84,7 @@ class GameTableViewController: UITableViewController, NSFetchedResultsController
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.allEvents)
         refreshControl?.tintColor = UIColor.gray
+         _ = reachability?.startNotifier()
     }
     
     

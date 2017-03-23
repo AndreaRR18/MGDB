@@ -5,9 +5,8 @@ import CoreData
 class GenreCoreData {
     
     static func saveGenre(idGenre: Int32, nameGenre: String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
-        let context = appDelegate.persistentContainer.viewContext
+        let context = DatabaseController.persistentContainer.viewContext
         let newGenre = NSEntityDescription.insertNewObject(forEntityName: "GenreData", into: context)
         
         newGenre.setValue(idGenre, forKey: "idGenre")
@@ -21,9 +20,8 @@ class GenreCoreData {
     }
     
     static func fetchGenre(id: Int32) -> String? {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
         
-        let context = appDelegate.persistentContainer.viewContext
+        let context = DatabaseController.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "GenreData")
         
         request.returnsObjectsAsFaults = false

@@ -5,9 +5,8 @@ import CoreData
 class PlatformCoreData {
     
     static func savePlatform(idPlatform: Int32, namePlatform: String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
-        let context = appDelegate.persistentContainer.viewContext
+        let context = DatabaseController.persistentContainer.viewContext
         let newCompany = NSEntityDescription.insertNewObject(forEntityName: "PlatformData", into: context)
         
         newCompany.setValue(idPlatform, forKey: "idPlatform")
@@ -21,9 +20,8 @@ class PlatformCoreData {
     }
     
     static func fetchPlatform(id: Int32) -> String? {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
         
-        let context = appDelegate.persistentContainer.viewContext
+        let context = DatabaseController.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PlatformData")
         
         request.returnsObjectsAsFaults = false

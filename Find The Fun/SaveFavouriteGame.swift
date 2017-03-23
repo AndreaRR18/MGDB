@@ -5,9 +5,9 @@ import AlamofireImage
 
 func saveFavouriteGame(game: Game, image: UIImage?) {
     
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate, let image = image else { return }
+    guard let image = image else { return }
     
-    let context = appDelegate.persistentContainer.viewContext
+    let context = DatabaseController.persistentContainer.viewContext
     let newFavuoriteGame = NSEntityDescription.insertNewObject(
         forEntityName: "FavouriteGameData",
         into: context)
@@ -88,9 +88,8 @@ func stringGameModes(gameModesIDs: [Int]?) -> String {
 
 
 func deleteFavouriteGame(id: Int32) {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
     
-    let context = appDelegate.persistentContainer.viewContext
+    let context = DatabaseController.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FavouriteGameData")
 
     request.returnsObjectsAsFaults = false
@@ -109,9 +108,8 @@ func deleteFavouriteGame(id: Int32) {
 
 
 func alreadySaved(id: Int32) -> Bool {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
     
-    let context = appDelegate.persistentContainer.viewContext
+    let context = DatabaseController.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "FavouriteGameData")
     
     request.returnsObjectsAsFaults = false

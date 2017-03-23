@@ -5,8 +5,7 @@ import CoreData
 class CompanyCoreData {
     
 static func saveCompany(idCompany: Int32, nameCompany: String) {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-    let context = appDelegate.persistentContainer.viewContext
+    let context = DatabaseController.persistentContainer.viewContext
     let newCompany = NSEntityDescription.insertNewObject(forEntityName: "CompanyData", into: context)
     newCompany.setValue(idCompany, forKey: "idCompany")
     newCompany.setValue(nameCompany, forKey: "nameCompany")
@@ -19,8 +18,7 @@ static func saveCompany(idCompany: Int32, nameCompany: String) {
 }
 
 static func fetchCompany(id: Int32) -> String? {
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
-    let context = appDelegate.persistentContainer.viewContext
+    let context = DatabaseController.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CompanyData")
     request.returnsObjectsAsFaults = false
     do {

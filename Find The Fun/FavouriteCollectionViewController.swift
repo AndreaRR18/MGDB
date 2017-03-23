@@ -111,9 +111,8 @@ class FavouriteCollectionViewController: UICollectionViewController, UICollectio
     
     
     func getGame() -> [FavouriteGameData]? {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil}
         
-        let context = appDelegate.persistentContainer.viewContext
+        let context = DatabaseController.persistentContainer.viewContext
         
         do {
             return try context.fetch(FavouriteGameData.fetchRequest())

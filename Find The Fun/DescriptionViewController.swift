@@ -75,10 +75,9 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
         
         tableView?.delegate = self
         tableView?.dataSource = self
-        
-        buildTableDescription()
-        
         tableView?.backgroundColor = UIColor.clear
+
+        buildTableDescription()
         
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
@@ -136,7 +135,6 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellFactories[section].count
-        
     }
     
     

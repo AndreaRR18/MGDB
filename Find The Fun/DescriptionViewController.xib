@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DescriptionViewController" customModule="Find_The_Fun" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DescriptionViewController" customModule="MGDB" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="BhI-lC-9d4" id="pbt-70-KNE"/>
                 <outlet property="headerBlurImage" destination="oFM-nv-ceO" id="Uho-rc-YWX"/>
@@ -105,7 +105,7 @@
                 <constraint firstItem="lDh-hW-y4H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="erG-dg-QJX"/>
                 <constraint firstItem="jR2-Mv-DCI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="uXJ-b0-K1I"/>
             </constraints>
-            <point key="canvasLocation" x="18.5" y="48.5"/>
+            <point key="canvasLocation" x="-39" y="127"/>
         </view>
     </objects>
     <resources>

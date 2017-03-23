@@ -197,7 +197,7 @@ func heightFavouriteSectionDescription(_ section: Int,_ game: FavouriteGameData)
         
     case 4:
         
-        guard let genres = game.genres, genres.count > 0 else { return 0 }
+        guard game.genre != nil else { return 0 }
         
         return 35
         
@@ -242,7 +242,7 @@ func heightRowInFavouriteGameDescription(indexPath: IndexPath, gameDescription: 
         
     case 4:
         
-        guard gameDescription.genres != nil else { return 0 }
+        guard gameDescription.genre != nil else { return 0 }
         
         return 50
         
