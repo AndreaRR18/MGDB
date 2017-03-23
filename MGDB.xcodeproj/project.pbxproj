@@ -283,13 +283,6 @@
 			name = "New TableView";
 			sourceTree = "<group>";
 		};
-		651EB8061E841ADA00050F3E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
 		65304C2A1E7706A500339064 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,7 +435,6 @@
 		656C38FD1E27D1FC0095EDBC /* MGDB */ = {
 			isa = PBXGroup;
 			children = (
-				651EB8061E841ADA00050F3E /* Model */,
 				65304C2A1E7706A500339064 /* CoreData */,
 				656C38FE1E27D1FC0095EDBC /* AppDelegate.swift */,
 				6541CBF41E40A5B30071C711 /* Model */,
