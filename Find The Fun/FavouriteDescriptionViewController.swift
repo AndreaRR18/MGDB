@@ -267,15 +267,21 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
         
         let summary = SummaryCell(gameDescription.summary)
         
+        game.developers?.forEach { idDeveloper in
+            arrayDevelopers.append(DeveloperCell(idDeveloper))
+        }
         
-        //        let developers = DeveloperCell()
+        game.publishers?.forEach { idPublisher in
+            arrayPublishers.append(PublisherCell(idPublisher))
+        }
         
-        //        let publishers = PublisherCell()
-//        
-//        let genres = GenreCell(game.genres ?? [])
-//        
-//        let gamesMode = GameModeCell(game.gameModes ?? [])
+        game.releaseDate?.forEach { releaseDate in
+            arrayReleaseDate.append(ReleaseDateCell(releaseDate))
+        }
         
-        cellFactories = [[header, cover], [summary] ]
+        let genres = GenreCell(game.genres ?? [])
+        let gameMode = GameModeCell(game.gameModes ?? [])
+        
+        cellFactories = [[header, cover], [summary], arrayDevelopers, arrayPublishers, arrayReleaseDate, [genres], [gameMode] ]
     }
 }

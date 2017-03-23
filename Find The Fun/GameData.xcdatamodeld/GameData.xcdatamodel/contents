@@ -38,17 +38,15 @@
         <attribute name="idPlatform" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="namePlatform" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="SearchElementData" representedClassName="SearchElementData" syncable="YES" codeGenerationType="class"/>
     <elements>
         <element name="CompanyData" positionX="-261" positionY="8" width="128" height="90"/>
-        <element name="FavouriteGameData" positionX="-38" positionY="-162" width="128" height="240"/>
-        <element name="GameModeData" positionX="180" positionY="69" width="128" height="90"/>
-        <element name="GenreData" positionX="-378" positionY="-81" width="128" height="90"/>
-        <element name="PlatformData" positionX="-261" positionY="-162" width="128" height="73"/>
-        <element name="SearchElementData" positionX="-261" positionY="189" width="128" height="45"/>
-        <element name="GameDB" positionX="475" positionY="-144" width="128" height="45"/>
         <element name="CompanyDB" positionX="475" positionY="36" width="128" height="45"/>
-        <element name="GenreDB" positionX="475" positionY="-27" width="128" height="45"/>
+        <element name="FavouriteGameData" positionX="-38" positionY="-162" width="128" height="240"/>
+        <element name="GameDB" positionX="475" positionY="-144" width="128" height="45"/>
+        <element name="GameModeData" positionX="180" positionY="69" width="128" height="90"/>
         <element name="GameModeDB" positionX="477" positionY="-90" width="128" height="45"/>
+        <element name="GenreData" positionX="-378" positionY="-81" width="128" height="90"/>
+        <element name="GenreDB" positionX="475" positionY="-27" width="128" height="45"/>
+        <element name="PlatformData" positionX="-261" positionY="-162" width="128" height="73"/>
     </elements>
 </model>

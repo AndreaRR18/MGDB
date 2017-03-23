@@ -189,6 +189,7 @@ final class DescriptionViewController: UIViewController, UITableViewDelegate, UI
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return heightSectionDescription(section, gameDescription)
     }
+     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return heightRowInGameDescription(indexPath: indexPath, gameDescription: gameDescription)
