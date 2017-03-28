@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Find The Fun/FavouriteDescriptionViewController.swift"
-            timestampString = "511954021.275744"
+            timestampString = "512388431.280464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "buildTableDescription()"
             landmarkType = "7">
          </BreakpointContent>

@@ -4,18 +4,21 @@ private let reuseIdentifier = "FavouriteCollectionViewCell"
 
 class FavouriteCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, DeleteDelegate {
     
-    private  var favouriteGame: [FavouriteGameData]? = []
+//    private  var favouriteGame: [FavouriteGameData]? = []
     private let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 40, right: 10)
     private let itemsPerRow: CGFloat = 2
-    private var favouriteGameChange: [FavouriteGameData] = []
+//    private var favouriteGameChange: [FavouriteGameData] = []
+    private var favouriteGameModel: [GameModel]? = []
+    private var favouriteGameModelChange: [GameModel] = []
     
     init() {
         super.init(nibName: "FavouriteCollectionViewController", bundle: nil)
         
-        self.favouriteGame = self.getGame()
-        
+//        self.favouriteGame = self.getGame()
+        self.favouriteGameModel = self.getGameModel()
         NotificationCenter.default.addObserver(forName: NSNotification.Name("ChangeFavouriteGame"), object: nil, queue: nil) { _ in
-            self.favouriteGame = self.getGame()
+//            self.favouriteGame = self.getGame()
+            self.favouriteGameModel = self.getGameModel()
             self.collectionView?.reloadData()
         }
     }
@@ -45,7 +48,8 @@ class FavouriteCollectionViewController: UICollectionViewController, UICollectio
         collectionView?.backgroundColor = UIColor.white
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name("ChangeFavouriteGame"), object: nil, queue: nil) { _ in
-            self.favouriteGame = self.getGame()
+//            self.favouriteGame = self.getGame()
+            self.favouriteGameModel = self.getGameModel()
             self.collectionView?.reloadData()
         }
         
@@ -86,8 +90,10 @@ class FavouriteCollectionViewController: UICollectionViewController, UICollectio
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let favouriteGame = favouriteGame else { return 0 }
-        return favouriteGame.count
+        guard let favouriteGameModel = favouriteGameModel else { return 0 }
+        return favouriteGameModel.count
+//        guard let favouriteGame = favouriteGame else { return 0 }
+//        return favouriteGame.count
     }
     
     
@@ -95,20 +101,30 @@ class FavouriteCollectionViewController: UICollectionViewController, UICollectio
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.favouriteCollectionCell, for: indexPath) as! FavouriteCollectionViewCell
         
         cell.delegate = self
-        cell.configureFavouriteGameCell(favouriteGame?[indexPath.row])
+        cell.configureFavouriteGameCell(favouriteGameModel?[indexPath.row])
+//        cell.configureFavouriteGameCell(favouriteGame?[indexPath.row])
         
         return cell
     }
     
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let navController = navigationController, let favouriteGame = favouriteGame?[indexPath.row] else { return }
-        
+//        guard let navController = navigationController, let favouriteGame = favouriteGame?[indexPath.row] else { return }
+        guard let navController = navigationController, let favouriteGame = favouriteGameModel?[indexPath.row] else  { return }
         navController.pushViewController(
             FavouriteDescriptionViewController(game: favouriteGame),
+//            FavouriteDescriptionViewController(game: favouriteGame),
             animated: true)
     }
     
+    func getGameModel() -> [GameModel]? {
+        do {
+            return try DatabaseController.persistentContainer.viewContext.fetch(GameModel.fetchRequest())
+        } catch {
+            print("Fetching failed")
+            return nil
+        }
+    }
     
     func getGame() -> [FavouriteGameData]? {
         
@@ -143,8 +159,8 @@ class FavouriteCollectionViewController: UICollectionViewController, UICollectio
     
     
     func delete(idGame: Int32) {
-        deleteFavouriteGame(id: idGame)
-        
+//        deleteFavouriteGame(id: idGame)
+        deleteGameModel(id: idGame)
         NotificationCenter.default.post(
             name: NSNotification.Name("ChangeFavouriteGame"),
             object: nil)

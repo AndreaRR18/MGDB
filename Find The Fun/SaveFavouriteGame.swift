@@ -8,41 +8,19 @@ func saveFavouriteGame(game: Game, image: UIImage?) {
     guard let image = image else { return }
     
     let context = DatabaseController.persistentContainer.viewContext
-    let newFavuoriteGame = NSEntityDescription.insertNewObject(
-        forEntityName: "FavouriteGameData",
-        into: context)
-    newFavuoriteGame.setValue(
-        game.idGame,
-        forKey: "id")
-    newFavuoriteGame.setValue(
-        game.name,
-        forKey: "name")
-    newFavuoriteGame.setValue(
-        String(describing: game.publishers),
-        forKey: "publishers")
-    newFavuoriteGame.setValue(
-        String(describing: game.developers),
-        forKey: "developers")
-    newFavuoriteGame.setValue(
-        game.rating,
-        forKey: "rating")
-    newFavuoriteGame.setValue(
-        game.summary,
-        forKey: "summary")
-    newFavuoriteGame.setValue(
-        String(describing: game.genres),
-        forKey: "genre")
-    newFavuoriteGame.setValue(
-        game.internetPage,
-        forKey: "internetPage")
-    newFavuoriteGame.setValue(
-        String(describing: game.gameModes),
-        forKey: "gamemode")
+    let newFavuoriteGame = NSEntityDescription.insertNewObject(forEntityName: "FavouriteGameData", into: context)
+    newFavuoriteGame.setValue(game.idGame, forKey: "id")
+    newFavuoriteGame.setValue(game.name, forKey: "name")
+    newFavuoriteGame.setValue(String(describing: game.publishers), forKey: "publishers")
+    newFavuoriteGame.setValue(String(describing: game.developers), forKey: "developers")
+    newFavuoriteGame.setValue(game.rating, forKey: "rating")
+    newFavuoriteGame.setValue(game.summary, forKey: "summary")
+    newFavuoriteGame.setValue(String(describing: game.genres), forKey: "genre")
+    newFavuoriteGame.setValue(game.internetPage, forKey: "internetPage")
+    newFavuoriteGame.setValue(String(describing: game.gameModes), forKey: "gamemode")
     
     let newCoverData: Data? = UIImageJPEGRepresentation(image, 1)
-    newFavuoriteGame.setValue(
-        newCoverData,
-        forKey: "image")
+    newFavuoriteGame.setValue(newCoverData, forKey: "image")
     
     do {
         try context.save()
@@ -66,8 +44,7 @@ func stringCompany(companyIDs: [Int]?) -> String {
 
 func stringGenres(genresIDs: [Int]?) -> String {
     var genres = [String]()
-    genresIDs?.forEach
-        { id in
+    genresIDs?.forEach{ id in
             guard let genresName = GenreCoreData.fetchGenre(id: Int32(id)) else { return }
             genres.append(genresName)
     }
@@ -77,14 +54,13 @@ func stringGenres(genresIDs: [Int]?) -> String {
 
 func stringGameModes(gameModesIDs: [Int]?) -> String {
     var gameModes = [String]()
-    
-    gameModesIDs?.forEach
-        { id in
+    gameModesIDs?.forEach{ id in
             guard let gameModesName = GameModeCoreData.fetchGameMode(id: Int32(id)) else { return }
             gameModes.append(gameModesName)
     }
     return gameModes.joined(separator: ", ")
 }
+
 
 
 func deleteFavouriteGame(id: Int32) {

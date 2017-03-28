@@ -13,18 +13,22 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
     
     private var blurredHeaderImageView: UIImageView?
     private var referenceThumbnail: UIImageView?
-    private var gameDescription: FavouriteGameData
+    //    private var gameDescription: FavouriteGameData
+    private var gameDescription: GameModel
     private var arrayDevelopers: [DeveloperCell] = []
     private var arrayPublishers: [PublisherCell] = []
-    private var arrayReleaseDate: [ReleaseDateCell] = []
+    //    private var arrayReleaseDate: [ReleaseDateCell] = []
     private var cellFactories: [[CellFactory]] = []
     private let titleSection = ["", "Summary", "Developers", "Publishers", "Release Date", "Genres", "Games Mode", "Screenshots", "Video", ""]
     
-    
-    required init(game: FavouriteGameData) {
+    required init(game: GameModel) {
         self.gameDescription = game
         super.init(nibName: "DescriptionViewController", bundle: nil)
     }
+    //    required init(game: FavouriteGameData) {
+    //        self.gameDescription = game
+    //        super.init(nibName: "DescriptionViewController", bundle: nil)
+    //    }
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -46,7 +50,8 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
         
         super.viewWillAppear(animated)
         
-        headerImage?.image = UIImage(data: gameDescription.image as! Data)
+        headerImage?.image = UIImage(data: gameDescription.cover! as Data)
+        //        headerImage?.image = UIImage(data: gameDescription.image as! Data)
         
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -238,50 +243,66 @@ class FavouriteDescriptionViewController: UIViewController, UITableViewDelegate,
     
     
     func buildTableDescription() {
+        
         let game = Game(
             idGame: Int(gameDescription.id),
             name: gameDescription.name ?? "",
             summary: gameDescription.summary,
             rating: Int(gameDescription.rating),
-            developers: gameDescription.developers?.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy: ", ").flatMap{ Int($0) },
-            publishers: gameDescription.developers?.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy: ", ").flatMap{ Int($0) },
+            developers: nil,
+            publishers: nil,
             updatedAt: nil,
             releaseDate: nil,
             cover: nil,
-            genres: gameDescription.genre?.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy: ", ").flatMap{ Int($0) },
-            gameModes: gameDescription.gamemode?.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy: ", ").flatMap{ Int($0) },
+            genres: nil,
+            gameModes: nil,
             screenshots: nil,
             internetPage: gameDescription.internetPage,
             videos: nil)
+        
+        //        let game = Game(
+        //            idGame: Int(gameDescription.id),
+        //            name: gameDescription.name ?? "",
+        //            summary: gameDescription.summary,
+        //            rating: Int(gameDescription.rating),
+        //            developers: gameDescription.developers?.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy: ", ").flatMap{ Int($0) },
+        //            publishers: gameDescription.developers?.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy: ", ").flatMap{ Int($0) },
+        //            updatedAt: nil,
+        //            releaseDate: nil,
+        //            cover: nil,
+        //            genres: gameDescription.genre?.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy: ", ").flatMap{ Int($0) },
+        //            gameModes: gameDescription.gamemode?.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy: ", ").flatMap{ Int($0) },
+        //            screenshots: nil,
+        //            internetPage: gameDescription.internetPage,
+        //            videos: nil)
         
         
         let header = HeaderCell()
         
         let cover = FavouriteCoverCell(
             name: game.name,
-            cover: UIImage(data: gameDescription.image as! Data),
+            cover: UIImage(data: gameDescription.cover! as Data),
+            //            cover: UIImage(data: gameDescription.image as! Data),
             rating: game.rating,
             internetPage: game.internetPage,
             navController: navigationController,
             tableView: tableView)
         
         let summary = SummaryCell(gameDescription.summary)
-        
         game.developers?.forEach { idDeveloper in
             arrayDevelopers.append(DeveloperCell(idDeveloper))
         }
+        //
+        //        game.publishers?.forEach { idPublisher in
+        //            arrayPublishers.append(PublisherCell(idPublisher))
+        //        }
         
-        game.publishers?.forEach { idPublisher in
-            arrayPublishers.append(PublisherCell(idPublisher))
-        }
-        
-        game.releaseDate?.forEach { releaseDate in
-            arrayReleaseDate.append(ReleaseDateCell(releaseDate))
-        }
-        
+        //        game.releaseDate?.forEach { releaseDate in
+        //            arrayReleaseDate.append(ReleaseDateCell(releaseDate))
+        //        }
         let genres = GenreCell(game.genres ?? [])
         let gameMode = GameModeCell(game.gameModes ?? [])
-        
-        cellFactories = [[header, cover], [summary], arrayDevelopers, arrayPublishers, arrayReleaseDate, [genres], [gameMode] ]
+        cellFactories = [[header, cover], [summary], arrayDevelopers, arrayPublishers, [genres], [gameMode] ]
+        //        cellFactories = [[header, cover], [summary], arrayDevelopers, arrayPublishers, arrayReleaseDate, [genres], [gameMode] ]
     }
 }

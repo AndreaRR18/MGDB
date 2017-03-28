@@ -51,9 +51,10 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
             runImageTransitionIfCached: true,
             completion: { _ in
                 guard let cover = cover.image else { return }
-                saveFavouriteGame(
-                    game: game,
-                    image: cover)
+                saveGameModel(game: game, image: cover)
+//                saveFavouriteGame(
+//                    game: game,
+//                    image: cover)
                 activityIndicator.stopAnimating()
                 self.tableView?.reloadData()
                 NotificationCenter.default.post(name: NSNotification.Name("ChangeFavouriteGame"), object: nil)
@@ -72,7 +73,8 @@ class CoverCell: CellFactory, ShareDelegate, FavouriteDelegate, ShowCoverDelegat
         let deleteAction = UIAlertAction(
             title: "Delete",
             style: .destructive){ _ in
-            deleteFavouriteGame(id: Int32(game.idGame))
+                deleteGameModel(id: Int32(game.idGame))
+//            deleteFavouriteGame(id: Int32(game.idGame))
             self.tableView?.reloadData()
             NotificationCenter.default.post(
                 name: NSNotification.Name("ChangeFavouriteGame"),

@@ -42,7 +42,8 @@ final class CoverTableViewCell: UITableViewCell, XIBConstructible {
     }
     
     @IBAction func favourite(_ sender: Any) {
-        if let id = game?.idGame, alreadySaved(id: Int32(id)) {
+        if let id = game?.idGame, alreadySavedGameModel(id: Int32(id)) {
+//            if let id = game?.idGame, alreadySaved(id: Int32(id)) {
             removeGame()
         } else {
             saveGame()
@@ -81,7 +82,8 @@ final class CoverTableViewCell: UITableViewCell, XIBConstructible {
         self.layer.zPosition = 3
         self.game = game
         
-        if let game = game, alreadySaved(id: Int32(game.idGame)) {
+        if let game = game, alreadySavedGameModel(id: Int32(game.idGame)) {
+//            if let game = game, alreadySaved(id: Int32(game.idGame)) {
             saveButton?.setImage(
                 #imageLiteral(resourceName: "fullStar"),
                 for: .normal)
