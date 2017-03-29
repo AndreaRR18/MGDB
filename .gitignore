@@ -1,3 +1,9 @@
 *.bcsymbolmap
 Carthage/Checkouts
 MGDB.xcodeproj/project.xcworkspace/xcuserdata
+*.modulemap
+*.
+*.
+*.
+Carthage/Build/Mac/Alamofire.framework
+Carthage
